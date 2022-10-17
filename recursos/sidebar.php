@@ -132,7 +132,7 @@
 
           <li class="nav-header">FINECO APP</li>
           <li class="nav-item">
-            <a href="../index.php" class="nav-link">
+            <a href="../global/cerrarsesion.php" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>
               <p>Salir</p>
             </a>
