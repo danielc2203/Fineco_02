@@ -50,13 +50,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./clientes.php" class="nav-link">
+                <a href="./VistaClientes.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clientes</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./informes.php" class="nav-link">
+                <a href="./VistaInformes.php" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Informes</p>
                 </a>
