@@ -1,3 +1,5 @@
+<?php include ('../modulos/clientes.php') ?>
+
 <!-- HEADER - UBICADO EN RECURSOS -->
 
 <?php include ('../recursos/header.php') ?>

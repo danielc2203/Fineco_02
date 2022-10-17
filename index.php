@@ -1,4 +1,6 @@
-<?php include ("template/modulos/index.php") ?>
+<?php include("modulos/index.php")?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
