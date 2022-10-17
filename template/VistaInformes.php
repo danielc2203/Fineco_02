@@ -1,3 +1,7 @@
+<!-- Logica -->
+<?php include ('../modulos/informes.php') ?>
+<!-- Fin de Logica Panel -->
+
 <!-- HEADER - UBICADO EN RECURSOS -->
 
 <?php include ('../recursos/header.php') ?>

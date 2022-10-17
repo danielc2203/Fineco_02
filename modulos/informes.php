@@ -1,3 +1,3 @@
 <?php
-echo "Modulo de Informes"
+include('../global/sesiones.php')
 ?>

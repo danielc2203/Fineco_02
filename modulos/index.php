@@ -17,10 +17,16 @@ if(isset($_POST["btnLogin"])){
     $sentenciaSQL->bindParam("password", $txtPassword,PDO::PARAM_STR);
     $sentenciaSQL->execute();
 
+    $registro = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
+    print_r($registro);
+    session_start();
+    $_SESSION['usuario']=$registro;
+
     $numeroRegistros=$sentenciaSQL->rowCount();
 
     if($numeroRegistros>=1){
         echo "Bienvenido.....";
+        header('Location:template/VistaPanel.php');
     }else{
         echo "No se encuentran registros";
     }
