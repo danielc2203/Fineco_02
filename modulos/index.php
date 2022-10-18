@@ -3,8 +3,6 @@ if(isset($_POST["btnLogin"])){
 
     include("global/conexion.php");
 
-    
-
     $txtEmail=($_POST['txtEmail']);
     $txtPassword=($_POST['txtPassword']);
 
@@ -17,9 +15,7 @@ if(isset($_POST["btnLogin"])){
     $sentenciaSQL->execute();
 
     $registro = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
-    print_r($registro);
-   
-
+    //print_r($registro);
 
     $numeroRegistros=$sentenciaSQL->rowCount();
 
