@@ -1,5 +1,5 @@
 <!-- Funciones de la vista clientes -->
-<?php include ('../modulos/clientes.php') ?>
+<?php include ('../modulos/usuarios.php') ?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 
@@ -24,12 +24,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado de Clientes</h1>
+            <h1>Listado de Usuarios del Sistema</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active">Usuarios</li>
             </ol>
           </div>
         </div>
@@ -44,7 +44,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tabla de clientes FINECO APP</h3>
+                <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
                 
               </div>
               <!-- /.card-header -->
@@ -53,26 +53,22 @@
                   <thead>
                   <tr> 
                     <th>Id</th>
-                    <th>P. Nombre</th>
-                    <th>S. Nombre</th>
-                    <th>P. Apellido</th>
-                    <th>S. Apellido</th>
-                    <th>Nº Documento</th>
-                    <th>Empresa</th>
-                    <th>Acciones</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
                   </tr>
                   </thead>
 
                   <tbody>
-                  <?php foreach($finecoclientes as $finecoCliente): ?>
+                  <?php foreach($finecousuarios as $finecousuario): ?>
                   <tr>
-                    <td><?=$finecoCliente['id'];?></td>
-                    <td><?=$finecoCliente['primer_nombre'];?></td>
-                    <td><?=$finecoCliente['segundo_nombre'];?></td>
-                    <td><?=$finecoCliente['primer_apellido'];?></td>
-                    <td><?=$finecoCliente['segundo_apellido'];?></td>
-                    <td><?=$finecoCliente['num_documento'];?></td>
-                    <td><?=$finecoCliente['empresa'];?></td>
+                    <td><?=$finecousuario['id'];?></td>
+                    <td><?=$finecousuario['nombres'];?></td>
+                    <td><?=$finecousuario['apellidos'];?></td>
+                    <td><?=$finecousuario['correo'];?></td>
+                    <td><?=$finecousuario['estado'];?></td>
                     <td class="project-actions">
                           <a class="btn btn-primary btn-sm" href="#">
                               <i class="fas fa-folder">
@@ -96,13 +92,11 @@
                   <tfoot>
                   <tr>
                     <th>Id</th>
-                    <th>P. Nombre</th>
-                    <th>S. Nombre</th>
-                    <th>P. Apellido</th>
-                    <th>S. Apellido</th>
-                    <th>N° Documento</th>
-                    <th>Empresa</th>
-                    <th>Acciones</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
                   </tr>
                   </tfoot>
                 </table>
