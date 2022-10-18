@@ -2,8 +2,7 @@
 
 define("SERVIDOR", "localhost");
 define("USUARIO", "root");
-define("PASSWORD", "");
+define("PASSWORD", "Admin2admin");
 define("BD", "finecoApp");
-
 
 ?>
