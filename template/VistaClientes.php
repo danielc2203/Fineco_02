@@ -51,11 +51,12 @@
                   <thead>
                   <tr> 
                     <th>Id</th>
-                    <th>P_Nombre</th>
-                    <th>segundo_nombre</th>
-                    <th>Apellido</th>
-                    <th>num_documento</th>
-                    <th>empresa</th>
+                    <th>P. Nombre</th>
+                    <th>S. Nombre</th>
+                    <th>P. Apellido</th>
+                    <th>S. Apellido</th>
+                    <th>Nº Documento</th>
+                    <th>Empresa</th>
                   </tr>
                   </thead>
 
@@ -66,6 +67,7 @@
                     <td><?=$finecoCliente['primer_nombre'];?></td>
                     <td><?=$finecoCliente['segundo_nombre'];?></td>
                     <td><?=$finecoCliente['primer_apellido'];?></td>
+                    <td><?=$finecoCliente['segundo_apellido'];?></td>
                     <td><?=$finecoCliente['num_documento'];?></td>
                     <td><?=$finecoCliente['empresa'];?></td>
                   </tr>
@@ -74,9 +76,10 @@
                   <tfoot>
                   <tr>
                     <th>Id</th>
-                    <th>P_Nombre</th>
-                    <th>segundo_nombre</th>
-                    <th>Apellido</th>
+                    <th>P. Nombre</th>
+                    <th>S. Nombre</th>
+                    <th>P. Apellido</th>
+                    <th>S. Apellido</th>
                     <th>num_documento</th>
                     <th>empresa</th>
                   </tr>
