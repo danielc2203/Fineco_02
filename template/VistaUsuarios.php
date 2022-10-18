@@ -28,8 +28,9 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Usuarios</li>
+              <!-- <li class="breadcrumb-item"><a href="#">Inicio</a></li> -->
+              <li class="breadcrumb-item"><a href="<?php echo $url;?>/template/index.php">Inicio</a></li>
+              <li class="breadcrumb-item active">Clientes</li>
             </ol>
           </div>
         </div>
@@ -57,6 +58,7 @@
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Estado</th>
+                    <th>Ultimo Ingreso</th>
                     <th>Acción</th>
                   </tr>
                   </thead>
@@ -69,23 +71,25 @@
                     <td><?=$finecousuario['apellidos'];?></td>
                     <td><?=$finecousuario['correo'];?></td>
                     <td><?=$finecousuario['estado'];?></td>
+                    <td>01/01/2022</td>
                     <td class="project-actions">
-                          <a class="btn btn-primary btn-sm" href="#">
-                              <i class="fas fa-folder">
-                              </i>
-                              Ver
-                          </a>
-                          <a class="btn btn-info btn-sm" href="#">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Editar
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="#">
-                              <i class="fas fa-trash">
-                              </i>
-                              Borrar
-                          </a>
-                      </td>
+                        <a class="btn btn-primary btn-sm" href="#">
+                            <i class="fas fa-folder">
+                            </i>
+                            Ver
+                        </a>
+                        <a class="btn btn-info btn-sm" href="#">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                            Editar
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#">
+                            <i class="fas fa-trash">
+                            </i>
+                            Borrar
+                        </a>
+                    </td>
+                    
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
@@ -96,6 +100,7 @@
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Estado</th>
+                    <th>Ultimo Ingreso</th>
                     <th>Acción</th>
                   </tr>
                   </tfoot>

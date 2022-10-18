@@ -1,3 +1,6 @@
+<!-- Ruta de carpeta raiz -->
+<?php $url="http://".$_SERVER['HTTP_HOST']."/Fineco_02" ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
