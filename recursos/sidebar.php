@@ -13,7 +13,7 @@
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="index.php" class="d-block">Daniel Castro R</a>
+          <a href="index.php" class="d-block"><?php echo $usuariod ?></a>
         </div>
       </div>
 

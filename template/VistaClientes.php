@@ -1,3 +1,4 @@
+<!-- Funciones de la vista clientes -->
 <?php include ('../modulos/clientes.php') ?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
@@ -44,6 +45,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Tabla de clientes FINECO APP</h3>
+                
               </div>
               <!-- /.card-header -->
               <div class="card-body">
