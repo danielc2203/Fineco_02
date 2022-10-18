@@ -10,6 +10,7 @@ try {
 
 } catch (PDOException $e) {
     
+    echo $e->getMessage();
     //echo "<scritp> alert('Error...') </script>;";
 }
 ?>

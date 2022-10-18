@@ -28,7 +28,6 @@ if(isset($_POST["btnLogin"])){
         header('Location:template/VistaPanel.php');
 
     }else{
-        
         echo "No se encuentran registros";
     }
 }
