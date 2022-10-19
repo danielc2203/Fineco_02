@@ -51,7 +51,7 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr> 
+                  <tr>
                     <th>Id</th>
                     <th>P. Nombre</th>
                     <th>S. Nombre</th>
@@ -74,7 +74,7 @@
                     <td><?=$finecoCliente['num_documento'];?></td>
                     <td><?=$finecoCliente['empresa'];?></td>
                     <td class="project-actions">
-                          <a class="btn btn-primary btn-sm" href="#">
+                          <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#NombreDelModal" data-bs-whatever="<?php echo $finecoCliente['id'];?>" href="#">
                               <i class="fas fa-folder">
                               </i>
                               Ver
