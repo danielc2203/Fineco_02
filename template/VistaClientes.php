@@ -45,7 +45,9 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Tabla de clientes FINECO APP</h3>
-                
+                <button type="button" class="btn btn-info float-right " data-toggle="modal" data-target="#ModalNuevosClientes">
+                  Agregar Nuevos clientes
+                </button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -119,6 +121,92 @@
     </section>
     <!-- /.content -->
   </div>
+
+
+  <!-- Modal D2 -->
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="ModalNuevosClientes" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo Cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="../global/clientes.php">
+
+          <div class="form-row">
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Primer Nombre:</label>
+            <input type="text" class="form-control" id="pnombre">
+          </div>
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Segundo Nombre:</label>
+            <input type="text" class="form-control" id="snombre">
+          </div>  
+          </div>
+
+          <div class="form-row">
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Primer Apellido:</label>
+            <input type="text" class="form-control" id="papellido">
+          </div>   
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Segundo Apellido:</label>
+            <input type="text" class="form-control" id="sapellido">
+          </div>
+          </div>
+          
+          
+          
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="adduser()">Enviar - Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function adduser(){
+    var pnombreAdd=$('#pnombre').val();
+    var snombreAdd=$('#snombre').val();
+    var papellidoAdd=$('#papellido').val();
+    var sapellidoAdd=$('#sapellido').val();
+
+    $.ajax({
+      type:'POST',
+      url:"../global/clientes.php",
+      data:{
+        pnombreSend:pnombreAdd,
+        snombreSend:snombreAdd,
+        papellidoSend:papellidoAdd,
+        sapellidoSend:sapellidoAdd
+      },
+      success:function(data,status){
+        // funcion para mostrar datos;
+        console.log(data);
+        console.log(status);
+        //console.log(pnombreSend);
+      },
+      error: function(xhr, status, error){
+      console.error(xhr);
+      }
+    });
+  }
+</script>
+
   <!-- /.Fin de contenido -->
 
 <!-- footer -->
