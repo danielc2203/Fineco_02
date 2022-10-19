@@ -51,7 +51,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="clientes1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Id</th>
@@ -86,7 +86,7 @@
                               </i>
                               Editar
                           </a>
-                          <a class="btn btn-danger btn-sm" href="#">
+                          <a class="btn btn-danger btn-sm" onclick="BorrarUsuario('<?php echo $finecoCliente['id'];?>')">
                               <i class="fas fa-trash">
                               </i>
                               Borrar
@@ -161,13 +161,18 @@
             <input type="text" class="form-control" id="sapellido">
           </div>
           </div>
-          
-          
-          
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+
+          <div class="form-row">
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Tipo de Documento:</label>
+            <input type="text" class="form-control" id="tipodocumento">
+          </div>   
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Número de Documento:</label>
+            <input type="text" class="form-control" id="numerodocumento">
           </div>
+          </div>
+          
         </form>
       </div>
       <div class="modal-footer">
@@ -184,6 +189,8 @@
     var snombreAdd=$('#snombre').val();
     var papellidoAdd=$('#papellido').val();
     var sapellidoAdd=$('#sapellido').val();
+    var tipodocumentoAdd=$('#tipodocumento').val();
+    var numerodocumentoAdd=$('#numerodocumento').val();
 
     $.ajax({
       type:'POST',
@@ -192,18 +199,35 @@
         pnombreSend:pnombreAdd,
         snombreSend:snombreAdd,
         papellidoSend:papellidoAdd,
-        sapellidoSend:sapellidoAdd
+        sapellidoSend:sapellidoAdd,
+        tipodocumentoSend:tipodocumentoAdd,
+        numerodocumentoSend:numerodocumentoAdd
       },
       success:function(data,status){
         // funcion para mostrar datos;
-        console.log(data);
-        console.log(status);
+        //console.log(data);
+        //console.log(status);
         //console.log(pnombreSend);
       },
       error: function(xhr, status, error){
       console.error(xhr);
       }
     });
+  }
+
+  function BorrarUsuario(borrarid){
+    $.ajax({
+      type:'POST',
+      url:"../global/Borrarclientes.php",
+      data:{
+        deletesend:borrarid
+      },
+      success:function(data,status){
+        console.log(data);
+        console.log(status);
+        //clientes1.reload();
+      }
+    })
   }
 </script>
 
@@ -245,19 +269,11 @@
 <!-- Page specific script -->
 <script>
   $(function () {
-    $("#example1").DataTable({
+    $("#clientes1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+    }).buttons().container().appendTo('#clientes1_wrapper .col-md-6:eq(0)');
+    
   });
 </script>
 </body>
