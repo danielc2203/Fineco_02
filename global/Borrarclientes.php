@@ -7,6 +7,7 @@ $unique=$_POST['deletesend'];
 
 if(isset($_POST['deletesend'])){
 
+
 // Preparar
 $stmt = $pdo->prepare("DELETE FROM clientes WHERE id=$unique ");
 
@@ -18,11 +19,17 @@ $stmt = $pdo->prepare("DELETE FROM clientes WHERE id=$unique ");
 
 
 // Ejecutar Parametros
+
+
+
 $stmt->execute();
+
 
 
 }
 
   
+
+
 
 ?>

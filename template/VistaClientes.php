@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 <!-- Main Sidebar Container -->
+
 
 <?php include ('../recursos/sidebar.php') ?>
 
@@ -87,7 +89,7 @@
                               </i>
                               Editar
                           </a>
-                          <a class="btn btn-danger btn-sm" onclick="BorrarUsuario('<?php echo $finecoCliente['id'];?>')">
+                          <a class="btn btn-danger btn-sm toastrDefaultSuccess" onclick="myFunctionborrar('<?php echo $finecoCliente['id'];?>')">
                               <i class="fas fa-trash">
                               </i>
                               Borrar
@@ -144,14 +146,14 @@
           <div class="col">
             <label for="recipient-name" class="col-form-label">Segundo Nombre:</label>
             <input type="text" class="form-control" id="snombre">
-          </div>  
+          </div>
           </div>
 
           <div class="form-row">
           <div class="col">
             <label for="recipient-name" class="col-form-label">Primer Apellido:</label>
             <input type="text" class="form-control" id="papellido">
-          </div>   
+          </div>
           <div class="col">
             <label for="recipient-name" class="col-form-label">Segundo Apellido:</label>
             <input type="text" class="form-control" id="sapellido">
@@ -162,13 +164,13 @@
           <div class="col">
             <label for="recipient-name" class="col-form-label">Tipo de Documento:</label>
             <input type="text" class="form-control" id="tipodocumento">
-          </div>   
+          </div>
           <div class="col">
             <label for="recipient-name" class="col-form-label">Número de Documento:</label>
             <input type="text" class="form-control" id="numerodocumento">
           </div>
           </div>
-          
+
         </form>
       </div>
       <div class="modal-footer">
@@ -212,21 +214,7 @@
     });
   }
 
-  function BorrarUsuario(borrarid){
-    $.ajax({
-      type:'POST',
-      url:"../global/Borrarclientes.php",
-      data:{
-        deletesend:borrarid
-      },
-      success:function(data,status){
-        console.log(data);
-        console.log(status);
-        //clientes1.reload();
-        location.reload();
-      }
-    })
-  }
+  
 </script>
 
  <!-- Fin de Modal Nuevos Clientes -->
@@ -273,9 +261,56 @@
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#clientes1_wrapper .col-md-6:eq(0)');
-    
+
   });
+
 </script>
+
+
+
+<!-- Script Alerta Borrar -->
+<script>
+function myFunctionborrar(borrarid) {
+  let text = "Confirmar para eliminar este registro!\nAceptar o Cancelar.";
+  if (confirm(text) == true) {
+    $.ajax({
+      type:'POST',
+      url:"../global/Borrarclientes.php",
+      data:{
+        deletesend:borrarid
+      },
+      success:function(data,status){
+        console.log(data);
+        console.log(status);
+        //clientes1.reload();
+        //location.reload();
+      }
+    })
+
+    $(function() {
+      toastr.success('Se ha ejecutado la acción correctamente')
+    });
+
+
+  } else {
+
+    $(function() {
+      toastr.info('Se ha cancelado la acción')
+    });
+
+  }
+}
+
+</script>
+
+<script>
+
+</script>
+
+<!-- Toastr -->
+<!-- <script src="../../plugins/toastr/toastr.min.js"></script> -->
+<script src="../plugins/toastr/toastr.min.js"></script>
+
 
 <!-- <script>
 $('.openBtn').on('click',function(){
