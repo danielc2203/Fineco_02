@@ -1,17 +1,21 @@
+<?php $url="http://".$_SERVER['HTTP_HOST']."/Fineco_02" ?>
 <!-- Funciones de la vista clientes -->
-<?php include ('../modulos/usuarios.php') ?>
+<?php
+include('../../global/sesiones.php');
+include('../../global/conexion.php');
+?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
-<?php include ('../recursos/header.php') ?>
+<?php include ('../../recursos/header.php') ?>
 <!-- FIN DE HEADER -->
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $url;?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $url;?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $url;?>plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Main Sidebar Container -->
 
-<?php include ('../recursos/sidebar.php') ?>
+<?php include ('../../recursos/sidebar.php') ?>
 
 <!-- Fin de Sidebar -->
 
@@ -120,7 +124,7 @@
   <!-- /.Fin de contenido -->
 
 <!-- footer -->
-<?php include ('../recursos/footer.php') ?>
+<?php include ('../../recursos/footer.php') ?>
 <!-- fin de footer -->
 
 <!-- Control Sidebar -->
@@ -132,26 +136,28 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../plugins/jszip/jszip.min.js"></script>
-<script src="../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
