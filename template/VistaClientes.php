@@ -76,12 +76,13 @@
                     <td><?=$finecoCliente['num_documento'];?></td>
                     <td><?=$finecoCliente['empresa'];?></td>
                     <td class="project-actions">
-                          <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#NombreDelModal" data-bs-whatever="<?php echo $finecoCliente['id'];?>" href="#">
-                              <i class="fas fa-folder">
+                          <!-- <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#NombreDelModal" data-bs-whatever="<?php echo $finecoCliente['id'];?>" href="#"> -->
+                          <a class="btn btn-primary btn-sm openVer" href="#" >
+                          <i class="fas fa-folder">
                               </i>
                               Ver
                           </a>
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm openBtn"  href="#">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Editar
@@ -122,12 +123,7 @@
     <!-- /.content -->
   </div>
 
-
-  <!-- Modal D2 -->
-
-
-<!-- Modal -->
-
+<!-- Inicio Modal Nuevos Clientes -->
 <div class="modal fade" id="ModalNuevosClientes" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -176,7 +172,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="adduser()">Enviar - Guardar</button>
       </div>
     </div>
@@ -208,6 +204,7 @@
         //console.log(data);
         //console.log(status);
         //console.log(pnombreSend);
+        location.reload();
       },
       error: function(xhr, status, error){
       console.error(xhr);
@@ -226,10 +223,13 @@
         console.log(data);
         console.log(status);
         //clientes1.reload();
+        location.reload();
       }
     })
   }
 </script>
+
+ <!-- Fin de Modal Nuevos Clientes -->
 
   <!-- /.Fin de contenido -->
 
@@ -276,5 +276,20 @@
     
   });
 </script>
+
+<!-- <script>
+$('.openBtn').on('click',function(){
+    $('.modal-body').load('modales.php?id=2',function(){
+        $('#ModalEditarClientes').modal({show:true});
+    });
+});
+
+$('.openVer').on('click',function(){
+    $('.modal-body').load('modales.php',function(){
+        $('#ModalVerClientes').modal({show:true});
+    });
+});
+</script> -->
+
 </body>
 </html>
