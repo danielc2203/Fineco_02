@@ -2,7 +2,7 @@ $(document).ready(function() {
 var id, opcion;
 opcion = 4;
     
-tablaUsuarios = $('#usuariosF').DataTable({  
+tablaUsuarios = $('#usuariosf').DataTable({  
     "responsive": true, "lengthChange": false, "autoWidth": false,
     "dom": 'Btipr',
 		buttons: {

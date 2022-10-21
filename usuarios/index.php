@@ -58,7 +58,7 @@
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="usuariosF" class="table table-bordered table-striped" class="table table-striped table-bordered table-condensed">
+                <table id="usuariosf" class="table table-bordered table-striped" class="table table-striped table-bordered table-condensed">
                   <thead>
                   <tr> 
                     <th>id</th>
