@@ -15,7 +15,7 @@
           <img src="<?php echo $url;?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="<?php echo $url;?>/template/index.php" class="d-block"><?php echo $usuariod ?></a>
+          <a href="<?php echo $url;?>/template/index.php" class="d-block"><?php echo $usuariof ?></a>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo $url;?>/template/VistaUsuarios.php" class="nav-link">
+            <a href="<?php echo $url;?>/usuarios" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Usuarios

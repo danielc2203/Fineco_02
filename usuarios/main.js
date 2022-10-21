@@ -2,7 +2,13 @@ $(document).ready(function() {
 var id, opcion;
 opcion = 4;
     
-tablaUsuarios = $('#tablaUsuarios').DataTable({  
+tablaUsuarios = $('#usuariosF').DataTable({  
+    "responsive": true, "lengthChange": false, "autoWidth": false,
+    "dom": 'Btipr',
+		buttons: {
+			buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
+		},
+
     "ajax":{            
         "url": "bd/crud.php", 
         "method": 'POST', //usamos el metodo POST
@@ -11,21 +17,31 @@ tablaUsuarios = $('#tablaUsuarios').DataTable({
     },
     "columns":[
         {"data": "id"},
-        {"data": "usuario"},
         {"data": "nombres"},
         {"data": "apellidos"},
         {"data": "correo"},
         {"data": "password"},
         {"data": "estado"},
         {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"}
-    ]
-});     
+    ],
+    
+});
+
+
+
+// Funciones de Botones
+// $(function () {
+//   $("#usuariosD").DataTable({
+//     "responsive": true, "lengthChange": false, "autoWidth": false,
+//     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+//   }).buttons().container().appendTo('#usuariosF_wrapper .col-md-6:eq(0)');
+// });
+
 
 var fila; //captura la fila, para editar o eliminar
 //submit para el Alta y Actualización
 $('#formUsuarios').submit(function(e){                         
     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-    usuario = $.trim($('#usuario').val());    
     nombres = $.trim($('#nombres').val());
     apellidos = $.trim($('#apellidos').val());    
     correo = $.trim($('#correo').val());    
@@ -35,7 +51,7 @@ $('#formUsuarios').submit(function(e){
           url: "bd/crud.php",
           type: "POST",
           datatype:"json",    
-          data:  {id:id, usuario:usuario, nombres:nombres, apellidos:apellidos, correo:correo, password:password ,estado:estado ,opcion:opcion},    
+          data:  {id:id, nombres:nombres, apellidos:apellidos, correo:correo, password:password ,estado:estado ,opcion:opcion},    
           success: function(data) {
             tablaUsuarios.ajax.reload(null, false);
            }
@@ -61,13 +77,11 @@ $(document).on("click", ".btnEditar", function(){
     opcion = 2;//editar
     fila = $(this).closest("tr");	        
     id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID		            
-    usuario = fila.find('td:eq(1)').text();
-    nombres = fila.find('td:eq(2)').text();
-    apellidos = fila.find('td:eq(3)').text();
-    correo = fila.find('td:eq(4)').text();
-    password = fila.find('td:eq(5)').text();
-    estado = fila.find('td:eq(6)').text();
-    $("#usuario").val(usuario);
+    nombres = fila.find('td:eq(1)').text();
+    apellidos = fila.find('td:eq(2)').text();
+    correo = fila.find('td:eq(3)').text();
+    password = fila.find('td:eq(4)').text();
+    estado = fila.find('td:eq(5)').text();
     $("#nombres").val(nombres);
     $("#apellidos").val(apellidos);
     $("#correo").val(correo);
@@ -82,9 +96,10 @@ $(document).on("click", ".btnEditar", function(){
 //Borrar
 $(document).on("click", ".btnBorrar", function(){
     fila = $(this);           
-    id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;		
+    id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
+    nombres = $(this).closest("tr").find('td:eq(1)').text();	// Nombre de Usuario
     opcion = 3; //eliminar        
-    var respuesta = confirm("¿Está seguro de borrar el registro "+id+"?");                
+    var respuesta = confirm("¿Está seguro de borrar el registro " +id+ " del usuario " +nombres+"?");                
     if (respuesta) {            
         $.ajax({
           url: "bd/crud.php",

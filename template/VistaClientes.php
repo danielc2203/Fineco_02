@@ -11,6 +11,23 @@
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+
+  <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+  rel="stylesheet"
+/>
+
 <!-- Main Sidebar Container -->
 
 
@@ -166,8 +183,19 @@
             <input type="text" class="form-control" id="tipodocumento">
           </div>
           <div class="col">
-            <label for="recipient-name" class="col-form-label">Número de Documento:</label>
+            <label for="recipient-name" class="col-form-label">N° de Documento:</label>
             <input type="text" class="form-control" id="numerodocumento">
+          </div>
+          </div>
+
+          <div class="form-row">
+          <div class="form-outline">
+            <input type="email" id="typeEmail" class="form-control" />
+            <label class="form-label" for="typeEmail">Email input</label>
+          </div>
+          <div class="col">
+            <label for="recipient-name" class="col-form-label">Télefono:</label>
+            <input type="tel" id="telefono" class="form-control">
           </div>
           </div>
 
@@ -327,6 +355,14 @@ $('.openVer').on('click',function(){
     });
 });
 </script> -->
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
+></script>
+
 
 </body>
 </html>

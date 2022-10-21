@@ -1,9 +1,8 @@
 <?php
-include_once '../bd/conexion.php';
+include_once 'conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
 $nombres = (isset($_POST['nombres'])) ? $_POST['nombres'] : '';
 $apellidos = (isset($_POST['apellidos'])) ? $_POST['apellidos'] : '';
 $correo = (isset($_POST['correo'])) ? $_POST['correo'] : '';
@@ -17,7 +16,7 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO usuarios (usuario, nombres, apellidos, correo, password, estado) VALUES('$usuario', '$nombres', '$apellidos', '$correo', '$password', '$estado') ";			
+        $consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado) VALUES('$nombres', '$apellidos', '$correo', '$password', '$estado') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -27,11 +26,11 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE usuarios SET usuario='$usuario', nombres='$nombres', apellidos='$apellidos', correo='$correo', password='$password', estado='$estado' WHERE id='$id' ";		
+        $consulta = "UPDATE usuarios SET nombres='$nombres', apellidos='$apellidos', correo='$correo', password='$password', estado='$estado' WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT * FROM usuarios WHERE id='$id' ";       
+        $consulta = "SELECT * FROM usuarios WHERE id='$id' ";    
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +38,7 @@ switch($opcion){
     case 3:        
         $consulta = "DELETE FROM usuarios WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute();                           
+        $resultado->execute();                         
         break;
     case 4:    
         $consulta = "SELECT * FROM usuarios";
