@@ -1,13 +1,22 @@
 $(document).ready(function() {
 var id, opcion;
 opcion = 4;
-    
+
+
+$(document).ready(function () {
+    $('#usuariosf').DataTable();
+});
+
+
 tablaUsuarios = $('#usuariosf').DataTable({  
     "responsive": true, "lengthChange": false, "autoWidth": false,
+    
     "dom": 'Btipr',
 		buttons: {
-			buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
+			buttons: ["copy", "csv", "excel", "pdf", "print"]
 		},
+
+    "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
 
     "ajax":{            
         "url": "bd/crud.php", 
