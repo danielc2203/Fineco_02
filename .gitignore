@@ -23,3 +23,4 @@ config.php
 
 # Ignorar la configuracion de la BD
 /global/config.php
+/usuarios/bd/conexion.php
