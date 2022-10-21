@@ -2,23 +2,25 @@
 <!-- Funciones de la vista clientes -->
 <?php
 include('../../global/sesiones.php');
-include('../../global/conexion.php');
 ?>
+
+<!-- Esto debe ir en Modulos/usuarios -->
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../../recursos/header.php') ?>
 <!-- FIN DE HEADER -->
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo $url;?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo $url;?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo $url;?>plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $url;?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $url;?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $url;?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Main Sidebar Container -->
 
 <?php include ('../../recursos/sidebar.php') ?>
 
 <!-- Fin de Sidebar -->
 
+ 
 
   <!-- Contenido de clientes -->
   <div class="content-wrapper">
@@ -42,86 +44,112 @@ include('../../global/conexion.php');
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+
+
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12">            
+            <button id="btnNuevo" type="button" class="btn btn-info" data-toggle="modal"><i class="material-icons">library_add</i></button>    
+          </div>    
+      </div>    
+    </div>  
+
+    <div class="card-body">
+    <div class="container caja" >
         <div class="row">
-          <div class="col-12">
-
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
-                
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr> 
-                    <th>Id</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Estado</th>
-                    <th>Ultimo Ingreso</th>
-                    <th>Acción</th>
-                  </tr>
-                  </thead>
-
-                  <tbody>
-                  <?php foreach($finecousuarios as $finecousuario): ?>
-                  <tr>
-                    <td><?=$finecousuario['id'];?></td>
-                    <td><?=$finecousuario['nombres'];?></td>
-                    <td><?=$finecousuario['apellidos'];?></td>
-                    <td><?=$finecousuario['correo'];?></td>
-                    <td><?=$finecousuario['estado'];?></td>
-                    <td>01/01/2022</td>
-                    <td class="project-actions">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            Ver
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Editar
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Borrar
-                        </a>
-                    </td>
-                    
-                  </tr>
-                  <?php endforeach; ?>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Id</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Estado</th>
-                    <th>Ultimo Ingreso</th>
-                    <th>Acción</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+            <div class="col-lg-12">
+            <div class="table-responsive">        
+                <table id="tablaUsuarios" class="table table-bordered table-striped"  class="table table-striped table-bordered table-condensed" style="width:100%" >
+                    <thead >
+                        <tr>
+                            <th>id</th>
+                            <th>usuario</th>
+                            <th>nombres</th>                                
+                            <th>apellidos</th>  
+                            <th>correo</th>
+                            <th>Password</th>
+                            <th>estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>                           
+                    </tbody>        
+                </table>               
             </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div>
+            </div>
+        </div>  
+    </div>
+    </div>
+
+
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.Fin de contenido -->
+
+  <!--Modal para CRUD-->
+<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formUsuarios">    
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">User Name:</label>
+                    <input type="text" class="form-control" id="usuario">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">First Name</label>
+                    <input type="text" class="form-control" id="nombres">
+                    </div> 
+                    </div>    
+                </div>
+                <div class="row"> 
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Last Name</label>
+                    <input type="text" class="form-control" id="apellidos">
+                    </div>               
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo">
+                    </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="form-group">
+                        <label for="" class="col-form-label">Password</label>
+                        <input type="text" class="form-control" id="password">
+                        </div>
+                    </div>    
+                    <div class="col-lg-3">    
+                        <div class="form-group">
+                        <label for="" class="col-form-label">Estado</label>
+                        <input type="number" class="form-control" id="estado">
+                        </div>            
+                    </div>    
+                </div>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>  
 
 <!-- footer -->
 <?php include ('../../recursos/footer.php') ?>
@@ -134,6 +162,8 @@ include('../../global/conexion.php');
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<script type="text/javascript" src="main.js"></script>  
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -160,21 +190,7 @@ include('../../global/conexion.php');
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+
 </script>
 </body>
 </html>

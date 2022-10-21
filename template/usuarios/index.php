@@ -43,13 +43,13 @@
                 <table id="tablaUsuarios" class="table table-striped table-bordered table-condensed" style="width:100%" >
                     <thead class="text-center">
                         <tr>
-                            <th>User_Id</th>
-                            <th>userName</th>
-                            <th>FirstName</th>                                
-                            <th>LastName</th>  
-                            <th>Gender</th>
+                            <th>id</th>
+                            <th>usuario</th>
+                            <th>nombres</th>                                
+                            <th>apellidos</th>  
+                            <th>correo</th>
                             <th>Password</th>
-                            <th>Status</th>
+                            <th>estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -76,13 +76,13 @@
                     <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">User Name:</label>
-                    <input type="text" class="form-control" id="username">
+                    <input type="text" class="form-control" id="usuario">
                     </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">First Name</label>
-                    <input type="text" class="form-control" id="first_name">
+                    <input type="text" class="form-control" id="nombres">
                     </div> 
                     </div>    
                 </div>
@@ -90,13 +90,13 @@
                     <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Last Name</label>
-                    <input type="text" class="form-control" id="last_name">
+                    <input type="text" class="form-control" id="apellidos">
                     </div>               
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Gender</label>
-                    <input type="text" class="form-control" id="gender">
+                    <label for="" class="col-form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo">
                     </div>
                     </div>  
                 </div>
@@ -109,8 +109,8 @@
                     </div>    
                     <div class="col-lg-3">    
                         <div class="form-group">
-                        <label for="" class="col-form-label">Status</label>
-                        <input type="number" class="form-control" id="status">
+                        <label for="" class="col-form-label">Estado</label>
+                        <input type="number" class="form-control" id="estado">
                         </div>            
                     </div>    
                 </div>                
