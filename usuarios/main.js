@@ -2,11 +2,9 @@ $(document).ready(function() {
 var id, opcion;
 opcion = 4;
 
-
 $(document).ready(function () {
     $('#usuariosf').DataTable();
 });
-
 
 tablaUsuarios = $('#usuariosf').DataTable({  
     "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -29,23 +27,12 @@ tablaUsuarios = $('#usuariosf').DataTable({
         {"data": "nombres"},
         {"data": "apellidos"},
         {"data": "correo"},
-        {"data": "password"},
+        {"data": "password"}, 
         {"data": "estado"},
-        {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>edit</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i></button></div></div>"}
+        {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
     ],
     
 });
-
-
-
-// Funciones de Botones
-// $(function () {
-//   $("#usuariosD").DataTable({
-//     "responsive": true, "lengthChange": false, "autoWidth": false,
-//     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-//   }).buttons().container().appendTo('#usuariosF_wrapper .col-md-6:eq(0)');
-// });
-
 
 var fila; //captura la fila, para editar o eliminar
 //submit para el Alta y Actualización
@@ -68,9 +55,7 @@ $('#formUsuarios').submit(function(e){
     $('#modalCRUD').modal('hide');											     			
 });
         
- 
-
-//para limpiar los campos antes de dar de Alta una Persona
+//para limpiar los campos antes de dar de Alta a un registro
 $("#btnNuevo").click(function(){
     opcion = 1; //alta           
     id=null;

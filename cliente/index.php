@@ -23,7 +23,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado de Usuarios del Sistema</h1>
+            <h1>Listado de Clientes Fineco</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -44,7 +44,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
+                <h3 class="card-title">Tabla de Clientes de FINECO APP</h3>
                 
     <div class="container">
       <div class="row">
@@ -58,15 +58,22 @@
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="usuariosf" class="table table-bordered table-striped" class="table table-striped table-bordered table-condensed">
+                <table id="clientes" class="table table-bordered table-striped" class="table table-striped table-bordered table-condensed">
                   <thead>
                   <tr> 
                     <th>id</th>
-                    <th>nombres</th>                                
-                    <th>apellidos</th>  
-                    <th>correo</th>
-                    <th>Password</th> -->
-                    <th>estado</th>
+                    <th>Primer Nombres</th>
+                    <th>Segundo Nombres</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Tipo de Documento</th>
+                    <th>N° Documento</th>
+                    <th>correo electronico</th>
+                    <th>Telefono</th>
+                    <th>Estado</th>
+                    <th>Ocupacion</th>
+                    <th>Empresa</th>
+                    <th>Fecha de Incorporacion</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -99,44 +106,92 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formUsuarios">    
+        <form id="formClientes">    
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Nombres:</label>
-                    <input type="text" class="form-control" id="nombres">
+                    <label for="" class="col-form-label">Primer Nombre:</label>
+                    <input type="text" class="form-control" id="primer_nombre">
                     </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="apellidos">
+                    <label for="" class="col-form-label">Segundo Nombre</label>
+                    <input type="text" class="form-control" id="segundo_nombre">
                     </div> 
                     </div>    
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Correo</label>
-                    <input type="email" class="form-control" id="correo">
+                    <label for="" class="col-form-label">Primer Apellido:</label>
+                    <input type="text" class="form-control" id="primer_apellido">
                     </div>
-                    </div>  
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Segundo Apellido</label>
+                    <input type="text" class="form-control" id="segundo_apellido">
+                    </div> 
+                    </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-9">
-                        <div class="form-group">
-                        <label for="" class="col-form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
-                        </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Tipo de Documento:</label>
+                    <input type="text" class="form-control" id="tipo_documento">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Numero de Documento</label>
+                    <input type="text" class="form-control" id="num_documento">
+                    </div> 
                     </div>    
-                    <div class="col-lg-3">    
-                        <div class="form-group">
-                        <label for="" class="col-form-label">Estado</label>
-                        <input type="number" class="form-control" id="estado">
-                        </div>            
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Correo:</label>
+                    <input type="text" class="form-control" id="correo_electronico">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Telefono</label>
+                    <input type="text" class="form-control" id="telefono">
+                    </div> 
                     </div>    
-                </div>                
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">estado:</label>
+                    <input type="text" class="form-control" id="estado">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">ocupacion</label>
+                    <input type="text" class="form-control" id="ocupacion">
+                    </div> 
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">empresa:</label>
+                    <input type="text" class="form-control" id="empresa">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">fecha_incorporacion</label>
+                    <input type="text" class="form-control" id="fecha_incorporacion">
+                    </div> 
+                    </div>    
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>

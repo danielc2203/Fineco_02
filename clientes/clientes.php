@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 
-
 <!-- Main Sidebar Container -->
 
 
@@ -172,79 +171,11 @@
             <input type="text" class="form-control" id="numerodocumento">
           </div>
           </div>
-
-          <div class="form-row">
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Correo:</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Télefono:</label>
-            <input type="tel" id="telefono" class="form-control">
-          </div>
-          </div>
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="adduser()">Enviar - Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal Editar Clientes -->
-<div class="modal fade" id="EditarClientes" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo Cliente</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="../global/clientes.php">
-
-          <div class="form-row">
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Primer Nombre:</label>
-            <input type="text" class="form-control" id="pnombre">
-          </div>
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Segundo Nombre:</label>
-            <input type="text" class="form-control" id="snombre">
-          </div>
-          </div>
-
-          <div class="form-row">
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Primer Apellido:</label>
-            <input type="text" class="form-control" id="papellido">
-          </div>
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Segundo Apellido:</label>
-            <input type="text" class="form-control" id="sapellido">
-          </div>
-          </div>
-
-          <div class="form-row">
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">Tipo de Documento:</label>
-            <input type="text" class="form-control" id="tipodocumento">
-          </div>
-          <div class="col">
-            <label for="recipient-name" class="col-form-label">N° de Documento:</label>
-            <input type="text" class="form-control" id="numerodocumento">
-          </div>
-          </div>
-
+          
           <div class="form-row">
           <div class="form-outline">
+            <label class="col-form-label" for="typeEmail">Correo Electronico</label>
             <input type="email" id="typeEmail" class="form-control" />
-            <label class="form-label" for="typeEmail">Email input</label>
           </div>
           <div class="col">
             <label for="recipient-name" class="col-form-label">Télefono:</label>
@@ -262,8 +193,6 @@
   </div>
 </div>
 
-
-<!-- Fin de Modal de Editar Clientes -->
 <script>
   function adduser(){
     var pnombreAdd=$('#pnombre').val();
@@ -410,6 +339,13 @@ $('.openVer').on('click',function(){
     });
 });
 </script> -->
+
+
+<!-- MDB -->
+<!-- <script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
+></script> -->
 
 
 </body>
