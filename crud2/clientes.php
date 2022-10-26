@@ -14,12 +14,12 @@
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Main Sidebar Container -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Main Sidebar Container -->
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
@@ -107,6 +107,7 @@
                 <table id="clientes1" class="table table-bordered table-striped table-responsive">
                   <thead>
                   <tr>
+                    <th>ID</th>
                     <th>P. Nombre</th>
                     <th>S. Nombre</th>
                     <th>P. Apellido</th>
@@ -121,6 +122,7 @@
                   <tbody>
                   <?php foreach($finecoclientes as $finecoCliente): ?>
                   <tr>
+                    <td><?=$finecoCliente['id'];?></td>
                     <td><?=$finecoCliente['primer_nombre'];?></td>
                     <td><?=$finecoCliente['segundo_nombre'];?></td>
                     <td><?=$finecoCliente['primer_apellido'];?></td>
@@ -135,7 +137,7 @@
                               </i>
                               Ver
                           </a>
-                          <a class="btn btn-info btn-sm openBtn edit" id="edit" href="#">
+                          <a class="btn btn-info btn-sm openBtn edit" href="#">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Editar
@@ -152,6 +154,7 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                    <th>ID</th>
                     <th>P. Nombre</th>
                     <th>S. Nombre</th>
                     <th>P. Apellido</th>
@@ -217,9 +220,9 @@
           current_row=$(this).closest("tr");
           $("#modal_frm").modal();
           var id=$(this).closest("tr").attr("uid");
-          var name=$(this).closest("tr").find("td:eq(0)").text();
-          var apellido=$(this).closest("tr").find("td:eq(2)").text();
-          var contact=$(this).closest("tr").find("td:eq(5)").text();
+          var name=$(this).closest("tr").find("td:eq(1)").text();
+          var apellido=$(this).closest("tr").find("td:eq(3)").text();
+          var contact=$(this).closest("tr").find("td:eq(6)").text();
           
           $("#action").val("Update");
           $("#uid").val(id);

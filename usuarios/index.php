@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 <!-- Main Sidebar Container -->
 
-
 <?php include_once ('../recursos/sidebar.php') ?>
-
 
 <!-- Fin de Sidebar -->
 
@@ -45,14 +44,16 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
+
+                <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
                 
-    <div class="container">
+    <!-- <div class="container">
       <div class="row">
           <div class="col-lg-12">            
             <button id="btnNuevo" type="button" class="btn btn-warning float-right" data-toggle="modal">Agregar Nuevo</button>    
           </div>    
       </div>    
-    </div>  
+    </div>   -->
                 
               </div>
               <!-- /.card-header -->
@@ -67,7 +68,6 @@
                     <th>correo</th>
                     <th>Password</th>
                     <th>estado</th>
-                    <th>Acciones</th>
                   </tr>
                   </thead>
 
@@ -185,7 +185,7 @@
 <script src="../dist/js/demo.js"></script>
 <!-- Page specific script -->
 
-
+<script src="../plugins/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="main.js"></script>  
 
 </body>
