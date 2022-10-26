@@ -224,7 +224,6 @@ include ('../recursos/header.php');
 </div>  
 
 
-
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 <!-- fin de footer -->

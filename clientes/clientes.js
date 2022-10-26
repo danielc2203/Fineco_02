@@ -10,7 +10,7 @@ $(document).ready(function() {
         "responsive": false, "lengthChange": false, "autoWidth": false,       
         "dom": 'Btipr',
             buttons: {
-                buttons: ["copy", "csv", "excel", "pdf", "print"]
+                buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
             },
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
     
@@ -105,7 +105,7 @@ $(document).ready(function() {
         estado = fila.find('td:eq(9)').text();
         ocupacion = fila.find('td:eq(10)').text();
         empresa = fila.find('td:eq(11)').text();
-        fecha = fila.find('td:eq(12)').text();
+        fecha_incorporacion = fila.find('td:eq(12)').text();
 
         $("#primer_nombre").val(primer_nombre);
         $("#segundo_nombre").val(segundo_nombre);
@@ -118,7 +118,7 @@ $(document).ready(function() {
         $("#estado").val(estado);
         $("#ocupacion").val(ocupacion);
         $("#empresa").val(empresa);
-        $("#fecha").val(fecha);
+        $("#fecha_incorporacion").val(fecha_incorporacion);
 
 
         $(".modal-header").css("background-color", "#007bff");

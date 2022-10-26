@@ -58,9 +58,39 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template/VistaInformes.php" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Informes</p>
+                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <i class="nav-icon fab fa-cc-diners-club	"></i>
+                  <p>Bancos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <i class="nav-icon far fa-credit-card"></i>
+                  <p>Creditos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <i class="nav-icon fas fa-dice-d20"></i>
+                  <p>Tesorería</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <i class="nav-icon fas fa-briefcase"></i>
+                  <p>Cartera</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $url;?>/usuarios" class="nav-link">
+                <i class="nav-icon fas fa-address-card"></i>
+                  <p>Empleados</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $url;?>/template" class="nav-link">
+                <i class="nav-icon fas fa-comment-dollar"></i>
+                  <p>Contabilidad</p>
                 </a>
               </li>
             </ul>
