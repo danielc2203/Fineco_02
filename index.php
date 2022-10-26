@@ -1,4 +1,9 @@
-<?php include("modulos/index.php")?>
+<?php 
+session_start();
+include("modulos/index.php")
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">

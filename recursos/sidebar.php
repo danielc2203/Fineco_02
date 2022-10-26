@@ -1,4 +1,4 @@
-<?php $url="http://".$_SERVER['HTTP_HOST']."/Fineco_02" ?>
+<?php $url="http://".$_SERVER['HTTP_HOST']."/Fineco_02";?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -47,13 +47,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo $url;?>/template/index.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>Inicio</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo $url;?>/clientes" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-users"></i>
                   <p>Clientes</p>
                 </a>
               </li>

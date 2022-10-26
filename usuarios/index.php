@@ -1,6 +1,9 @@
 
 <!-- HEADER - UBICADO EN RECURSOS -->
-<?php include ('../recursos/header.php') ?>
+<?php
+  include('../global/sesiones.php');
+  include ('../recursos/header.php');
+?>
 <!-- FIN DE HEADER -->
 
   <!-- DataTables -->
