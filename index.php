@@ -1,9 +1,7 @@
 <?php 
 session_start();
-include("modulos/index.php")
-
+include("modulos/index.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
