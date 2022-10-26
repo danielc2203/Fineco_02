@@ -1,12 +1,15 @@
 <?php
 if(isset($_POST["btnLogin"])){
 
-    include("global/conexion.php");
+
+    include('global/conexiond.php');
+    $objeto = new Conexion();
+    $conexion = $objeto->Conectar();
 
     $txtEmail=($_POST['txtEmail']);
     $txtPassword=($_POST['txtPassword']);
 
-    $sentenciaSQL=$pdo->prepare("SELECT * FROM usuarios
+    $sentenciaSQL=$conexion->prepare("SELECT * FROM usuarios
     WHERE correo=:correo
     AND password=:password");
     

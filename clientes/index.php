@@ -259,7 +259,7 @@
 <!-- Page specific script -->
 
 <script src="../plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="main.js"></script>  
+<script type="text/javascript" src="clientes.js"></script>  
 
 </body>
 </html>

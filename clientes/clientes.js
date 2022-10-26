@@ -7,13 +7,11 @@ $(document).ready(function() {
     });
     
     tablaUsuarios = $('#clientes').DataTable({  
-        "responsive": false, "lengthChange": false, "autoWidth": false,
-        
+        "responsive": false, "lengthChange": false, "autoWidth": false,       
         "dom": 'Btipr',
             buttons: {
                 buttons: ["copy", "csv", "excel", "pdf", "print"]
             },
-    
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
     
         "ajax":{            
@@ -101,8 +99,8 @@ $(document).ready(function() {
         primer_apellido = fila.find('td:eq(3)').text();
         segundo_apellido = fila.find('td:eq(4)').text();
         tdocumento = fila.find('td:eq(5)').text();
-        ndocumento = fila.find('td:eq(6)').text();
-        correo = fila.find('td:eq(7)').text();
+        num_documento = fila.find('td:eq(6)').text();
+        correo_electronico = fila.find('td:eq(7)').text();
         telefono = fila.find('td:eq(8)').text();
         estado = fila.find('td:eq(9)').text();
         ocupacion = fila.find('td:eq(10)').text();
@@ -114,8 +112,8 @@ $(document).ready(function() {
         $("#primer_apellido").val(primer_apellido);
         $("#segundo_apellido").val(segundo_apellido);
         $("#tdocumento").val(tdocumento);
-        $("#ndocumento").val(ndocumento);
-        $("#correo").val(correo);
+        $("#num_documento").val(num_documento);
+        $("#correo_electronico").val(correo_electronico);
         $("#telefono").val(telefono);
         $("#estado").val(estado);
         $("#ocupacion").val(ocupacion);

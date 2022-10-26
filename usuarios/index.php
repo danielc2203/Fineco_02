@@ -1,4 +1,4 @@
-<?php include ('../modulos/usuarios.php') ?>
+
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
 <!-- FIN DE HEADER -->
