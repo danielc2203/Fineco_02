@@ -1,4 +1,4 @@
-<?php include ('../modulos/usuarios.php') ?>
+
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
 <!-- FIN DE HEADER -->
@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado de Usuarios del Sistema</h1>
+            <h1>Listado de Clientes Fineco</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -59,15 +59,22 @@
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="usuariosf" class="table table-bordered table-striped table-responsive-xl table-condensed">
+                <table id="clientes" class="table table-bordered table-striped table-responsive-xl table-condensed">
                   <thead>
                   <tr> 
                     <th>id</th>
-                    <th>nombres</th>                                
-                    <th>apellidos</th>  
-                    <th>correo</th>
-                    <th>Password</th>
-                    <th>estado</th>
+                    <th>Primer Nombre</th>
+                    <th>Segundo Nombre</th>                             
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>  
+                    <th>Tipo</th>
+                    <th>N° Documento</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Estado</th>
+                    <th>Ocupación</th>
+                    <th>Empresa</th>
+                    <th>Fecha</th>
                   </tr>
                   </thead>
 
@@ -99,44 +106,110 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formUsuarios">    
+        <form id="formModal">    
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Nombres:</label>
-                    <input type="text" class="form-control" id="nombres">
+                    <label for="" class="col-form-label">Primer Nombre:</label>
+                    <input type="text" class="form-control" id="primer_nombre">
                     </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="apellidos">
+                    <label for="" class="col-form-label">Segundo Nombre</label>
+                    <input type="text" class="form-control" id="segundo_nombre">
                     </div> 
                     </div>    
                 </div>
-                <div class="row"> 
+                <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Correo</label>
-                    <input type="email" class="form-control" id="correo">
+                    <label for="" class="col-form-label">Primer Apellido:</label>
+                    <input type="text" class="form-control" id="primer_apellido">
                     </div>
-                    </div>  
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Segundo Apellido</label>
+                    <input type="text" class="form-control " id="segundo_apellido">
+                    </div> 
+                    </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-9">
-                        <div class="form-group">
-                        <label for="" class="col-form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
-                        </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Tipo de Documento:</label>
+                    <!-- <input type="text" class="form-control" id="tdocumento"> -->
+                    <select class="custom-select" id="tipo_documento">
+                      <option selected>Seleccionar...</option>
+                      <option value="CC">CC</option>
+                      <option value="CE">CE</option>
+                      <option value="Pasaporte">Pasaporte</option>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Número de Documento</label>
+                    <input type="text" class="form-control" id="num_documento">
+                    </div> 
                     </div>    
-                    <div class="col-lg-3">    
-                        <div class="form-group">
-                        <label for="" class="col-form-label">Estado</label>
-                        <input type="number" class="form-control" id="estado">
-                        </div>            
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Correo:</label>
+                    <input type="mail" class="form-control " id="correo_electronico">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Télefono</label>
+                    <input type="phone" class="form-control " id="telefono">
+                    </div> 
                     </div>    
-                </div>                
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Estado:</label>
+                    <select class="custom-select" id="estado">
+                      <option selected>Seleccionar...</option>
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Ocupación</label>
+                    <input type="text" class="form-control " id="ocupacion">
+                    </div> 
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Empresa:</label>
+                    <select class="custom-select" id="empresa">
+                      <option selected>Seleccionar...</option>
+                      <option value="Fineco">Fineco</option>
+                      <option value="Armada">Armada</option>
+                      <option value="Fuerza Aerea">Fuerza Aerea</option>
+                      <option value="Policia">Policia</option>
+                      <option value="Fiscalia">Fiscalia</option>
+                      <option value="Empleado">Empleado</option>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Fecha</label>
+                    <input type="date" class="form-control" id="fecha_incorporacion">
+                    </div> 
+                    </div>    
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
