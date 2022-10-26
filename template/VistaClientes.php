@@ -13,14 +13,13 @@
   <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Main Sidebar Container -->
-
 
 <?php include ('../recursos/sidebar.php') ?>
 
 <!-- Fin de Sidebar -->
-
-
   <!-- Contenido de clientes -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -96,9 +95,11 @@
                               </i>
                               Borrar
                           </a>
+                          <a href="#EditarClientes" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                       </td>
                   </tr>
-                  <?php endforeach; ?>
+                  <?php endforeach;?>
+                  
                   </tbody>
                   <tfoot>
                   <tr>

@@ -58,7 +58,7 @@
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="clientes" class="table table-bordered table-striped" class="table table-striped table-bordered table-condensed">
+                <table id="clientes" class="table table-bordered table-striped table-responsive" class="table table-striped table-bordered table-condensed table-responsive">
                   <thead>
                   <tr> 
                     <th>id</th>
@@ -215,6 +215,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
 
 
 <!-- jQuery -->

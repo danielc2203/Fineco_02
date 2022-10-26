@@ -2,20 +2,15 @@ $(document).ready(function() {
 var id, opcion;
 opcion = 4;
 
-$(document).ready(function () {
-    $('#clientes').DataTable();
-});
+
 
 tablaClientes = $('#clientes').DataTable({
-    "responsive": true, "lengthChange": false, "autoWidth": false,
-
+    "responsive": false, "lengthChange": false, "autoWidth": false,
     "dom": 'Btipr',
 		buttons: {
-			buttons: ["copy", "csv", "excel", "pdf", "print"]
+			buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
 		},
-
     "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
-
     "ajax":{
         "url": "bd/crud.php",
         "method": 'POST', //usamos el metodo POST
@@ -29,15 +24,16 @@ tablaClientes = $('#clientes').DataTable({
         {"data": "primer_apellido"},
         {"data": "segundo_apellido"},
         {"data": "tipo_documento"},
-        // {"data": "num_documento"},
-         //{"data": "correo_electronico"},
-        // {"data": "telefono"},
-        // {"data": "estado"},
-        // {"data": "ocupacion"},
-        // {"data": "empresa"},
-        // {"data": "fecha_incorporacion"},
+         {"data": "num_documento"},
+         {"data": "correo_electronico"},
+         {"data": "telefono"},
+         {"data": "estado"},
+         {"data": "ocupacion"},
+         {"data": "empresa"},
+         {"data": "fecha_incorporacion"},
 
-        {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
+        {"defaultContent": 
+        "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
     ],
 
 });
@@ -73,7 +69,8 @@ $("#btnNuevo").click(function(){
 });
 
 //Editar
-$(document).on("click", ".btnEditar", function(){
+$(document).on("click", ".btnEditar", function(e){
+    e.preventDefault();
     opcion = 2;//editar
     fila = $(this).closest("tr");
     id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
@@ -82,25 +79,25 @@ $(document).on("click", ".btnEditar", function(){
     primer_apellido = fila.find('td:eq(3)').text();
     segundo_apellido = fila.find('td:eq(4)').text();
     tipo_documento = fila.find('td:eq(5)').text();
-    // num_documento = fila.find('td:eq(6)').text();
-    // correo = fila.find('td:eq(7)').text();
-    // telefono = fila.find('td:eq(8)').text();
-    // estado = fila.find('td:eq(9)').text();
-    // ocupacion = fila.find('td:eq(10)').text();
-    // empresa = fila.find('td:eq(11)').text();
-    // fecha_incorporacion = fila.find('td:eq(12)').text();
+     num_documento = fila.find('td:eq(6)').text();
+     correo = fila.find('td:eq(7)').text();
+     telefono = fila.find('td:eq(8)').text();
+     estado = fila.find('td:eq(9)').text();
+     ocupacion = fila.find('td:eq(10)').text();
+     empresa = fila.find('td:eq(11)').text();
+     fecha_incorporacion = fila.find('td:eq(12)').text();
     $("#primer_nombre").val(pnombre);
     $("#segundo_nombre").val(segundo_nombre);
     $("#primer_apellido").val(primer_apellido);
     $("#segundo_apellido").val(segundo_apellido);
     $("#tipo_documento").val(tipo_documento);
-    // $("#num_documento").val(num_documento);
-     //$("#correo_electronico").val(correo);
-    // $("#telefono").val(telefono);
-    // $("#estado").val(estado);
-    // $("#ocupacion").val(ocupacion);
-    // $("#empresa").val(empresa);
-    // $("#fecha_incorporacion").val(fecha_incorporacion);
+     $("#num_documento").val(num_documento);
+     $("#correo_electronico").val(correo);
+     $("#telefono").val(telefono);
+     $("#estado").val(estado);
+     $("#ocupacion").val(ocupacion);
+     $("#empresa").val(empresa);
+     $("#fecha_incorporacion").val(fecha_incorporacion);
 
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white" );

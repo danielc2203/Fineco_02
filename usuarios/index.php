@@ -49,7 +49,7 @@
     <div class="container">
       <div class="row">
           <div class="col-lg-12">            
-            <button id="btnNuevo" type="button" class="btn btn-warning" data-toggle="modal">Agregar Nuevo</button>    
+            <button id="btnNuevo" type="button" class="btn btn-warning float-right" data-toggle="modal">Agregar Nuevo</button>    
           </div>    
       </div>    
     </div>  
@@ -65,7 +65,7 @@
                     <th>nombres</th>                                
                     <th>apellidos</th>  
                     <th>correo</th>
-                    <th>Password</th> -->
+                    <th>Password</th>
                     <th>estado</th>
                     <th>Acciones</th>
                   </tr>
