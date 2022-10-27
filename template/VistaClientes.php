@@ -54,7 +54,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="clientes1" class="table table-bordered table-striped">
+                <table id="clientes1" class="table table-sm table-responsive">
                   <thead>
                   <tr>
                     <th>Id</th>
@@ -62,8 +62,13 @@
                     <th>S. Nombre</th>
                     <th>P. Apellido</th>
                     <th>S. Apellido</th>
-                    <th>Nº Documento</th>
+                    <th>N° Documento</th>
                     <th>Empresa</th>
+                    <th>correo</th>
+                    <th>telefono</th>
+                    <th>estado</th>
+                    <th>Ocupacion</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -78,6 +83,11 @@
                     <td><?=$finecoCliente['segundo_apellido'];?></td>
                     <td><?=$finecoCliente['num_documento'];?></td>
                     <td><?=$finecoCliente['empresa'];?></td>
+                    <td><?=$finecoCliente['correo_electronico'];?></td>
+                    <td><?=$finecoCliente['telefono'];?></td>
+                    <td><?=$finecoCliente['estado'];?></td>
+                    <td><?=$finecoCliente['ocupacion'];?></td>
+                    <td><?=$finecoCliente['fecha_incorporacion'];?></td>
                     <td class="project-actions">
                           <!-- <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#NombreDelModal" data-bs-whatever="<?php echo $finecoCliente['id'];?>" href="#"> -->
                           <a class="btn btn-primary btn-sm openVer" href="#" >
@@ -110,6 +120,11 @@
                     <th>S. Apellido</th>
                     <th>N° Documento</th>
                     <th>Empresa</th>
+                    <th>correo</th>
+                    <th>telefono</th>
+                    <th>estado</th>
+                    <th>Ocupacion</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                   </tr>
                   </tfoot>
@@ -344,7 +359,7 @@
 <script>
   $(function() {
     $("#clientes1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": false, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#clientes1_wrapper .col-md-6:eq(0)');
 
