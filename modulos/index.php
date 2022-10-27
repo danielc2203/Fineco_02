@@ -6,15 +6,19 @@ if(isset($_POST["btnLogin"])){
     $objeto = new Conexion();
     $conexion = $objeto->Conectar();
 
+    
+
     $txtEmail=($_POST['txtEmail']);
     $txtPassword=($_POST['txtPassword']);
+
+    $clave = MD5($txtPassword);
 
     $sentenciaSQL=$conexion->prepare("SELECT * FROM usuarios
     WHERE correo=:correo
     AND password=:password");
     
     $sentenciaSQL->bindParam("correo", $txtEmail,PDO::PARAM_STR);
-    $sentenciaSQL->bindParam("password", $txtPassword,PDO::PARAM_STR);
+    $sentenciaSQL->bindParam("password", $clave,PDO::PARAM_STR);
     $sentenciaSQL->execute();
 
     $registro = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +35,8 @@ if(isset($_POST["btnLogin"])){
         header('Location:template/VistaPanel.php');
 
     }else{
-        echo "No se encuentran registros";
+        echo "No se encuentran registros <br/>";
+        //print_r($clave);
     }
 }
 ?>

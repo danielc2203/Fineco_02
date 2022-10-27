@@ -16,7 +16,7 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado) VALUES('$nombres', '$apellidos', '$correo', '$password', '$estado') ";			
+        $consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -26,7 +26,7 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE usuarios SET nombres='$nombres', apellidos='$apellidos', correo='$correo', password='$password', estado='$estado' WHERE id='$id' ";		
+        $consulta = "UPDATE usuarios SET nombres='$nombres', apellidos='$apellidos', correo='$correo', password=MD5('".$password."'), estado='$estado' WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
