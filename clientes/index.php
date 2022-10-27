@@ -55,7 +55,7 @@ include ('../recursos/header.php');
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="clientes" class="table table-sm table-responsive table-hover">
+                <table id="clientes" class="table table-sm table-responsive table-hover ">
                   <thead>
                   <tr> 
                     <th>id</th>

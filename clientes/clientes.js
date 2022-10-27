@@ -6,18 +6,29 @@ $(document).ready(function() {
         $('#clientes').DataTable;
     });
     
-    tablaUsuarios = $('#clientes').DataTable({  
-        "responsive": false, "lengthChange": false, "autoWidth": false,   
-            
-        
+    tablaUsuarios = $('#clientes').DataTable({
 
-        "dom": 'Btipr',
+        language: {
+            lengthMenu: 'Display _MENU_ records per page',
+            zeroRecords: 'Nothing found - sorry',
+            info: 'Showing page _PAGE_ of _PAGES_',
+            infoEmpty: 'No records available',
+            infoFiltered: '(filtered from _MAX_ total records)',
+            search: "Buscar:",
+            Copy: "Copiar",
+        },
+
+        "dom": 'lBfrtip',
             buttons: {
-                buttons: ["copy", "csv", "excel", "pdf", "print"]
+                buttons: ["copy", "csv", "excel", "pdf", "print"],                
             },
 
-        "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
-    
+        //"dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
+
+        "responsive": false, "lengthChange": false, "autoWidth": false,
+
+   
+
         "ajax":{            
             "url": "bd/crud.php", 
             "method": 'POST', //usamos el metodo POST
@@ -45,7 +56,8 @@ $(document).ready(function() {
     
         ],
         
-    });
+    })
+
     
     var fila; //captura la fila, para editar o eliminar
 
