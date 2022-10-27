@@ -3,15 +3,19 @@ $(document).ready(function() {
     opcion = 4;
     
     $(document).ready(function () {
-        $('#clientes').DataTable();
+        $('#clientes').DataTable;
     });
     
     tablaUsuarios = $('#clientes').DataTable({  
-        "responsive": false, "lengthChange": false, "autoWidth": false,       
+        "responsive": false, "lengthChange": false, "autoWidth": false,   
+            
+        
+
         "dom": 'Btipr',
             buttons: {
-                buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                buttons: ["copy", "csv", "excel", "pdf", "print"]
             },
+
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
     
         "ajax":{            
@@ -42,7 +46,6 @@ $(document).ready(function() {
         ],
         
     });
-    
     
     var fila; //captura la fila, para editar o eliminar
 

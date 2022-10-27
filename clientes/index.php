@@ -11,6 +11,7 @@ include ('../recursos/header.php');
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+
 <!-- Main Sidebar Container -->
 
 <?php include_once ('../recursos/sidebar.php') ?>
@@ -50,19 +51,11 @@ include ('../recursos/header.php');
 
                 <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
                 
-    <!-- <div class="container">
-      <div class="row">
-          <div class="col-lg-12">            
-            <button id="btnNuevo" type="button" class="btn btn-warning float-right" data-toggle="modal">Agregar Nuevo</button>    
-          </div>    
-      </div>    
-    </div>   -->
-                
               </div>
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="clientes" class="table table-bordered table-striped table-responsive-xl table-condensed">
+                <table id="clientes" class="table table-sm table-responsive table-hover">
                   <thead>
                   <tr> 
                     <th>id</th>
@@ -254,6 +247,9 @@ include ('../recursos/header.php');
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
