@@ -23,6 +23,6 @@ config.php
 
 # Ignorar la configuracion de la BD
 /global/config.php
-/usuarios/bd/conexion.php
-/clientes/bd/conexion.php
+/F_Empleados/bd/conexion.php
+/F_Clientes/bd/conexion.php
 /global/conexiond.php
