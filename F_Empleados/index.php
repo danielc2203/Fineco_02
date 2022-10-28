@@ -4,9 +4,12 @@
   include('../global/sesiones.php');
   include ('../recursos/header.php');
 
-  if ($_SESSION['rol_id'] != 1 ){
+  //$rol = ($_SESSION['usuario']['rol_id']);
+  if ($rol == 1 or 0 ){
+    echo '<script type="text/javascript">alert("Su rol desde index es: ' . $rol . ' y su nombre es ' . $nombres . '");</script>';
+  }else{
     echo'<script type="text/javascript">
-    alert("Esta area es solo para administradores y No eres Administrador");
+    alert("No eres Administrador, tu rol es: ' . $rol . ' ");
     window.location.href="../template/";
     </script>';
   }
