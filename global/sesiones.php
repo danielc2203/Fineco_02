@@ -7,7 +7,7 @@ if(!isset($_SESSION['usuario'])){
     $nombres = ($_SESSION['usuario']['nombres']);
     $apellidos = ($_SESSION['usuario']['apellidos']);
     $usuariof= $nombres." ".$apellidos;
-    //print_r($nombres);
-
+    $rol = ($_SESSION['usuario']['rol_id']);
+    //print_r($rol);
 }
 ?>

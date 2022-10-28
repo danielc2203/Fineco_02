@@ -23,6 +23,7 @@ if(isset($_POST["btnLogin"])){
 
     $registro = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
     //print_r($registro);
+    //print_r($clave);
 
     $numeroRegistros=$sentenciaSQL->rowCount();
 
@@ -35,8 +36,7 @@ if(isset($_POST["btnLogin"])){
         header('Location:template/VistaPanel.php');
 
     }else{
-        echo "No se encuentran registros <br/>";
-        //print_r($clave);
+        echo "No se encuentran registros";
     }
 }
 ?>

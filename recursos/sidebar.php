@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/clientes" class="nav-link">
+                <a href="<?php echo $url;?>/F_clientes" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>Clientes</p>
                 </a>
@@ -82,7 +82,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/usuarios" class="nav-link">
+                <a href="<?php echo $url;?>/F_Empleados" class="nav-link">
                 <i class="nav-icon fas fa-address-card"></i>
                   <p>Empleados</p>
                 </a>
@@ -94,16 +94,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?php echo $url;?>/usuarios" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Usuarios
-              </p>
-            </a>
-
           </li>
           <li class="nav-item">
             <a href="<?php echo $url;?>/template/" class="nav-link">
