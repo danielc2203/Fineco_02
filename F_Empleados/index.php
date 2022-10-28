@@ -4,7 +4,7 @@
   include('../global/sesiones.php');
   include ('../recursos/header.php');
 
-  if ($_SESSION['rol_id'] != 1 ){
+  if ($_SESSION['rol_id'] = 1 ){
     echo'<script type="text/javascript">
     alert("Esta area es solo para administradores y No eres Administrador");
     window.location.href="../template/";
