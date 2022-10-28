@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/F_clientes" class="nav-link">
+                <a href="<?php echo $url;?>/F_Clientes" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>Clientes</p>
                 </a>
