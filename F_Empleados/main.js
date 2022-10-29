@@ -27,8 +27,8 @@ $(document).ready(function() {
             {"data": "nombres"},
             {"data": "apellidos"},
             {"data": "correo"},
-            {"data": "password"}, 
-            {"data": "estado"},
+            {"data": "estado"}, 
+            {"data": "rol_id"},
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
             {"defaultContent": "<a class='btn btn-outline-success openVer'><i class='fas fa-eye'></i></a>"},
             {"defaultContent": "<a class='btn btn-outline-warning btnEditar'><i class='fas fa-edit'></i></a>"},
@@ -47,12 +47,13 @@ $(document).ready(function() {
         apellidos = $.trim($('#apellidos').val());    
         correo = $.trim($('#correo').val());    
         password = $.trim($('#password').val());
-        estado = $.trim($('#estado').val());                            
+        estado = $.trim($('#estado').val());
+        rol_id = $.trim($('#rol_id').val());                            
             $.ajax({
               url: "bd/crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, nombres:nombres, apellidos:apellidos, correo:correo, password:password ,estado:estado ,opcion:opcion},    
+              data:  {id:id, nombres:nombres, apellidos:apellidos, correo:correo, password:password ,estado:estado, rol_id:rol_id ,opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
@@ -83,13 +84,15 @@ $(document).ready(function() {
         nombres = fila.find('td:eq(1)').text();
         apellidos = fila.find('td:eq(2)').text();
         correo = fila.find('td:eq(3)').text();
-        password = fila.find('td:eq(4)').text();
-        estado = fila.find('td:eq(5)').text();
+        //password = fila.find('td:eq(4)').text();
+        estado = fila.find('td:eq(4)').text();
+        rol_id = fila.find('td:eq(5)').text();
         $("#nombres").val(nombres);
         $("#apellidos").val(apellidos);
         $("#correo").val(correo);
         $("#password").val(password);
         $("#estado").val(estado);
+        $("#rol_id").val(rol_id);
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		

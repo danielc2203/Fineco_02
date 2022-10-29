@@ -6,7 +6,7 @@
 
   //$rol = ($_SESSION['usuario']['rol_id']);
   if ($rol == 1 or 0 ){
-    echo '<script type="text/javascript">alert("Su rol desde index es: ' . $rol . ' y su nombre es ' . $nombres . '");</script>';
+    //echo '<script type="text/javascript">alert("Su rol desde index es: ' . $rol . ' y su nombre es ' . $nombres . '");</script>';
   }else{
     echo'<script type="text/javascript">
     alert("No eres Administrador, tu rol es: ' . $rol . ' ");
@@ -35,13 +35,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado de Usuarios del Sistema</h1>
+            <h1>Funcionarios - Fineco</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <!-- <li class="breadcrumb-item"><a href="#">Inicio</a></li> -->
               <li class="breadcrumb-item"><a href="<?php echo $url;?>/template/index.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active">Funcionarios</li>
             </ol>
           </div>
         </div>
@@ -56,9 +56,9 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
+                <h3 class="card-title">Lista de Funcionarios - Fineco</h3>
 
-                <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
+                <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Funcionario</a></p>
                 
     <!-- <div class="container">
       <div class="row">
@@ -79,8 +79,8 @@
                     <th>nombres</th>                                
                     <th>apellidos</th>  
                     <th>correo</th>
-                    <th>Password</th>
                     <th>estado</th>
+                    <th>rol</th>
                   </tr>
                   </thead>
 
@@ -140,15 +140,28 @@
                     <div class="col-lg-9">
                         <div class="form-group">
                         <label for="" class="col-form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="text" class="form-control" id="password">
                         </div>
                     </div>    
-                    <div class="col-lg-3">    
+                    <div class="col-lg-6">    
                         <div class="form-group">
                         <label for="" class="col-form-label">Estado</label>
                         <input type="number" class="form-control" id="estado">
                         </div>            
-                    </div>    
+                    </div>
+                    <div class="col-lg-6">    
+                        <div class="form-group">
+                        <label for="" class="col-form-label">Rol de usuario</label>
+                        <select class="custom-select mr-sm-2" id="rol_id">
+                          <option selected>Seleccione...</option>
+                          <option value="1">Administrador</option>
+                          <option value="2">Comercial</option>
+                          <option value="3">Incorporaciones</option>
+                          <option value="4">Credito</option>
+                          <option value="5">Tesoreria</option>
+                        </select>
+                        </div>            
+                    </div> 
                 </div>                
             </div>
             <div class="modal-footer">
