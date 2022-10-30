@@ -2,9 +2,9 @@
 class Conexion{	  
     public static function Conectar() {        
         define('servidor', 'localhost');
-        define('nombre_bd', 'finecoapp');
-        define('usuario', 'root');
-        define('password', '');					        
+        define('nombre_bd', 'finecoApp');
+        define('usuario', 'Fineco2022');
+        define('password', 'Admin2admin');					        
         $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');			
         try{
             $conexion = new PDO("mysql:host=".servidor."; dbname=".nombre_bd, usuario, password, $opciones);
