@@ -1,3 +1,9 @@
+<!-- Conexión para la consulta modal en roles -->
+<?php
+include_once '../global/conexiond.php';
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php
@@ -59,14 +65,6 @@
                 <h3 class="card-title">Lista de Funcionarios - Fineco</h3>
 
                 <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Funcionario</a></p>
-                
-    <!-- <div class="container">
-      <div class="row">
-          <div class="col-lg-12">            
-            <button id="btnNuevo" type="button" class="btn btn-warning float-right" data-toggle="modal">Agregar Nuevo</button>    
-          </div>    
-      </div>    
-    </div>   -->
                 
               </div>
               <!-- /.card-header -->
@@ -152,16 +150,22 @@
                     <div class="col-lg-6">    
                         <div class="form-group">
                         <label for="" class="col-form-label">Rol de usuario</label>
-                        <select class="custom-select mr-sm-2" id="rol_id">
-                          <option selected>Seleccione...</option>
-                          <option value="1">Administrador</option>
-                          <option value="2">Comercial</option>
-                          <option value="3">Incorporaciones</option>
-                          <option value="4">Credito</option>
-                          <option value="5">Tesoreria</option>
-                        </select>
+                        <select class="form-control" id="rol_id">>
+                        <option value="">Seleccione:</option>
+                        <?php
+
+                        $consulta = "SELECT * FROM grupo_usuarios";
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();
+                        $data=$resultado->fetchAll();
+
+                        foreach ($data as $valores):
+                        echo '<option value="'.$valores["id"].'">'.$valores["nombre_grupo"].'</option>';
+                        endforeach;
+                        ?>
+                      </select>
                         </div>            
-                    </div> 
+                    </div>
                 </div>                
             </div>
             <div class="modal-footer">

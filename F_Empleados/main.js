@@ -48,8 +48,8 @@ $(document).ready(function() {
         correo = $.trim($('#correo').val());    
         password = $.trim($('#password').val());
         estado = $.trim($('#estado').val());
-        rol_id = $.trim($('#rol_id').val());                            
-            $.ajax({
+        rol_id = $.trim($('#rol_id').val());       
+        $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
@@ -57,7 +57,6 @@ $(document).ready(function() {
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
-            
             });			        
         $('#modalCRUD').modal('hide');
         $(function() {
@@ -84,7 +83,7 @@ $(document).ready(function() {
         nombres = fila.find('td:eq(1)').text();
         apellidos = fila.find('td:eq(2)').text();
         correo = fila.find('td:eq(3)').text();
-        //password = fila.find('td:eq(4)').text();
+        password = "Fineco";
         estado = fila.find('td:eq(4)').text();
         rol_id = fila.find('td:eq(5)').text();
         $("#nombres").val(nombres);
