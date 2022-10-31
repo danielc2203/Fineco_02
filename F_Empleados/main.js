@@ -17,7 +17,7 @@ $(document).ready(function() {
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
     
         "ajax":{            
-            "url": "bd/crud.php", 
+            "url": "crud.php", 
             "method": 'POST', //usamos el metodo POST
             "data":{opcion:opcion}, //enviamos opcion 4 para que haga un SELECT
             "dataSrc":""
@@ -50,7 +50,7 @@ $(document).ready(function() {
         estado = $.trim($('#estado').val());
         rol_id = $.trim($('#rol_id').val());                            
             $.ajax({
-              url: "bd/crud.php",
+              url: "crud.php",
               type: "POST",
               datatype:"json",    
               data:  {id:id, nombres:nombres, apellidos:apellidos, correo:correo, password:password ,estado:estado, rol_id:rol_id ,opcion:opcion},    
@@ -108,7 +108,7 @@ $(document).ready(function() {
         var respuesta = confirm("¿Está seguro de borrar el registro " +id+ " del usuario " +nombres+"?");                
         if (respuesta) {            
             $.ajax({
-              url: "bd/crud.php",
+              url: "crud.php",
               type: "POST",
               datatype:"json",    
               data:  {opcion:opcion, id:id},    

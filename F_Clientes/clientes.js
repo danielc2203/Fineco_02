@@ -30,7 +30,7 @@ $(document).ready(function() {
    
 
         "ajax":{            
-            "url": "bd/crud.php", 
+            "url": "crud.php", 
             "method": 'POST', //usamos el metodo POST
             "data":{opcion:opcion}, //enviamos opcion 4 para que haga un SELECT
             "dataSrc":""
@@ -77,7 +77,7 @@ $(document).ready(function() {
         empresa = $.trim($('#empresa').val());
         fecha_incorporacion = $.trim($('#fecha_incorporacion').val());                          
             $.ajax({
-              url: "bd/crud.php",
+              url: "crud.php",
               type: "POST",
               datatype:"json",    
               data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion ,opcion:opcion},    
@@ -151,7 +151,7 @@ $(document).ready(function() {
         var respuesta = confirm("¿Está seguro de borrar el registro " +id+ " del usuario " +nombres+"?");                
         if (respuesta) {            
             $.ajax({
-              url: "bd/crud.php",
+              url: "crud.php",
               type: "POST",
               datatype:"json",    
               data:  {opcion:opcion, id:id},    
