@@ -64,8 +64,12 @@ $conexion = $objeto->Conectar();
               <div class="card-header">
                 <h3 class="card-title">Lista de Funcionarios - Fineco</h3>
 
-                <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Funcionario</a></p>
-                
+                <?php if ($rol === 1 or 0): ?>
+                  <p class='text-right'><a class='btn btn-primary active' id='btnNuevo'>Agregar Funcionario</a></p>
+                <?php else: ?>
+                  <p class='text-right'><a class='btn btn-secondary disabled' id='btnNuevo'>Agregar Funcionario</a></p>
+                <?php endif; ?>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -157,9 +161,9 @@ $conexion = $objeto->Conectar();
                         $consulta = "SELECT * FROM grupo_usuarios";
                         $resultado = $conexion->prepare($consulta);
                         $resultado->execute();
-                        $data=$resultado->fetchAll();
+                        $grupo=$resultado->fetchAll();
 
-                        foreach ($data as $valores):
+                        foreach ($grupo as $valores):
                         echo '<option value="'.$valores["id"].'">'.$valores["nombre_grupo"].'</option>';
                         endforeach;
                         ?>

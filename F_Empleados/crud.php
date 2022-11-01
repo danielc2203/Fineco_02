@@ -10,7 +10,6 @@ $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $rol_id = (isset($_POST['rol_id'])) ? $_POST['rol_id'] : '';
 
-
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
