@@ -58,7 +58,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <a href="<?php echo $url;?>/F_Bancos/" class="nav-link">
                 <i class="nav-icon fab fa-cc-diners-club	"></i>
                   <p>Bancos</p>
                 </a>
