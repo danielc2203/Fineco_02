@@ -243,7 +243,7 @@
 
           </div>
         </div>
-        <!-- /.card-body -->
+        <!-- /.card-body paginación -->
         <!-- <div class="card-footer">
           <nav aria-label="Contacts Page Navigation">
             <ul class="pagination justify-content-center m-0">
