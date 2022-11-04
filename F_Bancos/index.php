@@ -34,6 +34,8 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <button type="button" class="btn btn-outline-success" style="margin-bottom: 5px;"> <span><i class="fas fa-file-excel"></i></span> Reporte general</button>
+
 
       <!-- Bancos Fineco -->
 
@@ -64,7 +66,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
+                    <i class="fas fa-file-excel"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal" data-toggle="modal" data-target="#bancoModal">
                       <i class="fas fa-user"></i> Ver Detalles
@@ -97,7 +99,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
+                      <i class="fas fa-file-excel"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
                       <i class="fas fa-user"></i> Ver Detalles
@@ -130,7 +132,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
+                      <i class="fas fa-file-excel"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
                       <i class="fas fa-user"></i> Ver Detalles
@@ -163,7 +165,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
+                      <i class="fas fa-file-excel"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
                       <i class="fas fa-user"></i> Ver Detalles
@@ -196,7 +198,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
+                      <i class="fas fa-file-excel"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
                       <i class="fas fa-user"></i> Ver Detalles
@@ -229,7 +231,7 @@
                 <div class="card-footer">
                   <div class="text-right">
                     <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
+                      <i class="fas fa-file-excel"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
                       <i class="fas fa-user"></i> Ver Detalles
