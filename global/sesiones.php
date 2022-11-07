@@ -4,6 +4,7 @@ if(!isset($_SESSION['usuario'])){
     header('Location:../index.php');
 }else{
     //print_r($_SESSION['usuario']);
+    $id_usr = ($_SESSION['usuario']['id']);
     $nombres = ($_SESSION['usuario']['nombres']);
     $apellidos = ($_SESSION['usuario']['apellidos']);
     $usuariof= $nombres." ".$apellidos;

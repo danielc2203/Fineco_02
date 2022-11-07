@@ -95,37 +95,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo $url;?>/template/" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo $url;?>/pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo $url;?>/pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo $url;?>/pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-header">FINECO APP</li>
+          <li class="nav-header">FINECO APP 2022</li>
           <li class="nav-item">
             <a href="<?php echo $url;?>/global/cerrarsesion.php" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>

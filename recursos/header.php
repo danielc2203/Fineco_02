@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link type="image/png" sizes="16x16" rel="icon" href="<?php echo $url;?>/dist/img/fineco_1.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fineco APP V 1.0 | JDCR</title>
