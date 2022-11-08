@@ -194,7 +194,7 @@
                     <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <i class="fas fa-edit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"></i>
+                      <i class="fas fa-edit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-employee-modal"></i>
                       <i class="fas fa-trash"></i>
                     </div>
                   </li>
@@ -259,7 +259,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="index.php" id="submit" method="POST">
+        <form action="save.php" id="form" method="POST">
 		        	<input class="form-control" type="hidden" name="id">
             <div class="form-row">
             <div class="col">
@@ -272,7 +272,7 @@
 				    </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btnSubmit">Guardar</button>
       </div>
       </form>
     </div>
@@ -328,6 +328,7 @@
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
+<script src="scripts.js"></script>
 <script src="../dist/js/pages/dashboard.js"></script>
 <!-- fin de footer -->
 
