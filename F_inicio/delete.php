@@ -1,11 +1,13 @@
 <?php
 	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
-	$id = $request['employee_id']; //employee ID we are using it to get the employee record
+	$id = $request['id']; //get the date of birth from collected data above
+	$titulo = $request['titulo']; //get the date of birth from collected data above
+	$fecha = $request['fecha']; //get the date of birth from collected data above
 
 	$servername = "localhost"; //set the servername
-	$username = "root"; //set the server username
-	$password = ""; // set the server password (you must put password here if your using live server)
-	$dbname = "demos"; // set the table name
+	$username = "Fineco2022"; //set the server username
+	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
+	$dbname = "finecoapp"; // set the table name
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,7 +17,7 @@
 	}
 
 	// Set the DELETE SQL data
-	$sql = "DELETE FROM employees WHERE id='".$id."'";
+	$sql = "DELETE FROM todo_list WHERE id='".$id."'";
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {

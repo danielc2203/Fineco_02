@@ -158,12 +158,12 @@ function update()
 
 function del() 
 {
-	$(document).delegate(".btn-delete-employee", "click", function() {
+	$(document).delegate(".btn-borrar-tarea", "click", function() {
 
-		
+
 		Swal.fire({
 			icon: 'warning',
-		  	title: 'Are you sure you want to delete this record?',
+		  	title: 'Estas seguro de borrar esta tarea?',
 		  	showDenyButton: false,
 		  	showCancelButton: true,
 		  	confirmButtonText: 'Yes'
@@ -171,13 +171,14 @@ function del()
 		  /* Read more about isConfirmed, isDenied below */
 		  if (result.isConfirmed) {
 
-		  	var employeeId = $(this).attr('data-id');
+		  	var tarea_id = $(this).attr('id');
+			alert(tarea_id);
 
 		  	// Ajax config
 			$.ajax({
 		        type: "GET", //we are using GET method to get data from server side
 		        url: 'delete.php', // get the route value
-		        data: {employee_id:employeeId}, //set data
+		        data: {tarea_id:tarea_id}, //set data
 		        beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
 		            
 		        },
@@ -188,6 +189,7 @@ function del()
 		            Swal.fire('Success.', response, 'success')
 		        }
 		    });
+			alert(data);
 
 		    
 		  } else if (result.isDenied) {

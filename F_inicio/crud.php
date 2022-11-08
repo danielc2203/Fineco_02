@@ -1,17 +1,39 @@
 <?php
-include_once '../global/conexiond.php';
 //include_once "global/conexiond.php";
-$objeto = new Conexion();
-$conexion = $objeto->Conectar();
+// $objeto = new Conexion();
+// $conexion = $objeto->Conectar();
 
-//Variable= si el POST NO ESTA VACIO - ENTONCES $_POST POST = VARIABLE; 
-$titulo = (isset($_POST['titulo'])) ? $_POST['titulo'] : '';
-$descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
-$fecha = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
-$id_usr = (isset($_POST['id_usr'])) ? $_POST['id_usr'] : '';
+$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
+$id = $request['id']; //employee ID we are using it to get the employee record
+$titulo = $request['titulo']; //get the date of birth from collected data above
+$descripcion = $request['descripcion']; //get the date of birth from collected data above
+$fecha = $request['fecha'];
+$id_usr = $request['id_usr'];
 
-$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
-$id = (isset($_POST['id'])) ? $_POST['id'] : '';
+$servername = "localhost"; //set the servername
+$username = "Fineco2022"; //set the server username
+$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
+$dbname = "finecoapp"; // set the table name
+
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    exit();
+}
+
+// Set the UPDATE SQL data
+$sql = "UPDATE todo_list SET titulo='".$titulo."', descripcion='".$descripcion."', fecha='".$fecha."', id_usr='".$id_usr."' WHERE id='".$id."'";
+
+// Process the query so that we will save the date of birth
+if ($mysqli->query($sql)) {
+    echo "La Tarea ha sido actualizada correctamente.";
+} else {
+    echo "Error: " . $sql . "<br>" . $mysqli->error;
+}
+
+// Close the connection after using it
+$mysqli->close();
 
 
 switch($opcion){
@@ -27,14 +49,24 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:
-        $consulta = "UPDATE todo_list SET titulo='$titulo', descripcion='$descripcion', fecha='$fecha', id_usr='$id_usr' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
+        // Set the UPDATE SQL data
+        $sql = "UPDATE todo_list SET titulo='".$titulo."', descripcion='".$descripcion."', fecha='".$fecha."', id_usr='".$id_usr."' WHERE id='".$id."'";
+
+        // Process the query so that we will save the date of birth
+        if ($mysqli->query($sql)) {
+            echo "La Tarea ha sido actualizada correctamente.";
+        } else {
+            echo "Error: " . $sql . "<br>" . $mysqli->error;
+        }
+
+        // $consulta = "UPDATE todo_list SET titulo='$titulo', descripcion='$descripcion', fecha='$fecha', id_usr='$id_usr' ";
+        // $resultado = $conexion->prepare($consulta);
+        // $resultado->execute();        
         
-        $consulta = "SELECT * FROM todo_list WHERE id='$id' ";    
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        // $consulta = "SELECT * FROM todo_list WHERE id='$id' ";    
+        // $resultado = $conexion->prepare($consulta);
+        // $resultado->execute();
+        // $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
         $consulta = "DELETE FROM todo_list WHERE id='$id' ";		

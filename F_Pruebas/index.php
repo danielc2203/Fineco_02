@@ -4,6 +4,12 @@
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+
 <!-- Sweetalert 2 CSS -->
 <!-- <link rel="stylesheet" href="assets/plugins/sweetalert2/sweetalert2.min.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.7/sweetalert2.css" integrity="sha512-JzSVRb7c802/njMbV97pjo1wuJAE/6v9CvthGTDxiaZij/TFpPQmQPTcdXyUVucsvLtJBT6YwRb5LhVxX3pQHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -162,15 +168,6 @@
                   Tareas Pendientes
                 </h3>
 
-                <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                  </ul>
-                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -211,7 +208,22 @@
               </div>
             </div>
             <!-- /.card -->
+            <div class="card-body">
+              <table id="usuariosf" class="table table-bordered table-striped table-responsive-xl table-condensed">
+                <thead>
+                <tr> 
+                  <th>id</th>
+                  <th>titulo</th>                                
+                  <th>descripcion</th>  
+                  <th>fecha</th>
+                  <th>id_usr</th>
+                </tr>
+                </thead>
 
+                <tbody>              
+                </tbody>
+              </table>
+            </div>
 
           </section>
           <!-- /.Left col -->
@@ -226,74 +238,6 @@
 <!-- /.content-wrapper -->
 
 
-
-<!-- Modal Nuevo -->
-
-<div class="modal fade" id="nuevaTarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalnuevatarea" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="nuevatarea">Nueva Tarea</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="save.php" id="form" method="POST">
-              <input type="hidden" name="id" id="id" value="">
-            <div class="form-row">
-            <div class="col">
-              <input type="text" name="titulo" class="form-control" required placeholder="Tarea ...">
-            </div>
-            <div class="col col-md-4">
-              <input type="date" name="fecha" class="form-control" placeholder="Fecha" required>
-            </div>
-            </div>
-				    </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="btnSubmit">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal Edit -->
-<div class="modal fade" id="editarTareas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Editar Tarea</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="update.php" id="edit-form">
-		        	<input class="form-control" type="text" name="id" value="'. $id .'">
-            <div class="form-row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Tarea ...">
-            </div>
-            <div class="col col-md-4">
-              <input type="date" class="form-control" placeholder="Fecha">
-            </div>
-            </div>
-				    </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-
-
 <!--Modal para CRUD-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -303,35 +247,47 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formTareas">    
+        <form id="formUsuarios">    
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Titulo:</label>
+                    <label for="" class="col-form-label">titulo:</label>
                     <input type="text" class="form-control" id="titulo">
                     </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Descripcion</label>
-                    <input type="text" class="form-control" id="descripcion">
+                    <label for="" class="col-form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos">
                     </div> 
                     </div>    
                 </div>
                 <div class="row"> 
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Fecha</label>
-                    <input type="date" class="form-control" id="fecha">
+                    <label for="" class="col-form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo">
                     </div>
                     </div>  
                 </div>
                 <div class="row">
+                    <div class="col-lg-9">
+                        <div class="form-group">
+                        <label for="" class="col-form-label">Password</label>
+                        <input type="text" class="form-control" id="password">
+                        </div>
+                    </div>    
                     <div class="col-lg-6">    
                         <div class="form-group">
-                        <label for="" class="col-form-label">Usuario</label>
-                        <select class="form-control" id="id_usr">>
+                        <label for="" class="col-form-label">Estado</label>
+                        <input type="number" class="form-control" id="estado">
+                        </div>            
+                    </div>
+                    <div class="col-lg-6">    
+                        <div class="form-group">
+                        <label for="" class="col-form-label">Rol de usuario</label>
+                        <select class="form-control" id="rol_id">>
                         <option value="">Seleccione:</option>
                         <?php
 
@@ -358,22 +314,32 @@
     </div>
 </div>  
 
-	<!-- jQuery library -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-	<!-- Popper JS -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
-	<!-- Bootstrap JS -->
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-	<!-- Sweetalert2 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
-	<!-- <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script> -->
-	<!-- Page Script -->
-	<!-- <script src="assets/js/scripts.js"></script> -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
 
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 <script src="scripts.js"></script>
 <script src="../dist/js/pages/dashboard.js"></script>
+<script type="text/javascript" src="main.js"></script>  
 <!-- fin de footer -->
+
+<!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../plugins/jszip/jszip.min.js"></script>
+<script src="../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
