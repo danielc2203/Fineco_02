@@ -243,7 +243,7 @@
                     <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                   <li>
