@@ -4,12 +4,6 @@
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
-
 <!-- Sweetalert 2 CSS -->
 <!-- <link rel="stylesheet" href="assets/plugins/sweetalert2/sweetalert2.min.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.7/sweetalert2.css" integrity="sha512-JzSVRb7c802/njMbV97pjo1wuJAE/6v9CvthGTDxiaZij/TFpPQmQPTcdXyUVucsvLtJBT6YwRb5LhVxX3pQHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -207,61 +201,13 @@
                 
               </div>
             </div>
-
-               <!-- /.card-header 2 -->
-              <div class="card-body">
-                <ul class="todo-list" data-widget="todo-list">
-                  <li>
-                    <span class="handle">
-                    <i class="fas fa-thumbtack"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="id" id="">
-                      <label for=""></label>
-                    </div>
-                    <!-- todo text -->
-                    <!-- <ul id="UnList"></ul> -->
-                    <span class="titulof"></span>
-                    <span class="text">Fecha:</span>
-                    <!-- Emphasis label -->
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 5 mins</small>
-                    <!-- General tools such as edit or delete-->
-                    <div class="tools">
-                      <a class='btn btn-outline-warning btnEditar' data-toggle="modal" data-target="#editarTareas"><i class='fas fa-edit'></i></a>
-                      <a class='btn btn-outline-info btnEditar' id="btnEditar" ><i class='fas fa-edit'></i></a>
-                      <a class='btn btn-outline-danger btn-borrar-tarea btnBorrar' id="btnBorrar"><i class='fas fa-trash'></i></a>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-              <!-- /.card-body -->
-
-
             <!-- /.card -->
-            <div class="card-body">
-              <table id="usuariosf" class="table table-bordered table-striped table-responsive-xl table-condensed">
-                <thead>
-                <tr> 
-                  <th>id</th>
-                  <th>titulo</th>                                
-                  <th>descripcion</th>  
-                  <th>fecha</th>
-                  <th>id_usr</th>
-                </tr>
-                </thead>
 
-                <tbody>
-                <tr>
-                    <td>id</td>
-                    <td>titulo</td>
-                    <td>descripcion</td>
-                    <td>1033222111</td>
-                    <td>Activo</td>
-                  </tr>           
-                </tbody>
-              </table>
-            </div>
+            <div class="col-md-8">
+	    		<h3>List of Tareas</h3>
+	    		<div id="employees-list"></div>
+	    	</div>
+
 
           </section>
           <!-- /.Left col -->
@@ -275,95 +221,66 @@
   </div>
 <!-- /.content-wrapper -->
 
+<!-- The Modal -->
+<div class="modal" id="edit-employee-modal">
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
 
-<!--Modal para CRUD-->
-<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <form id="formUsuarios">    
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">titulo:</label>
-                    <input type="text" class="form-control" id="titulo">
-                    </div>
-                    </div>
-                    <div class="col-lg-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">descripcion</label>
-                    <input type="text" class="form-control" id="descripcion">
-                    </div> 
-                    </div>    
-                </div>
-                <div class="row"> 
-                    <div class="col-lg-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">fecha</label>
-                    <input type="date" class="form-control" id="fecha">
-                    </div>
-                    </div>  
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">    
-                        <div class="form-group">
-                        <label for="" class="col-form-label">id_usr</label>
-                        <select class="form-control" id="id_usr">>
-                        <option value="">Seleccionar:</option>
-                        <?php
-                        $consulta = "SELECT * FROM usuarios";
-                        $resultado = $conexion->prepare($consulta);
-                        $resultado->execute();
-                        $grupo=$resultado->fetchAll();
-                        foreach ($grupo as $valores):
-                        echo '<option value="'.$valores["id"].'">'.$valores["nombres"].'</option>';
-                        endforeach;
-                        ?>
-                      </select>
-                        </div>            
-                    </div>
-                </div>                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
-            </div>
-        </form>    
-        </div>
-    </div>
-</div>  
+		      	<!-- Modal Header -->
+		      	<div class="modal-header">
+			        <h4 class="modal-title">Edit Employee</h4>
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      	</div>
+
+		      	<!-- Modal body -->
+		      	<div class="modal-body">
+		        	<form action="update.php" id="edit-form">
+		        		<input class="form-control" type="hidden" name="id">
+				    	<div class="form-group">
+						    <label for="email">Email</label>
+						    <input class="form-control" type="text" name="email">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="first_name">First Name</label>
+						    <input class="form-control" type="text" name="first_name">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="last_name">Last Name</label>
+						    <input class="form-control" type="text" name="last_name">
+					  	</div>
+					  	<div class="form-group">
+						    <label for="address">Address</label>
+						    <textarea class="form-control" type="text" name="address" rows="3"></textarea>
+					  	</div>
+					  	<button type="button" class="btn btn-primary" id="btnUpdateSubmit">Update</button>
+					  	<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Close</button>
+					</form>
 
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
+		      	</div>
+
+		    </div>
+	  	</div>
+	</div>
+
+
+	<!-- jQuery library -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+	<!-- Popper JS -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+	<!-- Bootstrap JS -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+	<!-- Sweetalert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
+	<!-- <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script> -->
+	<!-- Page Script -->
+	<!-- <script src="assets/js/scripts.js"></script> -->
+
 
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 <script src="scripts.js"></script>
 <script src="../dist/js/pages/dashboard.js"></script>
-<script type="text/javascript" src="main.js"></script>  
+<script src="assets/js/scripts.js"></script>
 <!-- fin de footer -->
-
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- DataTables  & Plugins -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../plugins/jszip/jszip.min.js"></script>
-<script src="../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>

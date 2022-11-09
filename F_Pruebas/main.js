@@ -2,16 +2,13 @@ $(document).ready(function() {
     var id, opcion;
     opcion = 4;
     
+
     $(document).ready(function () {
         $('#usuariosf').DataTable();
     });
     
-    tablaUsuarios = $('#usuariosf').DataTable({  
-        "responsive": false, "lengthChange": false, "autoWidth": false,
-        
-    
-        "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
-    
+    tablaTareas = $('#usuariosf').DataTable({
+   
         "ajax":{            
             "url": "crud.php", 
             "method": 'POST', //usamos el metodo POST
@@ -31,7 +28,7 @@ $(document).ready(function() {
     
         ],
         
-    });
+    })
     
     
     var fila; //captura la fila, para editar o eliminar
@@ -39,18 +36,16 @@ $(document).ready(function() {
     $('#formUsuarios').submit(function(e){                         
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
         titulo = $.trim($('#titulo').val());
-        apellidos = $.trim($('#apellidos').val());    
-        correo = $.trim($('#correo').val());    
-        password = $.trim($('#password').val());
-        estado = $.trim($('#estado').val());
-        rol_id = $.trim($('#rol_id').val());       
+        descripcion = $.trim($('#descripcion').val());    
+        fecha = $.trim($('#fecha').val());    
+        id_usr = $.trim($('#id_usr').val());   
         $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, titulo:titulo, apellidos:apellidos, correo:correo, password:password ,estado:estado, rol_id:rol_id ,opcion:opcion},    
+              data:  {id:id, titulo:titulo, descripcion:descripcion, fecha:fecha, id_usr:id_usr, opcion:opcion},    
               success: function(data) {
-                tablaUsuarios.ajax.reload(null, false);
+                tablaTareas.ajax.reload(null, false);
                }
             });			        
         $('#modalCRUD').modal('hide');
@@ -71,22 +66,19 @@ $(document).ready(function() {
     });
     
     //Editar        
-    $(document).on("click", ".btnEditar", function(){		        
+    //$(document).on("click", ".btnEditar", function(){	
+    $("#btnEditar").click(function(){	        
         opcion = 2;//editar
         fila = $(this).closest("tr");	        
-        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID		            
-        titulo = fila.find('td:eq(1)').text();
-        apellidos = fila.find('td:eq(2)').text();
-        correo = fila.find('td:eq(3)').text();
-        password = "Fineco";
-        estado = fila.find('td:eq(4)').text();
-        rol_id = fila.find('td:eq(5)').text();
+        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID	
+        titulo = fila.find('td:eq(1)').text();	            
+        descripcion = fila.find('td:eq(2)').text();
+        fecha = fila.find('td:eq(3)').text();
+        id_usr = fila.find('td:eq(4)').text();
         $("#titulo").val(titulo);
-        $("#apellidos").val(apellidos);
-        $("#correo").val(correo);
-        $("#password").val(password);
-        $("#estado").val(estado);
-        $("#rol_id").val(rol_id);
+        $("#descripcion").val(descripcion);
+        $("#fecha").val(fecha);
+        $("#id_usr").val(id_usr);
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		
@@ -107,7 +99,7 @@ $(document).ready(function() {
               datatype:"json",    
               data:  {opcion:opcion, id:id},    
               success: function() {
-                  tablaUsuarios.row(fila.parents('tr')).remove().draw();                  
+                  tablaTareas.row(fila.parents('tr')).remove().draw();                  
                }
             });	
     
