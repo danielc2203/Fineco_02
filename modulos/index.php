@@ -33,7 +33,7 @@ if(isset($_POST["btnLogin"])){
     $_SESSION['usuario']=$registro;
 
         echo "Bienvenido.....";
-        header('Location:F_Inicio');
+        header('Location:/F_inicio/index.php');
 
     }else{
         echo "No se encuentran registros";
