@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
+	$rol_id = ($_SESSION['usuario']['id']);
+	//echo $rol_id;
+	
 	$servername = "localhost"; //set the servername
 	$username = "Fineco2022"; //set the server username
 	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
@@ -12,7 +17,9 @@
 	}
 
 	// Set the INSERT SQL data
-	$sql = "SELECT * FROM todo_list";
+	//$sql = "SELECT * FROM todo_list ";
+	$sql = "SELECT * FROM todo_list WHERE id_usr='".$rol_id."'";
+	//echo $rol_id;
 
 	// Process the query so that we will save the date of birth
 	$results = $mysqli->query($sql);

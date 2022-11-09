@@ -26,6 +26,7 @@ function all()
 					html += '<span class="handle"> <i class="fas fa-thumbtack"></i></span>'
 					html += "<span>" + value.titulo +' '+ value.descripcion +"</span>";
 					html += "<span class='text'>" + value.fecha +"</span>";
+					html += "<span class='text'>" + value.id_usr +"</span>";
 
 					html += '<small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>'
 					html += '</div>'

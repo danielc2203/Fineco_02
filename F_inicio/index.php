@@ -1,5 +1,6 @@
 <!-- Logica -->
-<?php include ('../modulos/panel.php') ?>
+<?php include ('../modulos/panel.php');?>
+
 <!-- Fin de Logica Panel -->
 
 <!-- HEADER - UBICADO EN RECURSOS -->
@@ -14,18 +15,13 @@
 <!-- FIN DE HEADER -->
 
 <!-- Main Sidebar Container -->
-<?php include ('../recursos/sidebar.php') ?>
+<?php include ('../recursos/sidebar.php');
+echo $id_usr;
+ ?>
+
 
 <!-- Fin de Sidebar -->
 
-<!-- Consulta para el todo_list -->
-<?php
-    // include_once('../global/conexiond.php');
-    // $consulta = "SELECT * FROM todo_list ORDER BY id DESC ";
-    // $resultado = $conexion->prepare($consulta);
-    // $resultado->execute();
-    // $todo=$resultado->fetchAll(); 
-?>
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -214,9 +210,9 @@
               <input class="form-control" type="date" name="fecha">
             </div>
             <div class="form-group">
-              <label for="id_usr">id_usr</label>
-              <input class="form-control" type="text" name="id_usr">
-            </div>
+                <label for="id_usr" class="col-form-label">id_usr</label>
+                <input class="form-control" id="id_usr" name="id_usr" value="<?$id_usr?>"> 
+            </div>            
             <button type="btnSubmit" class="btn btn-primary" id="btnUpdateSubmit">Actualizar</button>
             <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
         </form>
@@ -233,7 +229,7 @@
 
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Editar Tareas</h4>
+            <h4 class="modal-title">Nueva Tareas</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
@@ -254,8 +250,8 @@
               <input class="form-control" type="date" name="fecha">
             </div>
             <div class="form-group">
-              <label for="id_usr">id_usr</label>
-              <input class="form-control" type="number" name="id_usr">
+                <label for="id_usr" class="col-form-label">id_usr</label>
+                <input class="form-control" id="id_usr" name="id_usr" value="<?$id_usr?>"> 
             </div>
             <button type="btnSubmit" class="btn btn-primary" id="btnUpdateSubmit">Enviar</button>
             <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>

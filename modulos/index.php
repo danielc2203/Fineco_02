@@ -6,8 +6,6 @@ if(isset($_POST["btnLogin"])){
     $objeto = new Conexion();
     $conexion = $objeto->Conectar();
 
-    
-
     $txtEmail=($_POST['txtEmail']);
     $txtPassword=($_POST['txtPassword']);
 
@@ -22,6 +20,7 @@ if(isset($_POST["btnLogin"])){
     $sentenciaSQL->execute();
 
     $registro = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
+    //print_r($txtEmail);
     //print_r($registro);
     //print_r($clave);
 
@@ -33,7 +32,7 @@ if(isset($_POST["btnLogin"])){
     $_SESSION['usuario']=$registro;
 
         echo "Bienvenido.....";
-        header('Location:/F_inicio/index.php');
+        header('Location:F_inicio/index.php');
 
     }else{
         echo "No se encuentran registros";
