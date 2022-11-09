@@ -9,7 +9,7 @@
 	$servername = "localhost"; //set the servername
 	$username = "Fineco2022"; //set the server username
 	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
-	$dbname = "finecoapp"; // set the table nameame
+	$dbname = "finecoApp"; // set the table nameame
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
