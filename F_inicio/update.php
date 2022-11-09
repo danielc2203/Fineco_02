@@ -9,7 +9,7 @@
 	$servername = "localhost"; //set the servername
 	$username = "Fineco2022"; //set the server username
 	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
-	$dbname = "finecoapp"; // set the table name
+	$dbname = "finecoapp"; // set the table nameame
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -23,7 +23,7 @@
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {
-	  echo "La Tarea ha sido actualizada correctamente.";
+	  echo "Tarea actualizada con exito";
 	} else {
 	  echo "Error: " . $sql . "<br>" . $mysqli->error;
 	}

@@ -1,5 +1,3 @@
-
-
 function all() 
 {
 	// Ajax config
@@ -14,28 +12,40 @@ function all()
             var html = "";
             // Check if there is available records
             if(response.length) {
-            	html += '<div class="list-group">';
 	            // Loop the parsed JSON
 	            $.each(response, function(key,value) {
 	            	// Our employee list template
-					html += '<a href="#" class="list-group-item list-group-item-action">';
-					html += "<p>" + value.first_name +' '+ value.last_name + " <span class='list-email'>(" + value.email + ")</span>" + "</p>";
-					html += "<p class='list-address'>" + value.address + "</p>";
-					html += "<button class='btn btn-sm btn-primary mt-2' data-toggle='modal' data-target='#edit-employee-modal' data-id='"+value.id+"'>Edit</button>";
-					html += "<button class='btn btn-sm btn-danger mt-2 ml-2 btn-delete-employee' data-id='"+value.id+"' typle='button'>Delete</button>";
-					html += '</a>';
+
+					html += '<ul class="todo-list" data-widget="todo-list" >'
+					html += '<li style="margin-bottom: 3px;" >'
+
+					html += '<div  class="icheck-primary d-inline ml-2">'
+					html += '<input type="checkbox" value="" name="id" id="'+ value.id +'">'
+					html += '<label for="'+ value.id +'"></label>'
+
+					html += '<span class="handle"> <i class="fas fa-thumbtack"></i></span>'
+					html += "<span>" + value.titulo +' '+ value.descripcion +"</span>";
+					html += "<span class='text'>" + value.fecha +"</span>";
+
+					html += '<small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>'
+					html += '</div>'
+
+					html += '<div class="tools">' // Botones
+					html += '<a class="btn btn-outline-warning btnEditar" data-toggle="modal" data-target="#editar-tarea" data-id="'+value.id+'"><i class="fas fa-edit"></i></a>'
+					html += "<a class='btn btn-outline-danger btn-borrar-tarea' id='"+value.id+"' type='button'><i class='fas fa-trash'></i></a>"
+					html += '</div>'
+
+					html += '</li>'
+					html += '</ul>'
+	
 	            });
-	            html += '</div>';
             } else {
-            	html += '<div class="alert alert-warning">';
-				  html += 'No records found!';
-				html += '</div>';
+				html += '<div class="alert alert-warning">';
+				html += 'No records found!';
             }
 
-            
-
             // Insert the HTML Template and display all employee records
-			$("#employees-list").html(html);
+			$("#finecod").html(html);
         }
     });
 }
@@ -43,6 +53,8 @@ function all()
 function save() 
 {
 	$("#btnSubmit").on("click", function() {
+		// Reset form
+		resetForm(form);
 		var $this 		    = $(this); //submit button selector using ID
         var $caption        = $this.html();// We store the html content of the submit button
         var form 			= "#form"; //defined the #form ID
@@ -70,8 +82,9 @@ function save()
 				  text: response
 				});
 
-	            // Reset form
-	            resetForm(form);
+	            // Close modal
+	            $('#editar-tarea').modal('toggle');
+
 	        },
 	        error: function (XMLHttpRequest, textStatus, errorThrown) {
 	        	// You can put something here if there is an error from submitted request
@@ -88,7 +101,7 @@ function resetForm(selector)
 
 function get() 
 {
-	$(document).delegate("[data-target='#edit-employee-modal']", "click", function() {
+	$(document).delegate("[data-target='#editar-tarea']", "click", function() {
 
 		var employeeId = $(this).attr('data-id');
 
@@ -103,10 +116,10 @@ function get()
 	        success: function (response) {//once the request successfully process to the server side it will return result here
 	            response = JSON.parse(response);
 	            $("#edit-form [name=\"id\"]").val(response.id);
-	            $("#edit-form [name=\"email\"]").val(response.email);
-	            $("#edit-form [name=\"first_name\"]").val(response.first_name);
-	            $("#edit-form [name=\"last_name\"]").val(response.last_name);
-	            $("#edit-form [name=\"address\"]").val(response.address);
+	            $("#edit-form [name=\"titulo\"]").val(response.titulo);
+	            $("#edit-form [name=\"descripcion\"]").val(response.descripcion);
+	            $("#edit-form [name=\"fecha\"]").val(response.fecha);
+	            $("#edit-form [name=\"id_usr\"]").val(response.id_usr);
 	        }
 	    });
 	});
@@ -138,7 +151,7 @@ function update()
 	            // We will display the result using alert
 	            Swal.fire({
 				  icon: 'success',
-				  title: 'Success.',
+				  title: 'Correcto.',
 				  text: response
 				});
 
@@ -146,7 +159,7 @@ function update()
 	            resetForm(form);
 
 	            // Close modal
-	            $('#edit-employee-modal').modal('toggle');
+	            $('#editar-tarea').modal('toggle');
 	        },
 	        error: function (XMLHttpRequest, textStatus, errorThrown) {
 	        	// You can put something here if there is an error from submitted request
@@ -160,10 +173,10 @@ function del()
 {
 	$(document).delegate(".btn-borrar-tarea", "click", function() {
 
-
+		
 		Swal.fire({
 			icon: 'warning',
-		  	title: 'Estas seguro de borrar esta tarea?',
+		  	title: 'Estas seguro de eliminar esta tarea?',
 		  	showDenyButton: false,
 		  	showCancelButton: true,
 		  	confirmButtonText: 'Yes'
@@ -171,14 +184,13 @@ function del()
 		  /* Read more about isConfirmed, isDenied below */
 		  if (result.isConfirmed) {
 
-		  	var tarea_id = $(this).attr('id');
-			alert(tarea_id);
+		  	var tareaId = $(this).attr('id');
 
 		  	// Ajax config
 			$.ajax({
 		        type: "GET", //we are using GET method to get data from server side
 		        url: 'delete.php', // get the route value
-		        data: {tarea_id:tarea_id}, //set data
+		        data: {employee_id:tareaId}, //set data
 		        beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
 		            
 		        },
@@ -189,7 +201,6 @@ function del()
 		            Swal.fire('Success.', response, 'success')
 		        }
 		    });
-			alert(data);
 
 		    
 		  } else if (result.isDenied) {
