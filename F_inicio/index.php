@@ -8,7 +8,7 @@
 
 <!-- <link rel="stylesheet" href="assets/plugins/sweetalert2/sweetalert2.min.css"> -->
 <!-- <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css"> -->
-<!-- <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css"> -->
+<link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.7/sweetalert2.css" integrity="sha512-JzSVRb7c802/njMbV97pjo1wuJAE/6v9CvthGTDxiaZij/TFpPQmQPTcdXyUVucsvLtJBT6YwRb5LhVxX3pQHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
 <!-- FIN DE HEADER -->
@@ -266,10 +266,10 @@
 </div>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
-<!-- <script src="../plugins/sweetalert2/sweetalert2.all.js"></script> -->
+<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
-<script src="scripts.js"></script>
+<!-- <script src="scripts.js"></script> -->
 <script src="../dist/js/pages/dashboard.js"></script>
 <!-- fin de footer -->
