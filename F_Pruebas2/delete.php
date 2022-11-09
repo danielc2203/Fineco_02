@@ -3,9 +3,9 @@
 	$id = $request['employee_id']; //employee ID we are using it to get the employee record
 
 	$servername = "localhost"; //set the servername
-	$username = "root"; //set the server username
-	$password = ""; // set the server password (you must put password here if your using live server)
-	$dbname = "demos"; // set the table name
+	$username = "Fineco2022"; //set the server username
+	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
+	$dbname = "finecoapp"; // set the table namee
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,7 +15,7 @@
 	}
 
 	// Set the DELETE SQL data
-	$sql = "DELETE FROM employees WHERE id='".$id."'";
+	$sql = "DELETE FROM todo_list WHERE id='".$id."'";
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {

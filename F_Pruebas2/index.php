@@ -203,9 +203,11 @@
             </div>
             <!-- /.card -->
 
-            <div class="col-md-8">
+            <div class="col-md-12">
 	    		<h3>List of Tareas</h3>
+          <div class="card-body">
 	    		<div id="employees-list"></div>
+          </div>
 	    	</div>
 
 
@@ -228,7 +230,7 @@
 
 		      	<!-- Modal Header -->
 		      	<div class="modal-header">
-			        <h4 class="modal-title">Edit Employee</h4>
+			        <h4 class="modal-title">Editar F</h4>
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
 		      	</div>
 
@@ -237,23 +239,23 @@
 		        	<form action="update.php" id="edit-form">
 		        		<input class="form-control" type="hidden" name="id">
 				    	<div class="form-group">
-						    <label for="email">Email</label>
-						    <input class="form-control" type="text" name="email">
+						    <label for="titulo">titulo</label>
+						    <input class="form-control" type="text" name="titulo">
 					  	</div>
 					  	<div class="form-group">
-						    <label for="first_name">First Name</label>
-						    <input class="form-control" type="text" name="first_name">
+						    <label for="descripcion">Descripcion</label>
+						    <input class="form-control" type="text" name="descripcion">
 					  	</div>
 					  	<div class="form-group">
-						    <label for="last_name">Last Name</label>
-						    <input class="form-control" type="text" name="last_name">
+						    <label for="fecha">Fecha</label>
+						    <input class="form-control" type="date" name="fecha">
 					  	</div>
 					  	<div class="form-group">
-						    <label for="address">Address</label>
-						    <textarea class="form-control" type="text" name="address" rows="3"></textarea>
+						    <label for="id_usr">id_usr</label>
+						    <input class="form-control" type="text" name="id_usr">
 					  	</div>
-					  	<button type="button" class="btn btn-primary" id="btnUpdateSubmit">Update</button>
-					  	<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Close</button>
+					  	<button type="button" class="btn btn-primary" id="btnUpdateSubmit">Actualizar</button>
+					  	<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
 					</form>
 
 

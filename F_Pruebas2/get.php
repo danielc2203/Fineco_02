@@ -3,9 +3,9 @@
 	$employeeId = $request['employee_id'];//define the employee ID
 
 	$servername = "localhost"; //set the servername
-	$username = "root"; //set the server username
-	$password = ""; // set the server password (you must put password here if your using live server)
-	$dbname = "demos"; // set the table name
+	$username = "Fineco2022"; //set the server username
+	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
+	$dbname = "finecoapp"; // set the table nameame
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,7 +15,7 @@
 	}
 
 	// Set the INSERT SQL data
-	$sql = "SELECT * FROM employees WHERE id='".$employeeId."'";
+	$sql = "SELECT * FROM todo_list WHERE id='".$employeeId."'";
 
 	// Process the query so that we will save the date of birth
 	$results = $mysqli->query($sql);

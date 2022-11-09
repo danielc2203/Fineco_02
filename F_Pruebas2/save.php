@@ -1,14 +1,14 @@
 <?php
 	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
-	$email = $request['email']; //get the date of birth from collected data above
-	$first_name = $request['first_name']; //get the date of birth from collected data above
-	$last_name = $request['last_name'];
-	$address = $request['address'];
+	$titulo = $request['titulo']; //get the date of birth from collected data above
+	$descripcion = $request['descripcion']; //get the date of birth from collected data above
+	$fecha = $request['fecha'];
+	$id_usr = $request['id_usr'];
 
 	$servername = "localhost"; //set the servername
-	$username = "root"; //set the server username
-	$password = ""; // set the server password (you must put password here if your using live server)
-	$dbname = "demos"; // set the table name
+	$username = "Fineco2022"; //set the server username
+	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
+	$dbname = "finecoapp"; // set the table nameame
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -18,8 +18,8 @@
 	}
 
 	// Set the INSERT SQL data
-	$sql = "INSERT INTO employees (email, first_name, last_name, address)
-	VALUES ('".$email."', '".$first_name."', '".$last_name."', '".$address."')";
+	$sql = "INSERT INTO todo_list (titulo, descripcion, fecha, id_usr)
+	VALUES ('".$titulo."', '".$descripcion."', '".$fecha."', '".$id_usr."')";
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {
