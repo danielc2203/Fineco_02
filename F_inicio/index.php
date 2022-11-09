@@ -20,11 +20,11 @@
 
 <!-- Consulta para el todo_list -->
 <?php
-    include_once('../global/conexiond.php');
-    $consulta = "SELECT * FROM todo_list ORDER BY id DESC ";
-    $resultado = $conexion->prepare($consulta);
-    $resultado->execute();
-    $todo=$resultado->fetchAll(); 
+    // include_once('../global/conexiond.php');
+    // $consulta = "SELECT * FROM todo_list ORDER BY id DESC ";
+    // $resultado = $conexion->prepare($consulta);
+    // $resultado->execute();
+    // $todo=$resultado->fetchAll(); 
 ?>
 
 
