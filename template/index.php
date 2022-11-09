@@ -1,2 +1,2 @@
 <?php
-header('Location:VistaPanel.php');
+header('Location:/F_Inicio/');

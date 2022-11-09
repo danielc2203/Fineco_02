@@ -33,7 +33,7 @@ if(isset($_POST["btnLogin"])){
     $_SESSION['usuario']=$registro;
 
         echo "Bienvenido.....";
-        header('Location:template/VistaPanel.php');
+        header('Location:F_Inicio');
 
     }else{
         echo "No se encuentran registros";
