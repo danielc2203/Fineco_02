@@ -5,6 +5,7 @@
 	$fecha = $request['fecha'];
 	$fecha_asigando = $request['fecha_asigando'];
 	$estado_tarea = $request['estado_tarea'];
+	$creado_por = $request['creado_por'];
 	$id_usr = $request['id_usr'];
 
 	$servername = "localhost"; //set the servername
