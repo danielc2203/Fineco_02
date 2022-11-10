@@ -19,7 +19,7 @@
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {
-	  echo "Employee has been deleted.";
+	  echo "La tarea ha sido eliminada correctamente.";
 	} else {
 	  echo "Error: " . $sql . "<br>" . $mysqli->error;
 	}

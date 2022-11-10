@@ -164,7 +164,7 @@ function update()
 	            // We will display the result using alert
 	            Swal.fire({
 				  icon: 'success',
-				  title: 'Correcto.',
+				  title: 'Actualizada.',
 				  text: response
 				});
 
@@ -192,7 +192,7 @@ function del()
 		  	title: 'Estas seguro de eliminar esta tarea?',
 		  	showDenyButton: false,
 		  	showCancelButton: true,
-		  	confirmButtonText: 'Yes'
+		  	confirmButtonText: 'SI'
 		}).then((result) => {
 		  /* Read more about isConfirmed, isDenied below */
 		  if (result.isConfirmed) {
@@ -211,13 +211,13 @@ function del()
 		            // Reload lists of employees
 	            	all();
 
-		            Swal.fire('Success.', response, 'success')
+		            Swal.fire('Tarea Eliminada.', response, 'success')
 		        }
 		    });
 
 		    
 		  } else if (result.isDenied) {
-		    Swal.fire('Changes are not saved', '', 'info')
+		    Swal.fire('Cambios No Efectuados', '', 'info')
 		  }
 		});
 

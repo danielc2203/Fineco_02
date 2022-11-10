@@ -26,7 +26,7 @@
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {
-	  echo "Tarea actualizada con exito";
+	  echo "Su tarea ha sido actualizada correctamemte";
 	} else {
 	  echo "Error: " . $sql . "<br>" . $mysqli->error;
 	}
