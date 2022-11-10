@@ -21,11 +21,11 @@ function all()
 					html += '<li style="margin-bottom: 3px;" class="'+ value.estado_tarea +'">'
 
 					html += '<div  class="d-inline ml-2">'
-					if(value.estado_tarea == "done"){
-						html += '<i class="fas fa-check-circle text-success"></i>'
-					}else{
-						html += '<i class="fas fa-circle-notch"></i>'
-					};
+					// if(value.estado_tarea == "done"){
+					// 	html += '<i class="fas fa-check-circle text-success"></i>'
+					// }else{
+					// 	html += '<i class="fas fa-circle-notch"></i>'
+					// };
 					html += '<span class="handle"> <i class="fas fa-thumbtack"></i></span>'
 					html += "<span>" + value.titulo +' '+ value.descripcion +"</span>";
 					html += "<span class='text'>" + value.fecha +"</span>";
