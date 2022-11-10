@@ -33,11 +33,11 @@ function all()
 					//var fechaFin = new Date(value.fecha).getTime();
 					//var di = moment().diff(moment(fechaFin), 'days');
 
-					if (di < "0"){
-						html += '<small class="badge badge-success"><i class="far fa-clock"></i>' + ' ' + "di" +' días para vencer tarea</small>'
-					}else{
-						html += '<small class="badge badge-danger"><i class="far fa-clock"></i>' + ' ' + "di" +' días vencidos</small>'
-					}
+					// if (di < "0"){
+					// 	html += '<small class="badge badge-success"><i class="far fa-clock"></i>' + ' ' + di +' días para vencer tarea</small>'
+					// }else{
+					// 	html += '<small class="badge badge-danger"><i class="far fa-clock"></i>' + ' ' + di +' días vencidos</small>'
+					// }
 
 					
 					html += '</div>'
