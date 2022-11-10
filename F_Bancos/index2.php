@@ -1,23 +1,19 @@
 <!-- Logica -->
-<?php include ('../modulos/panel.php');?>
+<?php include ('../modulos/panel.php') ?>
+<!-- Fin de Logica Panel -->
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
-
-<!-- Sweetalert 2 CSS -->
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
-
 <!-- FIN DE HEADER -->
 
 <!-- Main Sidebar Container -->
-<?php include ('../recursos/sidebar.php');
-//echo $id_usr;
- ?>
-
+<?php include ('../recursos/sidebar.php') ?>
 <!-- Fin de Sidebar -->
 
+
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -37,7 +33,6 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-
     <section class="content">
       <div class="container-fluid">
         <button type="button" class="btn btn-outline-success" style="margin-bottom: 5px;"> <span><i class="fas fa-file-excel"></i></span> Reporte general</button>
@@ -267,16 +262,36 @@
           </nav>
         </div> -->
         <!-- /.card-footer -->
+      </div>
+
+      <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  Listado de Tareas Pendientes.
+                </h3>
+            </div>
+
+            <div class="card-body" id="finecod">
+              <!-- Aca se pinta el contenido del JS Finecod de la funcion Daniel -->
+            </div>
+            <div class="card-footer clearfix">
+              <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-nueva-tarea"><i class="fas fa-plus"></i> Nueva tarea</button>
+            </div>
+      </div>
+      <!-- Final de Bancos Fineco -->
+
+
+      </div><!-- /.container-fluid -->
     </section>
-
-
-    
+    <!-- /.content -->
   </div>
+<!-- /.content-wrapper -->
 
 
-  <!-- Modal de Bancos-->
+<!-- Modal de Bancos-->
 <div class="modal fade" id="bancoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" >
+  <div class="modal-dialog modal-lg modal-dialog-centered" >
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Detalles de la cuenta bancaria / <span style="font-weight:bold; color:darkgreen">FINECO</span> </h5> 
@@ -285,30 +300,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php $id_banco = 1 ?>
-        <script> var id_banco = 1 </script>
-        <!-- Contenido de la BD -->
-
-        <table class="table table-hover table-responsive table-striped table-bordered ">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Sucursal</th>
-              <th scope="col">Descuento</th>
-              <th scope="col">Valor</th>              
-              <th scope="col">Saldo</th>
-            </tr>
-          </thead>
-          <tbody id="info_banco">
-          </tbody>
-        </table>
-    
-
-
-      <button type="button" class="btn btn-outline-danger btn-rounded" ><i class="fas fa-file-pdf"></i> PDF</button>
-      <button type="button" class="btn btn-outline-warning btn-rounded float-right" ><i class="fas fa-print"></i> Imprimir</button>
 
       </div>
       <div class="modal-footer">
@@ -319,10 +310,9 @@
   </div>
 </div>
 
-<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
-
 <!-- footer -->
+<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="./script.js"></script>
 <?php include ('../recursos/footer.php') ?>
-<script src="./scripts.js"></script>
-<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
+<script src="../dist/js/pages/dashboard.js"></script>
 <!-- fin de footer -->
