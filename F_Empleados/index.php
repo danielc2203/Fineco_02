@@ -11,14 +11,14 @@ $conexion = $objeto->Conectar();
   include ('../recursos/header.php');
 
   //$rol = ($_SESSION['usuario']['rol_id']);
-  if ($rol == 1 or 0 ){
-    //echo '<script type="text/javascript">alert("Su rol desde index es: ' . $rol . ' y su nombre es ' . $nombres . '");</script>';
-  }else{
-    echo'<script type="text/javascript">
-    alert("No eres Administrador, tu rol es: ' . $rol . ' ");
-    window.location.href="../template/";
-    </script>';
-  }
+  // if ($rol == 1 or 0 ){
+  //   //echo '<script type="text/javascript">alert("Su rol desde index es: ' . $rol . ' y su nombre es ' . $nombres . '");</script>';
+  // }else{
+  //   echo'<script type="text/javascript">
+  //   alert("No eres Administrador, tu rol es: ' . $rol . ' ");
+  //   window.location.href="../template/";
+  //   </script>';
+  // }
 ?>
 <!-- FIN DE HEADER -->
 

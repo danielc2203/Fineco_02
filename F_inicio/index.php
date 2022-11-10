@@ -16,7 +16,7 @@
 
 <!-- Main Sidebar Container -->
 <?php include ('../recursos/sidebar.php');
-echo $id_usr;
+//echo $id_usr;
  ?>
 
 

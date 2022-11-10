@@ -46,7 +46,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template/index.php" class="nav-link active">
+                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link active">
                   <i class="nav-icon fas fa-home"></i>
                   <p>Inicio</p>
                 </a>
@@ -64,19 +64,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
                 <i class="nav-icon far fa-credit-card"></i>
                   <p>Creditos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
                 <i class="nav-icon fas fa-dice-d20"></i>
                   <p>Tesorería</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template/" class="nav-link">
+                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
                   <p>Cartera</p>
                 </a>
@@ -88,7 +88,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/template" class="nav-link">
+                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
                 <i class="nav-icon fas fa-comment-dollar"></i>
                   <p>Contabilidad</p>
                 </a>
