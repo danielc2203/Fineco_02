@@ -21,23 +21,23 @@ function all()
 					html += '<li style="margin-bottom: 3px;" class="'+ value.estado_tarea +'">'
 
 					html += '<div  class="d-inline ml-2">'
-					// if(value.estado_tarea == "done"){
-					// 	html += '<i class="fas fa-check-circle text-success"></i>'
-					// }else{
-					// 	html += '<i class="fas fa-circle-notch"></i>'
-					// };
+					if(value.estado_tarea == "done"){
+						html += '<i class="fas fa-check-circle text-success"></i>'
+					}else{
+						html += '<i class="fas fa-circle-notch text-"></i>'
+					};
 					html += '<span class="handle"> <i class="fas fa-thumbtack"></i></span>'
 					html += "<span>" + value.titulo +' '+ value.descripcion +"</span>";
 					html += "<span class='text'>" + value.fecha +"</span>";
 
-					//var fechaFin = new Date(value.fecha).getTime();
-					//var di = moment().diff(moment(fechaFin), 'days');
+					var fechaFin = new Date(value.fecha).getTime();
+					var di = moment().diff(moment(fechaFin), 'days');
 
-					// if (di < "0"){
-					// 	html += '<small class="badge badge-success"><i class="far fa-clock"></i>' + ' ' + di +' días para vencer tarea</small>'
-					// }else{
-					// 	html += '<small class="badge badge-danger"><i class="far fa-clock"></i>' + ' ' + di +' días vencidos</small>'
-					// }
+					if (di < "0"){
+						html += '<small class="badge badge-success"><i class="far fa-clock"></i>' + ' ' + di +' días para vencer tarea</small>'
+					}else{
+						html += '<small class="badge badge-danger"><i class="far fa-clock"></i>' + ' ' + di +' días vencidos</small>'
+					}
 
 					
 					html += '</div>'
