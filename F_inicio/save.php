@@ -5,7 +5,6 @@
 	$fecha = $request['fecha'];
 	$fecha_asigando = $request['fecha_asigando'];
 	$estado_tarea = $request['estado_tarea'];
-	$creado_por = $request['creado_por'];
 	$id_usr = $request['id_usr'];
 
 	$servername = "localhost"; //set the servername
@@ -21,8 +20,8 @@
 	}
 
 	// Set the INSERT SQL data
-	$sql = "INSERT INTO todo_list (titulo, descripcion, fecha, id_usr, fecha_asigando, creado_por, estado_tarea)
-	VALUES ('".$titulo."', '".$descripcion."', '".$fecha."', '".$id_usr."', '".$fecha_asigando."', '".$creado_por."', '".$estado_tarea."')";
+	$sql = "INSERT INTO todo_list (titulo, descripcion, fecha, id_usr, fecha_asigando, estado_tarea)
+	VALUES ('".$titulo."', '".$descripcion."', '".$fecha."', '".$id_usr."', '".$fecha_asigando."', '".$estado_tarea."')";
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {
