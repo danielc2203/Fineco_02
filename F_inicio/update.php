@@ -1,8 +1,8 @@
 <?php
 	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
-	$id = $request['id']; //employee ID we are using it to get the employee record
-	$titulo = $request['titulo']; //get the date of birth from collected data above
-	$descripcion = $request['descripcion']; //get the date of birth from collected data above
+	$id = $request['id']; 
+	$titulo = $request['titulo']; 
+	$descripcion = $request['descripcion']; 
 	$fecha = $request['fecha'];
 	$id_usr = $request['id_usr'];
 	$fecha_asigando = $request['fecha_asigando'];
