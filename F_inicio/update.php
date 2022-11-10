@@ -6,7 +6,7 @@
 	$fecha = $request['fecha'];
 	$id_usr = $request['id_usr'];
 	//$fecha_asigando = $request['fecha_asigando'];
-	$creado_por = $request['creado_por'];
+	//$creado_por = $request['creado_por'];
 	$estado_tarea = $request['estado_tarea'];
 
 	$servername = "localhost"; //set the servername
@@ -22,7 +22,7 @@
 	}
 
 	// Set the UPDATE SQL data
-	$sql = "UPDATE todo_list SET titulo='".$titulo."', descripcion='".$descripcion."', fecha='".$fecha."', id_usr='".$id_usr."', creado_por='".$creado_por."', estado_tarea='".$estado_tarea."' WHERE id='".$id."'";
+	$sql = "UPDATE todo_list SET titulo='".$titulo."', descripcion='".$descripcion."', fecha='".$fecha."', id_usr='".$id_usr."', estado_tarea='".$estado_tarea."' WHERE id='".$id."'";
 
 	// Process the query so that we will save the date of birth
 	if ($mysqli->query($sql)) {
