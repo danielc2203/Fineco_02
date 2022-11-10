@@ -18,8 +18,8 @@
 
 	// Set the INSERT SQL data
 	//$sql = "SELECT * FROM todo_list ";
-	$sql = "SELECT * FROM todo_list WHERE id_usr='".$rol_id."'";
-	//echo $rol_id;
+	$sql = "SELECT * FROM todo_list WHERE id_usr='".$rol_id."' ORDER BY id DESC";
+	//echo $rol_id."ok" ;
 
 	// Process the query so that we will save the date of birth
 	$results = $mysqli->query($sql);

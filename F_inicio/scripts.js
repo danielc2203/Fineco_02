@@ -10,6 +10,7 @@ function all()
         	response = JSON.parse(response);
 
             var html = "";
+			
             // Check if there is available records
             if(response.length) {
 	            // Loop the parsed JSON
@@ -17,18 +18,28 @@ function all()
 	            	// Our employee list template
 
 					html += '<ul class="todo-list" data-widget="todo-list" >'
-					html += '<li style="margin-bottom: 3px;" >'
+					html += '<li style="margin-bottom: 3px;" class="'+ value.estado_tarea +'">'
 
-					html += '<div  class="icheck-primary d-inline ml-2">'
-					html += '<input type="checkbox" value="" name="id" id="'+ value.id +'">'
-					html += '<label for="'+ value.id +'"></label>'
-
+					html += '<div  class="d-inline ml-2">'
+					if(value.estado_tarea == "done"){
+						html += '<i class="fas fa-check-circle text-success"></i>'
+					}else{
+						html += '<i class="fas fa-circle-notch"></i>'
+					};
 					html += '<span class="handle"> <i class="fas fa-thumbtack"></i></span>'
 					html += "<span>" + value.titulo +' '+ value.descripcion +"</span>";
 					html += "<span class='text'>" + value.fecha +"</span>";
-					html += "<span class='text'>" + value.id_usr +"</span>";
 
-					html += '<small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>'
+					var fechaFin = new Date(value.fecha).getTime();
+					var di = moment().diff(moment(fechaFin), 'days');
+
+					if (di < "0"){
+						html += '<small class="badge badge-success"><i class="far fa-clock"></i>' + ' ' + di +' días para vencer tarea</small>'
+					}else{
+						html += '<small class="badge badge-danger"><i class="far fa-clock"></i>' + ' ' + di +' días vencidos</small>'
+					}
+
+					
 					html += '</div>'
 
 					html += '<div class="tools">' // Botones
@@ -121,6 +132,7 @@ function get()
 	            $("#edit-form [name=\"descripcion\"]").val(response.descripcion);
 	            $("#edit-form [name=\"fecha\"]").val(response.fecha);
 	            $("#edit-form [name=\"id_usr\"]").val(response.id_usr);
+				$("#edit-form [name=\"estado_tarea\"]").val(response.estado_tarea);
 	        }
 	    });
 	});

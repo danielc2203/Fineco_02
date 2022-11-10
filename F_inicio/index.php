@@ -198,7 +198,7 @@ echo $id_usr;
             <form action="update.php" id="edit-form">
               <input class="form-control" type="hidden" name="id">
             <div class="form-group">
-              <label for="titulo">titulo</label>
+              <label for="titulo">Titulo de la tarea</label>
               <input class="form-control" type="text" name="titulo">
             </div>
             <div class="form-group">
@@ -206,13 +206,40 @@ echo $id_usr;
               <input class="form-control" type="text" name="descripcion">
             </div>
             <div class="form-group">
-              <label for="fecha">Fecha</label>
+              <label for="fecha">Fecha de vencimiento</label>
               <input class="form-control" type="date" name="fecha">
             </div>
             <div class="form-group">
-                <label for="id_usr" class="col-form-label">id_usr</label>
-                <input class="form-control" id="id_usr" name="id_usr" value="<?$id_usr?>"> 
-            </div>            
+                <label for="id_usr" class="col-form-label">Reasiganar Tarea a:</label>
+                <select class="form-control" id="id_usr" name="id_usr">
+                        <option value="">Usuarios:</option>
+                        <?php
+                        $consulta = "SELECT * FROM usuarios";
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();
+                        $grupo=$resultado->fetchAll();
+                        foreach ($grupo as $valores):
+                        echo '<option value="'.$valores["id"].'">'.$valores["nombres"].'</option>';
+                        endforeach;
+                        ?>
+                      </select>
+            </div> 
+            <div class="form-group">
+              <input class="form-control" type="hidden" name="fecha_asigando">
+            </div>
+            <div class="form-row">
+              <input class="form-control" type="hidden" name="creado_por" value"<?php echo $id_usr?>">
+            </div>
+
+            <div class="form-group">
+                <label for="estado_tarea" class="col-form-label">Estado:</label>
+                <select class="custom-select" id="estado_tarea" name="estado_tarea">
+                  <option selected>Seleccione...</option>
+                  <option value="activa">Activa</option>
+                  <option value="done">Realizada</option>
+                </select>
+            </div> 
+
             <button type="btnSubmit" class="btn btn-primary" id="btnUpdateSubmit">Actualizar</button>
             <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
         </form>
@@ -238,7 +265,7 @@ echo $id_usr;
             <form action="save.php" id="save-form">
               <input class="form-control" type="hidden" name="id">
             <div class="form-group">
-              <label for="titulo">titulo</label>
+              <label for="titulo">Titulo de la tarea</label>
               <input class="form-control" type="text" name="titulo">
             </div>
             <div class="form-group">
@@ -246,12 +273,17 @@ echo $id_usr;
               <input class="form-control" type="text" name="descripcion">
             </div>
             <div class="form-group">
-              <label for="fecha">Fecha</label>
+              <label for="fecha">Fecha de vencimiento</label>
               <input class="form-control" type="date" name="fecha">
             </div>
             <div class="form-group">
-                <label for="id_usr" class="col-form-label">id_usr</label>
-                <input class="form-control" id="id_usr" name="id_usr" value="<?$id_usr?>"> 
+              <input class="form-control" type="hidden" name="fecha_asigando" value="<?php echo date("Y-m-d"); ?>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="hidden" id="id_usr" name="id_usr" value="<?php echo $id_usr?>"> 
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="hidden" id="estado_tarea" name="estado_tarea" value="activa"> 
             </div>
             <button type="btnSubmit" class="btn btn-primary" id="btnUpdateSubmit">Enviar</button>
             <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
@@ -260,6 +292,8 @@ echo $id_usr;
       </div>
     </div>
 </div>
+
+
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
