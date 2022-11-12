@@ -2,7 +2,7 @@
 	session_start();
 	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
 	$rol_id = ($_SESSION['usuario']['id']);
-	$id_banco = "";
+	$id_banco = 1;
 	//echo $rol_id;
 	
 	$servername = "localhost"; //set the servername
