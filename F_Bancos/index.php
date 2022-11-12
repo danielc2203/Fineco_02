@@ -285,10 +285,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php $id_banco = 1 ?>
-        <script> var id_banco = 1 </script>
-        <!-- Contenido de la BD -->
-
         <table class="table table-hover table-responsive table-striped table-bordered ">
           <thead>
             <tr>
@@ -304,9 +300,6 @@
           <tbody id="info_banco">
           </tbody>
         </table>
-    
-
-
       <button type="button" class="btn btn-outline-danger btn-rounded" ><i class="fas fa-file-pdf"></i> PDF</button>
       <button type="button" class="btn btn-outline-warning btn-rounded float-right" ><i class="fas fa-print"></i> Imprimir</button>
 
