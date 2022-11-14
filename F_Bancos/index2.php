@@ -49,8 +49,8 @@
         <div class="card-body pb-0">
           <div class="row">
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
+             <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column">
+              <!--<div class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted border-bottom-0">
                   Banco - BBVA
                 </div>
@@ -79,13 +79,13 @@
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+            <div class="col-12 col-sm-6 col-md-6 d-flex flex-column">
               <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  BanColombia
+                <div class="card-header text-center ">
+                  <h2>BanColombia</h2>
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
@@ -115,8 +115,8 @@
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
+             <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column">
+              <!--<div class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted border-bottom-0">
                   Banco - Davivienda
                 </div>
@@ -145,109 +145,9 @@
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>-->
+            </div> 
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Banco - ITAÚ
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/itau.png" alt="ITAÚ" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  NEQUI
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/nequi.png" alt="NEQUI" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Daviplata
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/daviplata.png" alt="Daviplata" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            
 
           </div>
         </div>
@@ -286,13 +186,8 @@
       </div>
       <div class="modal-body">
 
-        <div class="card" id="contenido">
-          
-         
-           
-            
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          
+        <div class="row" id="contenido">
+            <!-- Contenido desde JavaScript -->
         </div>
 
       </div>

@@ -53,7 +53,7 @@ function all()
 	            });
             } else {
 				html += '<div class="alert alert-warning">';
-				html += 'No records found!';
+				html += 'No tienes tareas pendientes!';
             }
 
             // Insert the HTML Template and display all employee records

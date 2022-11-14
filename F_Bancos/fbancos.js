@@ -17,20 +17,26 @@ function all()
 	            $.each(response, function(key,value) {
 	            	// Our employee list template
 
-					html += '<div class="card-header">'+ value.id +'</div>'
+					//html += '<div class="row">'
 
-					html += '<div class="card-body">'
-					html += '<div class="row">'
+						html += '<div class="col-4">'
+							html += '<div class="card text-success bg-secondary">'
 
-					html += '<h5 class="card-title">'+ value.fecha +'</h5>'
-					html += '<p class="card-text">'+ value.descripcion +'</p>'
-					html += '<p class="card-text">'+ value.sucursal +'</p>'
-					html += '<p class="card-text">'+ value.dcto +'</p>'
-					html += '<p class="card-text">'+ value.valor +'</p>'
-					html += '<p class="card-text">'+ value.saldo +'</p>'
-					 
-					html += '</div>' // Fin del div row
-					html += '</div>' // Fin de card-body
+								html += '<div class="card-header"> '+ value.descripcion +' </div>'
+
+									html += '<ul class="list-group list-group-flush text-dark">'
+									html += '<li class="list-group-item ">Fecha: '+ value.fecha +'</li>'
+									html += '<li class="list-group-item ">Sucursal: '+ value.sucursal +'</li>'
+									html += '<li class="list-group-item ">Descuento: '+ value.dcto +'</li>'
+									html += '<li class="list-group-item ">Valor: '+ value.valor +'</li>'
+									html += '<li class="list-group-item ">Saldo: '+ value.saldo +'</li>'
+									html += '</ul>'
+
+							html += '</div>'
+						html += '</div>'
+
+					//html += '</div>' // Fin del div row
+
 
 
 
