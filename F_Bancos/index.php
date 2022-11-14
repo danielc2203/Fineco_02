@@ -5,6 +5,9 @@
 <?php include ('../recursos/header.php') ?>
 
 <!-- Sweetalert 2 CSS -->
+<link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
 
 <!-- FIN DE HEADER -->
@@ -49,43 +52,14 @@
         <div class="card-body pb-0">
           <div class="row">
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Banco - BBVA
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/bbva.png" alt="BBVA" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                    <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
+             <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column">
+  
             </div>
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+            <div class="col-12 col-sm-6 col-md-6 d-flex flex-column">
               <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  BanColombia
+                <div class="card-header text-center ">
+                  <h2>BanColombia</h2>
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
@@ -102,177 +76,55 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer class="tools"">
                   <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#bancoModal-cards">
+                      <i class="far fa-address-card"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Banco - Davivienda
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/davivienda.png" alt="Davivienda" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+             <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column">
+              
+            </div> 
 
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Banco - ITAÚ
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/itau.png" alt="ITAÚ" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  NEQUI
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/nequi.png" alt="NEQUI" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Daviplata
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                      <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../dist/img/Bancos/daviplata.png" alt="Daviplata" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-file-excel"></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                      <i class="fas fa-user"></i> Ver Detalles
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            
 
           </div>
         </div>
-        <!-- /.card-body paginación -->
-        <!-- <div class="card-footer">
-          <nav aria-label="Contacts Page Navigation">
-            <ul class="pagination justify-content-center m-0">
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#">6</a></li>
-              <li class="page-item"><a class="page-link" href="#">7</a></li>
-              <li class="page-item"><a class="page-link" href="#">8</a></li>
-            </ul>
-          </nav>
-        </div> -->
-        <!-- /.card-footer -->
+        
     </section>
-
-
     
   </div>
 
+  <!-- Modal de Bancos vista de tarjetas cards-->
+<div class="modal fade" id="bancoModal-cards" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalles de la cuenta bancaria / <span style="font-weight:bold; color:darkgreen">FINECO</span> </h5> 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row" id="contenido">
+            <!-- Contenido desde JavaScript -->
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Modal de Bancos-->
 <div class="modal fade" id="bancoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -285,23 +137,22 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-hover table-responsive table-striped table-bordered ">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Sucursal</th>
-              <th scope="col">Descuento</th>
-              <th scope="col">Valor</th>              
-              <th scope="col">Saldo</th>
+        <table id="movimientosf" class="table table-bordered table-striped table-responsive-xl table-condensed">
+            <thead>
+            <tr> 
+              <th>id</th>
+              <th>Fecha</th>                                
+              <th>Descripción</th>  
+              <th>Sucursal</th>
+              <th>Descuento</th>
+              <th>Valor</th>
+              <th>Saldo</th>
             </tr>
-          </thead>
-          <tbody id="info_banco">
-          </tbody>
-        </table>
-      <button type="button" class="btn btn-outline-danger btn-rounded" ><i class="fas fa-file-pdf"></i> PDF</button>
-      <button type="button" class="btn btn-outline-warning btn-rounded float-right" ><i class="fas fa-print"></i> Imprimir</button>
+            </thead>
+
+            <tbody>              
+            </tbody>
+          </table>
 
       </div>
       <div class="modal-footer">
@@ -312,10 +163,40 @@
   </div>
 </div>
 
-<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
-<script src="./scripts.js"></script>
+<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
+<!-- fin de footer -->
+
+<!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../plugins/jszip/jszip.min.js"></script>
+<script src="../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+
+<!-- scrip personalizados -->
+<script src="../plugins/toastr/toastr.min.js"></script>
+<script type="text/javascript" src="fbancos3.js"></script>
+<script type="text/javascript" src="fbancos.js"></script>
+
+
+<!-- <script src="./scripts.js"></script>; -->
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->

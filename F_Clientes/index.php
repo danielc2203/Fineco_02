@@ -51,6 +51,7 @@ include ('../recursos/header.php');
             <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
             
           </div>
+          
           <!-- /.card-header -->
           <div class="card-body">
 
