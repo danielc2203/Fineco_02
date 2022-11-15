@@ -3,6 +3,7 @@ include_once '../global/conexiond.php';
 //include_once "global/conexiond.php";
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
+$data = "";
 
 
 //Variable= si el POST NO ESTA VACIO - ENTONCES $_POST POST = VARIABLE; 

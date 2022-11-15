@@ -11,6 +11,7 @@ include ('../recursos/header.php');
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
 
 <!-- Main Sidebar Container -->
 <?php include_once ('../recursos/sidebar.php') ?>
@@ -53,26 +54,30 @@ include ('../recursos/header.php');
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="clientes" class="table table-sm table-responsive table-hover ">
+                <table id="clientes" class="table table-responsive table-hover  ">
                   <thead>
                   <tr> 
                     <th>id</th>
                     <th>Primer Nombre</th>
                     <th>Segundo Nombre</th>                             
                     <th>Primer Apellido</th>
-                    <th>Segundo Apellido</th>  
-                    <th>Tipo</th>
+                    <th>Segundo Apellido</th>
+                    <th>Tipo de documento</th>
                     <th>N° Documento</th>
                     <th>Correo</th>
                     <th>Telefono</th>
                     <th>Estado</th>
-                    <th>Ocupación</th>
+                    <th>Ocupaciòn</th>
                     <th>Empresa</th>
-                    <th>Fecha</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                
                   </tr>
                   </thead>
 
-                  <tbody>              
+                  <tbody class="text-lowercase">              
                   </tbody>
                 </table>
 
@@ -247,6 +252,8 @@ include ('../recursos/header.php');
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 
+<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+
 
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
@@ -255,7 +262,7 @@ include ('../recursos/header.php');
 <!-- Page specific script -->
 
 <script src="../plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="clientes.js"></script>  
+<script type="text/javascript" src="clientes2.js"></script>  
 
 </body>
 </html>
