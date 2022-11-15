@@ -64,7 +64,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
+                <a href="<?php echo $url;?>/F_Creditos/index.php" class="nav-link">
                 <i class="nav-icon far fa-credit-card"></i>
                   <p>Creditos</p>
                 </a>
