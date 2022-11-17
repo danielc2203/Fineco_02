@@ -1,6 +1,6 @@
 <?php
 	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
-	$employeeId = $request['employee_id'];//define the employee ID
+	//$employeeId = $request['employee_id'];//define the employee ID
 
 	$servername = "localhost"; //set the servername
 	$username = "Fineco2022"; //set the server username
@@ -15,7 +15,7 @@
 	}
 
 	// Set the INSERT SQL data
-	$sql = "SELECT * FROM todo_list WHERE id='".$employeeId."'";
+	$sql = "SELECT * FROM clientes ";
 
 	// Process the query so that we will save the date of birth
 	$results = $mysqli->query($sql);
@@ -29,5 +29,7 @@
 	// Close the connection after using it
 	$mysqli->close();
 
-	echo json_encode($row);
+	$arrelo = array($row);
+
+	echo json_encode($arrelo);
 ?>
