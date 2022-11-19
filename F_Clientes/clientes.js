@@ -51,7 +51,7 @@ $(document).ready(function() {
             {"data": "estado"},
             {"data": "ocupacion"},
             {"data": "empresa"},
-            //{"data": "fecha_incorporacion"},
+            {"data": "fecha_incorporacion"},
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
             {"defaultContent": "<a class='btn btn-outline-success btn-sm openVer'><i class='fas fa-eye'></i></a>"},
