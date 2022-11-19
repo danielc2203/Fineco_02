@@ -112,7 +112,7 @@ $(document).ready(function() {
         segundo_nombre = fila.find('td:eq(2)').text();
         primer_apellido = fila.find('td:eq(3)').text();
         segundo_apellido = fila.find('td:eq(4)').text();
-        tdocumento = fila.find('td:eq(5)').text();
+        tipo_documento = fila.find('td:eq(5)').text();
         num_documento = fila.find('td:eq(6)').text();
         correo_electronico = fila.find('td:eq(7)').text();
         telefono = fila.find('td:eq(8)').text();
@@ -125,7 +125,7 @@ $(document).ready(function() {
         $("#segundo_nombre").val(segundo_nombre);
         $("#primer_apellido").val(primer_apellido);
         $("#segundo_apellido").val(segundo_apellido);
-        $("#tdocumento").val(tdocumento);
+        $("#tipo_documento").val(tipo_documento);
         $("#num_documento").val(num_documento);
         $("#correo_electronico").val(correo_electronico);
         $("#telefono").val(telefono);
