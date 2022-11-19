@@ -176,7 +176,7 @@
                     <div class="form-group">
                     <label for="" class="col-form-label">Estado:</label>
                     <select class="custom-select" id="estado">
-                      <option selected>Seleccionar...</option>
+                      <option selected>Seleccion...</option>
                       <option value="Activo">Activo</option>
                       <option value="Inactivo">Inactivo</option>
                     </select>
@@ -215,6 +215,20 @@
                     <div class="form-group">
                     <label for="" class="col-form-label">Fecha</label>
                     <input type="date" class="form-control" id="fecha_incorporacion">
+                    </div> 
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Fecha nacimiento:</label>
+                    <input type="mail" class="form-control " id="fechaNacimiento">
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Télefono</label>
+                    <input type="phone" class="form-control " id="telefono">
                     </div> 
                     </div>    
                 </div>
