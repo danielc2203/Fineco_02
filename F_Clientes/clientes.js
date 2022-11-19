@@ -27,8 +27,6 @@ $(document).ready(function() {
 
         "responsive": false, "lengthChange": false, "autoWidth": false,
 
-   
-
         "ajax":{            
             "url": "crud.php", 
             "method": 'POST', //usamos el metodo POST
@@ -49,6 +47,7 @@ $(document).ready(function() {
             {"data": "ocupacion"},
             {"data": "empresa"},
             {"data": "fecha_incorporacion"},
+            
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
             {"defaultContent": "<a class='btn btn-outline-success openVer'><i class='fas fa-eye'></i></a>"},
             {"defaultContent": "<a class='btn btn-outline-warning btnEditar'><i class='fas fa-edit'></i></a>"},
@@ -143,13 +142,14 @@ $(document).ready(function() {
     });
     
     //Borrar
-    $(document).on("click", ".btnBorrar", function(){
+    $(document).on("click", ".btnBorrarss", function(){
         fila = $(this);           
         id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
         nombres = $(this).closest("tr").find('td:eq(1)').text();	// Nombre de Usuario
-        opcion = 3; //eliminar        
+        opcion = 3; //eliminar   
+        
         var respuesta = confirm("¿Está seguro de borrar el registro " +id+ " del usuario " +nombres+"?");                
-        if (respuesta) {            
+        if (respuesta) {   
             $.ajax({
               url: "crud.php",
               type: "POST",
@@ -170,6 +170,46 @@ $(document).ready(function() {
         }
      });
          
-    });    
-    
-    
+    });
+
+    //Borrar 2
+	$(document).delegate(".btnBorrar", "click", function() {
+
+        fila = $(this);           
+        id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
+        nombres = $(this).closest("tr").find('td:eq(1)').text();	// Nombre de Usuario
+        opcion = 3; //eliminar   
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Estas seguro de eliminar este cliente?',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'SI'
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: "crud.php",
+                    type: "POST",
+                    datatype:"json",    
+                    data: {opcion:opcion, id:id}, 
+                    success: function(response) {
+                        tablaUsuarios.row(fila.parents('tr')).remove().draw();    
+                        Swal.fire('El clente ha sido Eliminado de la base de datos.', response, 'success');
+                     }
+                  });
+
+                
+            } else if (result.isDenied) {
+                Swal.fire('Cambios No Efectuados', '', 'info')
+            }else{
+                $(function() {
+                    Swal.fire('Cambios No Efectuados', '', 'info')
+                    //toastr.info('Se ha cancelado la acción de eliminar')
+                  });
+            }
+            });
+        });
+

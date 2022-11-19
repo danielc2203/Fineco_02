@@ -1,24 +1,26 @@
+<!-- Logica -->
+<?php include ('../modulos/panel.php');?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
-<?php
-include('../global/sesiones.php');
-include ('../recursos/header.php');
-?>
-<!-- FIN DE HEADER -->
+<?php include ('../recursos/header.php') ?>
 
- <!-- DataTables -->
+<!-- Sweetalert 2 CSS -->
 <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+<link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
+
+<!-- FIN DE HEADER -->
 
 <!-- Main Sidebar Container -->
-<?php include ('../recursos/sidebar.php') ?>
+<?php include ('../recursos/sidebar.php');
+//echo $id_usr;
+ ?>
+
 <!-- Fin de Sidebar -->
 
-
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -28,7 +30,7 @@ include ('../recursos/header.php');
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo $url;?>/template/index.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="<?php echo $url;?>/F_inicio/index.php">Inicio</a></li>
               <li class="breadcrumb-item active">Clientes</li>
             </ol>
           </div><!-- /.col -->
@@ -38,60 +40,63 @@ include ('../recursos/header.php');
     <!-- /.content-header -->
 
     <!-- Main content -->
+
     <section class="content">
-      <div class="container-fluid">
 
-    <!-- Contenido de clientes Fineco -->
-    <div class="row">
-      <div class="col-12">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
 
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
-            <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
-            
-          </div>
-          
-          <!-- /.card-header -->
-          <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
 
-            <table id="clientes" class="table table-sm table-responsive table-hover ">
-              <thead>
-              <tr> 
-                <th>id</th>
-                <th>Primer Nombre</th>
-                <th>Segundo Nombre</th>                             
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>  
-                <th>Tipo</th>
-                <th>N° Documento</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Estado</th>
-                <th>Ocupación</th>
-                <th>Empresa</th>
-                <th>Fecha</th>
-              </tr>
-              </thead>
+                <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
+                
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
 
-              <tbody>              
-              </tbody>
-            </table>
+                <table id="clientes" class="table table-responsive table-hover  ">
+                    <thead>
+                    <tr> 
+                    <th>id</th>
+                    <th>Primer Nombre</th>
+                    <th>Segundo Nombre</th>                             
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Tipo de documento</th>
+                    <th>N° Documento</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Estado</th>
+                    <th>Ocupaciòn</th>
+                    <th>Empresa</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                
+                    </tr>
+                    </thead>
 
-          </div>
-          <!-- /.card-body -->
+                    <tbody class="text-lowercase">              
+                    </tbody>
+                </table>
+
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.card -->
-      </div>
-      <!-- /.col -->
+        <!-- /.row -->
     </div>
-    <!-- Fin de contenido de clientes Fineco -->
-
-      </div><!-- /.container-fluid -->
+        
     </section>
-    <!-- /.content -->
+    
   </div>
-<!-- /.content-wrapper -->
 
 <!--Modal para CRUD-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -214,17 +219,18 @@ include ('../recursos/header.php');
         </form>    
         </div>
     </div>
-</div>
+</div>  
+
+
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
-<script src="../dist/js/pages/dashboard.js"></script>
+<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <!-- DataTables  & Plugins -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -238,9 +244,11 @@ include ('../recursos/header.php');
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+<!-- Alertas Toastr  -->
+<script src="../plugins/toastr/toastr.min.js"></script>
 
 
 <!-- scrip personalizados -->
-<script src="../plugins/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="clientes.js"></script>  
-
