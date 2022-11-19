@@ -268,16 +268,12 @@
               <div class="form-group row mb-0">
                 <label for="dd1" class="col-3 col-form-label-sm">ASIGNACIÓN BÁSICA</label>
                 <div class="col-sm-3">
-                  <!-- <input type="text" class="form-control form-control-sm" id="typeNumber" placeholder="$ 0"> -->
-                  <!-- <input type="text" name="currency-field" id="dd1" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00"> -->
-                  <input type="number" id="credit" class="form-control input-md" placeholder="$" >
+                 <input type="number" maxIntegerDigits="3" id="C1" value="2316871.93" step="0.01" class="form-control form-control-sm" placeholder="$" >
                 </div>
               
                 <label for="2" class="col-3 col-form-label-sm">PENSIÓN - CASUR</label>
                 <div class="col-sm-3">
-                  <!-- <input type="text" class="form-control form-control-sm" id="typeNumber" placeholder="$ 0"> -->
-                  <!-- <input type="text" name="currency-field" id="dd2" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00"> -->
-                  <input type="number" id="interest" class="form-control input-md" placeholder="%">
+                 <input type="number" id="C2" value="120465.53" step="0.01" class="form-control form-control-sm" placeholder="$">
                 </div>
               </div>
 
@@ -285,85 +281,99 @@
                 <label for="dato1" class="col-3 col-form-label-sm">BONIFICACIÓN ASISTENCIA FAMILIAR</label>
                 <div class="col-sm-3">
                   <!-- <input type="text" class="form-control form-control-sm" id="datoa1" placeholder="$ 0"> -->
-                  <input type="number" id="period" class="form-control input-md" placeholder="$ 0">
+                  <input type="number" id="C3" value="805465.50" step="0.01" class="form-control form-control-sm" placeholder="$ 0">
                 </div>
               
                 <label for="EPS" class="col-3 col-form-label-sm">EPS</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="eps" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C4" value="92674.88" step="0.01" placeholder="$ 0">
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <label for="BONIFICACIÓN SEGURO DE VIDA" class="col-3 col-form-label-sm">BONIFICACIÓN SEGURO DE VIDA</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="s-vida" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C5" value="17311.00" placeholder="$ 0">
                 </div>
               
                 <label for="dato2" class="col-3 col-form-label-sm">CLUBAGESOSTE</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="CLUBAGESOSTE" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C6" value="11584.36" placeholder="$ 0">
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <label for="dato1" class="col-3 col-form-label-sm">DISTINCIÓN</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="distincion" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C7" value="-15292.27" placeholder="$ 0">
                 </div>
               
                 <label for="dato2" class="col-3 col-form-label-sm">SEGURO VOLUNT</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="seg-volunt" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C8" value="15500.00" placeholder="$ 0">
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <label for="dato1" class="col-3 col-form-label-sm">PRIMA NIVEL EJECUTIVO</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="prim-ejecutivo" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C9" value="463374.39" placeholder="$ 0">
                 </div>
               
                 <label for="dato2" class="col-3 col-form-label-sm">PAGADIBIE</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="pagadibie" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C10" value="4700.00" placeholder="$ 0">
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <label for="dato1" class="col-3 col-form-label-sm">PRIMA ORDEN PÚBLICO</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="dato1" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C11" value="347530.79" placeholder="$ 0">
                 </div>
               
                 <label for="dato2" class="col-3 col-form-label-sm">COORSERPACK</label>
                 <div class="col-sm-3">
-                  <input type="number" class="form-control form-control-sm" id="dato1" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C12" value="25339.00" placeholder="$ 0">
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <label for="dato1" class="col-3 col-form-label-sm">PRIMA RETORNO A LA EXPERIENCIA</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control form-control-sm" id="dato1" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C13" value="12158.29" placeholder="$ 0">
                 </div>
               
                 <label for="dato2" class="col-3 col-form-label-sm">BBVA</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control form-control-sm" id="dato1" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C14" value="1004795.00" placeholder="$ 0">
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <label for="dato1" class="col-3 col-form-label-sm">SUBSIDIO ALIMENTACIÓN</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control form-control-sm" id="dato1" placeholder="$ 0">
+                  <input type="number" class="form-control form-control-sm" id="C15" value="68658.00" placeholder="$ 0">
                 </div>
               
                 <label for="dato2" class="col-3 col-form-label-sm">PROEXEASCENCI</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control form-control-sm" id="dato1" placeholder="$">
+                  <input type="number" class="form-control form-control-sm" id="C16" value="" placeholder="$">
                 </div>
+
+              </div>
+
+              <div class="form-group row mb-0">
+                <label for="dato1" class="col-3 col-form-label-sm"></label>
+                <div class="col-sm-3">
+                  <input type="hidden" class="form-control form-control-sm" id="" placeholder="$ 0">
+                </div>
+              
+                <label for="dato2" class="col-3 col-form-label-sm">SEGURO PONAL</label>
+                <div class="col-sm-3">
+                  <input type="number" class="form-control form-control-sm" id="C18" value="17311.00" placeholder="$">
+                </div>
+                
               </div>
 
               <div id="answer">
@@ -371,19 +381,19 @@
 							<tbody>
 								<tr>
 									<td>TOTAL DEVENGADOS</td>
-									<td id="summ">0</td>	
+									<td id="devengados">0</td>	
 								</tr>
 								<tr>
 									<td>TOTAL DEDUCIDOS</td>
-									<td id="payment">0</td>
+									<td id="tdeducidos">0</td>
 								</tr>
 								<tr>
 									<td>VALOR MÁXIMO</td>
-									<td id="totalSumm">0</td>
+									<td id="maximo">0</td>
 								</tr>
                 <tr>
 									<td>CUPO LIBRE INVERSIÓN</td>
-									<td id="totalLibrei">0</td>
+									<td id="cupo">0</td>
 								</tr>
 							</tbody>
 						</table>					
@@ -396,21 +406,62 @@
 
                 $(document).ready(function() {
                 $("#calc").click(function() {
-                  var credit = $("#credit").val();
-                  var period = $("#period").val(); // количество платежных периодов, месяцев
-                  var interestRate = $("#interest").val() / 100; //процент по займу
+                  var C1 = $("#C1").val();
+                  var C1 = Number(C1);
+                  var C2 = $("#C2").val(); // количество платежных периодов, месяцев
+                  var C2 = Number(C2);
+                  var C3 = $('#C3').val();
+                  var C3 = Number(C3);
+                  var C4 = $('#C4').val();
+                  var C4 = Number(C4);
+                  var C5 = $('#C5').val();
+                  var C5 = Number(C5);
+                  var C6 = $('#C6').val();
+                  var C6 = Number(C6);
+                  var C7 = $('#C7').val();
+                  var C7 = Number(C7);
+                  var C8 = $('#C8').val();
+                  var C8 = Number(C8);
+                  var C9 = $('#C9').val();
+                  var C9 = Number(C9);
+                  var C10 = $('#C10').val();
+                  var C10 = Number(C10);
+                  var C11 = $('#C11').val();
+                  var C11 = Number(C11);
+                  var C12 = $('#C12').val();
+                  var C12 = Number(C12);
+                  var C13 = $('#C13').val();
+                  var C13 = Number(C13);
+                  var C14 = $('#C14').val();
+                  var C14 = Number(C14);
+                  var C15 = $('#C15').val();
+                  var C15 = Number(C15);
+                  var C16 = $('#C16').val();
+                  var C16 = Number(C16);
+                  var C18 = $('#C18').val();
+                  var C18 = Number(C18);
+                  //var pension = $("#pension").val() / 100; //процент по займу
 
-                  if (credit > 0 && period > 0 && interestRate > 0) {
-                    var payment; //ежемесячный платеж
-                    var paymentDecimal;
-                    payment = (interestRate / 12 * credit) / (1 - Math.pow((1 + interestRate / 12),(-period)));
+                  if (C1 > 0 && C2 > 0 && C3 > 0 && C4 > 0 && C5 > 0 && C6 > 0 ) {
+                    var devengados; //ежемесячный платеж
+                    var deducidos;
+                    var maximo;
+                    var cupo;
+                    devengados = (C1 + C3 + C5 + C7 + C9 + C11 + C13 + C15 );
+                    //devengados = Math.floor(devengados);
+                    deducidos = (C2 + C4 + C6 + C8 + C10 + C12 + C14 + C16 + C18 );
+                    //deducidos = Math.floor(deducidos);
+                    maximo = (devengados - C3 - C5 - C2 - C4 ) / 2;
+                    //payment = (pension / 12 * asignacion) / (1 - Math.pow((1 + pension / 12),(-BonAsFam)));
+                    cupo = (maximo - C6 - C8 - C10 - C12 - C14 - C16 - C18);
                   //	payment = Math.floor(payment);
-                    $("#summ").text(credit);
-                    $("#payment").text(payment.toFixed(2));
-                    $("#totalSumm").text((payment * period).toFixed(2));
-                    $("#totalLibrei").text((payment * period).toFixed(2));
+                    $("#devengados").text(devengados.toFixed(2));
+                    $("#tdeducidos").text(deducidos.toFixed(2));
+                    //$("#maximo").text((deducidos * deducidos).toFixed(2));
+                    $("#maximo").text(maximo.toFixed(2));
+                    $("#cupo").text(cupo.toFixed(2));
                   } else {
-                    alert("Введите числа больше ноля");
+                    alert("Introduzca números mayores que cero");
                   }
                 });
 
@@ -420,6 +471,7 @@
 
 
             <button type="button" class="btn btn-primary" id="calc">Calcular</button>
+            <button type="button" class="btn btn-success" id="calc">Guardar</button>
             <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
         </form>
           </div>
