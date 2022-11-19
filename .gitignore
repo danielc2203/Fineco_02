@@ -4,11 +4,11 @@ config.php
 
 # Ignore all files with the specified extension.
 # Scope is all repo folders.
-*.json
+#*.json
 
 # Add an exception so as to not ignore a file with the specified name.
 # Scope is all repo folders.
-#!package.json
+!package.json
 
 # Ignore a file with the specified name.
 # Scoped to the 'logs' subfolder.
