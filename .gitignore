@@ -8,7 +8,7 @@ config.php
 
 # Add an exception so as to not ignore a file with the specified name.
 # Scope is all repo folders.
-!package.json
+#!package.json
 
 # Ignore a file with the specified name.
 # Scoped to the 'logs' subfolder.
