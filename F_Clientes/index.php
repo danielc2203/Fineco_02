@@ -222,7 +222,7 @@
                     <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Fecha nacimiento:</label>
-                    <input type="mail" class="form-control " id="fechaNacimiento">
+                    <input type="date" class="form-control " id="fecha_nacimiento">
                     </div>
                     </div>
                     <div class="col-lg-6">
