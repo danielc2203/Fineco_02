@@ -28,7 +28,7 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 switch($opcion){
     case 1:
         $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion) 
-        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha') ";			
+        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
