@@ -71,7 +71,7 @@
                     <th>Telefono</th>
                     <th>Estado</th>
                     <th>Ocupaciòn</th>
-                    <th>Empresa</th>
+                    <th>Convenio</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -185,14 +185,21 @@
                     <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Ocupación</label>
-                    <input type="text" class="form-control " id="ocupacion">
+                    <select class="custom-select" id="ocupacion">
+                      <option selected>Seleccionar...</option>
+                      <option value="Fineco">Pensionado</option>
+                      <option value="Armada">Docente</option>
+                      <option value="Policia">Policia</option>
+                      <option value="Fiscalia">Fuerzas Armadas</option>
+                      <option value="Empleado">Empleado</option>
+                    </select>
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Empresa:</label>
+                    <label for="" class="col-form-label">Convenio:</label>
                     <select class="custom-select" id="empresa">
                       <option selected>Seleccionar...</option>
                       <option value="Fineco">Fineco</option>

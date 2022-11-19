@@ -23,7 +23,7 @@ $(document).ready(function() {
                 buttons: ["copy", "csv", "excel", "pdf", "print"],                
             },
 
-        //"dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
+        "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
 
         "responsive": false, "lengthChange": false, "autoWidth": false,
 
@@ -46,12 +46,12 @@ $(document).ready(function() {
             {"data": "estado"},
             {"data": "ocupacion"},
             {"data": "empresa"},
-            {"data": "fecha_incorporacion"},
+            //{"data": "fecha_incorporacion"},
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-            {"defaultContent": "<a class='btn btn-outline-success openVer'><i class='fas fa-eye'></i></a>"},
-            {"defaultContent": "<a class='btn btn-outline-warning btnEditar'><i class='fas fa-edit'></i></a>"},
-            {"defaultContent": "<a class='btn btn-outline-danger btnBorrar '><i class='fas fa-eraser'></i></a>"}
+            {"defaultContent": "<a class='btn btn-outline-success btn-sm openVer'><i class='fas fa-eye'></i></a>"},
+            {"defaultContent": "<a class='btn btn-outline-warning btn-sm btnEditar'><i class='fas fa-edit'></i></a>"},
+            {"defaultContent": "<a class='btn btn-outline-danger btn-sm btnBorrar '><i class='fas fa-eraser'></i></a>"}
     
         ],
         
