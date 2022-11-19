@@ -8,20 +8,25 @@ $(document).ready(function() {
     
     tablaUsuarios = $('#clientes').DataTable({
 
+
+            
+
         language: {
-            lengthMenu: 'Display _MENU_ records per page',
-            zeroRecords: 'Nothing found - sorry',
-            info: 'Showing page _PAGE_ of _PAGES_',
-            infoEmpty: 'No records available',
-            infoFiltered: '(filtered from _MAX_ total records)',
-            search: "Buscar:",
-            Copy: "Copiar",
+            url: '../dist/json/es-CO_DataTables.json',
+
         },
 
+
+            
         "dom": 'lBfrtip',
             buttons: {
-                buttons: ["copy", "csv", "excel", "pdf", "print"],                
+                buttons: ['pageLength', "copy", "excel", "pdf", "print"],                
             },
+            lengthMenu: [
+                [ 5, 10, 25, 50, -1 ],
+                [ '5 Filas','10 Filas', '25 Filas', '50 Filas', 'Ver Todos' ]
+            ],
+
 
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
 
