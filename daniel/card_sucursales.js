@@ -67,7 +67,7 @@ $(document).ready(function() {
     //submit para el Alta y Actualización
     $('#datosbancos').submit(function(e){                         
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-        nombre = (value.nombre);
+        
         num_cuenta = $.trim($('#num_cuenta').val());    
         tipo_cuenta = $.trim($('#tipo_cuenta').val());    
         estado_cuenta = $.trim($('#estado_cuenta').val());
@@ -98,37 +98,88 @@ $(document).ready(function() {
         $("#formModal").trigger("reset");
         $(".modal-header").css( "background-color", "#17a2b8");
         $(".modal-header").css( "color", "white" );
-        $(".modal-title").text("Nuevo Registro");
-        $('#modalCRUD').modal('show');
+        $(".modal-title").text("Nuevo Banco");
+        $('#formModal').modal('show');
     });
     
     //Editar        
-    $(document).on("click", ".btnEditar", function(){		        
-        opcion = 2;//editar
-        fila = $(this).closest("tr");	        
-        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
+    $(document).on("click", ".btnEditar", function(){
+        
+       
 
-        fecha = fila.find('td:eq(1)').text();
-        descripcion = fila.find('td:eq(2)').text();
-        sucursal = fila.find('td:eq(3)').text();
-        dcto = fila.find('td:eq(4)').text();
-        tdocumento = fila.find('td:eq(5)').text();
-        saldo = fila.find('td:eq(6)').text();
-        id_banco = fila.find('td:eq(7)').text();
+            var $this 		    = $(this); //submit button selector using ID
+            var $caption        = $this.html(id);// We store the html content of the submit button
+            var form 			= "#formModal"; //defined the #form ID
+            //var formData        = $(form).serializeArray(); //serialize the form into array
+            //var route 			= $(form).attr('action'); //get the route using attribute action
+            opcion = 2;//editar
+
+           var num_cuenta = $.trim($('#id').val()); 
+           alert($caption);
+    
+            // // Ajax config
+            // $.ajax({
+            //     //type: "POST", //we are using POST method to submit the data to the server side
+            //     //url: route, // get the route value
+            //     data: formData, // our serialized array data for server side
+            //     beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
+            //         $this.attr('disabled', true).html("Processing...");
+            //     },
+            //     success: function (response) {//once the request successfully process to the server side it will return result here
+            //        // $this.attr('disabled', false).html($caption);
+    
+            //         // Reload lists of employees
+            //         //sucursales();
+    
+            //         // We will display the result using alert
+            //         // Swal.fire({
+            //         //   icon: 'success',
+            //         //   title: 'Actualizada.',
+            //         //   text: response
+            //         // });
+    
+            //         // Reset form
+            //         //resetForm(form);
+    
+            //         // Close modal
+            //         //$('#formModal').modal('toggle');
+            //     },
+            //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //         // You can put something here if there is an error from submitted request
+            //     }
+            // });
+        
+        
+        //fila = $(this).closest("tr");	        
+        //id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
+        //id = $request['id'];
+        //nombre = (value.nombre);
+        //alert(nombre);
+
+        //$id = $request['id']; 
+        //$nombre = $request['nombre'];
+
+        // fecha = fila.find('td:eq(1)').text();
+        // descripcion = fila.find('td:eq(2)').text();
+        // sucursal = fila.find('td:eq(3)').text();
+        // dcto = fila.find('td:eq(4)').text();
+        // tdocumento = fila.find('td:eq(5)').text();
+        // saldo = fila.find('td:eq(6)').text();
+        // id_banco = fila.find('td:eq(7)').text();
 
 
-        $("#fecha").val(fecha);
-        $("#descripcion").val(descripcion);
-        $("#sucursal").val(sucursal);
-        $("#dcto").val(dcto);
-        $("#tdocumento").val(tdocumento);
-        $("#saldo").val(saldo);
-        $("#id_banco").val(id_banco);
+        //$("#nombre").val(nombre);
+        // $("#descripcion").val(descripcion);
+        // $("#sucursal").val(sucursal);
+        // $("#dcto").val(dcto);
+        // $("#tdocumento").val(tdocumento);
+        // $("#saldo").val(saldo);
+        // $("#id_banco").val(id_banco);
 
 
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
-        $(".modal-title").text("Editar banco");		
+        $(".modal-title").text("Editar bancosss");		
         $('#formModal').modal('show');		   
     });
     

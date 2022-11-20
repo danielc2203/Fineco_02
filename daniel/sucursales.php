@@ -37,6 +37,8 @@ switch($opcion){
         break;    
     case 2:        
         $consulta = "UPDATE bancos SET nombre='$nombre', num_cuenta='$num_cuenta', tipo_cuenta='$tipo_cuenta', estado_cuenta='$estado_cuenta', contacto_cuenta='$contacto_cuenta', logo_banco='$logo_banco' WHERE id='$id' ";		
+        echo '<script>alert("Daniel" $nombre)</script>';
+        $id = $request['id'];
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
