@@ -104,37 +104,10 @@
             <div class="row">
 
               <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column"></div>
-
+              
               <div class="col-12 col-sm-6 col-md-6 d-flex flex-column">
                 <div class="card bg-light d-flex flex-fill" id="contenido_sucursales">
-                  <div class="card-header text-center" >
-                    <!-- <h2>BanColombia</h2> -->
-                  </div>
-                  <div class="card-body pt-0">
-                    <div class="row">
-                      <div class="col-7">
-                        <h2 class="lead"><b>Datos de la cuenta</b></h2>
-                        <p class="text-muted text-sm"><b>N° de Cuenta: </b> 123-4567-890 / Cuenta Corriente / </p>
-                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                          <li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: Activa </li>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: + 601 - 12 12 23 52</li>
-                        </ul>
-                      </div>
-                      <div class="col-5 text-center">
-                        <img src="../dist/img/Bancos/Bancolombia.jpg" alt="Bancolombia" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer class="tools"">
-                    <div class="text-right">
-                      <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#bancoModal-cards">
-                        <i class="far fa-address-card"></i>
-                      </a>
-                    </div>
-                  </div>
+                  <!-- Contenido de los bancos -->
                 </div>
               </div>
 
@@ -150,64 +123,66 @@
     
   </div>
 
-  <!-- Modal de Bancos vista de tarjetas cards-->
-<div class="modal fade" id="bancoModal-cards" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detalles de la cuenta bancaria / <span style="font-weight:bold; color:darkgreen">FINECO</span> </h5> 
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#formModal">
+  Launch
+</button>
 
-        <div class="row" id="contenido">
-            <!-- Contenido desde JavaScript -->
+<!-- Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Editar Datos del Banco</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+
+          <form id="datosbancos" method="post">
+
+          <div class="form-group">
+            <label for="">Nombre del banco</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre Banco">
+          </div>
+
+          <div class="form-group">
+            <label for="">num_cuenta</label>
+            <input type="text" class="form-control" name="num_cuenta" id="num_cuenta" placeholder="num_cuenta">
+          </div>
+
+          <div class="form-group">
+            <label for="">tipo_cuenta</label>
+            <input type="text" class="form-control" name="tipo_cuenta" id="tipo_cuenta" placeholder="tipo_cuenta">
+          </div>
+
+          <div class="form-group">
+            <label for="">estado_cuenta</label>
+            <input type="text" class="form-control" name="estado_cuenta" id="estado_cuenta" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="">contacto_cuenta</label>
+            <input type="text" class="form-control" name="contacto_cuenta" id="contacto_cuenta" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="">logo_banco</label>
+            <input type="file" class="form-control-file" name="logo_banco" id="logo_banco" >
+          </div>
+
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
+      </div>
+        
+          </form>
+
         </div>
-
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- Modal de Bancos-->
-<div class="modal fade" id="bancoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detalles de la cuenta bancaria / <span style="font-weight:bold; color:darkgreen">FINECO</span> </h5> 
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table id="movimientosf" class="table table-bordered table-striped table-responsive-xl table-condensed">
-            <thead>
-            <tr> 
-              <th>id</th>
-              <th>Fecha</th>                                
-              <th>Descripción</th>  
-              <th>Sucursal</th>
-              <th>Descuento</th>
-              <th>Valor</th>
-              <th>Saldo</th>
-            </tr>
-            </thead>
-
-            <tbody>              
-            </tbody>
-          </table>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
+      
     </div>
   </div>
 </div>

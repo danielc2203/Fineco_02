@@ -1,53 +1,61 @@
 $(document).ready(function() {
     var id, opcion;
-    opcion = 1;
-    
-    $(document).ready(function () {
-        $('#clientes').DataTable;
+    opcion = 4;
+
+    $.ajax({
+        url: "sucursales.php",
+        //type: "GET", //we are using GET method to get all record from the server
+        method: 'POST', //usamos el metodo POST
+        data:{opcion:opcion}, //enviamos opcion 1 para que haga un SELECT
+
+        success: function (response) {//once the request successfully process to the server side it will return result here
+            
+            // Parse the json result
+        	response = JSON.parse(response);
+
+
+            var html = "";
+			
+            // Check if there is available records
+            if(response.length) {
+	            // Loop the parsed JSON
+	            $.each(response, function(key,value) {
+
+
+                        html += '<div class="card-header text-center" > <h2>'+ value.nombre +'</h2> </div>'
+
+
+	            });
+            } else {
+				html += '<div class="alert alert-warning">';
+				html += 'No records found!';
+            }
+
+            // Insert the HTML Template and display all employee records
+			$("#contenido_sucursales").html(html);
+        }
     });
     
-    tablaUsuarios = $('#movimientosf').DataTable({
 
-        language: {
-            url: '../dist/json/es-CO_DataTables.json',
-        },
 
-        "dom": 'lBfrtip',
-            buttons: {
-                buttons: ['pageLength', "copy", "csv", "excel", "pdf", "print"],                
-            },
-            lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5 Filas','10 Filas', '25 Filas', '50 Filas', 'Ver Todos' ]
-            ],
 
-        //"dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
+    //     "columns":[
+    //         {"data": "id"},
+    //         {"data": "fecha"},
+    //         {"data": "descripcion"},
+    //         {"data": "sucursal"},
+    //         {"data": "dcto"}, 
+    //         {"data": "valor"},
+    //         {"data": "saldo"},
+    //         //{"data": "id_banco"},
 
-        "responsive": false, "lengthChange": false, "autoWidth": false,
-
-        "ajax":{            
-            "url": "crud.php", 
-            "method": 'POST', //usamos el metodo POST
-            "data":{opcion:opcion}, //enviamos opcion 1 para que haga un SELECT
-            "dataSrc":""
-        },
-        "columns":[
-            {"data": "id"},
-            {"data": "fecha"},
-            {"data": "descripcion"},
-            {"data": "sucursal"},
-            {"data": "dcto"}, 
-            {"data": "valor"},
-            {"data": "saldo"},
-            //{"data": "id_banco"},
-
-            // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-            // {"defaultContent": "<a class='btn btn-outline-success openVer'><i class='fas fa-eye'></i></a>"}
+    //         // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
+    //         // {"defaultContent": "<a class='btn btn-outline-success openVer'><i class='fas fa-eye'></i></a>"}
             
     
-        ],
+    //     ],
         
-    })
+    // })
 
     
     var fila; //captura la fila, para editar o eliminar

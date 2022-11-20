@@ -225,12 +225,12 @@
                     <input type="date" class="form-control " id="fecha_nacimiento">
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Télefono</label>
                     <input type="phone" class="form-control " id="telefono">
                     </div> 
-                    </div>    
+                    </div>     -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -262,6 +262,7 @@
 <script src="../plugins/jszip/jszip.min.js"></script>
 <script src="../plugins/pdfmake/pdfmake.min.js"></script>
 <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>

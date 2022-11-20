@@ -7,16 +7,10 @@ $(document).ready(function() {
     });
     
     tablaUsuarios = $('#clientes').DataTable({
-
-
-            
-
+        
         language: {
             url: '../dist/json/es-CO_DataTables.json',
-
         },
-
-
             
         "dom": 'lBfrtip',
             buttons: {
@@ -52,6 +46,8 @@ $(document).ready(function() {
             {"data": "ocupacion"},
             {"data": "empresa"},
             {"data": "fecha_incorporacion"},
+            {"data": "fecha_nacimiento"},
+            
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
             {"defaultContent": "<a class='btn btn-outline-success btn-sm openVer'><i class='fas fa-eye'></i></a>"},
@@ -79,12 +75,14 @@ $(document).ready(function() {
         estado = $.trim($('#estado').val());
         ocupacion = $.trim($('#ocupacion').val());
         empresa = $.trim($('#empresa').val());
-        fecha_incorporacion = $.trim($('#fecha_incorporacion').val());                          
+        fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
+        fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
+                                 
             $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion ,opcion:opcion},    
+              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion,fecha_nacimiento:fecha_nacimiento, opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
@@ -125,6 +123,7 @@ $(document).ready(function() {
         ocupacion = fila.find('td:eq(10)').text();
         empresa = fila.find('td:eq(11)').text();
         fecha_incorporacion = fila.find('td:eq(12)').text();
+        fecha_nacimiento = fila.find('td:eq(13)').text();
 
         $("#primer_nombre").val(primer_nombre);
         $("#segundo_nombre").val(segundo_nombre);
@@ -138,6 +137,7 @@ $(document).ready(function() {
         $("#ocupacion").val(ocupacion);
         $("#empresa").val(empresa);
         $("#fecha_incorporacion").val(fecha_incorporacion);
+        $("#fecha_nacimiento").val(fecha_nacimiento);
 
 
         $(".modal-header").css("background-color", "#007bff");
@@ -146,38 +146,7 @@ $(document).ready(function() {
         $('#modalCRUD').modal('show');		   
     });
     
-    //Borrar
-    $(document).on("click", ".btnBorrarss", function(){
-        fila = $(this);           
-        id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
-        nombres = $(this).closest("tr").find('td:eq(1)').text();	// Nombre de Usuario
-        opcion = 3; //eliminar   
-        
-        var respuesta = confirm("¿Está seguro de borrar el registro " +id+ " del usuario " +nombres+"?");                
-        if (respuesta) {   
-            $.ajax({
-              url: "crud.php",
-              type: "POST",
-              datatype:"json",    
-              data:  {opcion:opcion, id:id},    
-              success: function() {
-                  tablaUsuarios.row(fila.parents('tr')).remove().draw();                  
-               }
-            });	
-    
-            $(function() {
-                toastr.success('Se ha eliminado el registro correctamente')
-              });
-        }else{
-            $(function() {
-                toastr.info('Se ha cancelado la acción')
-              });
-        }
-     });
-         
-    });
-
-    //Borrar 2
+    //Borrar con Swal2
 	$(document).delegate(".btnBorrar", "click", function() {
 
         fila = $(this);           
@@ -218,3 +187,4 @@ $(document).ready(function() {
             });
         });
 
+});
