@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Base de datos: `finecoapp`
 --
 
--- --------------------------------------------------------
+-- --------------------------------------------------------usuarios
 
 --
 -- Estructura de tabla para la tabla `bancos`

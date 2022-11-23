@@ -43,6 +43,7 @@
 
     <section class="content">
 
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -72,7 +73,7 @@
                     <th>Estado</th>
                     <th>Ocupaciòn</th>
                     <th>Convenio</th>
-                    <th></th>
+                    <th>Fecha</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -218,20 +219,6 @@
                     </div> 
                     </div>    
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Fecha nacimiento:</label>
-                    <input type="date" class="form-control " id="fecha_nacimiento">
-                    </div>
-                    </div>
-                    <!-- <div class="col-lg-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Télefono</label>
-                    <input type="phone" class="form-control " id="telefono">
-                    </div> 
-                    </div>     -->
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -241,6 +228,30 @@
         </div>
     </div>
 </div>  
+
+
+<!-- Modal Ver Clientes-->
+<div class="modal fade" id="VerClientes" tabindex="-1" aria-labelledby="VerClientes" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="VerClientes">Este es el modal de otra pagina</h5>
+        <h1 id="primer_nombre" aria-valuetext="ok"></h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="contenido_cliente">
+      <!-- información del modal -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- footer -->

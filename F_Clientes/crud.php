@@ -19,7 +19,7 @@ $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $ocupacion = (isset($_POST['ocupacion'])) ? $_POST['ocupacion'] : '';
 $empresa = (isset($_POST['empresa'])) ? $_POST['empresa'] : '';
 $fecha = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_incorporacion'] : '';
-$fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
+//$fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -28,8 +28,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento) 
-        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha', '$fecha_nacimiento) ";			
+        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion) 
+        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -49,12 +49,18 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
-        $consulta = "DELETE FROM clientes WHERE id='$id' ";		
+        $consulta = "DELETE FROM clientes WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();                         
         break;
     case 4:    
         $consulta = "SELECT * FROM clientes";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 5:
+        $consulta = "SELECT * FROM clientes WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

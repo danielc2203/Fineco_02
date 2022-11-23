@@ -46,13 +46,12 @@ $(document).ready(function() {
             {"data": "ocupacion"},
             {"data": "empresa"},
             {"data": "fecha_incorporacion"},
-            {"data": "fecha_nacimiento"},
             
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-            {"defaultContent": "<a class='btn btn-outline-success btn-sm openVer'><i class='fas fa-eye'></i></a>"},
-            {"defaultContent": "<a class='btn btn-outline-warning btn-sm btnEditar'><i class='fas fa-edit'></i></a>"},
-            {"defaultContent": "<a class='btn btn-outline-danger btn-sm btnBorrar '><i class='fas fa-eraser'></i></a>"}
+            {"defaultContent": "<a class='btn btn-outline-success btn-sm VerCliente'><i class='fas fa-eye'></i></a>"},
+            // {"defaultContent": "<a class='btn btn-outline-warning btn-sm btnEditar'><i class='fas fa-edit'></i></a>"},
+            //{"defaultContent": "<a class='btn btn-outline-danger btn-sm btnBorrar '><i class='fas fa-eraser'></i></a>"}
     
         ],
         
@@ -76,13 +75,12 @@ $(document).ready(function() {
         ocupacion = $.trim($('#ocupacion').val());
         empresa = $.trim($('#empresa').val());
         fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
-        fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
                                  
             $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion,fecha_nacimiento:fecha_nacimiento, opcion:opcion},    
+              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
@@ -105,6 +103,83 @@ $(document).ready(function() {
         $('#modalCRUD').modal('show');
     });
     
+    //Ver Cliente 
+    $(document).on("click", ".VerCliente", function cliente(){
+
+        fila = $(this);           
+        var id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
+        const cliente_id = id;
+
+        //alert(id);
+        opcion = 5; //alta
+
+        $.ajax({
+            url: "crud.php",
+            type: "POST",
+            datatype:"json",    
+            data: {opcion:opcion, id:id}, 
+
+            success: function (response) {//once the request successfully process to the server side it will return result here
+            
+                // Parse the json result
+                response = JSON.parse(response);
+    
+                var html = "";
+                
+                // Check if there is available records
+                if(response.length) {
+                    // Loop the parsed JSON
+                    $.each(response, function(key,value) {
+    
+                            html += '<div class="card-header text-center" > <h2>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h2> </div>'
+    
+                            html += '<div class="card-body pt-0">'
+                                html += '<div class="row">'
+                                    html += '<div class="col-12">'
+                                        html += '<p class="text-muted text-sm" name="ida" id="ida"><b>Tipo de documento: </b> '+ value.tipo_documento +' </p>'
+                                        html += '<p class="text-muted text-sm"><b>Número de documento: </b> '+ value.num_documento +' </p>'
+                                        html += '<p class="text-muted text-sm"><b>Correo electronico: </b> '+ value.correo_electronico +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Número de contacto: </b> '+ value.telefono +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Estado: </b> '+ value.estado +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Ocupación: </b> '+ value.ocupacion +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Empresa: </b> '+ value.empresa +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Fecha de registro: </b> '+ value.fecha_incorporacion +'</p>'
+       
+                                    html += '</div>'
+
+                                html += '</div>'
+                            html += '</div>'
+    
+                            html += '<div class="card-footer">'
+                                html += '<div class="text-right">'
+                                // html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-eye"></i></a>'
+                                html += '<a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#formModal"><i class="fas fa-edit"></i></a>'
+                                html += '<a class="btn btn-outline-danger btn-sm btnBorrar " id='+ value.id +'>'+ value.id +'<i class="fas fa-eraser"></i>'
+                                html += '</div>'
+                            html += '</div>'
+    
+    
+                    });
+                } else {
+                    html += '<div class="alert alert-warning">';
+                    html += 'No records found!';
+                }
+    
+                // Insert the HTML Template and display all employee records
+                $("#contenido_cliente").html(html);
+            }
+            
+
+          });
+
+       // $("#detalles-clientes").trigger("reset");
+        $(".modal-header").css( "background-color", "#17a2b8");
+        $(".modal-header").css( "color", "white" );
+        $(".modal-title").text("Datos del Cliente");
+        $('#VerClientes').modal('show');
+        
+    });
+    
     //Editar        
     $(document).on("click", ".btnEditar", function(){		        
         opcion = 2;//editar
@@ -123,7 +198,6 @@ $(document).ready(function() {
         ocupacion = fila.find('td:eq(10)').text();
         empresa = fila.find('td:eq(11)').text();
         fecha_incorporacion = fila.find('td:eq(12)').text();
-        fecha_nacimiento = fila.find('td:eq(13)').text();
 
         $("#primer_nombre").val(primer_nombre);
         $("#segundo_nombre").val(segundo_nombre);
@@ -137,21 +211,22 @@ $(document).ready(function() {
         $("#ocupacion").val(ocupacion);
         $("#empresa").val(empresa);
         $("#fecha_incorporacion").val(fecha_incorporacion);
-        $("#fecha_nacimiento").val(fecha_nacimiento);
 
 
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		
-        $('#modalCRUD').modal('show');		   
+        $('#modalCRUD').modal('show');
+        var t = $(this).attr('id'); 	   
     });
     
     //Borrar con Swal2
 	$(document).delegate(".btnBorrar", "click", function() {
 
-        fila = $(this);           
-        id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
-        nombres = $(this).closest("tr").find('td:eq(1)').text();	// Nombre de Usuario
+        var id = $(this).attr('id'); // Pasamos el id del modal a la funcion borrar desde el boton
+        //alert(id);
+        
+
         opcion = 3; //eliminar   
 
             Swal.fire({
@@ -163,6 +238,8 @@ $(document).ready(function() {
             }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
+                
+                $('#VerClientes').modal('toggle')
 
                 $.ajax({
                     url: "crud.php",
