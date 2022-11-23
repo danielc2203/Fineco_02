@@ -108,7 +108,7 @@ $(document).ready(function() {
 
         fila = $(this);           
         var id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
-        const cliente_id = id;
+        //const cliente_id = id;
 
         //alert(id);
         opcion = 5; //alta
@@ -144,6 +144,8 @@ $(document).ready(function() {
                                         html += '<p class="text-muted text-sm"><b>Ocupación: </b> '+ value.ocupacion +'</p>'
                                         html += '<p class="text-muted text-sm"><b>Empresa: </b> '+ value.empresa +'</p>'
                                         html += '<p class="text-muted text-sm"><b>Fecha de registro: </b> '+ value.fecha_incorporacion +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Fecha de nacimiento: </b> '+ value.fecha_nacimiento +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Fecha de nacimiento: </b> '+ value.direccion_residencia +'</p>'
        
                                     html += '</div>'
 
@@ -153,7 +155,8 @@ $(document).ready(function() {
                             html += '<div class="card-footer">'
                                 html += '<div class="text-right">'
                                 // html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-eye"></i></a>'
-                                html += '<a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#formModal"><i class="fas fa-edit"></i></a>'
+                                //html += '<a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#formModal"><i class="fas fa-edit"></i></a>'
+                                html += '<a class="btn btn-outline-danger btn-sm btnEditar " id='+ value.id +'>'+ value.id +'<i class="fas fa-edit"></i>'
                                 html += '<a class="btn btn-outline-danger btn-sm btnBorrar " id='+ value.id +'>'+ value.id +'<i class="fas fa-eraser"></i>'
                                 html += '</div>'
                             html += '</div>'
@@ -181,43 +184,69 @@ $(document).ready(function() {
     });
     
     //Editar        
-    $(document).on("click", ".btnEditar", function(){		        
-        opcion = 2;//editar
-        fila = $(this).closest("tr");	        
-        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
+    $(document).on("click", ".btnEditar", function(){	
+        $('#VerClientes').modal('toggle')	        
+        opcion = 5;//editar
+        //fila = $(this).closest("tr");
+        var id = $(this).attr('id');
+        alert(id);
+        //id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
 
-        primer_nombre = fila.find('td:eq(1)').text();
-        segundo_nombre = fila.find('td:eq(2)').text();
-        primer_apellido = fila.find('td:eq(3)').text();
-        segundo_apellido = fila.find('td:eq(4)').text();
-        tipo_documento = fila.find('td:eq(5)').text();
-        num_documento = fila.find('td:eq(6)').text();
-        correo_electronico = fila.find('td:eq(7)').text();
-        telefono = fila.find('td:eq(8)').text();
-        estado = fila.find('td:eq(9)').text();
-        ocupacion = fila.find('td:eq(10)').text();
-        empresa = fila.find('td:eq(11)').text();
-        fecha_incorporacion = fila.find('td:eq(12)').text();
+        $.ajax({
+            url: "crud.php",
+            type: "POST",
+            datatype:"json",    
+            data: {opcion:opcion, id:id}, 
 
-        $("#primer_nombre").val(primer_nombre);
-        $("#segundo_nombre").val(segundo_nombre);
-        $("#primer_apellido").val(primer_apellido);
-        $("#segundo_apellido").val(segundo_apellido);
-        $("#tipo_documento").val(tipo_documento);
-        $("#num_documento").val(num_documento);
-        $("#correo_electronico").val(correo_electronico);
-        $("#telefono").val(telefono);
-        $("#estado").val(estado);
-        $("#ocupacion").val(ocupacion);
-        $("#empresa").val(empresa);
-        $("#fecha_incorporacion").val(fecha_incorporacion);
+        success: function (response) {//once the request successfully process to the server side it will return result here
+            
+            // Parse the json result
+            response = JSON.parse(response);
+            var html = "";
+            
+            // Check if there is available records
+            if(response.length) {
+                // Loop the parsed JSON
+                $.each(response, function(key,value) {
 
+                    
+                    
+                    $("#primer_nombre").val(value.primer_nombre);
+                    $("#segundo_nombre").val(value.segundo_nombre);
+                    $("#primer_apellido").val(value.primer_apellido);
+                    $("#segundo_apellido").val(value.segundo_apellido);
+                    $("#tipo_documento").val(value.tipo_documento);
+                    $("#num_documento").val(value.num_documento);
+                    $("#correo_electronico").val(value.correo_electronico);
+                    $("#telefono").val(value.telefono);
+                    $("#estado").val(value.estado);
+                    $("#ocupacion").val(value.ocupacion);
+                    $("#empresa").val(value.empresa);
+                    $("#fecha_incorporacion").val(value.fecha_incorporacion);
 
+                });
+            } else {
+                html += '<div class="alert alert-warning">';
+                html += 'No records found!';
+            }
+
+            // Insert the HTML Template and display all employee records
+            $("#contenido_cliente").html(html);
+        }
+        
+
+      });
+
+        
+        //segundo_nombre = fila.find('td:eq(2)').text();
+        //$("#primer_nombre").val(primer_nombre);
+        
+        $("#formModal").trigger("reset");
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		
         $('#modalCRUD').modal('show');
-        var t = $(this).attr('id'); 	   
+        //var t = $(this).attr('id'); 	   
     });
     
     //Borrar con Swal2
@@ -225,8 +254,6 @@ $(document).ready(function() {
 
         var id = $(this).attr('id'); // Pasamos el id del modal a la funcion borrar desde el boton
         //alert(id);
-        
-
         opcion = 3; //eliminar   
 
             Swal.fire({
