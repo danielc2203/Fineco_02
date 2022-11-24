@@ -111,6 +111,7 @@
         <form id="formModal">    
             <div class="modal-body">
                 <div class="row">
+                    <input type="hidden" id="id_cliente" value="">
                     <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Primer Nombre:</label>

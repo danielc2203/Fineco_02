@@ -153,11 +153,11 @@ $(document).ready(function() {
                             html += '</div>'
     
                             html += '<div class="card-footer">'
-                                html += '<div class="text-right">'
+                                html += '<div class="">'
                                 // html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-eye"></i></a>'
                                 //html += '<a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#formModal"><i class="fas fa-edit"></i></a>'
-                                html += '<a class="btn btn-outline-danger btn-sm btnEditar " id='+ value.id +'>'+ value.id +'<i class="fas fa-edit"></i>'
-                                html += '<a class="btn btn-outline-danger btn-sm btnBorrar " id='+ value.id +'>'+ value.id +'<i class="fas fa-eraser"></i>'
+                                html += '<a class="btn btn-outline-primary btnEditar " id='+ value.id +'><i class="fas fa-edit"></i>'
+                                html += '<a class="btn btn-outline-danger float-right btnBorrar " id='+ value.id +'><i class="fas fa-trash-alt"></i>'
                                 html += '</div>'
                             html += '</div>'
     
@@ -183,23 +183,21 @@ $(document).ready(function() {
         
     });
     
+    
     //Editar        
     $(document).on("click", ".btnEditar", function(){	
         $('#VerClientes').modal('toggle')	        
-        opcion = 5;//editar
-        //fila = $(this).closest("tr");
+        opcion = 5;//Para llamar los datos de la BD
         var id = $(this).attr('id');
-        alert(id);
-        //id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
+        //alert(id);
 
         $.ajax({
             url: "crud.php",
             type: "POST",
             datatype:"json",    
-            data: {opcion:opcion, id:id}, 
-
-        success: function (response) {//once the request successfully process to the server side it will return result here
+            data: {opcion:opcion, id:id},
             
+        success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
             // Parse the json result
             response = JSON.parse(response);
             var html = "";
@@ -209,8 +207,6 @@ $(document).ready(function() {
                 // Loop the parsed JSON
                 $.each(response, function(key,value) {
 
-                    
-                    
                     $("#primer_nombre").val(value.primer_nombre);
                     $("#segundo_nombre").val(value.segundo_nombre);
                     $("#primer_apellido").val(value.primer_apellido);
@@ -223,31 +219,72 @@ $(document).ready(function() {
                     $("#ocupacion").val(value.ocupacion);
                     $("#empresa").val(value.empresa);
                     $("#fecha_incorporacion").val(value.fecha_incorporacion);
+                    $("#id_cliente").val(value.id);
 
                 });
             } else {
                 html += '<div class="alert alert-warning">';
-                html += 'No records found!';
+                html += 'No se encontro este registro en la BD!';
             }
 
             // Insert the HTML Template and display all employee records
             $("#contenido_cliente").html(html);
         }
         
-
       });
-
         
-        //segundo_nombre = fila.find('td:eq(2)').text();
-        //$("#primer_nombre").val(primer_nombre);
-        
-        $("#formModal").trigger("reset");
+        //$("#formModal").trigger("reset");
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		
         $('#modalCRUD').modal('show');
-        //var t = $(this).attr('id'); 	   
+        opcion = 2;//para enviar el update
+    
     });
+
+    //submit para el Alta y Actualización
+    $('#modalCRUD').submit(function(e){                         
+        e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+        //var id = $(this).attr('#id_cliente');
+        id = $.trim($('#id_cliente').val());
+        primer_nombre = $.trim($('#primer_nombre').val());
+        //alert("id" + id)
+        segundo_nombre = $.trim($('#segundo_nombre').val());    
+        primer_apellido = $.trim($('#primer_apellido').val());    
+        segundo_apellido = $.trim($('#segundo_apellido').val());
+        tipo_documento = $.trim($('#tipo_documento').val());
+        num_documento = $.trim($('#num_documento').val());
+        correo_electronico = $.trim($('#correo_electronico').val());
+        telefono = $.trim($('#telefono').val());
+        estado = $.trim($('#estado').val());
+        ocupacion = $.trim($('#ocupacion').val());
+        empresa = $.trim($('#empresa').val());
+        fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
+                                 
+            $.ajax({
+              url: "crud.php",
+              type: "POST",
+              datatype:"json",    
+              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, opcion:opcion},    
+              success: function(data) {
+                tablaUsuarios.ajax.reload(null, false);
+               }
+            
+            });;	        
+        $('#modalCRUD').modal('hide');
+        $(function() {
+            toastr.success('Se ha creado el registro correctamente')
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Cliente Actualizado Correctamente',
+                showConfirmButton: false,
+                timer: 1900
+              })
+          });										     			
+    });
+
+        
     
     //Borrar con Swal2
 	$(document).delegate(".btnBorrar", "click", function() {

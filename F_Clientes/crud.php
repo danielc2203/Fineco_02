@@ -37,16 +37,16 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
-        break;    
-    case 2:        
-        $consulta = "UPDATE clientes SET primer_nombre='$primer_nombre', segundo_nombre='$segundo_nombre', primer_apellido='$primer_apellido', segundo_apellido='$segundo_apellido', tipo_documento='$tipo_documento', num_documento='$num_documento', correo_electronico='$correo', telefono='$telefono', estado='$estado', ocupacion='$ocupacion', empresa='$empresa', fecha_incorporacion='$fecha' WHERE id='$id' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
+        break;
+    case 2:
+         $consulta = "UPDATE clientes SET primer_nombre='$pnombre', segundo_nombre='$snombre', primer_apellido='$papellido', segundo_apellido='$sapellido', tipo_documento='$tipo_documento', num_documento='$num_documento', correo_electronico='$correo', telefono='$telefono', estado='$estado', ocupacion='$ocupacion', empresa='$empresa', fecha_incorporacion='$fecha' WHERE id='$id' ";		
+         $resultado = $conexion->prepare($consulta);
+         $resultado->execute();        
         
-        $consulta = "SELECT * FROM clientes WHERE id='$id' ";    
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+         $consulta = "SELECT * FROM clientes WHERE id='$id' ";    
+         $resultado = $conexion->prepare($consulta);
+         $resultado->execute();
+         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
         $consulta = "DELETE FROM clientes WHERE id='$id' ";
