@@ -106,20 +106,28 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formModal">    
+            
+        <form id="formModal" class="needs-validation">    
             <div class="modal-body">
                 <div class="row">
                     <input type="hidden" id="id_cliente" value="">
+
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Primer Nombre:</label>
-                    <input type="text" class="form-control" id="primer_nombre">
+                    <input type="text" class="form-control" id="primer_nombre" required>
+                    
+                    <div class="invalid-tooltip">
+                      Este campo no debe estar vacio.
+                    </div>
+
                     </div>
                     </div>
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Segundo Nombre</label>
-                    <input type="text" class="form-control" id="segundo_nombre">
+                    <input type="text" class="form-control" id="segundo_nombre" >
+
                     </div> 
                     </div>    
                 </div>
@@ -127,7 +135,7 @@
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Primer Apellido:</label>
-                    <input type="text" class="form-control" id="primer_apellido">
+                    <input type="text" class="form-control" id="primer_apellido" required>
                     </div>
                     </div>
                     <div class="col-6">
@@ -153,7 +161,7 @@
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Número de Documento</label>
-                    <input type="text" class="form-control" id="num_documento">
+                    <input type="text" class="form-control" id="num_documento" required>
                     </div> 
                     </div>    
                 </div>
@@ -161,13 +169,13 @@
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Correo:</label>
-                    <input type="mail" class="form-control " id="correo_electronico">
+                    <input type="mail" class="form-control " id="correo_electronico" required>
                     </div>
                     </div>
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Télefono</label>
-                    <input type="phone" class="form-control " id="telefono">
+                    <input type="phone" class="form-control " id="telefono" required>
                     </div> 
                     </div>    
                 </div>
@@ -213,8 +221,8 @@
                     </div>
                     <div class="col-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Fecha de Inscripción</label>
-                    <input type="date" class="form-control" id="fecha_incorporacion">
+                    <label for="" class="col-form-label" >Fecha de Inscripción</label>
+                    <input type="date" class="form-control" id="fecha_incorporacion" required>
                     </div> 
                     </div>    
                 </div>
@@ -222,7 +230,7 @@
                     <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Fecha de Nacimiento:</label>
-                    <input type="date" class="form-control " id="fecha_nacimiento">
+                    <input type="date" class="form-control " id="fecha_nacimiento" required>
                     </div>
                     </div>
                     <div class="col-lg-6">
@@ -237,7 +245,7 @@
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
                 <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
             </div>
-        </form>    
+        </form>
         </div>
     </div>
 </div>  
