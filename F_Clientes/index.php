@@ -106,7 +106,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
+
         <form id="formModal" class="needs-validation">    
             <div class="modal-body">
                 <div class="row">
@@ -233,12 +233,12 @@
                     <input type="date" class="form-control " id="fecha_nacimiento" required>
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">direccion de residencia</label>
-                    <input type="text" class="form-control " id="direccion_residencia">
+                    <input type="text" class="form-control " id="direccion_residencia" required>
                     </div> 
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="modal-footer">
