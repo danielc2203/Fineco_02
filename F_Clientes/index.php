@@ -110,13 +110,13 @@
             <div class="modal-body">
                 <div class="row">
                     <input type="hidden" id="id_cliente" value="">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Primer Nombre:</label>
                     <input type="text" class="form-control" id="primer_nombre">
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Segundo Nombre</label>
                     <input type="text" class="form-control" id="segundo_nombre">
@@ -124,13 +124,13 @@
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Primer Apellido:</label>
                     <input type="text" class="form-control" id="primer_apellido">
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Segundo Apellido</label>
                     <input type="text" class="form-control " id="segundo_apellido">
@@ -138,7 +138,7 @@
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Tipo de Documento:</label>
                     <!-- <input type="text" class="form-control" id="tdocumento"> -->
@@ -150,7 +150,7 @@
                     </select>
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Número de Documento</label>
                     <input type="text" class="form-control" id="num_documento">
@@ -158,13 +158,13 @@
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Correo:</label>
                     <input type="mail" class="form-control " id="correo_electronico">
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Télefono</label>
                     <input type="phone" class="form-control " id="telefono">
@@ -172,7 +172,7 @@
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Estado:</label>
                     <select class="custom-select" id="estado">
@@ -182,7 +182,7 @@
                     </select>
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Ocupación</label>
                     <select class="custom-select" id="ocupacion">
@@ -197,7 +197,7 @@
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Convenio:</label>
                     <select class="custom-select" id="empresa">
@@ -211,26 +211,26 @@
                     </select>
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Fecha</label>
+                    <label for="" class="col-form-label">Fecha de Inscripción</label>
                     <input type="date" class="form-control" id="fecha_incorporacion">
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group">
                     <label for="" class="col-form-label">Fecha de Nacimiento:</label>
                     <input type="date" class="form-control " id="fecha_nacimiento">
                     </div>
                     </div>
-                    <!-- <div class="col-lg-6">
+                    <div class="col-lg-6">
                     <div class="form-group">
-                    <label for="" class="col-form-label">Télefono</label>
-                    <input type="phone" class="form-control " id="telefono">
+                    <label for="" class="col-form-label">direccion de residencia</label>
+                    <input type="text" class="form-control " id="direccion_residencia">
                     </div> 
-                    </div>     -->
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -259,7 +259,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

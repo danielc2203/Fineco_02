@@ -141,7 +141,7 @@ $(document).ready(function() {
                     // Loop the parsed JSON
                     $.each(response, function(key,value) {
     
-                            html += '<div class="card-header text-center" > <h2>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h2> </div>'
+                            html += '<div class="card-header text-center" > <h5>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h5> </div>'
     
                             html += '<div class="card-body pt-0">'
                                 html += '<div class="row">'
@@ -155,7 +155,15 @@ $(document).ready(function() {
                                         html += '<p class="text-muted text-sm"><b>Empresa: </b> '+ value.empresa +'</p>'
                                         html += '<p class="text-muted text-sm"><b>Fecha de registro: </b> '+ value.fecha_incorporacion +'</p>'
                                         html += '<p class="text-muted text-sm"><b>Fecha de nacimiento: </b> '+ value.fecha_nacimiento +'</p>'
-                                        html += '<p class="text-muted text-sm"><b>Fecha de nacimiento: </b> '+ value.direccion_residencia +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>Direccion de residencia: </b> '+ value.direccion_residencia +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>pais: </b> '+ value.pais +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>departamento: </b> '+ value.departamento +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>ciudad: </b> '+ value.ciudad +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>estrato: </b> '+ value.estrato +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>sexo: </b> '+ value.sexo +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>foto_cedula: </b> '+ value.foto_cedula +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>ingreso_mensual: </b> '+ value.ingreso_mensual +'</p>'
+                                        html += '<p class="text-muted text-sm"><b>salud: </b> '+ value.salud +'</p>'
        
                                     html += '</div>'
 
