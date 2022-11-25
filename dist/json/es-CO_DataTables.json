@@ -15,7 +15,7 @@
         "copyTitle": "Tabla Copiada",
         "createState": "Crear estado",
         "pageLength": {
-            "_": "Ver %d filas",
+            "_": " %d filas",
             "-1": "Ver todas las Filas",
             "1": "Ver solo una fila"
         },

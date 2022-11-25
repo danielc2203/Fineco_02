@@ -38,14 +38,14 @@ $(document).ready(function() {
             {"data": "segundo_nombre"},
             {"data": "primer_apellido"},
             {"data": "segundo_apellido"}, 
-            {"data": "tipo_documento"},
+            //{"data": "tipo_documento"},
             {"data": "num_documento"},
             {"data": "correo_electronico"},
             {"data": "telefono"},
             {"data": "estado"},
-            {"data": "ocupacion"},
+            //{"data": "ocupacion"},
             {"data": "empresa"},
-            {"data": "fecha_incorporacion"},
+            //{"data": "fecha_incorporacion"},
             
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
@@ -60,9 +60,11 @@ $(document).ready(function() {
     
     var fila; //captura la fila, para editar o eliminar
 
-    //submit para el Alta y Actualización
+    //submit para Actualización
     $('#formModal').submit(function(e){                         
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+
+        id = $.trim($('#id_cliente').val());
         primer_nombre = $.trim($('#primer_nombre').val());
         segundo_nombre = $.trim($('#segundo_nombre').val());    
         primer_apellido = $.trim($('#primer_apellido').val());    
@@ -75,12 +77,13 @@ $(document).ready(function() {
         ocupacion = $.trim($('#ocupacion').val());
         empresa = $.trim($('#empresa').val());
         fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
+        fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
                                  
             $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, opcion:opcion},    
+              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, fecha_nacimiento:fecha_nacimiento, opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
@@ -219,6 +222,7 @@ $(document).ready(function() {
                     $("#ocupacion").val(value.ocupacion);
                     $("#empresa").val(value.empresa);
                     $("#fecha_incorporacion").val(value.fecha_incorporacion);
+                    $("#fecha_nacimiento").val(value.fecha_nacimiento);
                     $("#id_cliente").val(value.id);
 
                 });
@@ -239,50 +243,53 @@ $(document).ready(function() {
         $(".modal-title").text("Editar Usuario");		
         $('#modalCRUD').modal('show');
         opcion = 2;//para enviar el update
+        //var id = id;
     
     });
 
-    //submit para el Alta y Actualización
-    $('#modalCRUD').submit(function(e){                         
-        e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-        //var id = $(this).attr('#id_cliente');
-        id = $.trim($('#id_cliente').val());
-        primer_nombre = $.trim($('#primer_nombre').val());
-        //alert("id" + id)
-        segundo_nombre = $.trim($('#segundo_nombre').val());    
-        primer_apellido = $.trim($('#primer_apellido').val());    
-        segundo_apellido = $.trim($('#segundo_apellido').val());
-        tipo_documento = $.trim($('#tipo_documento').val());
-        num_documento = $.trim($('#num_documento').val());
-        correo_electronico = $.trim($('#correo_electronico').val());
-        telefono = $.trim($('#telefono').val());
-        estado = $.trim($('#estado').val());
-        ocupacion = $.trim($('#ocupacion').val());
-        empresa = $.trim($('#empresa').val());
-        fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
+    // //submit para el Alta y Actualización
+    // $('#modalCRUD').submit(function(e){                         
+    //     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+    //     //var id = $(this).attr('#id_cliente');
+    //     id = $.trim($('#id_cliente').val());
+    //     primer_nombre = $.trim($('#primer_nombre').val());
+    //     //alert("id" + id)
+    //     segundo_nombre = $.trim($('#segundo_nombre').val());    
+    //     primer_apellido = $.trim($('#primer_apellido').val());    
+    //     segundo_apellido = $.trim($('#segundo_apellido').val());
+    //     tipo_documento = $.trim($('#tipo_documento').val());
+    //     num_documento = $.trim($('#num_documento').val());
+    //     correo_electronico = $.trim($('#correo_electronico').val());
+    //     telefono = $.trim($('#telefono').val());
+    //     estado = $.trim($('#estado').val());
+    //     ocupacion = $.trim($('#ocupacion').val());
+    //     empresa = $.trim($('#empresa').val());
+    //     fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
+    //     fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
+        
                                  
-            $.ajax({
-              url: "crud.php",
-              type: "POST",
-              datatype:"json",    
-              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, opcion:opcion},    
-              success: function(data) {
-                tablaUsuarios.ajax.reload(null, false);
-               }
+    //         $.ajax({
+    //           url: "crud.php",
+    //           type: "POST",
+    //           datatype:"json",    
+    //           data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, fecha_nacimiento:fecha_nacimiento, opcion:opcion},    
+    //           success: function(data) {
+    //             tablaUsuarios.ajax.reload(null, false);
+    //            }
             
-            });;	        
-        $('#modalCRUD').modal('hide');
-        $(function() {
-            toastr.success('Se ha creado el registro correctamente')
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Cliente Actualizado Correctamente',
-                showConfirmButton: false,
-                timer: 1900
-              })
-          });										     			
-    });
+    //         });;	        
+    //     $('#modalCRUD').modal('hide');
+    //     $(function() {
+    //         toastr.success('Se ha creado el registro correctamente')
+    //         Swal.fire({
+    //             position: 'center',
+    //             icon: 'success',
+    //             title: 'Cliente Actualizado Correctamente',
+    //             showConfirmButton: false,
+    //             timer: 1900
+    //           })
+    //       });										     			
+    // });
 
         
     

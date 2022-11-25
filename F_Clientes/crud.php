@@ -19,7 +19,7 @@ $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $ocupacion = (isset($_POST['ocupacion'])) ? $_POST['ocupacion'] : '';
 $empresa = (isset($_POST['empresa'])) ? $_POST['empresa'] : '';
 $fecha = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_incorporacion'] : '';
-//$fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
+$fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -28,8 +28,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion) 
-        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha') ";			
+        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento) 
+        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha', '$fecha_nacimiento') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -39,7 +39,21 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;
     case 2:
-         $consulta = "UPDATE clientes SET primer_nombre='$pnombre', segundo_nombre='$snombre', primer_apellido='$papellido', segundo_apellido='$sapellido', tipo_documento='$tipo_documento', num_documento='$num_documento', correo_electronico='$correo', telefono='$telefono', estado='$estado', ocupacion='$ocupacion', empresa='$empresa', fecha_incorporacion='$fecha' WHERE id='$id' ";		
+        $consulta = "UPDATE clientes 
+                        SET primer_nombre='$pnombre',
+                            segundo_nombre='$snombre',
+                            primer_apellido='$papellido',
+                            segundo_apellido='$sapellido',
+                            tipo_documento='$tipo_documento',
+                            num_documento='$num_documento',
+                            correo_electronico='$correo',
+                            telefono='$telefono',
+                            estado='$estado',
+                            ocupacion='$ocupacion',
+                            empresa='$empresa',
+                            fecha_incorporacion='$fecha',
+                            fecha_nacimiento='$fecha_nacimiento'
+                        WHERE id='$id' ";		
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();        
         

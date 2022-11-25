@@ -66,17 +66,15 @@
                     <th>Segundo Nombre</th>                             
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
-                    <th>Tipo de documento</th>
+                    <!-- <th>Tipo de documento</th> -->
                     <th>N° Documento</th>
                     <th>Correo</th>
                     <th>Telefono</th>
                     <th>Estado</th>
-                    <th>Ocupaciòn</th>
+                    <!-- <th>Ocupaciòn</th> -->
                     <th>Convenio</th>
-                    <th>Fecha</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <!-- <th>Fecha</th> -->
+                    <!-- <th></th> -->
                 
                     </tr>
                     </thead>
@@ -219,6 +217,20 @@
                     <input type="date" class="form-control" id="fecha_incorporacion">
                     </div> 
                     </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Fecha de Nacimiento:</label>
+                    <input type="date" class="form-control " id="fecha_nacimiento">
+                    </div>
+                    </div>
+                    <!-- <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="" class="col-form-label">Télefono</label>
+                    <input type="phone" class="form-control " id="telefono">
+                    </div> 
+                    </div>     -->
                 </div>
             </div>
             <div class="modal-footer">
