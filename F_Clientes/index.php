@@ -99,7 +99,7 @@
 
 <!--Modal para CRUD-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -245,11 +245,11 @@
 
 <!-- Modal Ver Clientes-->
 <div class="modal fade" id="VerClientes" tabindex="-1" aria-labelledby="VerClientes" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="VerClientes">Este es el modal de otra pagina</h5>
-        <h1 id="primer_nombre" aria-valuetext="ok"></h1>
+        <h5 class="modal-title" id="VerClientes"></h5>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -92,6 +92,13 @@ $(document).ready(function() {
         $('#modalCRUD').modal('hide');
         $(function() {
             toastr.success('Se ha creado el registro correctamente')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Los cambios han sido efectuados exitosamente...',
+                showConfirmButton: false,
+                timer: 1900
+              })
           });										     			
     });
             
@@ -246,53 +253,8 @@ $(document).ready(function() {
         //var id = id;
     
     });
-
-    // //submit para el Alta y Actualización
-    // $('#modalCRUD').submit(function(e){                         
-    //     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-    //     //var id = $(this).attr('#id_cliente');
-    //     id = $.trim($('#id_cliente').val());
-    //     primer_nombre = $.trim($('#primer_nombre').val());
-    //     //alert("id" + id)
-    //     segundo_nombre = $.trim($('#segundo_nombre').val());    
-    //     primer_apellido = $.trim($('#primer_apellido').val());    
-    //     segundo_apellido = $.trim($('#segundo_apellido').val());
-    //     tipo_documento = $.trim($('#tipo_documento').val());
-    //     num_documento = $.trim($('#num_documento').val());
-    //     correo_electronico = $.trim($('#correo_electronico').val());
-    //     telefono = $.trim($('#telefono').val());
-    //     estado = $.trim($('#estado').val());
-    //     ocupacion = $.trim($('#ocupacion').val());
-    //     empresa = $.trim($('#empresa').val());
-    //     fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
-    //     fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
-        
-                                 
-    //         $.ajax({
-    //           url: "crud.php",
-    //           type: "POST",
-    //           datatype:"json",    
-    //           data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, fecha_nacimiento:fecha_nacimiento, opcion:opcion},    
-    //           success: function(data) {
-    //             tablaUsuarios.ajax.reload(null, false);
-    //            }
-            
-    //         });;	        
-    //     $('#modalCRUD').modal('hide');
-    //     $(function() {
-    //         toastr.success('Se ha creado el registro correctamente')
-    //         Swal.fire({
-    //             position: 'center',
-    //             icon: 'success',
-    //             title: 'Cliente Actualizado Correctamente',
-    //             showConfirmButton: false,
-    //             timer: 1900
-    //           })
-    //       });										     			
-    // });
-
-        
     
+
     //Borrar con Swal2
 	$(document).delegate(".btnBorrar", "click", function() {
 
