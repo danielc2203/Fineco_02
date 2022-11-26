@@ -78,12 +78,13 @@ $(document).ready(function() {
         empresa = $.trim($('#empresa').val());
         fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
         fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
+        direccion_residencia = $.trim($('#direccion_residencia').val());
                                  
             $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, fecha_nacimiento:fecha_nacimiento, opcion:opcion},    
+              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, fecha_nacimiento:fecha_nacimiento, direccion_residencia:direccion_residencia, opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
@@ -238,6 +239,7 @@ $(document).ready(function() {
                     $("#empresa").val(value.empresa);
                     $("#fecha_incorporacion").val(value.fecha_incorporacion);
                     $("#fecha_nacimiento").val(value.fecha_nacimiento);
+                    $("#direccion_residencia").val(value.direccion_residencia);
                     $("#id_cliente").val(value.id);
 
                 });

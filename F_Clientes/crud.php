@@ -20,6 +20,7 @@ $ocupacion = (isset($_POST['ocupacion'])) ? $_POST['ocupacion'] : '';
 $empresa = (isset($_POST['empresa'])) ? $_POST['empresa'] : '';
 $fecha = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_incorporacion'] : '';
 $fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
+$direccion_residencia = (isset($_POST['direccion_residencia'])) ? $_POST['direccion_residencia'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -28,8 +29,36 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento) 
-        VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo', '$telefono', '$estado', '$ocupacion','$empresa', '$fecha', '$fecha_nacimiento') ";			
+        $consulta = "INSERT INTO clientes 
+                    (primer_nombre,
+                    segundo_nombre,
+                    primer_apellido,
+                    segundo_apellido,
+                    tipo_documento,
+                    num_documento,
+                    correo_electronico,
+                    telefono, estado,
+                    ocupacion,
+                    empresa,
+                    fecha_incorporacion,
+                    fecha_nacimiento,
+                    direccion_residencia) 
+        VALUES
+                    ('$pnombre',
+                    '$snombre',
+                    '$papellido',
+                    '$sapellido',
+                    '$tipo_documento',
+                    '$num_documento',
+                    '$correo',
+                    '$telefono',
+                    '$estado',
+                    '$ocupacion'
+                    '$empresa',
+                    '$fecha',
+                    '$fecha_nacimiento',
+                    '$direccion_residencia')";
+
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -52,7 +81,8 @@ switch($opcion){
                             ocupacion='$ocupacion',
                             empresa='$empresa',
                             fecha_incorporacion='$fecha',
-                            fecha_nacimiento='$fecha_nacimiento'
+                            fecha_nacimiento='$fecha_nacimiento',
+                            direccion_residencia='$direccion_residencia'
                         WHERE id='$id' ";		
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();        

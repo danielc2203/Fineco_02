@@ -233,12 +233,12 @@
                     <input type="date" class="form-control form-control-sm " id="fecha_nacimiento" required>
                     </div>
                     </div>
-                    <!-- <div class="col-lg-6">
+                    <div class="col-lg-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">direccion de residencia</label>
                     <input type="text" class="form-control form-control-sm " id="direccion_residencia" required>
                     </div> 
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
