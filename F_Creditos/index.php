@@ -257,6 +257,8 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">CALCULADORA CAPACIDAD</h4>
+            <!-- <a class="btn btn-outline-danger float-right btnBorrar " id='+ value.id +'><i class="fas fa-broom"></i> -->
+            <button type="button" class="btn btn-outline-danger float-right"><i class="fas fa-broom"></i></button>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
