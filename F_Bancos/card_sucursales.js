@@ -1,18 +1,17 @@
 $(document).ready(function() {
     var id, opcion;
     opcion = 4;
+    //alert(opcion);
 
     $.ajax({
         url: "sucursales.php",
         //type: "GET", //we are using GET method to get all record from the server
         method: 'POST', //usamos el metodo POST
         data:{opcion:opcion}, //enviamos opcion 1 para que haga un SELECT
-
         success: function (response) {//once the request successfully process to the server side it will return result here
             
             // Parse the json result
         	response = JSON.parse(response);
-
 
             var html = "";
 			
@@ -24,6 +23,28 @@ $(document).ready(function() {
 
                         html += '<div class="card-header text-center" > <h2>'+ value.nombre +'</h2> </div>'
 
+                        html += '<div class="card-body pt-0">'
+                            html += '<div class="row">'
+                                html += '<div class="col-7">'
+                                    html += '<h2 class="lead"><b>Datos de la cuenta</b></h2>'
+                                    html += '<p class="text-muted text-sm"><b>N° de Cuenta: </b> '+ value.num_cuenta +' / '+ value.tipo_cuenta +' / </p>'
+                                    html += '<ul class="ml-4 mb-0 fa-ul text-muted">'
+                                    html += '<li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: '+ value.estado_cuenta +' </li>'
+                                    html += '<li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: '+ value.contacto_cuenta +'</li>'
+                                    html += '</ul>'
+                                html += '</div>'
+                                html += '<div class="col-5 text-center">'
+                                    html += '<img src="../dist/img/Bancos/Bancolombia.jpg" alt="Bancolombia" class="img-circle img-fluid" data-toggle="modal" data-target="#bancoModal">'
+                                html += '</div>'
+                            html += '</div>'
+                        html += '</div>'
+
+                        html += '<div class="card-footer">'
+                            html += '<div class="text-right">'
+                            html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-plus-square"></i></a>'
+                            html += '<a class="btn btn-sm btn-warning btnEditar" id='+ value.id +'><i class="fas fa-edit"></i></a>'
+                            html += '</div>'
+                        html += '</div>'
 
 	            });
             } else {
@@ -36,97 +57,111 @@ $(document).ready(function() {
         }
     });
     
-
-
-
-    //     "columns":[
-    //         {"data": "id"},
-    //         {"data": "fecha"},
-    //         {"data": "descripcion"},
-    //         {"data": "sucursal"},
-    //         {"data": "dcto"}, 
-    //         {"data": "valor"},
-    //         {"data": "saldo"},
-    //         //{"data": "id_banco"},
-
-    //         // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-    //         // {"defaultContent": "<a class='btn btn-outline-success openVer'><i class='fas fa-eye'></i></a>"}
-            
-    
-    //     ],
-        
-    // })
-
-    
-    var fila; //captura la fila, para editar o eliminar
+    var html; //captura la fila, para editar o eliminar
 
     //submit para el Alta y Actualización
-    $('#formModal').submit(function(e){                         
+    $('#modalBanco').submit(function(e){                         
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-        fecha = $.trim($('#fecha').val());
-        descripcion = $.trim($('#descripcion').val());    
-        sucursal = $.trim($('#sucursal').val());    
-        dcto = $.trim($('#dcto').val());
-        valor = $.trim($('#valor').val());
-        saldo = $.trim($('#saldo').val());
-        id_banco = $.trim($('#id_banco').val());
+        
+        id = $.trim($('#id_banco').val());
+        nombre = $.trim($('#nombre').val());
+        num_cuenta = $.trim($('#num_cuenta').val());    
+        tipo_cuenta = $.trim($('#tipo_cuenta').val());    
+        estado_cuenta = $.trim($('#estado_cuenta').val());
+        contacto_cuenta = $.trim($('#contacto_cuenta').val());
+        logo_banco = $.trim($('#logo_banco').val());
                       
             $.ajax({
-              url: "crud.php",
+              url: "sucursales.php",
               type: "POST",
-              datatype:"json",    
-              data:  {id:id, fecha:fecha, descripcion:descripcion, sucursal:sucursal, dcto:dcto, valor:valor, saldo:saldo, id_banco:id_banco, opcion:opcion},    
+              datatype:"json",  
+              data:  {id:id, nombre:nombre, num_cuenta:num_cuenta, tipo_cuenta:tipo_cuenta, estado_cuenta:estado_cuenta, contacto_cuenta:contacto_cuenta, logo_banco:logo_banco, opcion:opcion},    
               success: function(data) {
-                tablaUsuarios.ajax.reload(null, false);
+                //$("#contenido_cliente").html(html);
+                //contenido_sucursales.ajax.reload(null, false);
                }
             
             });			        
-        $('#modalCRUD').modal('hide');
+        $('#modalBanco').modal('hide');
         $(function() {
-            toastr.success('Se ha creado el registro correctamente')
-          });										     			
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Los cambios han sido efectuados exitosamente...',
+                showConfirmButton: false,
+                timer: 2500,
+                willClose: () => {
+                    location.reload()
+                  }
+              })
+          });		
+          							     			
     });
             
     //para limpiar los campos antes de dar de Alta a un registro
     $("#btnNuevo").click(function(){
-        opcion = 4; //alta           
+        opcion = 1; //alta           
         id=null;
         $("#formModal").trigger("reset");
         $(".modal-header").css( "background-color", "#17a2b8");
         $(".modal-header").css( "color", "white" );
-        $(".modal-title").text("Nuevo Registro");
-        $('#modalCRUD').modal('show');
+        $(".modal-title").text("Nuevo Banco");
+        $('#formModal').modal('show');
     });
+
     
     //Editar        
-    $(document).on("click", ".btnEditar", function(){		        
-        opcion = 2;//editar
-        fila = $(this).closest("tr");	        
-        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID
+    $(document).on("click", ".btnEditar", function(){
+        
+        opcion = 5;//Para llamar los datos de la BD
+        var id = $(this).attr('id');
+        
+        $.ajax({
+            url: "sucursales.php",
+            type: "POST",
+            datatype:"json",    
+            data: {opcion:opcion, id:id},
+            
+        success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
+            // Parse the json result
+            response = JSON.parse(response);
+            var html = "";
+                        
+            // Check if there is available records
+            if(response.length) {
+                // Loop the parsed JSON
+                //alert(id);
+                $.each(response, function(key,value) {
+                    
+                    $("#id_banco").val(value.id);
+                    $("#nombre").val(value.nombre);
+                    $("#num_cuenta").val(value.num_cuenta);
+                    $("#tipo_cuenta").val(value.tipo_cuenta);
+                    $("#estado_cuenta").val(value.estado_cuenta);
+                    $("#contacto_cuenta").val(value.contacto_cuenta);
+                    $("#logo_banco").val(value.logo_banco);
 
-        fecha = fila.find('td:eq(1)').text();
-        descripcion = fila.find('td:eq(2)').text();
-        sucursal = fila.find('td:eq(3)').text();
-        dcto = fila.find('td:eq(4)').text();
-        tdocumento = fila.find('td:eq(5)').text();
-        saldo = fila.find('td:eq(6)').text();
-        id_banco = fila.find('td:eq(7)').text();
+                });
+            } else {
+                html += '<div class="alert alert-warning">';
+                html += 'No se encontro este registro en la BD!';
+            }
 
-
-        $("#fecha").val(fecha);
-        $("#descripcion").val(descripcion);
-        $("#sucursal").val(sucursal);
-        $("#dcto").val(dcto);
-        $("#tdocumento").val(tdocumento);
-        $("#saldo").val(saldo);
-        $("#id_banco").val(id_banco);
-
-
-        $(".modal-header").css("background-color", "#007bff");
+            // Insert the HTML Template and display all employee records
+            $("#contenido_cliente").html(html);
+        }
+        
+      });
+        
+        //$("#formModal").trigger("reset");
+        $(".modal-header").css("background-color", "green");
         $(".modal-header").css("color", "white" );
-        $(".modal-title").text("Editar Usuario");		
-        $('#modalCRUD').modal('show');		   
+        $(".modal-title").text("Editar Banco");		
+        $('#modalBanco').modal('show');
+        opcion = 2;//para enviar el update
+        //var id = id;	   
     });
+
     
     //Borrar
     $(document).on("click", ".btnBorrar", function(){
