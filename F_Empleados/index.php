@@ -1,35 +1,21 @@
-<!-- Conexión para la consulta modal en roles -->
-<?php
-include_once '../global/conexiond.php';
-$objeto = new Conexion();
-$conexion = $objeto->Conectar();
-?>
+<!-- Logica -->
+<?php include ('../modulos/panel.php');?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
-<?php
-  include('../global/sesiones.php');
-  include ('../recursos/header.php');
+<?php include ('../recursos/header.php') ?>
 
-  //$rol = ($_SESSION['usuario']['rol_id']);
-  // if ($rol == 1 or 0 ){
-  //   //echo '<script type="text/javascript">alert("Su rol desde index es: ' . $rol . ' y su nombre es ' . $nombres . '");</script>';
-  // }else{
-  //   echo'<script type="text/javascript">
-  //   alert("No eres Administrador, tu rol es: ' . $rol . ' ");
-  //   window.location.href="../template/";
-  //   </script>';
-  // }
-?>
+<!-- Sweetalert 2 CSS -->
+<link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
+
 <!-- FIN DE HEADER -->
 
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 <!-- Main Sidebar Container -->
-
-<?php include_once ('../recursos/sidebar.php') ?>
+<?php include ('../recursos/sidebar.php');
+//echo $id_usr;
+ ?>
 
 <!-- Fin de Sidebar -->
 
@@ -187,19 +173,7 @@ $conexion = $objeto->Conectar();
 <?php include ('../recursos/footer.php') ?>
 <!-- fin de footer -->
 
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
 
-
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -214,7 +188,7 @@ $conexion = $objeto->Conectar();
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- Page specific script -->
