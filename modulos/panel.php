@@ -15,7 +15,6 @@ $totalClientes=$registro['totalClientes'];
 $sentenciaSQL=$conexion->prepare("SELECT count(*) totalTareas FROM `todo_list` WHERE id_usr='".$id_usr."' and estado_tarea = 'activa' ");
 $sentenciaSQL->execute();
 $registro = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
-
 $totalTareas=$registro['totalTareas'];
 
 ?>

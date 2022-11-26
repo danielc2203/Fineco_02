@@ -94,7 +94,7 @@
                   Hola <?php echo $usuariof ?>
                   <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                 </h3>
-                <p class="text-sm">Tienes <?php echo $totalTareas; ?> Tareas pendientes </p>
+                <p class="text-sm">Tienes <span class="badge badge-danger"><?php echo $totalTareas; ?></span>  Tareas pendientes </p>
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> Fineco App</p>
               </div>
             </div>
