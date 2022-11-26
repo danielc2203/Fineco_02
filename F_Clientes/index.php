@@ -113,9 +113,9 @@
                     <input type="hidden" id="id_cliente" value="">
 
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Primer Nombre:</label>
-                    <input type="text" class="form-control" id="primer_nombre" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Primer Nombre:</label>
+                    <input type="text" class="form-control form-control-sm" id="primer_nombre" required>
                     
                     <div class="invalid-tooltip">
                       Este campo no debe estar vacio.
@@ -124,33 +124,33 @@
                     </div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Segundo Nombre</label>
-                    <input type="text" class="form-control" id="segundo_nombre" >
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Segundo Nombre</label>
+                    <input type="text" class="form-control form-control-sm" id="segundo_nombre" >
 
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Primer Apellido:</label>
-                    <input type="text" class="form-control" id="primer_apellido" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Primer Apellido:</label>
+                    <input type="text" class="form-control form-control-sm" id="primer_apellido" required>
                     </div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Segundo Apellido</label>
-                    <input type="text" class="form-control " id="segundo_apellido">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Segundo Apellido</label>
+                    <input type="text" class="form-control form-control-sm " id="segundo_apellido">
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Tipo de Documento:</label>
-                    <!-- <input type="text" class="form-control" id="tdocumento"> -->
-                    <select class="custom-select" id="tipo_documento">
+                    <div class="form-group mb-0 mb-0">
+                    <label for="" class="col-form-label-sm">Tipo de Documento:</label>
+                    <!-- <input type="text" class="form-control form-control-sm" id="tdocumento"> -->
+                    <select class="form-control form-control-sm" id="tipo_documento">
                       <option selected>Seleccionar...</option>
                       <option value="CC">CC</option>
                       <option value="CE">CE</option>
@@ -159,31 +159,31 @@
                     </div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Número de Documento</label>
-                    <input type="text" class="form-control" id="num_documento" required>
+                    <div class="form-group mb-0 mb-0">
+                    <label for="" class="col-form-label-sm">Número de Documento</label>
+                    <input type="text" class="form-control form-control-sm" id="num_documento" required>
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Correo:</label>
-                    <input type="mail" class="form-control " id="correo_electronico" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Correo:</label>
+                    <input type="mail" class="form-control form-control-sm " id="correo_electronico" required>
                     </div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Télefono</label>
-                    <input type="phone" class="form-control " id="telefono" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Télefono</label>
+                    <input type="phone" class="form-control form-control-sm " id="telefono" required>
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Estado:</label>
-                    <select class="custom-select" id="estado">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Estado:</label>
+                    <select class="form-control form-control-sm" id="estado">
                       <option selected>Seleccion...</option>
                       <option value="Activo">Activo</option>
                       <option value="Inactivo">Inactivo</option>
@@ -191,9 +191,9 @@
                     </div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Ocupación</label>
-                    <select class="custom-select" id="ocupacion">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Ocupación</label>
+                    <select class="form-control form-control-sm" id="ocupacion">
                       <option selected>Seleccionar...</option>
                       <option value="Fineco">Pensionado</option>
                       <option value="Armada">Docente</option>
@@ -206,9 +206,9 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Convenio:</label>
-                    <select class="custom-select" id="empresa">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Convenio:</label>
+                    <select class="form-control form-control-sm" id="empresa">
                       <option selected>Seleccionar...</option>
                       <option value="Fineco">Fineco</option>
                       <option value="Armada">Armada</option>
@@ -220,23 +220,23 @@
                     </div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label" >Fecha de Inscripción</label>
-                    <input type="date" class="form-control" id="fecha_incorporacion" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm" >Fecha de Inscripción</label>
+                    <input type="date" class="form-control form-control-sm" id="fecha_incorporacion" required>
                     </div> 
                     </div>    
                 </div>
                 <div class="row">
                     <div class="col-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">Fecha de Nacimiento:</label>
-                    <input type="date" class="form-control " id="fecha_nacimiento" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Fecha de Nacimiento:</label>
+                    <input type="date" class="form-control form-control-sm " id="fecha_nacimiento" required>
                     </div>
                     </div>
                     <!-- <div class="col-lg-6">
-                    <div class="form-group">
-                    <label for="" class="col-form-label">direccion de residencia</label>
-                    <input type="text" class="form-control " id="direccion_residencia" required>
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">direccion de residencia</label>
+                    <input type="text" class="form-control form-control-sm " id="direccion_residencia" required>
                     </div> 
                     </div> -->
                 </div>
