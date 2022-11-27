@@ -87,7 +87,7 @@
 
               <form id="datosbancos" class="needs-validation" method="post">
 
-                  <input type="text" name="id_banco" id="id_banco" value="">
+                  <input type="hidden" name="id_banco" id="id_banco" value="">
 
                   <div class="form-group">
                     <label for="">Nombre del banco</label>
