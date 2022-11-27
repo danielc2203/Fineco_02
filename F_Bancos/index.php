@@ -81,11 +81,11 @@
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
-            <form id="formModal" class="needs-validation">
-              <div class="modal-body">
-                <div class="container-fluid">
 
-                  <form id="datosbancos" method="post">
+          <div class="modal-body">
+            <div class="container-fluid">
+
+              <form id="datosbancos" class="needs-validation" method="post">
 
                   <input type="text" name="id_banco" id="id_banco" value="">
 
@@ -122,11 +122,11 @@
                   <div class="modal-footer">
                   <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              </div>
-            </form>
+                </div>
+              </form>
 
-        </div>
-      </div>
+            </div>
+          </div>
       
     </div>
   </div>

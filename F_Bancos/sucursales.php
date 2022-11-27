@@ -24,7 +24,7 @@ switch($opcion){
         $consulta = "INSERT INTO bancos (nombre, num_cuenta, tipo_cuenta, estado_cuenta, contacto_cuenta, logo_banco) 
         VALUES('$nombre', '$num_cuenta', '$tipo_cuenta', '$estado_cuenta', '$contacto_cuenta', '$logo_banco') ";			
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(); 
+        $resultado->execute();
         
         $consulta = "SELECT * FROM bancos ORDER BY id DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
@@ -34,7 +34,7 @@ switch($opcion){
     case 2:        
         $consulta = "UPDATE bancos SET nombre='$nombre', num_cuenta='$num_cuenta', tipo_cuenta='$tipo_cuenta', estado_cuenta='$estado_cuenta', contacto_cuenta='$contacto_cuenta', logo_banco='$logo_banco' WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
+        $resultado->execute();
         
         $consulta = "SELECT * FROM bancos WHERE id='$id' ";    
         $resultado = $conexion->prepare($consulta);
