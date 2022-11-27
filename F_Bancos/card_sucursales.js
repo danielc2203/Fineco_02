@@ -21,15 +21,17 @@ $(document).ready(function() {
 	            $.each(response, function(key,value) {
 
 
-                        html += '<div class="card-header text-center" > <h2>'+ value.nombre +'</h2> </div>'
+                        html += '<div class="card-header text-center" > <h1>'+ value.nombre +'</h1> </div>'
 
                         html += '<div class="card-body pt-0">'
                             html += '<div class="row">'
                                 html += '<div class="col-7">'
-                                    html += '<h2 class="lead"><b>Datos de la cuenta</b></h2>'
-                                    html += '<p class="text-muted text-sm"><b>N° de Cuenta: </b> '+ value.num_cuenta +' / '+ value.tipo_cuenta +' / </p>'
+                                    html += '<h2 class="lead text-info"><b>Datos de la cuenta</b></h2>'
+                                    html += '<br></br>'
+                                    html += '<p class="text-muted "><b>N° de Cuenta: </b> '+ value.num_cuenta +' </p>'
+                                    html += '<p class="text-muted "><b>Tipo de Cuenta: </b> '+ value.tipo_cuenta +' </p>'
+                                    html += '<p class="text-muted "><b>Estado de Cuenta: </b> '+ value.estado_cuenta +' </p>'
                                     html += '<ul class="ml-4 mb-0 fa-ul text-muted">'
-                                    html += '<li class="small"><span class="fa-li"><i class="fas fa-toggle-on"></i></span> Estado de la cuenta: '+ value.estado_cuenta +' </li>'
                                     html += '<li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contacto del Banco: '+ value.contacto_cuenta +'</li>'
                                     html += '</ul>'
                                 html += '</div>'
@@ -41,7 +43,6 @@ $(document).ready(function() {
 
                         html += '<div class="card-footer">'
                             html += '<div class="text-right">'
-                            html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-plus-square"></i></a>'
                             html += '<a class="btn btn-sm btn-warning btnEditar" id='+ value.id +'><i class="fas fa-edit"></i></a>'
                             html += '</div>'
                         html += '</div>'

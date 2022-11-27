@@ -95,27 +95,36 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="">num_cuenta</label>
+                    <label for="">Numero de cuenta</label>
                     <input type="text" class="form-control" name="num_cuenta" id="num_cuenta" placeholder="num_cuenta">
                   </div>
 
                   <div class="form-group">
-                    <label for="">tipo_cuenta</label>
-                    <input type="text" class="form-control" name="tipo_cuenta" id="tipo_cuenta" placeholder="tipo_cuenta">
+                    <label for="">Tipo de cuenta</label>
+                    <select class="form-control form-control-sm" id="tipo_cuenta" name="tipo_cuenta">
+                      <option selected>Seleccion...</option>
+                      <option value="Ahorros">Ahorros</option>
+                      <option value="Corriente">Corriente</option>
+                      <option value="Corporativa">Corporativa</option>
+                    </select>
                   </div>
 
                   <div class="form-group">
-                    <label for="">estado_cuenta</label>
-                    <input type="text" class="form-control" name="estado_cuenta" id="estado_cuenta" placeholder="">
+                    <label for="">Estado de la cuenta</label>
+                    <select class="form-control form-control-sm" id="estado_cuenta" name="estado_cuenta">
+                      <option selected>Seleccion...</option>
+                      <option value="Activo">Activa</option>
+                      <option value="Inactivo">Inactiva</option>
+                    </select>
                   </div>
 
                   <div class="form-group">
-                    <label for="">contacto_cuenta</label>
+                    <label for="">Nùmero de contacto del banco</label>
                     <input type="text" class="form-control" name="contacto_cuenta" id="contacto_cuenta" placeholder="">
                   </div>
 
                   <div class="form-group">
-                    <label for="">logo_banco</label>
+                    <label for="">Logo del banco</label>
                     <input type="file" class="form-control-file" name="logo_banco" id="logo_banco" >
                   </div>
 
@@ -138,10 +147,6 @@
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
 
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
