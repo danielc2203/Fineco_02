@@ -110,10 +110,6 @@ function save()
 	});
 }
 
-function resetForm(selector) 
-{
-	$(selector)[0].reset();
-}
 
 function ver() 
 {

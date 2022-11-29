@@ -181,73 +181,6 @@
     </div>
 </div>
 
-<!-- modal Nuevo -->
-<div class="modal" id="modal-nueva-tarea">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Nueva Tareas</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <form action="save.php" id="save-form">
-              <input class="form-control" type="hidden" name="id">
-            <div class="form-group">
-              <label for="titulo">Titulo de la tarea</label>
-              <input class="form-control" type="text" name="titulo">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Descripcion</label>
-              <input class="form-control" type="text" name="descripcion">
-            </div>
-            <div class="form-group">
-              <label for="fecha">Fecha de vencimiento</label>
-              <input class="form-control" type="date" name="fecha">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="hidden" name="fecha_asigando" value="<?php echo date("Y-m-d"); ?>">
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="hidden" id="id_usr" name="id_usr" value="<?php echo $id_usr?>"> 
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="hidden" id="estado_tarea" name="estado_tarea" value="activa"> 
-            </div>
-            <button type="btnSubmit" class="btn btn-primary" id="btnUpdateSubmit">Enviar</button>
-            <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
-        </form>
-          </div>
-      </div>
-    </div>
-</div>
-
-<!-- Modal Ver Datos de Credito-->
-<div class="modal fade" id="ver-credito" tabindex="-1" role="dialog" aria-labelledby="ver-creditoLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content view-form">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ver-credito Label"></h5>
-        <input class="form-control" type="text" name="id">
-        <h5><script>'+value.id+'</script></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <!-- modal calculadora de creditos -->
 <div class="modal" id="modal-calculadora">
@@ -258,13 +191,12 @@
           <div class="modal-header">
             <h4 class="modal-title">CALCULADORA CAPACIDAD</h4>
             <!-- <a class="btn btn-outline-danger float-right btnBorrar " id='+ value.id +'><i class="fas fa-broom"></i> -->
-            <button type="button" class="btn btn-outline-danger float-right"><i class="fas fa-broom"></i></button>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
           <!-- Modal body -->
           <div class="modal-body">
-            <form  id="save-form" class="needs-validation" novalidate>
+            <form  id="fCalculadora" class="needs-validation" novalidate>
               <input class="form-control" type="hidden" name="id">
 
               <div class="form-group row mb-0">
@@ -378,102 +310,35 @@
                 
               </div>
 
-              <div id="answer">
-						<table class="table table-striped" >
-							<tbody>
-								<tr>
-									<td>TOTAL DEVENGADOS</td>
-									<td id="devengados">0</td>	
-								</tr>
-								<tr>
-									<td>TOTAL DEDUCIDOS</td>
-									<td id="tdeducidos">0</td>
-								</tr>
-								<tr>
-									<td>VALOR MÁXIMO</td>
-									<td id="maximo">0</td>
-								</tr>
-                <tr>
-									<td>CUPO LIBRE INVERSIÓN</td>
-									<td id="cupo">0</td>
-								</tr>
-							</tbody>
-						</table>					
-			
-	</div>
+            <div id="answer">
+          <table class="table table-striped" >
+            <tbody>
+              <tr>
+                <td>TOTAL DEVENGADOS</td>
+                <td id="devengados">0</td>	
+              </tr>
+              <tr>
+                <td>TOTAL DEDUCIDOS</td>
+                <td id="tdeducidos">0</td>
+              </tr>
+              <tr>
+                <td>VALOR MÁXIMO</td>
+                <td id="maximo">0</td>
+              </tr>
+              <tr>
+                <td>CUPO LIBRE INVERSIÓN</td>
+                <td id="cupo">0</td>
+              </tr>
+            </tbody>
+          </table>					
+	  </div>
 
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-              <script>
-
-                $(document).ready(function() {
-                $("#calc").click(function() {
-                  var C1 = $("#C1").val();
-                  var C1 = Number(C1);
-                  var C2 = $("#C2").val(); // количество платежных периодов, месяцев
-                  var C2 = Number(C2);
-                  var C3 = $('#C3').val();
-                  var C3 = Number(C3);
-                  var C4 = $('#C4').val();
-                  var C4 = Number(C4);
-                  var C5 = $('#C5').val();
-                  var C5 = Number(C5);
-                  var C6 = $('#C6').val();
-                  var C6 = Number(C6);
-                  var C7 = $('#C7').val();
-                  var C7 = Number(C7);
-                  var C8 = $('#C8').val();
-                  var C8 = Number(C8);
-                  var C9 = $('#C9').val();
-                  var C9 = Number(C9);
-                  var C10 = $('#C10').val();
-                  var C10 = Number(C10);
-                  var C11 = $('#C11').val();
-                  var C11 = Number(C11);
-                  var C12 = $('#C12').val();
-                  var C12 = Number(C12);
-                  var C13 = $('#C13').val();
-                  var C13 = Number(C13);
-                  var C14 = $('#C14').val();
-                  var C14 = Number(C14);
-                  var C15 = $('#C15').val();
-                  var C15 = Number(C15);
-                  var C16 = $('#C16').val();
-                  var C16 = Number(C16);
-                  var C18 = $('#C18').val();
-                  var C18 = Number(C18);
-                  //var pension = $("#pension").val() / 100; //процент по займу
-
-                  if (C1 > 0 && C2 > 0 && C3 > 0 && C4 > 0 && C5 > 0 && C6 > 0 ) {
-                    var devengados; //ежемесячный платеж
-                    var deducidos;
-                    var maximo;
-                    var cupo;
-                    devengados = (C1 + C3 + C5 + C7 + C9 + C11 + C13 + C15 );
-                    //devengados = Math.floor(devengados);
-                    deducidos = (C2 + C4 + C6 + C8 + C10 + C12 + C14 + C16 + C18 );
-                    //deducidos = Math.floor(deducidos);
-                    maximo = (devengados - C3 - C5 - C2 - C4 ) / 2;
-                    //payment = (pension / 12 * asignacion) / (1 - Math.pow((1 + pension / 12),(-BonAsFam)));
-                    cupo = (maximo - C6 - C8 - C10 - C12 - C14 - C16 - C18);
-                  //	payment = Math.floor(payment);
-                    $("#devengados").text(devengados.toFixed(2));
-                    $("#tdeducidos").text(deducidos.toFixed(2));
-                    //$("#maximo").text((deducidos * deducidos).toFixed(2));
-                    $("#maximo").text(maximo.toFixed(2));
-                    $("#cupo").text(cupo.toFixed(2));
-                  } else {
-                    alert("Introduzca números mayores que cero");
-                  }
-                });
-
-              });
-
-              </script>
-
-
+            <button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>
+            <button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatos()">Rellenar</button>
             <button type="button" class="btn btn-primary" id="calc">Calcular</button>
-            <button type="button" class="btn btn-success" id="calc">Guardar</button>
+            <button type="button" class="btn btn-success" id="guardar">Guardar</button>
             <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>
         </form>
           </div>
@@ -481,7 +346,7 @@
     </div>
 </div>
 
-
+<script src="calcPolicia.js"></script>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
@@ -489,5 +354,5 @@
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 <script src="./scripts.js"></script>
-<script src="../dist/js/pages/dashboard.js"></script>
+<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
