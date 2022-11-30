@@ -13,52 +13,27 @@ $papellido = (isset($_POST['primer_apellido'])) ? $_POST['primer_apellido'] : ''
 $sapellido = (isset($_POST['segundo_apellido'])) ? $_POST['segundo_apellido'] : '';
 $tipo_documento = (isset($_POST['tipo_documento'])) ? $_POST['tipo_documento'] : '';
 $num_documento = (isset($_POST['num_documento'])) ? $_POST['num_documento'] : '';
-$correo = (isset($_POST['correo_electronico'])) ? $_POST['correo_electronico'] : '';
+$correo_electronico = (isset($_POST['correo_electronico'])) ? $_POST['correo_electronico'] : '';
 $telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $ocupacion = (isset($_POST['ocupacion'])) ? $_POST['ocupacion'] : '';
 $empresa = (isset($_POST['empresa'])) ? $_POST['empresa'] : '';
-$fecha = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_incorporacion'] : '';
+$fecha_incorporacion = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_incorporacion'] : '';
 $fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
 $direccion_residencia = (isset($_POST['direccion_residencia'])) ? $_POST['direccion_residencia'] : '';
+
+
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 
+
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes 
-                    (primer_nombre,
-                    segundo_nombre,
-                    primer_apellido,
-                    segundo_apellido,
-                    tipo_documento,
-                    num_documento,
-                    correo_electronico,
-                    telefono, estado,
-                    ocupacion,
-                    empresa,
-                    fecha_incorporacion,
-                    fecha_nacimiento,
-                    direccion_residencia) 
-        VALUES
-                    ('$pnombre',
-                    '$snombre',
-                    '$papellido',
-                    '$sapellido',
-                    '$tipo_documento',
-                    '$num_documento',
-                    '$correo',
-                    '$telefono',
-                    '$estado',
-                    '$ocupacion'
-                    '$empresa',
-                    '$fecha',
-                    '$fecha_nacimiento',
-                    '$direccion_residencia')";
-
+        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento)
+                     VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -68,22 +43,19 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;
     case 2:
-        $consulta = "UPDATE clientes 
-                        SET primer_nombre='$pnombre',
-                            segundo_nombre='$snombre',
-                            primer_apellido='$papellido',
-                            segundo_apellido='$sapellido',
-                            tipo_documento='$tipo_documento',
-                            num_documento='$num_documento',
-                            correo_electronico='$correo',
-                            telefono='$telefono',
-                            estado='$estado',
-                            ocupacion='$ocupacion',
-                            empresa='$empresa',
-                            fecha_incorporacion='$fecha',
-                            fecha_nacimiento='$fecha_nacimiento',
-                            direccion_residencia='$direccion_residencia'
-                        WHERE id='$id' ";		
+         $consulta = "UPDATE clientes SET primer_nombre='$pnombre',
+                                        segundo_nombre='$snombre',
+                                        primer_apellido='$papellido',
+                                        segundo_apellido='$sapellido',
+                                        tipo_documento='$tipo_documento',
+                                        num_documento='$num_documento',
+                                        correo_electronico='$correo_electronico',
+                                        telefono='$telefono',
+                                        estado='$estado',
+                                        ocupacion='$ocupacion',
+                                        empresa='$empresa',
+                                        fecha_incorporacion='$fecha_incorporacion'
+                                        WHERE id='$id' ";			
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();        
         

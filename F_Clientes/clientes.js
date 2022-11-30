@@ -84,7 +84,7 @@ $(document).ready(function() {
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, fecha_nacimiento:fecha_nacimiento, direccion_residencia:direccion_residencia, opcion:opcion},    
+              data:  {id:id, primer_nombre:primer_nombre, segundo_nombre:segundo_nombre, primer_apellido:primer_apellido, segundo_apellido:segundo_apellido ,tipo_documento:tipo_documento, num_documento:num_documento, correo_electronico:correo_electronico, telefono:telefono, estado:estado, ocupacion:ocupacion, empresa:empresa, fecha_incorporacion:fecha_incorporacion, opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
                }
@@ -107,12 +107,14 @@ $(document).ready(function() {
     $("#btnNuevo").click(function(){
         opcion = 1; //alta           
         id=null;
+        //alert(id);
         $("#formModal").trigger("reset");
         $(".modal-header").css( "background-color", "#17a2b8");
         $(".modal-header").css( "color", "white" );
-        $(".modal-title").text("Nuevo Registro");
+        $(".modal-title").text("Nuevo Registro"); 
         $('#modalCRUD').modal('show');
     });
+
     
     //Ver Cliente 
     $(document).on("click", ".VerCliente", function cliente(){

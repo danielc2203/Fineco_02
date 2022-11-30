@@ -135,7 +135,7 @@
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Primer Apellido:</label>
-                    <input type="text" class="form-control form-control-sm" id="primer_apellido" required>
+                    <input type="text" class="form-control form-control-sm" id="primer_apellido" >
                     </div>
                     </div>
                     <div class="col-6">
@@ -161,7 +161,7 @@
                     <div class="col-6">
                     <div class="form-group mb-0 mb-0">
                     <label for="" class="col-form-label-sm">Número de Documento</label>
-                    <input type="text" class="form-control form-control-sm" id="num_documento" required>
+                    <input type="text" class="form-control form-control-sm" id="num_documento" >
                     </div> 
                     </div>    
                 </div>
@@ -169,13 +169,13 @@
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Correo:</label>
-                    <input type="mail" class="form-control form-control-sm " id="correo_electronico" required>
+                    <input type="mail" class="form-control form-control-sm " id="correo_electronico" >
                     </div>
                     </div>
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Télefono</label>
-                    <input type="phone" class="form-control form-control-sm " id="telefono" required>
+                    <input type="phone" class="form-control form-control-sm " id="telefono" >
                     </div> 
                     </div>    
                 </div>
@@ -222,7 +222,7 @@
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm" >Fecha de Inscripción</label>
-                    <input type="date" class="form-control form-control-sm" id="fecha_incorporacion" required>
+                    <input type="date" class="form-control form-control-sm" id="fecha_incorporacion" >
                     </div> 
                     </div>    
                 </div>
@@ -230,13 +230,13 @@
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Fecha de Nacimiento:</label>
-                    <input type="date" class="form-control form-control-sm " id="fecha_nacimiento" required>
+                    <input type="date" class="form-control form-control-sm " id="fecha_nacimiento" >
                     </div>
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">direccion de residencia</label>
-                    <input type="text" class="form-control form-control-sm " id="direccion_residencia" required>
+                    <input type="text" class="form-control form-control-sm " id="direccion_residencia" >
                     </div> 
                     </div>
                 </div>
