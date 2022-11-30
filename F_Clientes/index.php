@@ -240,6 +240,21 @@
                     </div> 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Pais:</label>
+                    <input type="text" class="form-control form-control-sm " id="pais" >
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">direccion de residencia</label>
+                    <input type="text" class="form-control form-control-sm " id="direccion_residencia" >
+                    </div> 
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
