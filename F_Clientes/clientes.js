@@ -80,7 +80,11 @@ $(document).ready(function() {
         fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
         direccion_residencia = $.trim($('#direccion_residencia').val());
         pais = $.trim($('#pais').val());
-                                 
+        departamento = $.trim($('#departamento').val());
+        ciudad = $.trim($('#ciudad').val());
+        estrato = $.trim($('#estrato').val());
+        
+        
             $.ajax({
               url: "crud.php",
               type: "POST",
@@ -101,6 +105,9 @@ $(document).ready(function() {
                     fecha_nacimiento:fecha_nacimiento,
                     direccion_residencia:direccion_residencia,
                     pais:pais,
+                    departamento:departamento,
+                    ciudad:ciudad,
+                    estrato:estrato,
                     opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
@@ -260,6 +267,9 @@ $(document).ready(function() {
                     $("#fecha_nacimiento").val(value.fecha_nacimiento);
                     $("#direccion_residencia").val(value.direccion_residencia);
                     $("#pais").val(value.pais);
+                    $("#departamento").val(value.departamento);
+                    $("#ciudad").val(value.ciudad);
+                    $("#estrato").val(value.estrato);
                     $("#id_cliente").val(value.id);
 
                 });

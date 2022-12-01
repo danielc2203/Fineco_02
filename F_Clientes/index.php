@@ -249,8 +249,44 @@
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group mb-0">
-                    <label for="" class="col-form-label-sm">direccion de residencia</label>
-                    <input type="text" class="form-control form-control-sm " id="direccion_residencia" >
+                    <label for="" class="col-form-label-sm">departamento</label>
+                    <select class="form-control" id="departamento" name="departamento">
+                        <option value="">departamento:</option>
+                        <?php
+                        $consulta = "SELECT * FROM departamentos";
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();
+                        $grupo=$resultado->fetchAll();
+                        foreach ($grupo as $valores):
+                        echo '<option value="'.$valores["departamento"].'">'.$valores["departamento"].'</option>';
+                        endforeach;
+                        ?>
+                      </select>
+                    </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Municipio:</label>
+                    <select class="form-control" id="ciudad" name="ciudad">
+                        <option value="">Municipio:</option>
+                        <?php
+                        $consulta = "SELECT * FROM municipios ";
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();
+                        $grupo=$resultado->fetchAll();
+                        foreach ($grupo as $valores):
+                        echo '<option value="'.$valores["municipio"].'">'.$valores["municipio"].'</option>';
+                        endforeach;
+                        ?>
+                      </select>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">estrato</label>
+                    <input type="text" class="form-control form-control-sm " id="estrato" >
                     </div> 
                     </div>
                 </div>

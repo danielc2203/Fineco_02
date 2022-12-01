@@ -22,7 +22,9 @@ $fecha_incorporacion = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_in
 $fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
 $direccion_residencia = (isset($_POST['direccion_residencia'])) ? $_POST['direccion_residencia'] : '';
 $pais = (isset($_POST['pais'])) ? $_POST['pais'] : '';
-
+$departamento = (isset($_POST['departamento'])) ? $_POST['departamento'] : '';
+$ciudad = (isset($_POST['ciudad'])) ? $_POST['ciudad'] : '';
+$estrato = (isset($_POST['estrato'])) ? $_POST['estrato'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -32,8 +34,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais)
-                     VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento', '$direccion_residencia', '$pais') ";
+        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais, departamento, ciudad, estrato)
+                     VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento', '$direccion_residencia', '$pais', '$departamento', '$ciudad', '$estrato') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -57,7 +59,10 @@ switch($opcion){
                                         fecha_incorporacion='$fecha_incorporacion',
                                         fecha_nacimiento='$fecha_nacimiento',
                                         direccion_residencia='$direccion_residencia',
-                                        pais='$pais'
+                                        pais='$pais',
+                                        departamento='$departamento',
+                                        ciudad='$ciudad',
+                                        estrato='$estrato'
                                         WHERE id='$id' ";			
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();        
