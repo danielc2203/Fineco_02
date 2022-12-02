@@ -43,7 +43,6 @@
 
     <section class="content">
 
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -290,6 +289,39 @@
                     </div> 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Sexo:</label>
+                    <select class="form-control form-control-sm" id="sexo">
+                      <option selected>Seleccionar...</option>
+                      <option value="F">F</option>
+                      <option value="M">M</option>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="col-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm" >Ingreso Mensual</label>
+                    <input type="text" class="form-control form-control-sm" id="ingreso_mensual" >
+                    </div> 
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Salud:</label>
+                    <input type="text" class="form-control form-control-sm" id="salud" >
+                    </div>
+                    </div>
+                    <div class="col-6">
+                    <div class="form-group mb-0">
+                    <label for="" class="col-form-label-sm">Foto de Cedula</label>
+                    <input type="file" class="form-control form-control-sm " id="foto_cedula">
+                    </div> 
+                    </div>    
+                </div>
+                
 
             </div>
             <div class="modal-footer">
