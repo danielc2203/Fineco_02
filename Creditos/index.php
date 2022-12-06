@@ -59,7 +59,7 @@
           <!-- ./col -->
           <div class="col-sm-4">
             <!-- small box Celeste -->
-            <div class="small-box bg-primary text-center" data-toggle="modal" data-target="#modal-nueva-tarea">
+            <div class="small-box bg-primary text-center" id="pensionados">
               <div class="inner">
                 <h3>Pensionados</h3>
                 <h4>Calculadora</h4>
@@ -74,7 +74,7 @@
           <!-- ./col -->
           <div class="col-sm-4">
             <!-- small box Celeste -->
-            <div class="small-box bg-info text-center" data-toggle="modal" data-target="#modal-nueva-tarea">
+            <div class="small-box bg-info text-center" id="docentes">
               <div class="inner">
                 <h3>Docentes</h3>
                 <h4>Calculadora</h4>
@@ -238,8 +238,9 @@
 
 <!-- Modal Credito Prueba-->
 <div class="modal fade" id="modalCREDITOS" tabindex="-1" role="dialog" aria-labelledby="modalCREDITOS" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
+      
       <div class="modal-header">
       <h5 class="modal-title" id="modalCREDITOS">Modal Credito</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -247,12 +248,14 @@
       </button>
     </div>
     <div class="modal-body">
-      ...
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-Close">Save changes</button>
+      <form id="fcreditos" action="" method="post" id="fCalculadora" class="needs-validation" novalidate>
+
+      </form>
     </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-Close">Guardar</button>
+      </div>
     </div>
   </div>
 </div>
