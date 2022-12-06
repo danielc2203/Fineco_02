@@ -6,7 +6,7 @@ $( document ).ready(function() {
      id=null;
 //     //$("#formUsuarios").trigger("reset"); // Para hace reset a el formulario
     var html = "";
-    
+
     html += '<div class="card-header text-center" > <h5> Daniel </h5> </div>'
 
     html += '<div class="form-group row mb-0">'
@@ -27,21 +27,121 @@ $( document ).ready(function() {
     html += '<input type="number" maxIntegerDigits="3" id="C3" value="805465.50" step="0.01" class="form-control form-control-sm" placeholder="$" >'
     html += '</div>'
 
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PENSIÓN - CASUR</label>'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">EPS</label>'
     html += '<div class="col-sm-3">'
     html += '<input type="number" maxIntegerDigits="3" id="C4" value="92674.88" step="0.01" class="form-control form-control-sm" placeholder="$" >'
     html += '</div>'
     html += '</div>'
 
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">BONIFICACIÓN SEGURO DE VIDA</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C5" value="17311.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CLUBAGESOSTE</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C6" value="11584.36" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">DISTINCIÓN</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C7" value="-15292.27" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SEGURO VOLUNT</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C8" value="15500.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PRIMA NIVEL EJECUTIVO</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C9" value="463374.39" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PAGADIBIE</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C10" value="4700.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PRIMA ORDEN PÚBLICO</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C11" value="347530.79" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">COORSERPACK</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C12" value="25339.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PRIMA RETORNO A LA EXPERIENCIA</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C13" value="12158.29" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">BBVA</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C14" value="1004795.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SUBSIDIO ALIMENTACIÓN</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C15" value="68658.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PROEXEASCENCI</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C16" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm"></label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="hidden" maxIntegerDigits="3" id="C17" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SEGURO PONAL</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C18" value="17311.00" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div id="answer"><table class="table table-striped"><tbody>'
+
+    html += '<tr><td>TOTAL DEVENGADOS</td><td id="devengados">0</td></tr>'
+    html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
+    html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
+    html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
+
+    html += '</tbody></table></div>'
+
+    html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
+    html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatos()">Rellenar</button>'
+    html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularPolicia()">Calcular</button>'
+    html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+    html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+
+  
     
-    $("#fcreditos").html(html);
+    $("#fCalculadora").html(html);
 
     //datos en formulario
      $(".modal-header").css( "background-color", "#0f7403");
      $(".modal-header").css( "color", "white" );
      $(".modal-title").text("Calculadora de Creditos - POLICIA");
      $('#modalCREDITOS').modal('show');
- });
+ });    
 
 
  //pensionados

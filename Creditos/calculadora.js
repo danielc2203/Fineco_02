@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $("#calc").click(function() {
+    function calcularPolicia(){
+
       var C1 = $("#C1").val();
       var C1 = Number(C1);
       var C2 = $("#C2").val(); // 
@@ -57,17 +57,23 @@ $(document).ready(function() {
       } else {
         alert("Introduzca números mayores que cero");
       } 
-    });
-});
+
+    };
+
+    
+      
+
 
 // Funcion para rellenar los datos de ejemplo
 function rellenarDatos(){
     alert("Ingresando valores de ejemplo")
     document.getElementById('fCalculadora').reset();
 };
-    
 
 // Borrar todos los campos
 function clearInput(){
     $("#C1,#C2,#C3,#C4,#C5,#C6,#C7,#C8,#C9,#C10,#C11,#C12,#C13,#C14,#C15,#C16,#C17,#C18").val("");
 };
+
+
+

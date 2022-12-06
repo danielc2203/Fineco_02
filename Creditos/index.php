@@ -248,14 +248,10 @@
       </button>
     </div>
     <div class="modal-body">
-      <form id="fcreditos" action="" method="post" id="fCalculadora" class="needs-validation" novalidate>
+      <form action="" method="post" id="fCalculadora" class="needs-validation" novalidate>
 
       </form>
     </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-Close">Guardar</button>
-      </div>
     </div>
   </div>
 </div>
@@ -421,7 +417,7 @@
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 <script src="./scripts.js"></script>
-<script src="calculadora.js"></script>
 <script src="./creditos.js"></script>
+<script src="./calculadora.js"></script>
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
