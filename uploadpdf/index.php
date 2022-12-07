@@ -52,15 +52,20 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
               <strong>Fill UserName and Upload PDF</strong>
+                    <h5><?php
+                    date_default_timezone_set('America/Bogota');
+                    // now
+                    $date = new DateTimeImmutable();
+                      ?></h5>
                 <form method="post" enctype="multipart/form-data">
                     <?php
                         // If submit button is clicked
                         if (isset($_POST['submit']))
                         {
                           // get name from the form when submitted
-                          $usuario = $_POST['usuario'];
+                          $usuario =  $id_usr;
                           $id_cliente = $_POST['id_cliente']; 
-                          $fecha = $_POST['fecha'];                    
+                          $fecha = $date->format('d-m-Y H:i:s');;                    
  
                           if (isset($_FILES['pdf_file']['name']))
                           {  
@@ -119,7 +124,7 @@
                     <div class="form-input py-2">
                         <div class="form-group">
                             <input type="text" class="form-control"
-                                   placeholder="Usuario" name="usuario" required>
+                                   placeholder="Usuario" name="usuario" value="<?php echo $id_usr ?>" readonly>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control"
@@ -130,8 +135,8 @@
                                    class="form-control" accept=".pdf" required/>
                         </div>
                         <div class="form-group">
-                            <input type="date" class="form-control"
-                                   placeholder="fecha" name="fecha" required>
+                            <input type="text" class="form-control"
+                                   placeholder="fecha" name="fecha" value="<?php echo $date->format('d-m-Y H:i:s');?>" readonly>
                         </div> 
                         <div class="form-group">
                             <input type="submit"
