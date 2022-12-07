@@ -55,25 +55,42 @@
         $("#maximo").text(maximo.toFixed(2));
         $("#cupo").text(cupo.toFixed(2));
       } else {
-        alert("Introduzca números mayores que cero");
+        //Swal.fire('Introduzca números mayores que cero', '', 'error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: 'Introduzca números mayores que cero',
+        })
       } 
 
     };
 
-    
-      
-
-
 // Funcion para rellenar los datos de ejemplo
-function rellenarDatos(){
-    alert("Ingresando valores de ejemplo")
-    document.getElementById('fCalculadora').reset();
+function rellenarDatosPolicia(){
+    //Swal.fire('Ingresando valores de ejemplo.', response, 'success');
+    Swal.fire('Se han ingresando valores de ejemplo en el formulario', '', 'info');
+    //document.getElementById('fCalculadora').reset();
+    $("#C1").val("2316871.93");
+    $("#C2").val("120465.53");
+    $("#C3").val("805465.50");
+    $("#C4").val("92674.88");
+    $("#C5").val("17311.00");
+    $("#C6").val("11584.36");
+    $("#C7").val("-15292.27");
+    $("#C8").val("15500.00");
+    $("#C9").val("463374.39");
+    $("#C10").val("4700.00");
+    $("#C11").val("347530.79");
+    $("#C12").val("25339.00");
+    $("#C13").val("12158.29");
+    $("#C14").val("1004795.00");
+    $("#C15").val("68658.00");
+    $("#C18").val("17311.00");
+       
 };
 
 // Borrar todos los campos
 function clearInput(){
     $("#C1,#C2,#C3,#C4,#C5,#C6,#C7,#C8,#C9,#C10,#C11,#C12,#C13,#C14,#C15,#C16,#C17,#C18").val("");
 };
-
-
 
