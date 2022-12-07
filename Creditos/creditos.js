@@ -177,29 +177,16 @@ $( document ).ready(function() {
     html += '</div>'
     html += '</div>'
 
-    html += '<div class="form-group row mb-0">'
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SEGURO DE VIDA</label>'
-    html += '<div class="col-sm-3">'
-    html += '<input type="number" maxIntegerDigits="3" id="C5" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
-    html += '</div>'
-
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">OTROS GASTOS</label>'
-    html += '<div class="col-sm-3">'
-    html += '<input type="number" maxIntegerDigits="3" id="C6" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
-    html += '</div>'
-    html += '</div>'
-
 
     html += '<div id="answer"><table class="table table-striped"><tbody>'
 
     html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
     html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
-    
 
     html += '</tbody></table></div>'
 
     html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
-    html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatos()">Rellenar</button>'
+    html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosPensionados()">Rellenar</button>'
     html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularPensionados()">Calcular</button>'
     html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
@@ -219,7 +206,54 @@ $( document ).ready(function() {
  $("#docentes").click(function(){
     opcion = 1; //dejaremos la opcion 1 para envio de credito policia           
     id=null;
-//     //$("#formUsuarios").trigger("reset"); // Para hace reset a el formulario
+
+    var html = "";
+
+    html += '<div class="card-header text-center" > <h5> Calculadora Docentes </h5> </div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SALARIO BÁSICO</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C1" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">APORTES DE LEY</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="text" maxIntegerDigits="3" id="C2" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">OTROS DESCUENTOS</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C3" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+
+    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
+    html += '<div class="col-sm-3">'
+    html += '<input type="number" maxIntegerDigits="3" id="C4" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+    html += '</div>'
+    html += '</div>'
+
+
+    html += '<div id="answer"><table class="table table-striped"><tbody>'
+
+    html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
+    html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
+    
+
+    html += '</tbody></table></div>'
+
+    html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
+    html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosDocentes()">Rellenar</button>'
+    html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularDocentes()">Calcular</button>'
+    html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+    html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+
+
+
+    $("#fCalculadora").html(html);
+
     $(".modal-header").css("background-color", "#0267EB");
     $(".modal-header").css( "color", "white" );
     $(".modal-title").text("Calculadora de Creditos - Docentes");

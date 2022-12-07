@@ -74,13 +74,7 @@ switch($opcion){
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
 
-         $filename = $_FILES['foto_cedula']['name'];
-         $filetmpname = $_FILES['foto_cedula']['tmp_name'];
-         $folder = '/';
- 
-         move_uploaded_file($filetmpname, $folder.$filename);
-         //$fotocc_temporal=$_FILES['foto_cedula']['tmp_name'];
-        //move_uploaded_file($fotocc_temporal,$foto_cedula);
+        
         
          $consulta = "SELECT * FROM clientes WHERE id='$id' ";    
          $resultado = $conexion->prepare($consulta);
