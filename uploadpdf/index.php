@@ -51,7 +51,7 @@
 <div class="container" style="margin-top:30px">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
-              <strong>Fill UserName and Upload PDF</strong>
+              <strong>Pruebas de Archivos PDF</strong>
                     <h5><?php
                     date_default_timezone_set('America/Bogota');
                     // now
@@ -149,7 +149,7 @@
             <div class="col-lg-6 col-md-6 col-12">
               <div class="card">
                 <div class="card-header text-center">
-                  <h4>Records from Database</h4>
+                  <h4>Registro de la Base de Datod</h4>
                 </div>
                 <div class="card-body">
                    <div class="table-responsive">

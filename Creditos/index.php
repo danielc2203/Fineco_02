@@ -101,11 +101,11 @@
             <div class="card-header">
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1"></i>
-                  Listado de Tareas Pendientes.
+                  Creditos Pendientes.
                 </h3>
             </div>
 
-            <div class="card-body" id="finecod">
+            <div class="card-body" id="creditosp">
               <!-- Aca se pinta el contenido del JS Finecod de la funcion Daniel -->
             </div>
             <div class="card-footer clearfix">

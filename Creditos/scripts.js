@@ -17,8 +17,8 @@ function all()
 	            $.each(response, function(key,value) {
 	            	// Our employee list template
 
-					html += '<ul class="todo-list" data-widget="todo-list" >'
-					html += '<li style="margin-bottom: 3px;" class="'+ value.estado_tarea +'">'
+					html += '<ul class="todo-list" data-widget="todo-list"  >'
+					html += '<li style="margin-bottom: 3px;" class="'+ value.estado_tarea +'" >'
 
 					html += '<div  class="d-inline ml-2">'
 					if(value.estado_tarea == "done"){
@@ -26,20 +26,13 @@ function all()
 					}else{
 						html += '<i class="fas fa-circle-notch text-"></i>'
 					};
-					html += '<span class="handle"> <i class="fas fa-thumbtack"></i></span>'
+					html += '<span class="handle"> <i class="fas fa-tasks"></i></span>'
 					html += "<span>" + value.titulo +' '+ value.descripcion +"</span>";
 					html += "<span class='text'>" + value.fecha +"</span>";
 
 					var fechaFin = new Date(value.fecha).getTime();
 					var di = moment().diff(moment(fechaFin), 'days');
 
-					if (di < "0"){
-						html += '<small class="badge badge-success"><i class="far fa-clock"></i>' + ' ' + di +' días para vencer tarea</small>'
-					}else{
-						html += '<small class="badge badge-danger"><i class="far fa-clock"></i>' + ' ' + di +' días vencidos</small>'
-					}
-
-					
 					html += '</div>'
 
 					html += '<div class="tools">' // Botones
@@ -57,7 +50,7 @@ function all()
             }
 
             // Insert the HTML Template and display all employee records
-			$("#finecod").html(html);
+			$("#creditosp").html(html);
         }
     });
 }
