@@ -74,7 +74,7 @@ function save()
 	        beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
 	            $this.attr('disabled', true).html("Processing...");
 	        },
-	        success: function (response) {//once the request successfully process to the server side it will return result here
+	        success: function (response) { //once the request successfully process to the server side it will return result here
 	            $this.attr('disabled', false).html($caption);
 
 	            // Reload lists of employees
@@ -92,6 +92,7 @@ function save()
 
 	        },
 	        error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert('Error ...');
 	        	// You can put something here if there is an error from submitted request
 	        }
 	    });
@@ -145,7 +146,7 @@ function update()
 	        type: "POST", //we are using POST method to submit the data to the server side
 	        url: route, // get the route value
 	        data: formData, // our serialized array data for server side
-	        beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
+	        beforeSend: function () { //We add this before send to disable the button once we submit it so that we prevent the multiple click
 	            $this.attr('disabled', true).html("Processing...");
 	        },
 	        success: function (response) {//once the request successfully process to the server side it will return result here
@@ -207,7 +208,6 @@ function del()
 		            Swal.fire('Tarea Eliminada.', response, 'success')
 		        }
 		    });
-
 		    
 		  } else if (result.isDenied) {
 		    Swal.fire('Cambios No Efectuados', '', 'info')

@@ -96,16 +96,17 @@
     
   </div>
 
-<!--Modal para CRUD-->
-<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
+<!-- Modal -->
+<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
         <form id="formModal" class="needs-validation">    
             <div class="modal-body">
                 <div class="row">
@@ -115,7 +116,6 @@
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Primer Nombre:</label>
                     <input type="text" class="form-control form-control-sm" id="primer_nombre" required>
-                    
                     <div class="invalid-tooltip">
                       Este campo no debe estar vacio.
                     </div>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="col-6">
                     <div class="form-group mb-0">
-                    <label for="" class="col-form-label-sm">Segundo Nombre</label>
+                    <label for="" class="col-form-label-sm">Segundo Nombre:</label>
                     <input type="text" class="form-control form-control-sm" id="segundo_nombre" >
 
                     </div> 
@@ -139,7 +139,7 @@
                     </div>
                     <div class="col-6">
                     <div class="form-group mb-0">
-                    <label for="" class="col-form-label-sm">Segundo Apellido</label>
+                    <label for="" class="col-form-label-sm">Segundo Apellido:</label>
                     <input type="text" class="form-control form-control-sm " id="segundo_apellido">
                     </div> 
                     </div>    
@@ -148,7 +148,6 @@
                     <div class="col-6">
                     <div class="form-group mb-0 mb-0">
                     <label for="" class="col-form-label-sm">Tipo de Documento:</label>
-                    <!-- <input type="text" class="form-control form-control-sm" id="tdocumento"> -->
                     <select class="form-control form-control-sm" id="tipo_documento">
                       <option selected>Seleccionar...</option>
                       <option value="CC">CC</option>
@@ -232,7 +231,7 @@
                     <input type="date" class="form-control form-control-sm " id="fecha_nacimiento" >
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">direccion de residencia</label>
                     <input type="text" class="form-control form-control-sm " id="direccion_residencia" >
@@ -246,22 +245,10 @@
                     <input type="text" class="form-control form-control-sm " id="pais" >
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">departamento</label>
                     <input type="text" class="form-control form-control-sm " id="departamento" >
-                    <!-- <select class="form-control" id="departamento" name="departamento">
-                        <option value="">departamento:</option>
-                        <?php
-                        // $consulta = "SELECT * FROM departamentos";
-                        // $resultado = $conexion->prepare($consulta);
-                        // $resultado->execute();
-                        // $grupo=$resultado->fetchAll();
-                        // foreach ($grupo as $valores):
-                        // echo '<option value="'.$valores["departamento"].'">'.$valores["departamento"].'</option>';
-                        // endforeach;
-                        ?>
-                      </select> -->
                     </div> 
                     </div>
                 </div>
@@ -270,21 +257,9 @@
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">ciudad:</label>
                     <input type="text" class="form-control form-control-sm " id="ciudad" >
-                    <!-- <select class="form-control" id="ciudad" name="ciudad">
-                        <option value="">Municipio:</option>
-                        <?php
-                        // $consulta = "SELECT * FROM municipios ";
-                        // $resultado = $conexion->prepare($consulta);
-                        // $resultado->execute();
-                        // $grupo=$resultado->fetchAll();
-                        // foreach ($grupo as $valores):
-                        // echo '<option value="'.$valores["municipio"].'">'.$valores["municipio"].'</option>';
-                        // endforeach;
-                        ?>
-                      </select> -->
                     </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">estrato</label>
                     <input type="text" class="form-control form-control-sm " id="estrato" >
@@ -323,17 +298,16 @@
                     </div> 
                     </div>    
                 </div>
-                
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
                 <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
             </div>
         </form>
-        </div>
+      </div>
     </div>
-</div>  
+  </div>
+</div>
 
 
 <!-- Modal Ver Clientes-->
@@ -363,6 +337,10 @@
 <!-- Bootstrap 4 -->
 <!-- <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 <!-- DataTables  & Plugins -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>

@@ -24,12 +24,12 @@
 	VALUES ('".$titulo."', '".$descripcion."', '".$fecha."', '".$id_usr."', '".$fecha_asigando."', '".$estado_tarea."')";
 
 	// Process the query so that we will save the date of birth
-	if ($mysqli->query($sql)) {
-	  echo "Employee has been created.";
+	// if ($mysqli->query($sql)) {
+	//   echo "Employee has been created.";
 	  
-	} else {
-	  return "Error: " . $sql . "<br>" . $mysqli->error;
-	}
+	// } else {
+	//   //return "Error: " . $sql . "<br>" . $mysqli->error;
+	// }
 
 	// Close the connection after using it
 	$mysqli->close();
