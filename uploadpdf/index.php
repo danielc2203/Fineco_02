@@ -4,24 +4,14 @@
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
+
 <!-- Sweetalert 2 CSS -->
-
-<!-- <link rel="stylesheet" href="assets/plugins/sweetalert2/sweetalert2.min.css"> -->
-<!-- <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css"> -->
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.7/sweetalert2.css" integrity="sha512-JzSVRb7c802/njMbV97pjo1wuJAE/6v9CvthGTDxiaZij/TFpPQmQPTcdXyUVucsvLtJBT6YwRb5LhVxX3pQHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-
-<!-- FIN DE HEADER -->
 
 <!-- Main Sidebar Container -->
 <?php include ('../recursos/sidebar.php');
 //echo $id_usr;
- ?>
-
-
-<!-- Fin de Sidebar -->
-
-
+?>
 
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -4,30 +4,29 @@ include_once '../global/conexiond.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 $data = "";
+$opcion = 4;
 
 //Variable= si el POST NO ESTA VACIO - ENTONCES $_POST POST = VARIABLE; 
-$pnombre = (isset($_POST['primer_nombre'])) ? $_POST['primer_nombre'] : '';
-$snombre = (isset($_POST['segundo_nombre'])) ? $_POST['segundo_nombre'] : '';
-$papellido = (isset($_POST['primer_apellido'])) ? $_POST['primer_apellido'] : '';
-$sapellido = (isset($_POST['segundo_apellido'])) ? $_POST['segundo_apellido'] : '';
-$tipo_documento = (isset($_POST['tipo_documento'])) ? $_POST['tipo_documento'] : '';
-$num_documento = (isset($_POST['num_documento'])) ? $_POST['num_documento'] : '';
-$correo_electronico = (isset($_POST['correo_electronico'])) ? $_POST['correo_electronico'] : '';
-$telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : '';
-$estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
-$ocupacion = (isset($_POST['ocupacion'])) ? $_POST['ocupacion'] : '';
-$empresa = (isset($_POST['empresa'])) ? $_POST['empresa'] : '';
-$fecha_incorporacion = (isset($_POST['fecha_incorporacion'])) ? $_POST['fecha_incorporacion'] : '';
-$fecha_nacimiento = (isset($_POST['fecha_nacimiento'])) ? $_POST['fecha_nacimiento'] : '';
-$direccion_residencia = (isset($_POST['direccion_residencia'])) ? $_POST['direccion_residencia'] : '';
-$pais = (isset($_POST['pais'])) ? $_POST['pais'] : '';
-$departamento = (isset($_POST['departamento'])) ? $_POST['departamento'] : '';
-$ciudad = (isset($_POST['ciudad'])) ? $_POST['ciudad'] : '';
-$estrato = (isset($_POST['estrato'])) ? $_POST['estrato'] : '';
-$sexo = (isset($_POST['sexo'])) ? $_POST['sexo'] : '';
-$ingreso_mensual = (isset($_POST['ingreso_mensual'])) ? $_POST['ingreso_mensual'] : '';
-$salud = (isset($_POST['salud'])) ? $_POST['salud'] : '';
-$foto_cedula = (isset($_FILES['foto_cedula'])) ? $_FILES['foto_cedula'] ['name']: '';
+$id_documento = (isset($_POST['id_documento'])) ? $_POST['id_documento'] : '';
+$solicitud_credito = (isset($_POST['solicitud_credito'])) ? $_POST['solicitud_credito'] : '';
+$monto = (isset($_POST['monto'])) ? $_POST['monto'] : '';
+$plazo = (isset($_POST['plazo'])) ? $_POST['plazo'] : '';
+$amortizacion = (isset($_POST['amortizacion'])) ? $_POST['amortizacion'] : '';
+$tipo_credito = (isset($_POST['tipo_credito'])) ? $_POST['tipo_credito'] : '';
+$deudas_actuales = (isset($_POST['deudas_actuales'])) ? $_POST['deudas_actuales'] : '';
+$egresos = (isset($_POST['egresos'])) ? $_POST['egresos'] : '';
+$datacreditos = (isset($_POST['datacreditos'])) ? $_POST['datacreditos'] : '';
+$capacidad_endeudamiento = (isset($_POST['capacidad_endeudamiento'])) ? $_POST['capacidad_endeudamiento'] : '';
+$calificacion_interna = (isset($_POST['calificacion_interna'])) ? $_POST['calificacion_interna'] : '';
+$tasa = (isset($_POST['tasa'])) ? $_POST['tasa'] : '';
+$resultado = (isset($_POST['resultado'])) ? $_POST['resultado'] : '';
+$cuota_mensual = (isset($_POST['cuota_mensual'])) ? $_POST['cuota_mensual'] : '';
+$intereses_anticipados = (isset($_POST['intereses_anticipados'])) ? $_POST['intereses_anticipados'] : '';
+$seguro = (isset($_POST['seguro'])) ? $_POST['seguro'] : '';
+$asesoria = (isset($_POST['asesoria'])) ? $_POST['asesoria'] : '';
+$iva = (isset($_POST['iva'])) ? $_POST['iva'] : '';
+$comentarios = (isset($_POST['comentarios'])) ? $_POST['comentarios'] : '';
+$fecha_solicitud = (isset($_POST['fecha_solicitud'])) ? $_POST['fecha_solicitud'] : '';
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
@@ -35,18 +34,18 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais, departamento, ciudad, estrato, sexo, ingreso_mensual, salud, foto_cedula)
+        $consulta = "INSERT INTO creditos (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais, departamento, ciudad, estrato, sexo, ingreso_mensual, salud, foto_cedula)
                      VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento', '$direccion_residencia', '$pais', '$departamento', '$ciudad', '$estrato', '$sexo', '$ingreso_mensual', '$salud', '$foto_cedula') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
-        $consulta = "SELECT * FROM clientes ORDER BY id DESC LIMIT 1";
+        $consulta = "SELECT * FROM creditos ORDER BY id DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;
     case 2:
-         $consulta = "UPDATE clientes SET primer_nombre='$pnombre',
+         $consulta = "UPDATE creditos SET primer_nombre='$pnombre',
                                         segundo_nombre='$snombre',
                                         primer_apellido='$papellido',
                                         segundo_apellido='$sapellido',
@@ -72,13 +71,13 @@ switch($opcion){
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
 
-         $consulta = "SELECT * FROM clientes WHERE id='$id' ";    
+         $consulta = "SELECT * FROM creditos WHERE id='$id' ";    
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
          $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
-        $consulta = "DELETE FROM clientes WHERE id='$id' ";
+        $consulta = "DELETE FROM creditos WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();                         
         break;
@@ -89,7 +88,7 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 5:
-        $consulta = "SELECT * FROM clientes WHERE id='$id' ";
+        $consulta = "SELECT * FROM creditos WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

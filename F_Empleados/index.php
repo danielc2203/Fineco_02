@@ -189,9 +189,6 @@
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- Page specific script -->
 
 <script src="../plugins/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="main.js"></script>  

@@ -3,10 +3,10 @@ $(document).ready(function() {
     opcion = 4;
     
     $(document).ready(function () {
-        $('#clientes').DataTable;
+        $('#creditosp').DataTable;
     });
     
-    tablaUsuarios = $('#clientes').DataTable({
+    tablaUsuarios = $('#creditosp').DataTable({
         
         language: {
             url: '../dist/json/es-CO_DataTables.json',
@@ -38,14 +38,11 @@ $(document).ready(function() {
             {"data": "segundo_nombre"},
             {"data": "primer_apellido"},
             {"data": "segundo_apellido"}, 
-            //{"data": "tipo_documento"},
             {"data": "num_documento"},
             {"data": "correo_electronico"},
             {"data": "telefono"},
             {"data": "estado"},
-            //{"data": "ocupacion"},
             {"data": "empresa"},
-            //{"data": "fecha_incorporacion"},
             
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
@@ -230,11 +227,11 @@ $(document).ready(function() {
 
           });
 
-          
+          var nombres = html += '<div class="card-header text-center" > <h5>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h5> </div>'
        // $("#detalles-clientes").trigger("reset");
         $(".modal-header").css( "background-color", "#17a2b8");
         $(".modal-header").css( "color", "white" );
-        $(".modal-title").text("Clientes Fineco App");
+        $(".modal-title").text(nombres);
         $('#VerClientes').modal('show');
         
     });

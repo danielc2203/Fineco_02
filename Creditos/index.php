@@ -40,7 +40,7 @@
     <section class="content">
       <div class="container-fluid">
 
-        <!-- Small boxes (Stat box) -->
+        <!-- Calculadoras de Creditos -->
         <div class="row">
           <div class="col-sm-4">
             <!-- small box Celeste -->
@@ -94,14 +94,12 @@
         <div class="row">
           <!-- Left col -->
           <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-
 
           <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1"></i>
-                  Creditos Pendientes.
+                  Listado de Creditos Pendientes.
                 </h3>
             </div>
 
@@ -114,11 +112,7 @@
           </div>
 
           </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <!-- right col -->
         </div>
-        <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
