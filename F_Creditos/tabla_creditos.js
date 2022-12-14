@@ -31,24 +31,35 @@ $(document).ready(function() {
             "method": 'POST', //usamos el metodo POST
             "data":{opcion:opcion}, //enviamos opcion 4 para que haga un SELECT
             "dataSrc":""
+            
         },
         "columns":[
             {"data": "id"},
-            {"data": "primer_nombre"},
-            {"data": "segundo_nombre"},
-            {"data": "primer_apellido"},
-            {"data": "segundo_apellido"}, 
-            {"data": "num_documento"},
-            {"data": "correo_electronico"},
-            {"data": "telefono"},
+            {sortable: true,
+                "render": function ( data, type, full, meta ) {
+                    //var buttonID = +full.id;
+                    return '<a class="btn btn-success VerCredito" role="button">'+full.id_documento+'</a>';
+                }},
+            {"data": "monto"},
+            {"data": "plazo"},
+            {"data": "capacidad"},
             {"data": "estado"},
-            {"data": "empresa"},
+            //{"data": "correo_electronico"},
+            //{"data": "telefono"},
+            {"data": "fecha_solicitud"},
+
+                // Muestra de Boton con id desde la consulta + funcion
+            // {sortable: false,
+            // "render": function ( data, type, full, meta ) {
+            //     var buttonID = "delete_"+full.id;
+            //     return '<a id='+buttonID+' class="btn btn-danger deleteBtn" role="button">Delete</a>';
+            // }},
             
             
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-            {"defaultContent": "<a class='btn btn-outline-success btn-sm VerCliente'><i class='fas fa-eye'></i></a>"},
+            //{"defaultContent": "<a class='btn btn-outline-success btn-sm VerCredito'><i class='fas fa-eye'></i></a>"},
             // {"defaultContent": "<a class='btn btn-outline-warning btn-sm btnEditar'><i class='fas fa-edit'></i></a>"},
-            //{"defaultContent": "<a class='btn btn-outline-danger btn-sm btnBorrar '><i class='fas fa-eraser'></i></a>"}
+            
     
         ],
         
@@ -148,7 +159,7 @@ $(document).ready(function() {
 
     
     //Ver Cliente 
-    $(document).on("click", ".VerCliente", function cliente(){
+    $(document).on("click", ".VerCredito", function cliente(){
 
         fila = $(this);           
         var id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
@@ -175,12 +186,12 @@ $(document).ready(function() {
                     // Loop the parsed JSON
                     $.each(response, function(key,value) {
     
-                            html += '<div class="card-header text-center" > <h5>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h5> </div>'
+                            html += '<div class="card-header text-center" > <h5> Credito Nº '+ value.id +'</h5> </div>'
     
                             html += '<div class="card-body pt-0">'
                                 html += '<div class="row">'
                                     html += '<div class="col-12">'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm" name="ida" id="ida"><b>Tipo de documento: </b> '+ value.tipo_documento +' </p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm" name="ida" id="ida"><b>Tipo de documento: </b> '+ value.id_documento +' </p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Número de documento: </b> '+ value.num_documento +' </p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Correo electronico: </b> '+ value.correo_electronico +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Número de contacto: </b> '+ value.telefono +'</p>'
@@ -221,18 +232,18 @@ $(document).ready(function() {
                 }
     
                 // Insert the HTML Template and display all employee records
-                $("#contenido_cliente").html(html);
+                $("#contenido_credito").html(html);
             }
             
 
           });
 
-          var nombres = html += '<div class="card-header text-center" > <h5>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h5> </div>'
+    
        // $("#detalles-clientes").trigger("reset");
         $(".modal-header").css( "background-color", "#17a2b8");
         $(".modal-header").css( "color", "white" );
-        $(".modal-title").text(nombres);
-        $('#VerClientes').modal('show');
+        $(".modal-title").text("Detalles del Credito");
+        $('#VerCredito').modal('show');
         
     });
     

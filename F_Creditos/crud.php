@@ -82,7 +82,7 @@ switch($opcion){
         $resultado->execute();                         
         break;
     case 4:    
-        $consulta = "SELECT * FROM clientes";
+        $consulta = "SELECT * FROM creditos";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
