@@ -247,7 +247,7 @@ $( document ).ready(function() {
     html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
     html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosDocentes()">Rellenar</button>'
     html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularDocentes()">Calcular</button>'
-    html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+    html += '<button type="button" class="btn btn-success" id="guardar" onclick= "copiarDatos()">Copiar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
 
@@ -259,7 +259,26 @@ $( document ).ready(function() {
     $(".modal-title").text("Calculadora de Creditos - Docentes");
     $('#modalCREDITOS').modal('show');
 });
+
+
+
+//Guardar
+ function guardarCredito(){
+    alert ("Funcion Guardar Credito");
+    $("#fCalculadora").html(html);
+          
+    $(".modal-header").css("background-color", "#0267EB");
+    $(".modal-header").css( "color", "white" );
+    $(".modal-title").text("Nuevo Credito");
+    $('#modalCREDITOS').modal('show');
+ };
+
+
+
+
 });
+
+
 
 
 

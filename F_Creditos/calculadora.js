@@ -1,4 +1,4 @@
-    function calcularPolicia(){
+function calcularPolicia(){
 
       var C1 = $("#C1").val();
       var C1 = Number(C1);
@@ -242,3 +242,57 @@ function clearInput(){
   })
     
 };
+
+function guardarDatos(){
+  
+  var C1 = $("#C1").val();
+
+  if (C1) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+          
+          ('#modalCREDITOS').modal('hide');
+          //('#modalCREDITOS').modal('show');
+          //guardarCredito();
+
+        //'guardarCredito()',
+        // Swal.fire(
+        //   'Deleted!',
+        //   'Your file has been deleted.',
+        //   'success',
+        // )
+
+        
+      }
+    })
+  }else{
+    $('#modalCREDITOS').modal('show');
+    Swal.fire('Se requiere de capacidad de libre inversiòn')
+  }
+
+ };
+
+ //Copiar
+
+function myFunction() {
+  // Get the text field
+  var copyText = document.getElementById("myInput");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  
+  // Alert the copied text
+  alert("Copied the text: " + copyText.value);
+}
