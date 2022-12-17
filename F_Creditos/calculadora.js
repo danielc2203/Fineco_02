@@ -56,7 +56,7 @@ function calcularPolicia(){
         //$("#maximo").text((deducidos * deducidos).toFixed(2));
         $("#maximo").text(maximo.toFixed(2));
         $("#cupo").text(cupo.toFixed(2));
-        valorG = cupo;
+        valorG = (cupo.toFixed(0));
       } else {
         //Swal.fire('Introduzca números mayores que cero', '', 'error');
         Swal.fire({
@@ -278,7 +278,7 @@ function guardarDatos(){
 
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD:</label>'
         html += '<div class="col-sm-3">'
-        html += '<input type="text" id="capacidad" value="'+valorG+'"  class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '<input type="text" id="capacidad"  value="'+valorG+'" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
         html += '</div>'
         html += '</div>'
 

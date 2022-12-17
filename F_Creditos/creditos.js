@@ -7,8 +7,6 @@ $( document ).ready(function() {
 //     //$("#formUsuarios").trigger("reset"); // Para hace reset a el formulario
     var html = "";
 
-    html += '<div class="card-header text-center" > <h5> Daniel </h5> </div>'
-
     html += '<div class="form-group row mb-0">'
     html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ASIGNACIÓN BÁSICA</label>'
     html += '<div class="col-sm-3">'
@@ -126,10 +124,10 @@ $( document ).ready(function() {
 
     html += '</tbody></table></div>'
 
-    html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
-    html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosPolicia()">Rellenar</button>'
-    html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularPolicia()">Calcular</button>'
-    html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+    html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
+    html += '<button type="button" class="btn btn-warning ml-3" onclick= "rellenarDatosPolicia()">Rellenar</button>'
+    html += '<button type="button" class="btn btn-primary m-3" id="calc" onclick= "calcularPolicia()">Calcular</button>'
+    html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
   
     
@@ -185,10 +183,9 @@ $( document ).ready(function() {
 
     html += '</tbody></table></div>'
 
-    html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
-    html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosPensionados()">Rellenar</button>'
-    html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularPensionados()">Calcular</button>'
-    html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+    html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
+    html += '<button type="button" class="btn btn-primary ml-3" id="calc" onclick= "calcularPensionados()">Calcular</button>'
+    html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
 
@@ -244,9 +241,9 @@ $( document ).ready(function() {
 
     html += '</tbody></table></div>'
 
-    html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
-    html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularDocentes()">Calcular</button>'
-    html += '<button type="button" class="btn btn-success" id="guardar" onclick= "guardarDatos()">Guardar</button>'
+    html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
+    html += '<button type="button" class="btn btn-primary ml-3" id="calc" onclick= "calcularDocentes()">Calcular</button>'
+    html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
 
