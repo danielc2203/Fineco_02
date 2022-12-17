@@ -247,7 +247,7 @@ $( document ).ready(function() {
     html += '<button type="button" class="btn btn-outline-danger" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
     html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosDocentes()">Rellenar</button>'
     html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularDocentes()">Calcular</button>'
-    html += '<button type="button" class="btn btn-success" id="guardar" onclick= "copiarDatos()">Copiar</button>'
+    html += '<button type="button" class="btn btn-success" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
 
@@ -258,7 +258,11 @@ $( document ).ready(function() {
     $(".modal-header").css( "color", "white" );
     $(".modal-title").text("Calculadora de Creditos - Docentes");
     $('#modalCREDITOS').modal('show');
+
+
+
 });
+
 
 
 

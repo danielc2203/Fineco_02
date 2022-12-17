@@ -1,3 +1,5 @@
+var valorG;
+let date = new Date().toLocaleDateString();
 function calcularPolicia(){
 
       var C1 = $("#C1").val();
@@ -204,6 +206,7 @@ function calcularDocentes(){
     $("#capacidad").text(capacidad.toFixed(2));
     $("#C4").val(capacidad);
     $("#aportes").text(dato.toFixed(2));
+    valorG = capacidad;
   } else {
     //Swal.fire('Introduzca números mayores que cero', '', 'error');
     Swal.fire({
@@ -246,53 +249,90 @@ function clearInput(){
 function guardarDatos(){
   
   var C1 = $("#C1").val();
+  var CAPACIDAD  = $('#capacidad').val();
 
-  if (C1) {
+  if (valorG) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Deseas crear',
+      text: "Un nuevo registro de credito?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, Crear nuevo credito!'
     }).then((result) => {
       if (result.isConfirmed) {
           
-          ('#modalCREDITOS').modal('hide');
-          //('#modalCREDITOS').modal('show');
-          //guardarCredito();
-
-        //'guardarCredito()',
-        // Swal.fire(
-        //   'Deleted!',
-        //   'Your file has been deleted.',
-        //   'success',
-        // )
+        var html = "";
 
         
+        html += '<div class="form-group row mb-0">'
+        html += '<form id="formNuevoCredito" class="needs-validation">  '
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CEDULA:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="number" id="cedula" value="" class="form-control form-control-sm" placeholder="CC" >'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="capacidad" value="'+valorG+'"  class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
+        html += '<div class="form-group row mb-0">'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO EN DÌAS</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="number"  id="plazo" value="" class="form-control form-control-sm" placeholder="365" >'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="fecha" value='+date+' class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
+        html += '<div class="form-group row mb-0">'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">MONTO DEL CREDITO:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="number" id="monto" value="" class="form-control form-control-sm" placeholder="$" >'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO DEL CREDITO:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="estado" value="Pendiente" class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
+        html += '<button type="submit" class="btn btn-primary formNuevoCredito" id="formNuevoCredito">Guardar</button>'
+        html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+        html += '</form>'
+
+    html += '<div id="answer"><table class="table table-striped"><tbody>'
+
+    html += '</tbody></table></div>'
+
+        
+    
+        $("#fCalculadora").html(html);
+        $(".modal-header").css("background-color", "#ff5722");
+        $(".modal-header").css( "color", "white" );
+        $(".modal-title").css("font-weight: bold", "font-size: 18px");
+        $(".modal-title").text("Agregar Nuevo Credito");
+
       }
     })
   }else{
-    $('#modalCREDITOS').modal('show');
-    Swal.fire('Se requiere de capacidad de libre inversiòn')
+    Swal.fire('Se requiere de calcular capacidad de libre inversiòn')
   }
 
  };
 
- //Copiar
+ function modalnuevo(){
+  var html = "";
 
-function myFunction() {
-  // Get the text field
-  var copyText = document.getElementById("myInput");
+  //$("#fCalculadora").html(html);
+  $(".modal-header").css("background-color", "#0267EB");
+  $(".modal-header").css( "color", "white" );
+  $(".modal-title").text("Agregar Nuevo Credito");
+};
 
-  // Select the text field
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-
-  // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-  
-  // Alert the copied text
-  alert("Copied the text: " + copyText.value);
-}

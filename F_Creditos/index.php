@@ -163,6 +163,29 @@
   </div>
 </div>
 
+<!-- Modal Agregar Nuevo Credito -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          Add rows here
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 
@@ -184,7 +207,7 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
 
-
+<script src="./guardar.js"></script>
 <script src="./tabla_creditos.js"></script>
 <script src="./creditos.js"></script>
 <script src="./calculadora.js"></script>

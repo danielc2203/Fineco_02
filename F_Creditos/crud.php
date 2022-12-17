@@ -7,26 +7,12 @@ $data = "";
 $opcion = 4;
 
 //Variable= si el POST NO ESTA VACIO - ENTONCES $_POST POST = VARIABLE; 
-$id_documento = (isset($_POST['id_documento'])) ? $_POST['id_documento'] : '';
-$solicitud_credito = (isset($_POST['solicitud_credito'])) ? $_POST['solicitud_credito'] : '';
+$id_documento = (isset($_POST['cedula'])) ? $_POST['cedula'] : '';
+$capacidad = (isset($_POST['capacidad'])) ? $_POST['capacidad'] : '';
 $monto = (isset($_POST['monto'])) ? $_POST['monto'] : '';
 $plazo = (isset($_POST['plazo'])) ? $_POST['plazo'] : '';
-$amortizacion = (isset($_POST['amortizacion'])) ? $_POST['amortizacion'] : '';
-$tipo_credito = (isset($_POST['tipo_credito'])) ? $_POST['tipo_credito'] : '';
-$deudas_actuales = (isset($_POST['deudas_actuales'])) ? $_POST['deudas_actuales'] : '';
-$egresos = (isset($_POST['egresos'])) ? $_POST['egresos'] : '';
-$datacreditos = (isset($_POST['datacreditos'])) ? $_POST['datacreditos'] : '';
-$capacidad_endeudamiento = (isset($_POST['capacidad_endeudamiento'])) ? $_POST['capacidad_endeudamiento'] : '';
-$calificacion_interna = (isset($_POST['calificacion_interna'])) ? $_POST['calificacion_interna'] : '';
-$tasa = (isset($_POST['tasa'])) ? $_POST['tasa'] : '';
-$resultado = (isset($_POST['resultado'])) ? $_POST['resultado'] : '';
-$cuota_mensual = (isset($_POST['cuota_mensual'])) ? $_POST['cuota_mensual'] : '';
-$intereses_anticipados = (isset($_POST['intereses_anticipados'])) ? $_POST['intereses_anticipados'] : '';
-$seguro = (isset($_POST['seguro'])) ? $_POST['seguro'] : '';
-$asesoria = (isset($_POST['asesoria'])) ? $_POST['asesoria'] : '';
-$iva = (isset($_POST['iva'])) ? $_POST['iva'] : '';
-$comentarios = (isset($_POST['comentarios'])) ? $_POST['comentarios'] : '';
-$fecha_solicitud = (isset($_POST['fecha_solicitud'])) ? $_POST['fecha_solicitud'] : '';
+$estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
+$fecha_solicitud = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
@@ -34,8 +20,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO creditos (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais, departamento, ciudad, estrato, sexo, ingreso_mensual, salud, foto_cedula)
-                     VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento', '$direccion_residencia', '$pais', '$departamento', '$ciudad', '$estrato', '$sexo', '$ingreso_mensual', '$salud', '$foto_cedula') ";
+        $consulta = "INSERT INTO creditos (id_documento, monto, plazo, capacidad, fecha_solicitud, estado)
+                     VALUES('$id_documento', '$monto', '$plazo', '$capacidad', '$fecha_solicitud', '$estado') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -83,6 +69,12 @@ switch($opcion){
         break;
     case 4:    
         $consulta = "SELECT * FROM creditos";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 5:
+        $consulta = "SELECT * FROM creditos WHERE id='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
