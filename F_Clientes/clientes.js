@@ -86,7 +86,7 @@ $(document).ready(function() {
         sexo = $.trim($('#sexo').val());
         ingreso_mensual = $.trim($('#ingreso_mensual').val());
         salud = $.trim($('#salud').val());
-        foto_cedula = (num_documento+'CC.jpg')
+        //foto_cedula = (num_documento+'CC.jpg')
         //filename = $_FILES['foto_cedula']['name'];
         //img = $.trim($('#foto_cedula').attr('src'));
         
@@ -117,7 +117,7 @@ $(document).ready(function() {
                     sexo:sexo,
                     ingreso_mensual:ingreso_mensual,
                     salud:salud,
-                    foto_cedula:foto_cedula,
+                    //foto_cedula:foto_cedula,
                     opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
@@ -200,7 +200,7 @@ $(document).ready(function() {
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>sexo: </b> '+ value.sexo +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>ingreso_mensual: </b> '+ value.ingreso_mensual +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>salud: </b> '+ value.salud +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>foto_cedula: </b> '+ value.foto_cedula +'</p>'
+                                        //html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>foto_cedula: </b> '+ value.foto_cedula +'</p>'
        
                                     html += '</div>'
 
@@ -284,7 +284,7 @@ $(document).ready(function() {
                     $("#sexo").val(value.sexo);
                     $("#ingreso_mensual").val(value.ingreso_mensual);
                     $("#salud").val(value.salud);
-                    $("#foto_cedula").val(value.foto_cedula);
+                    //$("#foto_cedula").val(value.foto_cedula);
                     $("#id_cliente").val(value.id);
 
                 });

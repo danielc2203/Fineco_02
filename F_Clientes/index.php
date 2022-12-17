@@ -293,8 +293,6 @@
                     </div>
                     <div class="col-6">
                     <div class="form-group mb-0">
-                    <label for="" class="col-form-label-sm">Foto de Cedula</label>
-                    <input type="file" class="form-control form-control-sm " id="foto_cedula">
                     </div> 
                     </div>    
                 </div>

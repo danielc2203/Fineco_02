@@ -27,7 +27,6 @@ $estrato = (isset($_POST['estrato'])) ? $_POST['estrato'] : '';
 $sexo = (isset($_POST['sexo'])) ? $_POST['sexo'] : '';
 $ingreso_mensual = (isset($_POST['ingreso_mensual'])) ? $_POST['ingreso_mensual'] : '';
 $salud = (isset($_POST['salud'])) ? $_POST['salud'] : '';
-$foto_cedula = (isset($_FILES['foto_cedula'])) ? $_FILES['foto_cedula'] ['name']: '';
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
@@ -35,8 +34,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais, departamento, ciudad, estrato, sexo, ingreso_mensual, salud, foto_cedula)
-                     VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento', '$direccion_residencia', '$pais', '$departamento', '$ciudad', '$estrato', '$sexo', '$ingreso_mensual', '$salud', '$foto_cedula') ";
+        $consulta = "INSERT INTO clientes (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, correo_electronico, telefono, estado, ocupacion, empresa, fecha_incorporacion, fecha_nacimiento, direccion_residencia, pais, departamento, ciudad, estrato, sexo, ingreso_mensual, salud)
+                     VALUES('$pnombre', '$snombre', '$papellido', '$sapellido', '$tipo_documento', '$num_documento', '$correo_electronico', '$telefono', '$estado', '$ocupacion', '$empresa', '$fecha_incorporacion', '$fecha_nacimiento', '$direccion_residencia', '$pais', '$departamento', '$ciudad', '$estrato', '$sexo', '$ingreso_mensual', '$salud') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -67,7 +66,6 @@ switch($opcion){
                                         sexo='$sexo',
                                         ingreso_mensual='$ingreso_mensual',
                                         salud='$salud',
-                                        foto_cedula='$foto_cedula'
                                         WHERE id='$id' ";	
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
