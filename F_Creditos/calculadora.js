@@ -56,6 +56,7 @@ function calcularPolicia(){
         //$("#maximo").text((deducidos * deducidos).toFixed(2));
         $("#maximo").text(maximo.toFixed(2));
         $("#cupo").text(cupo.toFixed(2));
+        valorG = cupo;
       } else {
         //Swal.fire('Introduzca números mayores que cero', '', 'error');
         Swal.fire({
@@ -91,6 +92,7 @@ function rellenarDatosPolicia(){
        
 };
 
+// Funcion Calculo de Credito Pensionados
 function calcularPensionados(){
 
   var C1 = $("#C1").val();
@@ -151,6 +153,7 @@ function calcularPensionados(){
     var capacidad = ((C1-dato) / 2)-C3;
     $("#capacidad").text(capacidad.toFixed(2));
     $("#aportes").text(dato.toFixed(2));
+    valorG = capacidad;
   } else {
     //Swal.fire('Introduzca números mayores que cero', '', 'error');
     Swal.fire({
@@ -222,13 +225,13 @@ function calcularDocentes(){
 // Borrar todos los campos
 function clearInput(){
   Swal.fire({
-    title: 'Estas Seguro?',
+    title: 'Deseas limpiar el formulario?',
     text: "Esta acción no se puede revertir!",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, Borrar campos!'
+    confirmButtonText: 'Si, limpiar campos!'
   }).then((result) => {
     if (result.isConfirmed) {
       $("#C1,#C2,#C3,#C4,#C5,#C6,#C7,#C8,#C9,#C10,#C11,#C12,#C13,#C14,#C15,#C16,#C17,#C18,#capacidad,#aportes,#devengados,#tdeducidos,#maximo,#cupo").val("");
@@ -310,8 +313,6 @@ function guardarDatos(){
     html += '<div id="answer"><table class="table table-striped"><tbody>'
 
     html += '</tbody></table></div>'
-
-        
     
         $("#fCalculadora").html(html);
         $(".modal-header").css("background-color", "#ff5722");

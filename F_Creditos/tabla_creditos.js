@@ -158,7 +158,7 @@ $(document).ready(function() {
     });
 
     
-    //Ver Cliente 
+    //Ver Credito 
     $(document).on("click", ".VerCredito", function cliente(){
 
         fila = $(this);           
@@ -191,24 +191,21 @@ $(document).ready(function() {
                             html += '<div class="card-body pt-0">'
                                 html += '<div class="row">'
                                     html += '<div class="col-12">'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm" name="ida" id="ida"><b>Tipo de documento: </b> '+ value.id_documento +' </p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Número de documento: </b> '+ value.num_documento +' </p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Correo electronico: </b> '+ value.correo_electronico +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Número de contacto: </b> '+ value.telefono +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Estado: </b> '+ value.estado +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Ocupación: </b> '+ value.ocupacion +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Empresa: </b> '+ value.empresa +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Fecha de registro: </b> '+ value.fecha_incorporacion +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Fecha de nacimiento: </b> '+ value.fecha_nacimiento +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Direccion de residencia: </b> '+ value.direccion_residencia +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>pais: </b> '+ value.pais +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>departamento: </b> '+ value.departamento +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>ciudad: </b> '+ value.ciudad +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>estrato: </b> '+ value.estrato +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>sexo: </b> '+ value.sexo +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>ingreso_mensual: </b> '+ value.ingreso_mensual +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>salud: </b> '+ value.salud +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>foto_cedula: </b> '+ value.foto_cedula +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm" id="id_documento"><b>Número de documento: </b> '+ value.id_documento +' </p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>monto: </b> '+ value.monto +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>plazo: </b> '+ value.plazo +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>amortizacion: </b> '+ value.amortizacion +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>tipo de credito: </b> '+ value.tipo_credito +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>deudas actuales: </b> '+ value.deudas_actuales +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>egresos: </b> '+ value.egresos +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>capacidad: </b> '+ value.capacidad +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>calificacion_interna: </b> '+ value.calificacion_interna +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>cuota_mensual: </b> '+ value.cuota_mensual +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>seguro: </b> '+ value.seguro +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>asesoria: </b> '+ value.asesoria +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>comentarios: </b> '+ value.comentarios +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>fecha_solicitud: </b> '+ value.fecha_solicitud +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>estado: </b> '+ value.estado +'</p>'
        
                                     html += '</div>'
 
@@ -271,29 +268,27 @@ $(document).ready(function() {
                 // Loop the parsed JSON
                 $.each(response, function(key,value) {
 
-                    $("#primer_nombre").val(value.primer_nombre);
-                    $("#segundo_nombre").val(value.segundo_nombre);
-                    $("#primer_apellido").val(value.primer_apellido);
-                    $("#segundo_apellido").val(value.segundo_apellido);
-                    $("#tipo_documento").val(value.tipo_documento);
-                    $("#num_documento").val(value.num_documento);
-                    $("#correo_electronico").val(value.correo_electronico);
-                    $("#telefono").val(value.telefono);
+                    $("#id_documento").val(value.id_documento);
+                    $("#solicitud_credito").val(value.solicitud_credito);
+                    $("#monto").val(value.monto);
+                    $("#plazo").val(value.plazo);
+                    $("#amortizacion").val(value.amortizacion);
+                    $("#tipo_credito").val(value.tipo_credito);
+                    $("#deudas_actuales").val(value.deudas_actuales);
+                    $("#egresos").val(value.egresos);
+                    $("#datacreditos").val(value.datacreditos);
+                    $("#capacidad").val(value.capacidad);
+                    $("#calificacion_interna").val(value.calificacion_interna);
+                    $("#tasa").val(value.tasa);
+                    $("#resultado").val(value.resultado);
+                    $("#cuota_mensual").val(value.cuota_mensual);
+                    $("#intereses_anticipados").val(value.intereses_anticipados);
+                    $("#seguro").val(value.seguro);
+                    $("#asesoria").val(value.asesoria);
+                    $("#iva").val(value.iva);
+                    $("#comentarios").val(value.comentarios);
+                    $("#fecha_solicitud").val(value.fecha_solicitud);
                     $("#estado").val(value.estado);
-                    $("#ocupacion").val(value.ocupacion);
-                    $("#empresa").val(value.empresa);
-                    $("#fecha_incorporacion").val(value.fecha_incorporacion);
-                    $("#fecha_nacimiento").val(value.fecha_nacimiento);
-                    $("#direccion_residencia").val(value.direccion_residencia);
-                    $("#pais").val(value.pais);
-                    $("#departamento").val(value.departamento);
-                    $("#ciudad").val(value.ciudad);
-                    $("#estrato").val(value.estrato);
-                    $("#sexo").val(value.sexo);
-                    $("#ingreso_mensual").val(value.ingreso_mensual);
-                    $("#salud").val(value.salud);
-                    $("#foto_cedula").val(value.foto_cedula);
-                    $("#id_cliente").val(value.id);
 
                 });
             } else {
@@ -328,7 +323,7 @@ $(document).ready(function() {
 
             Swal.fire({
                 icon: 'warning',
-                title: 'Estas seguro de eliminar este cliente?',
+                title: 'Estas seguro de eliminar este credito?',
                 showDenyButton: false,
                 showCancelButton: true,
                 confirmButtonText: 'SI'
@@ -336,7 +331,7 @@ $(document).ready(function() {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 
-                $('#VerClientes').modal('toggle')
+                $('#VerCredito').modal('toggle')
 
                 $.ajax({
                     url: "crud.php",
@@ -345,7 +340,7 @@ $(document).ready(function() {
                     data: {opcion:opcion, id:id}, 
                     success: function(response) {
                         tablaUsuarios.row(fila.parents('tr')).remove().draw();    
-                        Swal.fire('El clente ha sido Eliminado de la base de datos.', response, 'success');
+                        Swal.fire('El credito ha sido Eliminado de la base de datos.', response, 'success');
                      }
                   });
 
