@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $(document).ready(function () {
+        $('#creditosp').DataTable;
+    });
 
 //submit para Actualización
 
@@ -8,8 +11,8 @@ $('#fCalculadora').submit(function(e){
     $opcion = 1;
     alert($opcion);
 
-    cedula = $.trim($('#id_cliente').val());
-    capacidad = $.trim($('#num_documento').val());
+    cedula = $.trim($('#cedula').val());
+    capacidad = $.trim($('#capacidad').val());
     plazo = $.trim($('#plazo').val());
     fecha = $.trim($('#fecha').val());
     monto = $.trim($('#monto').val());
@@ -35,6 +38,7 @@ $('#fCalculadora').submit(function(e){
         });			        
     $('#modalCREDITOS').modal('hide');
     $(function() {
+        creditosp.ajax.reload(null, false);
         toastr.success('Se ha creado el registro correctamente')
         Swal.fire({
             position: 'top-end',
