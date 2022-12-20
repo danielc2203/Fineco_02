@@ -73,30 +73,13 @@ $(document).ready(function() {
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
 
         id = $.trim($('#id_cliente').val());
-        primer_nombre = $.trim($('#primer_nombre').val());
-        segundo_nombre = $.trim($('#segundo_nombre').val());    
-        primer_apellido = $.trim($('#primer_apellido').val());    
-        segundo_apellido = $.trim($('#segundo_apellido').val());
-        tipo_documento = $.trim($('#tipo_documento').val());
-        num_documento = $.trim($('#num_documento').val());
-        correo_electronico = $.trim($('#correo_electronico').val());
-        telefono = $.trim($('#telefono').val());
+        alert(opcion);
+        cedula = $.trim($('#cedula').val());
+        capacidad = $.trim($('#capacidad').val());
+        plazo = $.trim($('#plazo').val());
+        fecha = $.trim($('#fecha').val());
+        monto = $.trim($('#monto').val());
         estado = $.trim($('#estado').val());
-        ocupacion = $.trim($('#ocupacion').val());
-        empresa = $.trim($('#empresa').val());
-        fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
-        fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
-        direccion_residencia = $.trim($('#direccion_residencia').val());
-        pais = $.trim($('#pais').val());
-        departamento = $.trim($('#departamento').val());
-        ciudad = $.trim($('#ciudad').val());
-        estrato = $.trim($('#estrato').val());
-        sexo = $.trim($('#sexo').val());
-        ingreso_mensual = $.trim($('#ingreso_mensual').val());
-        salud = $.trim($('#salud').val());
-        foto_cedula = (num_documento+'CC.jpg')
-        //filename = $_FILES['foto_cedula']['name'];
-        //img = $.trim($('#foto_cedula').attr('src'));
         
         
             $.ajax({
@@ -104,28 +87,12 @@ $(document).ready(function() {
               type: "POST",
               datatype:"json",    
               data:  {id:id, 
-                    primer_nombre:primer_nombre,
-                    segundo_nombre:segundo_nombre,
-                    primer_apellido:primer_apellido,
-                    segundo_apellido:segundo_apellido,
-                    tipo_documento:tipo_documento,
-                    num_documento:num_documento,
-                    correo_electronico:correo_electronico,
-                    telefono:telefono,
+                    cedula:cedula,
+                    capacidad:capacidad,
+                    plazo:plazo,
+                    fecha:fecha,
+                    monto:monto,
                     estado:estado,
-                    ocupacion:ocupacion,
-                    empresa:empresa,
-                    fecha_incorporacion:fecha_incorporacion,
-                    fecha_nacimiento:fecha_nacimiento,
-                    direccion_residencia:direccion_residencia,
-                    pais:pais,
-                    departamento:departamento,
-                    ciudad:ciudad,
-                    estrato:estrato,
-                    sexo:sexo,
-                    ingreso_mensual:ingreso_mensual,
-                    salud:salud,
-                    foto_cedula:foto_cedula,
                     opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
@@ -162,7 +129,7 @@ $(document).ready(function() {
     $(document).on("click", ".VerCredito", function cliente(){
 
         fila = $(this);           
-        var id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
+        var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
         //const cliente_id = id;
 
         //alert(id);
@@ -216,7 +183,7 @@ $(document).ready(function() {
                                 html += '<div class="">'
                                 // html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-eye"></i></a>'
                                 //html += '<a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#formModal"><i class="fas fa-edit"></i></a>'
-                                html += '<a class="btn btn-outline-primary btnEditar " id='+ value.id +'><i class="fas fa-edit"></i>'
+                                html += '<a class="btn btn-outline-primary btnEditar" id='+ value.id +'><i class="fas fa-edit"></i>'
                                 html += '<a class="btn btn-outline-danger float-right btnBorrar " id='+ value.id +'><i class="fas fa-trash-alt"></i>'
                                 html += '</div>'
                             html += '</div>'
@@ -250,7 +217,6 @@ $(document).ready(function() {
         $('#VerClientes').modal('toggle')	        
         opcion = 5;//Para llamar los datos de la BD
         var id = $(this).attr('id');
-        //alert(id);
 
         $.ajax({
             url: "crud.php",
@@ -262,6 +228,46 @@ $(document).ready(function() {
             // Parse the json result
             response = JSON.parse(response);
             var html = "";
+
+            html += '<form action="" method="post" id="formModal">'
+
+            html += '<div class="form-group row mb-0">'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Nº de Documento</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="number" id="id_documento" value="" class="form-control form-control-sm" required >'
+            html += '</div>'
+
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Monto del Credito</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="text" id="monto" value="" class="form-control form-control-sm" required >'
+            html += '</div>'
+            html += '</div>'
+
+            html += '<div class="form-group row mb-0">'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">OTROS DESCUENTOS</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="number" maxIntegerDigits="3" id="C3" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+            html += '</div>'
+
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="number" maxIntegerDigits="3" id="C4" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+            html += '</div>'
+            html += '</div>'
+
+            html += '<div id="answer"><table class="table table-striped"><tbody>'
+
+            html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
+            html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
+
+            html += '</tbody></table></div>'
+
+            html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
+            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal"><i class="fas fa-window-close"></i></button>'
+            html += '</form>'
+
+            // Insert the HTML Template and display all employee records
+            $("#contenido_credito").html(html);
             
             // Check if there is available records
             if(response.length) {
@@ -296,18 +302,19 @@ $(document).ready(function() {
                 html += 'No se encontro este registro en la BD!';
             }
 
-            // Insert the HTML Template and display all employee records
-            $("#contenido_cliente").html(html);
+            
         }
         
       });
         
         //$("#formModal").trigger("reset");
-        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
         $(".modal-header").css("color", "white" );
-        $(".modal-title").text("Editar Usuario");		
+        $(".modal-title").text("Editar Usuario DDD");		
         $('#modalCRUD').modal('show');
-        opcion = 2;//para enviar el update
+        var opcion = 2;//para enviar el update
+        alert(opcion);
+        
         //var id = id;
     
     });

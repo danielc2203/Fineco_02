@@ -31,28 +31,16 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;
     case 2:
-         $consulta = "UPDATE creditos SET primer_nombre='$pnombre',
-                                        segundo_nombre='$snombre',
-                                        primer_apellido='$papellido',
-                                        segundo_apellido='$sapellido',
-                                        tipo_documento='$tipo_documento',
-                                        num_documento='$num_documento',
-                                        correo_electronico='$correo_electronico',
-                                        telefono='$telefono',
+         $consulta = "UPDATE creditos SET id_documento='$id_documento',
+                                        monto='$monto',
+                                        plazo='$plazo',
+                                        capacidad='$capacidad',
+                                        fecha_solicitud='$fecha_solicitud',
                                         estado='$estado',
-                                        ocupacion='$ocupacion',
-                                        empresa='$empresa',
-                                        fecha_incorporacion='$fecha_incorporacion',
-                                        fecha_nacimiento='$fecha_nacimiento',
-                                        direccion_residencia='$direccion_residencia',
-                                        pais='$pais',
-                                        departamento='$departamento',
-                                        ciudad='$ciudad',
-                                        estrato='$estrato',
-                                        sexo='$sexo',
-                                        ingreso_mensual='$ingreso_mensual',
-                                        salud='$salud',
-                                        foto_cedula='$foto_cedula'
+                                        amortizacion='$amortizacion',
+                                        tipo_credito='$tipo_credito',
+                                        deudas_actuales='$deudas_actuales',
+                                        egresos='$egresos',
                                         WHERE id='$id' ";	
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
