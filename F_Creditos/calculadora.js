@@ -246,7 +246,7 @@ function clearInput(){
     
 };
 
-// Modal de Guardar Datos en tabla
+// Modal de Guardar Datos en tabla -  Nuevo Credito
 function guardarDatos(){
   var C1 = $("#C1").val();
   var CAPACIDAD  = $('#capacidad').val();
@@ -268,7 +268,7 @@ function guardarDatos(){
         html += '<form id="formNuevoCredito" class="needs-validation">  '
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CEDULA:</label>'
         html += '<div class="col-sm-3">'
-        html += '<input type="number" id="cedula" value="" class="form-control form-control-sm" placeholder="CC" >'
+        html += '<input type="number" id="cedula" value="" class="form-control form-control-sm" placeholder="CC" required>'
         html += '</div>'
 
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD:</label>'
@@ -329,4 +329,23 @@ function guardarDatos(){
   $(".modal-header").css( "color", "white" );
   $(".modal-title").text("Agregar Nuevo Credito");
 };
+
+// Funcion para validar los campos requeridos
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+      }, false);
+      });
+  }, false);
+  })();
 

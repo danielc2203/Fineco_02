@@ -10,6 +10,8 @@ $(document).ready(function() {
         
         language: {
             url: '../dist/json/es-CO_DataTables.json',
+            decimal: ',',
+            thousands: '.',
         },
             
         "dom": 'lBfrtip',
@@ -38,28 +40,52 @@ $(document).ready(function() {
             {sortable: true,
                 "render": function ( data, type, full, meta ) {
                     //var buttonID = +full.id;
-                    return '<a class="btn btn-success VerCredito" role="button">'+full.id_documento+'</a>';
+                    return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
                 }},
             {"data": "monto"},
             {"data": "plazo"},
-            {"data": "capacidad"},
-            {"data": "estado"},
-            //{"data": "correo_electronico"},
-            //{"data": "telefono"},
-            {"data": "fecha_solicitud"},
+            // Capacidad con funcion menor a 250mil rojo, menor a 500mil naranja, mayor verde
+            {
+                data: 'capacidad',
+                render: function (data, type) {
+                    var number = $.fn.dataTable.render
+                        .number('.', '.', 0, '$')
+                        .display(data);
+ 
+                    if (type === 'display') {
+                        let color = 'green';
+                        if (data < 250000) {
+                            color = 'red';
+                        } else if (data < 500000) {
+                            color = 'orange';
+                        }
+                        return '<span style="color:' + color + '">' + number + '</span>';
+                    }
+                    return number;
+                },
+            },
+            //{"data": "capacidad"},
+            {
+                data: 'estado',
+                render: function (data, type) {
+                    if (type === 'display') {
+                        let link = 'btn-light';
+ 
+                        if (data[0] === 'A') {
+                            link = 'btn-success';
+                        } else if (data[0] === 'N') {
+                            link = 'btn-dark';
+                        }
 
-                // Muestra de Boton con id desde la consulta + funcion
-            // {sortable: false,
-            // "render": function ( data, type, full, meta ) {
-            //     var buttonID = "delete_"+full.id;
-            //     return '<a id='+buttonID+' class="btn btn-danger deleteBtn" role="button">Delete</a>';
-            // }},
-            
-            
-            // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-            //{"defaultContent": "<a class='btn btn-outline-success btn-sm VerCredito'><i class='fas fa-eye'></i></a>"},
-            // {"defaultContent": "<a class='btn btn-outline-warning btn-sm btnEditar'><i class='fas fa-edit'></i></a>"},
-            
+                        return '<a class="btn '+link+' VerCredito" role="button">'+data+'</a>';
+                    }
+ 
+                    return data;
+                },
+            },
+
+ 
+            {"data": "fecha_solicitud"}, 
     
         ],
         
@@ -229,19 +255,15 @@ $(document).ready(function() {
             // Parse the json result
             response = JSON.parse(response);
             var html = "";
-
             
             html += '<form action="" method="post" id="actualizarCredito" class="needs-validation" novalidate>'
-            html += '<div class="form-group row mb-0">'
-            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">id</label>'
-            html += '<div class="col-sm-3">'
-            html += '<input type="text" id="id" value="" class="form-control form-control-sm" required >'
-            html += '</div>'
+
+            html += '<input type="hidden" id="id" value="" class="form-control form-control-sm" required >'
 
             html += '<div class="form-group row mb-0">'
             html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Nº de Documento</label>'
             html += '<div class="col-sm-3">'
-            html += '<input type="number" id="id_documento" value="" class="form-control form-control-sm" required >'
+            html += '<input type="number" id="id_documento" value="" class="form-control form-control-sm" readonly >'
             html += '</div>'
 
             html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Monto del Credito</label>'
@@ -277,6 +299,7 @@ $(document).ready(function() {
             // html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
             html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "daniel()" ><i class="fas fa-save"></i></button>'
             html += '<button type="button" class="btn btn-outline-danger float-right" data-dismiss="modal"><i class="far fa-times-circle"></i></button>'
+            
             html += '</form>'
 
             // Insert the HTML Template and display all employee records
@@ -403,13 +426,11 @@ function daniel(){
 
     opcion = 2;
     id = $.trim($('#id').val());
-    //id = (parseInt(id));
     id_documento = $.trim($('#id_documento').val());
     monto = $.trim($('#monto').val());
     plazo = $.trim($('#plazo').val());
     capacidad = $.trim($('#capacidad').val());
     estado = $.trim($('#estado').val());
-    alert(typeof(id));
 
 
         $.ajax({

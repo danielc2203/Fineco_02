@@ -11,6 +11,7 @@ $('#fCalculadora').submit(function(e){
     monto = $.trim($('#monto').val());
     estado = $.trim($('#estado').val());
 
+
         $.ajax({
           url: "crud.php",
           type: "POST",
