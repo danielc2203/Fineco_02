@@ -1,10 +1,10 @@
 $( document ).ready(function() {
 
-//para limpiar los campos antes de dar de Alta a un registro
+    //Abre el modal y muestra el formulario para policia
  $("#policia").click(function(){
-     opcion = 1; //dejaremos la opcion 1 para envio de credito policia           
+     opcion = 1; //opcion 1 para envio de credito al crud           
      id=null;
-//     //$("#formUsuarios").trigger("reset"); // Para hace reset a el formulario
+
     var html = "";
 
     html += '<div class="form-group row mb-0">'
@@ -130,7 +130,7 @@ $( document ).ready(function() {
     html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
   
-    
+
     $("#fCalculadora").html(html);
 
     //datos en formulario
@@ -141,11 +141,10 @@ $( document ).ready(function() {
  });    
 
 
- //pensionados
+ //Abre modal de pensionados.
  $("#pensionados").click(function(){
     opcion = 1; //dejaremos la opcion 1 para envio de credito policia           
     id=null;
-//     //$("#formUsuarios").trigger("reset"); // Para hace reset a el formulario
     
     var html = "";
 
@@ -175,7 +174,6 @@ $( document ).ready(function() {
     html += '</div>'
     html += '</div>'
 
-
     html += '<div id="answer"><table class="table table-striped"><tbody>'
 
     html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
@@ -199,9 +197,9 @@ $( document ).ready(function() {
 });
 
 
- //Docentes
+ // Calculadora de Docentes
  $("#docentes").click(function(){
-    opcion = 1; //dejaremos la opcion 1 para envio de credito policia           
+    opcion = 1; //dejaremos la opcion 1 para envio de credito al modal           
     id=null;
 
     var html = "";
@@ -237,7 +235,6 @@ $( document ).ready(function() {
 
     html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
     html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
-    
 
     html += '</tbody></table></div>'
 
@@ -246,8 +243,6 @@ $( document ).ready(function() {
     html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
-
-
     $("#fCalculadora").html(html);
 
     $(".modal-header").css("background-color", "#0267EB");
@@ -255,27 +250,7 @@ $( document ).ready(function() {
     $(".modal-title").text("Calculadora de Creditos - Docentes");
     $('#modalCREDITOS').modal('show');
 
-
-
 });
-
-
-
-
-//Guardar
- function guardarCredito(){
-    alert ("Funcion Guardar Credito");
-    $("#fCalculadora").html(html);
-          
-    $(".modal-header").css("background-color", "#0267EB");
-    $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Nuevo Credito");
-    $('#modalCREDITOS').modal('show');
- };
-
-
-
-
 
 });
 

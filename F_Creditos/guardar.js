@@ -40,3 +40,43 @@ $('#fCalculadora').submit(function(e){
           });
 
 });
+
+//submit para actualizarCredito
+$('#actualizarCredito').submit(function(e){                        
+    e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'el credito ha sido guardado exitosamentesssss...',
+        showConfirmButton: false,
+        timer: 2000,
+        willClose: () => {
+            //window.location.reload()
+          }
+      })
+
+
+    // cedula = $.trim($('#cedula').val());
+    // capacidad = $.trim($('#capacidad').val());
+    // plazo = $.trim($('#plazo').val());
+    // fecha = $.trim($('#fecha').val());
+    // monto = $.trim($('#monto').val());
+    // estado = $.trim($('#estado').val());
+
+    //     $.ajax({
+    //       url: "crud.php",
+    //       type: "POST",
+    //       datatype:"json",    
+    //       data:  {cedula:cedula,
+    //             capacidad:capacidad,
+    //             plazo:plazo,
+    //             fecha:fecha,
+    //             monto:monto,
+    //             estado:estado,
+    //             opcion:opcion},    
+    //       success: function(data) {
+    //       }
+    //     });
+
+
+});

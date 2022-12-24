@@ -1,7 +1,8 @@
-var valorG;
+let valorG;
 let date = new Date().toLocaleDateString();
-function calcularPolicia(){
 
+//Calculadora Policia
+function calcularPolicia(){
       var C1 = $("#C1").val();
       var C1 = Number(C1);
       var C2 = $("#C2").val(); // 
@@ -68,7 +69,7 @@ function calcularPolicia(){
 
     };
 
-// Funcion para rellenar los datos de ejemplo
+// Datos de ejemplo de Polica
 function rellenarDatosPolicia(){
     //Swal.fire('Ingresando valores de ejemplo.', response, 'success');
     Swal.fire('Se han ingresando valores de ejemplo en el formulario', '', 'info');
@@ -89,12 +90,10 @@ function rellenarDatosPolicia(){
     $("#C14").val("1004795.00");
     $("#C15").val("68658.00");
     $("#C18").val("17311.00");
-       
 };
 
-// Funcion Calculo de Credito Pensionados
+// Calculo de Credito Pensionados
 function calcularPensionados(){
-
   var C1 = $("#C1").val();
   var C1 = Number(C1);
   var C2 = $("#C2").val(); // 
@@ -130,7 +129,6 @@ function calcularPensionados(){
   var C18 = $('#C18').val();
   var C18 = Number(C18);
 
-
   if (C1 > 0 ) {
     var aportesley; //
     var deducidos;
@@ -148,7 +146,6 @@ function calcularPensionados(){
       var dato = Math.floor(C1 * porcentaje)/100;
     }
     
-    
     $("#C2").val(dato);
     var capacidad = ((C1-dato) / 2)-C3;
     $("#capacidad").text(capacidad.toFixed(2));
@@ -165,8 +162,8 @@ function calcularPensionados(){
 
 };
 
+// Calculadora de Docentes
 function calcularDocentes(){
-
   var C1 = $("#C1").val();
   var C1 = Number(C1);
   var C2 = $("#C2").val(); // 
@@ -222,7 +219,7 @@ function calcularDocentes(){
 };
 
 
-// Borrar todos los campos
+// Limpiar todos los campos
 function clearInput(){
   Swal.fire({
     title: 'Deseas limpiar el formulario?',
@@ -249,8 +246,8 @@ function clearInput(){
     
 };
 
+// Modal de Guardar Datos en tabla
 function guardarDatos(){
-  
   var C1 = $("#C1").val();
   var CAPACIDAD  = $('#capacidad').val();
 
@@ -265,10 +262,8 @@ function guardarDatos(){
       confirmButtonText: 'Si, Crear nuevo credito!'
     }).then((result) => {
       if (result.isConfirmed) {
-          
         var html = "";
 
-        
         html += '<div class="form-group row mb-0">'
         html += '<form id="formNuevoCredito" class="needs-validation">  '
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CEDULA:</label>'
@@ -310,9 +305,8 @@ function guardarDatos(){
         html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
         html += '</form>'
 
-    html += '<div id="answer"><table class="table table-striped"><tbody>'
-
-    html += '</tbody></table></div>'
+        html += '<div id="answer"><table class="table table-striped"><tbody>'
+        html += '</tbody></table></div>'
     
         $("#fCalculadora").html(html);
         $(".modal-header").css("background-color", "#ff5722");
@@ -331,7 +325,6 @@ function guardarDatos(){
  function modalnuevo(){
   var html = "";
 
-  //$("#fCalculadora").html(html);
   $(".modal-header").css("background-color", "#0267EB");
   $(".modal-header").css( "color", "white" );
   $(".modal-title").text("Agregar Nuevo Credito");

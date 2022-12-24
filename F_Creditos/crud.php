@@ -31,24 +31,18 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;
     case 2:
-         $consulta = "UPDATE creditos SET id_documento='$id_documento',
-                                        monto='$monto',
+         $consulta = "UPDATE creditos SET monto='$monto',
                                         plazo='$plazo',
                                         capacidad='$capacidad',
-                                        fecha_solicitud='$fecha_solicitud',
-                                        estado='$estado',
-                                        amortizacion='$amortizacion',
-                                        tipo_credito='$tipo_credito',
-                                        deudas_actuales='$deudas_actuales',
-                                        egresos='$egresos',
+                                        estado='$estado'
                                         WHERE id='$id' ";	
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
 
-         $consulta = "SELECT * FROM creditos WHERE id='$id' ";    
-         $resultado = $conexion->prepare($consulta);
-         $resultado->execute();
-         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        //  $consulta = "SELECT * FROM creditos WHERE id='$id' ";    
+        //  $resultado = $conexion->prepare($consulta);
+        //  $resultado->execute();
+        //  $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
         $consulta = "DELETE FROM creditos WHERE id='$id' ";

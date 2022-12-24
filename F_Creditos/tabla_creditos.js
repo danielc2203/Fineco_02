@@ -74,6 +74,7 @@ $(document).ready(function() {
 
         id = $.trim($('#id_cliente').val());
         alert(opcion);
+        alert(id);
         cedula = $.trim($('#cedula').val());
         capacidad = $.trim($('#capacidad').val());
         plazo = $.trim($('#plazo').val());
@@ -212,7 +213,7 @@ $(document).ready(function() {
     });
     
     
-    //Editar        
+    // Editar Detalles del Credito
     $(document).on("click", ".btnEditar", function(){	
         $('#VerClientes').modal('toggle')	        
         opcion = 5;//Para llamar los datos de la BD
@@ -229,7 +230,13 @@ $(document).ready(function() {
             response = JSON.parse(response);
             var html = "";
 
-            html += '<form action="" method="post" id="formModal">'
+            
+            html += '<form action="" method="post" id="actualizarCredito" class="needs-validation" novalidate>'
+            html += '<div class="form-group row mb-0">'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">id</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="text" id="id" value="" class="form-control form-control-sm" required >'
+            html += '</div>'
 
             html += '<div class="form-group row mb-0">'
             html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Nº de Documento</label>'
@@ -244,55 +251,64 @@ $(document).ready(function() {
             html += '</div>'
 
             html += '<div class="form-group row mb-0">'
-            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">OTROS DESCUENTOS</label>'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO</label>'
             html += '<div class="col-sm-3">'
-            html += '<input type="number" maxIntegerDigits="3" id="C3" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+            html += '<input type="text" id="plazo" value="" class="form-control form-control-sm" >'
             html += '</div>'
 
             html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
             html += '<div class="col-sm-3">'
-            html += '<input type="number" maxIntegerDigits="3" id="C4" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+            html += '<input type="text" id="capacidad" value="" class="form-control form-control-sm" readonly>'
             html += '</div>'
             html += '</div>'
 
-            html += '<div id="answer"><table class="table table-striped"><tbody>'
+            html += '<div class="form-group row mb-0">'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="text" id="estado" value="" class="form-control form-control-sm" >'
+            html += '</div>'
 
-            html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
-            html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="text" id="fecha_solicitud" value="" class="form-control form-control-sm" readonly>'
+            html += '</div>'
+            html += '</div>'
 
-            html += '</tbody></table></div>'
-
-            html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
-            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal"><i class="fas fa-window-close"></i></button>'
+            // html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
+            html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "daniel()" ><i class="fas fa-save"></i></button>'
+            html += '<button type="button" class="btn btn-outline-danger float-right" data-dismiss="modal"><i class="far fa-times-circle"></i></button>'
             html += '</form>'
 
             // Insert the HTML Template and display all employee records
             $("#contenido_credito").html(html);
+
+            
             
             // Check if there is available records
             if(response.length) {
                 // Loop the parsed JSON
                 $.each(response, function(key,value) {
 
+                    $("#id").val(value.id);
                     $("#id_documento").val(value.id_documento);
-                    $("#solicitud_credito").val(value.solicitud_credito);
+                    //$("#solicitud_credito").val(value.solicitud_credito);
                     $("#monto").val(value.monto);
                     $("#plazo").val(value.plazo);
-                    $("#amortizacion").val(value.amortizacion);
-                    $("#tipo_credito").val(value.tipo_credito);
-                    $("#deudas_actuales").val(value.deudas_actuales);
-                    $("#egresos").val(value.egresos);
-                    $("#datacreditos").val(value.datacreditos);
+                    //$("#amortizacion").val(value.amortizacion);
+                    //$("#tipo_credito").val(value.tipo_credito);
+                    // $("#deudas_actuales").val(value.deudas_actuales);
+                    // $("#egresos").val(value.egresos);
+                    // $("#datacreditos").val(value.datacreditos);
                     $("#capacidad").val(value.capacidad);
-                    $("#calificacion_interna").val(value.calificacion_interna);
-                    $("#tasa").val(value.tasa);
-                    $("#resultado").val(value.resultado);
-                    $("#cuota_mensual").val(value.cuota_mensual);
-                    $("#intereses_anticipados").val(value.intereses_anticipados);
-                    $("#seguro").val(value.seguro);
-                    $("#asesoria").val(value.asesoria);
-                    $("#iva").val(value.iva);
-                    $("#comentarios").val(value.comentarios);
+                    // $("#calificacion_interna").val(value.calificacion_interna);
+                    // $("#tasa").val(value.tasa);
+                    // $("#resultado").val(value.resultado);
+                    // $("#cuota_mensual").val(value.cuota_mensual);
+                    // $("#intereses_anticipados").val(value.intereses_anticipados);
+                    // $("#seguro").val(value.seguro);
+                    // $("#asesoria").val(value.asesoria);
+                    // $("#iva").val(value.iva);
+                    // $("#comentarios").val(value.comentarios);
                     $("#fecha_solicitud").val(value.fecha_solicitud);
                     $("#estado").val(value.estado);
 
@@ -301,22 +317,19 @@ $(document).ready(function() {
                 html += '<div class="alert alert-warning">';
                 html += 'No se encontro este registro en la BD!';
             }
-
             
         }
+        
         
       });
         
         //$("#formModal").trigger("reset");
         $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
         $(".modal-header").css("color", "white" );
-        $(".modal-title").text("Editar Usuario DDD");		
+        $(".modal-title").text("Editar Detalles del Credito");		
         $('#modalCRUD').modal('show');
         var opcion = 2;//para enviar el update
-        alert(opcion);
         
-        //var id = id;
-    
     });
 
     
@@ -383,3 +396,49 @@ $(document).ready(function() {
         })();
 
 });
+
+//submit para actualizarCredito
+function daniel(){
+
+
+    opcion = 2;
+    id = $.trim($('#id').val());
+    //id = (parseInt(id));
+    id_documento = $.trim($('#id_documento').val());
+    monto = $.trim($('#monto').val());
+    plazo = $.trim($('#plazo').val());
+    capacidad = $.trim($('#capacidad').val());
+    estado = $.trim($('#estado').val());
+    alert(typeof(id));
+
+
+        $.ajax({
+          url: "crud.php",
+          type: "POST",
+          datatype:"json",    
+          data:  {id_documento:id_documento,
+                monto:monto,
+                plazo:plazo,
+                capacidad:capacidad,
+                estado:estado,
+                id:id,
+                opcion:opcion},  
+          success: function(data) {
+          }
+        });
+
+
+    $(function() {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'los detalles del credito han sido actualizados con exito...',
+                showConfirmButton: false,
+                timer: 2000,
+                 willClose: () => {
+                     window.location.reload()
+                   }
+              })
+          });
+
+};
