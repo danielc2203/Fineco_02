@@ -2,6 +2,7 @@
 session_start();
 if(!isset($_SESSION['usuario'])){
     header('Location:../F_inicio/index.php');
+    exit;
 }else{
     //print_r($_SESSION['usuario']);
     $id_usr = ($_SESSION['usuario']['id']);
@@ -13,3 +14,8 @@ if(!isset($_SESSION['usuario'])){
     //echo '<script type="text/javascript">alert("Su rol desde session es: ' . $rol . ' y su nombre es ' . $nombres . ' ");</script>';
 }
 ?>
+<script>
+    let fRol = <?php echo $rol ?>;
+    //let fNombre = <?php echo $usuariof?>;
+    //alert("Su rol desde session es: " +fRol+ "  y su nombre es <?php echo $nombres ?> ");
+</script>

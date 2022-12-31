@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var id, opcion;
+    var id, opcion, rol;
+    rol = "<?php echo $rol; ?>";
     opcion = 4;
     //alert(opcion);
 
@@ -116,51 +117,65 @@ $(document).ready(function() {
         
         opcion = 5;//Para llamar los datos de la BD
         var id = $(this).attr('id');
-        
-        $.ajax({
-            url: "sucursales.php",
-            type: "POST",
-            datatype:"json",    
-            data: {opcion:opcion, id:id},
-            
-        success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
-            // Parse the json result
-            response = JSON.parse(response);
-            var html = "";
+        //alert(fRol);
+
+        if (fRol === 1){
+            $.ajax({
+                url: "sucursales.php",
+                type: "POST",
+                datatype:"json",    
+                data: {opcion:opcion, id:id},
+                
+            success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
+                // Parse the json result
+                response = JSON.parse(response);
+                var html = "";
+                            
+                // Check if there is available records
+                if(response.length) {
+                    // Loop the parsed JSON
+                    //alert(id);
+                    $.each(response, function(key,value) {
                         
-            // Check if there is available records
-            if(response.length) {
-                // Loop the parsed JSON
-                //alert(id);
-                $.each(response, function(key,value) {
-                    
-                    $("#id_banco").val(value.id);
-                    $("#nombre").val(value.nombre);
-                    $("#num_cuenta").val(value.num_cuenta);
-                    $("#tipo_cuenta").val(value.tipo_cuenta);
-                    $("#estado_cuenta").val(value.estado_cuenta);
-                    $("#contacto_cuenta").val(value.contacto_cuenta);
-                    $("#logo_banco").val(value.logo_banco);
-
-                });
-            } else {
-                html += '<div class="alert alert-warning">';
-                html += 'No se encontro este registro en la BD!';
+                        $("#id_banco").val(value.id);
+                        $("#nombre").val(value.nombre);
+                        $("#num_cuenta").val(value.num_cuenta);
+                        $("#tipo_cuenta").val(value.tipo_cuenta);
+                        $("#estado_cuenta").val(value.estado_cuenta);
+                        $("#contacto_cuenta").val(value.contacto_cuenta);
+                        $("#logo_banco").val(value.logo_banco);
+    
+                    });
+                } else {
+                    html += '<div class="alert alert-warning">';
+                    html += 'No se encontro este registro en la BD!';
+                }
+    
+                // Insert the HTML Template and display all employee records
+                $("#contenido_cliente").html(html);
             }
+            
+          });
 
-            // Insert the HTML Template and display all employee records
-            $("#contenido_cliente").html(html);
-        }
-        
-      });
-        
-        //$("#formModal").trigger("reset");
+          //$("#formModal").trigger("reset");
         $(".modal-header").css("background-color", "green");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Banco");		
         $('#modalBanco').modal('show');
         opcion = 2;//para enviar el update
-        //var id = id;	   
+        //var id = id;	 
+
+        }else{
+            $(function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Lo siento, no tienes permiso para esta acciòn!',
+                    footer: '<a href="">Solicitar permisos?</a>'
+                  })
+              });	
+        }
+          
     });
 
     

@@ -1,5 +1,9 @@
 <!-- Logica -->
-<?php include ('../modulos/panel.php');?>
+<?php
+include_once ('../modulos/panel.php');
+include_once ('../global/sesiones.php');
+include_once ('../global/conexiond.php');
+?>
 
 <!-- HEADER - UBICADO EN RECURSOS -->
 <?php include ('../recursos/header.php') ?>
@@ -16,6 +20,7 @@
 <!-- Main Sidebar Container -->
 <?php include ('../recursos/sidebar.php');
 //echo $id_usr;
+$rol = $rol;
  ?>
 
 <!-- Fin de Sidebar -->
