@@ -119,6 +119,7 @@ $(document).ready(function() {
         var id = $(this).attr('id');
         //alert(fRol);
 
+        //Validamos si tiene permisos de administrador para editar
         if (fRol === 1){
             $.ajax({
                 url: "sucursales.php",
@@ -166,14 +167,7 @@ $(document).ready(function() {
         //var id = id;	 
 
         }else{
-            $(function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Lo siento, no tienes permiso para esta acciòn!',
-                    footer: '<a href="">Solicitar permisos?</a>'
-                  })
-              });	
+            errord();
         }
           
     });
@@ -205,8 +199,17 @@ $(document).ready(function() {
                 toastr.info('Se ha cancelado la acción')
               });
         }
-     });
+     });  
          
-    });    
+    });  
+    
+function errord() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Lo siento, no tienes permiso para esta acciòn!',
+        footer: '<a href="">Solicitar permisos?</a>'
+        })
+};
     
     

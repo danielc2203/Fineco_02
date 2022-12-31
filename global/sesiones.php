@@ -12,10 +12,16 @@ if(!isset($_SESSION['usuario'])){
     $rol = ($_SESSION['usuario']['rol_id']);
 
     //echo '<script type="text/javascript">alert("Su rol desde session es: ' . $rol . ' y su nombre es ' . $nombres . ' ");</script>';
+    
 }
+
+
+
+
 ?>
 <script>
     let fRol = <?php echo $rol ?>;
     //let fNombre = <?php echo $usuariof?>;
     //alert("Su rol desde session es: " +fRol+ "  y su nombre es <?php echo $nombres ?> ");
 </script>
+

@@ -21,11 +21,32 @@ include_once ('../global/conexiond.php');
 <?php include ('../recursos/sidebar.php');
 //echo $id_usr;
 $rol = $rol;
- ?>
 
-<!-- Fin de Sidebar -->
-
-<!-- Content Wrapper. Contains page content -->
+function tienePermiso($conexion, $id_usr, $permiso) {
+  // Consulta a la base de datos para obtener el rol del usuario
+  //$resultado = mysqli_query($conexion, "SELECT rol_id FROM usuarios WHERE id = $id_usr");
+  $resultado = $conexion->prepare("SELECT rol_id FROM usuarios WHERE id = $id_usr");
+  $resultado->execute();
+  $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+  $rol = $fila['rol_id'];
+  
+  // Consulta a la base de datos para obtener los permisos del rol
+  $resultado = $conexion->prepare("SELECT permisos FROM roles WHERE rol_id = '$rol'");
+  $resultado->execute();
+  $fila = $resultado->fetch(PDO::FETCH_ASSOC);
+  if(is_array($fila)){
+    $permisos = explode(',', $fila['permisos']);
+    // Verifica si el rol del usuario tiene el permiso requerido
+  return in_array($permiso, $permisos);
+  }
+  
+  }
+  
+  // Ejemplo de uso de la función
+  if (tienePermiso($conexion, $id_usr, 'bancos')) {
+  // El usuario tiene permiso para crear un artículo
+      ?>
+      <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -51,30 +72,47 @@ $rol = $rol;
     <section class="content">
       <div class="container-fluid">
         <button type="button" class="btn btn-outline-success" style="margin-bottom: 5px;"> <span><i class="fas fa-file-excel"></i></span> Reporte general</button>
-
         <div class="card card-solid">
           <div class="card-body pb-0">
             <div class="row">
-
-              <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column"></div>
-              
+              <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column"></div>             
               <div class="col-12 col-sm-6 col-md-6 d-flex flex-column">
                 <div class="card bg-light d-flex flex-fill" id="contenido_sucursales">
                   <!-- Contenido de los bancos -->
                 </div>
               </div>
-
               <div class="col-12 col-sm-3 col-md-3 d-flex align-items-stretch flex-column"></div> 
-
             </div>
           </div>
         </div>
-
       </div>
-        
     </section>
     
-  </div>
+</div>
+      <?php
+  } else {
+    // Este usuario no tiene permisos para ver esta pàgina
+      ?>
+      
+      <div class="content-wrapper">
+        <section class="content" id="error">
+
+        <div class="alert alert-warning" role="alert">
+          <h4 class="alert-heading">Permiso denegado!</h4>
+          <p>Usted no tiene permisos para ver el contenido de esta secciòn.</p>
+          <hr>
+          <p class="mb-0">Si cree que esto es un error, por favor solicite ayuda a un administrador.</p>
+        </div>
+        <button type="button" class="btn btn-outline-danger" onclick="errord()">Màs Informaciòn</button>
+      </section>
+      </div>
+      <?php
+  }
+
+ ?>
+
+<!-- Fin de Sidebar -->
+
 
 <!-- Modal ediciòn Banco -->
 <div class="modal fade" id="modalBanco" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
