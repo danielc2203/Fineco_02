@@ -14,7 +14,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
-    $ruta = "echo $url/dist/img/usuarios/";
+    $ruta = "$url/dist/img/usuarios/";
     $archivo = $ruta . basename($imagen["name"]);
     move_uploaded_file($imagen["tmp_name"], $archivo);
 }
