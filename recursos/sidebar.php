@@ -12,7 +12,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo $url;?><?php echo $fotousuario?>" class="img-circle elevation-2" alt="Foto Usuario">
+          <img src="<?php echo $url;?>/F_Empleados/<?php echo $fotousuario?>" class="img-circle elevation-2" alt="Foto Usuario">
           <!-- <i class="fas fa-user-tie fa-2x" style="color:#fff"></i> -->
         </div>
         <div class="info">

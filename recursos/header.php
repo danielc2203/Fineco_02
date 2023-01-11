@@ -88,7 +88,7 @@
            
             <!-- Message Start -->
             <div class="media">
-              <img src="<?php echo $url;?><?php echo $fotousuario?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="<?php echo $url;?>/F_empleados/<?php echo $fotousuario?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Hola <?php echo $usuariof ?>
