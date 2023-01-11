@@ -30,6 +30,7 @@ $(document).ready(function() {
             {"data": "estado"}, 
             {"data": "rol_id"},
             // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
+            {"defaultContent": "<a class='btn btn-outline-secondary openVer disabled'><i class='fas fa-eye'></i></a>"},
             {"defaultContent": "<a class='btn btn-outline-warning btnEditar'><i class='fas fa-edit'></i></a>"},
             {"defaultContent": "<a class='btn btn-outline-danger btnBorrar '><i class='fas fa-eraser'></i></a>"}
     
@@ -40,35 +41,28 @@ $(document).ready(function() {
     
     var fila; //captura la fila, para editar o eliminar
     //submit para el Alta y Actualización
-    $('#formUsuarios').submit(function(e){
+    $('#formUsuarios').submit(function(e){                         
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-        var formData = new FormData();
-        formData.append("id", $.trim($('#id').val()));
-        formData.append("nombres", $.trim($('#nombres').val()));
-        formData.append("apellidos", $.trim($('#apellidos').val()));    
-        formData.append("correo", $.trim($('#correo').val()));    
-        formData.append("password", $.trim($('#password').val()));
-        formData.append("estado", $.trim($('#estado').val()));
-        formData.append("rol_id", $.trim($('#rol_id').val()));
-        formData.append("imagen", $('#imagen')[0].files[0]);
-        formData.append("opcion", opcion);
+        nombres = $.trim($('#nombres').val());
+        apellidos = $.trim($('#apellidos').val());    
+        correo = $.trim($('#correo').val());    
+        password = $.trim($('#password').val());
+        estado = $.trim($('#estado').val());
+        rol_id = $.trim($('#rol_id').val());       
         $.ajax({
               url: "crud.php",
               type: "POST",
               datatype:"json",    
-              data: formData,
-              processData: false,
-              contentType: false,
+              data:  {id:id, nombres:nombres, apellidos:apellidos, correo:correo, password:password ,estado:estado, rol_id:rol_id ,opcion:opcion},    
               success: function(data) {
                 tablaUsuarios.ajax.reload(null, false);
-              }
+               }
             });			        
         $('#modalCRUD').modal('hide');
         $(function() {
             toastr.success('Se ha creado el registro correctamente')
-          });
+          });										     			
     });
-
             
     //para limpiar los campos antes de dar de Alta a un registro
     $("#btnNuevo").click(function(){
@@ -85,25 +79,23 @@ $(document).ready(function() {
     $(document).on("click", ".btnEditar", function(){		        
         opcion = 2;//editar
         fila = $(this).closest("tr");	        
-        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID	
+        id = parseInt(fila.find('td:eq(0)').text()); //capturo el ID		            
         nombres = fila.find('td:eq(1)').text();
         apellidos = fila.find('td:eq(2)').text();
         correo = fila.find('td:eq(3)').text();
         password = "Fineco";
         estado = fila.find('td:eq(4)').text();
         rol_id = fila.find('td:eq(5)').text();
-        imagen = fila.find('td:eq(6)').text(); //Aqui se obtiene la ruta de la imagen actual
         $("#nombres").val(nombres);
         $("#apellidos").val(apellidos);
         $("#correo").val(correo);
         $("#password").val(password);
         $("#estado").val(estado);
         $("#rol_id").val(rol_id);
-        $("#imagen").val(imagen); //Aqui se coloca la ruta de la imagen actual en el campo de imagen
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		
-        $('#modalCRUD').modal('show');			   
+        $('#modalCRUD').modal('show');		   
     });
     
     //Borrar

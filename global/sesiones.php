@@ -10,6 +10,8 @@ if(!isset($_SESSION['usuario'])){
     $apellidos = ($_SESSION['usuario']['apellidos']);
     $usuariof= $nombres." ".$apellidos;
     $rol = ($_SESSION['usuario']['rol_id']);
+    $fotousuario = ($_SESSION['usuario']['ruta_imagen']);
+    
 
     //echo '<script type="text/javascript">alert("Su rol desde session es: ' . $rol . ' y su nombre es ' . $nombres . ' ");</script>';
     

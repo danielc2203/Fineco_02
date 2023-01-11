@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link type="image/png" sizes="16x16" rel="icon" href="<?php echo $url;?>/dist/img/fineco_1.png">
+  <link type="image/jpg" sizes="16x16" rel="icon" href="<?php echo $url;?><?echo $fotousuario?>">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fineco APP V 1.0 | JDCR</title>
@@ -88,7 +88,7 @@
            
             <!-- Message Start -->
             <div class="media">
-              <img src="<?php echo $url;?>/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="<?php echo $url;?><?php echo $fotousuario?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Hola <?php echo $usuariof ?>

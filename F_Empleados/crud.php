@@ -13,10 +13,18 @@ $rol_id = (isset($_POST['rol_id'])) ? $_POST['rol_id'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
+if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
+    $ruta = "../dist/img/usuarios/";
+    $archivo = $ruta . basename($imagen["name"]);
+    move_uploaded_file($imagen["tmp_name"], $archivo);
+}
+
+
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado, rol_id) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id') ";			
+        $consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado, rol_id, ruta_imagen) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id', '$archivo') ";
+        //$consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado, rol_id) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
@@ -26,7 +34,7 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE usuarios SET nombres='$nombres', apellidos='$apellidos', correo='$correo', password=MD5('".$password."'), estado='$estado', rol_id='$rol_id' WHERE id='$id' ";		
+        $consulta = "UPDATE usuarios SET nombres='$nombres', apellidos='$apellidos', correo='$correo', password=MD5('".$password."'), estado='$estado', rol_id='$rol_id', ruta_imagen='$archivo' WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         

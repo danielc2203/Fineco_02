@@ -1,5 +1,4 @@
 <?php
-
 include_once '../global/conexiond.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();

@@ -156,6 +156,12 @@
                       </select>
                         </div>            
                     </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="" class="col-form-label">Imagen</label>
+                        <input type="file" class="form-control" id="imagen">
+                      </div>
+                    </div>
                 </div>                
             </div>
             <div class="modal-footer">
