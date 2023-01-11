@@ -103,7 +103,37 @@ $(document).ready(function() {
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white" );
         $(".modal-title").text("Editar Usuario");		
-        $('#modalCRUD').modal('show');			   
+        $('#modalCRUD').modal('show');
+        
+        $('#formUsuarios').submit(function(e){
+            e.preventDefault();
+            //Recolectar los datos del formulario
+            var formData = new FormData();
+            formData.append("id", id);
+            formData.append("nombres", $("#nombres").val());
+            formData.append("apellidos", $("#apellidos").val());
+            formData.append("correo", $("#correo").val());
+            formData.append("password", $("#password").val());
+            formData.append("estado", $("#estado").val());
+            formData.append("rol_id", $("#rol_id").val());
+            formData.append("opcion", opcion);
+            formData.append("imagen", $("#imagen").prop("files")[0]); //Aqui se añade la imagen seleccionada al formData
+            //Enviar los datos del formulario a crud.php
+            $.ajax({
+            url: "crud.php",
+            type: "POST",
+            data: formData,
+            processData: false, //indica que no se procesen los datos
+            contentType: false, //indica que no se setee el tipo de contenido
+            success: function(data) {
+            tablaUsuarios.ajax.reload(null, false);
+            $('#modalCRUD').modal('hide');
+            $(function() {
+            toastr.success('Se ha editado el registro correctamente')
+            });
+            }
+            });
+            });
     });
     
     //Borrar

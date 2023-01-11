@@ -17,6 +17,8 @@ if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
     $ruta = "img/";
     $archivo = $ruta . basename($imagen["name"]);
     move_uploaded_file($imagen["tmp_name"], $archivo);
+} else {
+    $imagen = "img/avatar.jpg";
 }
 
 

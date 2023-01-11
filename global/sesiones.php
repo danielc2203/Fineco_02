@@ -11,6 +11,9 @@ if(!isset($_SESSION['usuario'])){
     $usuariof= $nombres." ".$apellidos;
     $rol = ($_SESSION['usuario']['rol_id']);
     $fotousuario = ($_SESSION['usuario']['ruta_imagen']);
+    if ($fotousuario === ""){
+        $fotousuario = "img/avatar.jpg";
+    }
     
 
     //echo '<script type="text/javascript">alert("Su rol desde session es: ' . $rol . ' y su nombre es ' . $nombres . ' ");</script>';
