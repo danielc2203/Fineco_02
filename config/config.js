@@ -128,8 +128,6 @@ $(document).on("click", ".btnEditar", function(){
 						// Our employee list template
 						$("#nombre").val(nombre);
 					});
-
-
 				}
 				
 	html += '<div class="form-group">'
