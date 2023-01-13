@@ -20,7 +20,7 @@ if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO $tabla (nombres, apellidos, correo, password, estado, rol_id, ruta_imagen) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id', '$archivo') ";
+        $consulta = "INSERT INTO $tabla (nombre, ruta_imagen) VALUES('$nombre', '$archivo') ";
         //$consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado, rol_id) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
@@ -31,7 +31,7 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE $tabla SET nombres='$nombres', apellidos='$apellidos', correo='$correo', password=MD5('".$password."'), estado='$estado', rol_id='$rol_id', ruta_imagen='$archivo' WHERE id='$id' ";		
+        $consulta = "UPDATE $tabla SET nombre='$nombre', ruta_imagen='$archivo' WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         

@@ -1,25 +1,22 @@
 var id, opcion, tabla, rol;
     opcion = 4;
 	
-	function manejarAccion(accion) {
-		switch (accion) {
-		  case 'usuarios':
-			tabla = "grupo_usuarios";
-			break;
-		  case 'convenios':
-			tabla = "convenios";
-			break;
-		  default:
-			alert("Acción no válida");
-			return;
-		}
-		consultaf();
-	  }
-	  
+function usuarios(){
+	alert("Click en usuarios");
+	tabla = "grupo_usuarios";
+	consultaf();
+}
+
+function convenios(){
+	alert("Click en Convenios");
+	tabla = "convenios";
+	consultaf();
+}
 
 function consultaf(){
 	
 	//alert("Esta es la funcion Daniel");
+	document.getElementById('tituloUno').value="okokok";
 	$.ajax({
 		//tabla: "convenios",
 		url: "crud.php",
@@ -30,12 +27,15 @@ function consultaf(){
 			
 			// Parse the json result
 			response = JSON.parse(response);
-			var html = "";	
+
+			var html = "";
+			
 			// Check if there is available records
-			if(response.length > 0) {
+			if(response.length) {
 				// Loop the parsed JSON
 				$.each(response, function(key,value) {
 					// Our employee list template
+					
 					
 					html += '<ul class="todo-list" data-widget="todo-list" >'
 					html += '<li style="margin-bottom: 3px;" class="'+ value.id +'">'
@@ -53,8 +53,6 @@ function consultaf(){
 
 					html += '</li>'
 					html += '</ul>'
-
-					var nombre = value.nombre;
 	
 				});
 			} else {
@@ -69,23 +67,25 @@ function consultaf(){
 	  });
 }
 
-//Enviar   
+//Editar   
+
+
 
 $('#formModal').submit(function(e){                         
 	e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
 
-	id = $.trim(document.getElementById('id').value);
-	nombre = $.trim(document.getElementById('nombre').value);
+	id = $.trim($('#id').val());
+	nombre = $.trim($('#nombre').val());
 	
 		$.ajax({
 		  url: "crud.php",
 		  type: "POST",
 		  datatype:"json",    
 		  data:  {id:id, 
-				nombre:nombre,
+				primer_nombre:primer_nombre,
 				opcion:opcion},    
 		  success: function(data) {
-			
+			tablaUsuarios.ajax.reload(null, false);
 		   }
 		
 		});			        
@@ -102,66 +102,11 @@ $('#formModal').submit(function(e){
 	  });										     			
 });
 
-
-// editar IA
+//Docentes
 $(document).on("click", ".btnEditar", function(){
-    opcion = 5; //Para llamar los datos de la BD
-    var id = $(this).attr('id');
-	alert(tabla);
-
-    //Aquí haces una llamada ajax para obtener los datos del usuario con el id correspondiente
-    $.ajax({
-        url: "crud.php",
-        method: "POST",
-        dataType: "json",
-        data: {opcion: 5, id:id, tabla:tabla},
-        success: function (response) {
-			response = JSON.parse(response);
-            var html = "";
-     
-           
-            //$('#modalConfig').modal('show');
-
-			html += '<div class="form-group">'
-			html += '<label for="id" class="col-form-label">ID</label>'
-			html += '<div class="col-sm">'
-			html += '<input type="text" class="form-control id" id="id" value="'+id+'" readonly>'
-			html += '</div>'
-			html += '</div>'
-
-			html += '<div class="form-group">'
-			html += '<label for="id" class="col-form-label">Nombre</label>'
-			html += '<div class="col-sm">'
-			html += '<input type="text" class="form-control nombre" id="nombre" value="'+nombre+'" >'
-			html += '</div>'
-			html += '</div>'
-
-
-			html += '<div class="modal-footer">'
-			html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
-			html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
-			html += '</div>'
-
-
-			$(".modal-header").css("background-color", "#0267EB");
-			$(".modal-header").css( "color", "white" );
-			$(".modal-title").text(+nombre + "Formulario de edición de  " +tabla );
-			$('#modalConfig').modal('show');
-        }
-		
-    });
-	
-});
-
-
-
-//Editar
-$(document).on("click", ".btnEditarss", function(){
 		opcion = 5;//Para llamar los datos de la BD
         var id = $(this).attr('id');
-		var nombre = nombre;
         alert(id);
-		alert(nombre);
 
 		$.ajax({
 			//tabla: "convenios",
@@ -169,11 +114,11 @@ $(document).on("click", ".btnEditarss", function(){
 			method: "POST",
 			datatype:"json",    
 			data:  {opcion:opcion, tabla:tabla},    
-			success: function (response) {
+			success: function (response) {//once the request successfully process to the server side it will return result here
 				
 				// Parse the json result
 				response = JSON.parse(response);
-				
+	
 				var html = "";
 				
 				// Check if there is available records
@@ -181,9 +126,7 @@ $(document).on("click", ".btnEditarss", function(){
 					// Loop the parsed JSON
 					$.each(response, function(key,value) {
 						// Our employee list template
-						var nombre = value.nombre;
-						//$("#nombre").val(nombre);
-						alert(nombre);
+						$("#nombre").val(nombre);
 					});
 				}
 				
@@ -197,7 +140,7 @@ $(document).on("click", ".btnEditarss", function(){
     html += '<div class="form-group">'
     html += '<label for="id" class="col-form-label">Nombre</label>'
     html += '<div class="col-sm">'
-    html += '<input type="text" class="form-control id" id="nombre" value="">'
+    html += '<input type="text" class="form-control id" id="nombre" value="'+nombre+'">'
     html += '</div>'
     html += '</div>'
 
@@ -219,7 +162,5 @@ $(document).on("click", ".btnEditarss", function(){
 			
 		  });	
 
-
-		  
     
 });
