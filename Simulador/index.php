@@ -180,6 +180,9 @@
     </section>
   </div>
 
+  // Quitar saldo refinanciación?
+  // Agregar Valor Cuota;
+  // Agregar los campos faltantes
 
 <script>
   // Obtener los campos de entrada
