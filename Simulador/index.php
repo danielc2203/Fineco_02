@@ -241,6 +241,19 @@
     var dan1 = Math.round(Math.pow(1+(0.023), 12)-1);
     console.log(dan1);
 
+    var C59 = 0;
+    var C60 = 10000000;
+    var D61 = 400000;
+    var D62 = 1300000;
+    var D63 = 323000;
+    var D64 = 0;
+    var C64 = 90;
+    var D65 = 48092;
+    var E70 = 31.37;
+    var C69 = 2.3;
+
+
+
     var tasa = 0.023;
     var periodos = 12;
     var resultado = Math.pow(1 + tasa, periodos) - 1;
@@ -259,6 +272,34 @@
     //valor actual
     let VA = VF2 - (PV);
     console.log(VA);
+
+    var resp = Math.pow((1 + 0.023), 12) - 1;
+    E70 = resp.toFixed(6);
+    console.log(E70);
+
+    function valorFuturo(pv, i, n) {
+      return pv * Math.pow((1 + i), n);
+    };
+
+    var valorPresente = 12023000;
+    var tasaInteres = 0.023;
+    var periodos = 90;
+
+    var valorFuturo = valorFuturo(valorPresente, tasaInteres, periodos);
+    console.log(valorFuturo);
+
+
+    
+
+
+
+
+
+
+
+
+
+
   }
 
 </script>
