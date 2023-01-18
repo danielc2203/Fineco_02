@@ -129,16 +129,7 @@
               </div>
             </div>
 
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">SALDO REFINANCIACIÓN</span>
-                <span class="input-group-text">$</span>
-              </div>
-              <input type="text" class="form-control" id="c9" required>
-              <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-              </div>
-            </div>
+
 
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
@@ -163,6 +154,21 @@
               <input type="text" class="form-control" id="c12" value="150" required>
               <div class="input-group-append">
                 <span class="input-group-text">días</span>
+              </div>
+            </div>
+
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">CUPO MÁXIMO</span>
+              </div>
+              <input type="text" class="form-control col" id="c13" >
+              <div class="input-group-prepend">
+              <span class="input-group-text">.00</span>
+              <span class="input-group-text">VALOR CUOTA </span>
+              </div>
+              <input type="text" class="form-control" id="c14"  >
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
               </div>
             </div>
 
@@ -237,64 +243,22 @@
     gmf.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_gmf);
 
 
+    let valorB = 2.3; // valor dinamico
+    let interes_compuesto = ((1 + valorB/100) ** 12 - 1)*100;
+    console.log(interes_compuesto.toFixed(6));
+    let interes_compuesto_porcentaje = interes_compuesto.toFixed(2) + "%";
+    console.log(interes_compuesto_porcentaje); // Esto me da 31.37%
 
-    var tasaf = Math.round(Math.pow(1 + (0.023), 12) - 1);
-    console.log(tasaf);
+    function futureValue(rate, numPeriods, payment, presentValue) {
+        return -(presentValue * (1 + rate) ** numPeriods + payment * (((1 + rate) ** numPeriods - 1) / rate));
+    }
 
-    var dan1 = Math.round(Math.pow(1+(0.023), 12)-1);
-    console.log(dan1);
+    var result = futureValue(0.25, 0.313734, 0, -12023000) - 12023000;
+    result = result.toFixed();
+    console.log(result);
 
-    var C59 = 0;
-    var C60 = 10000000;
-    var D61 = 400000;
-    var D62 = 1300000;
-    var D63 = 323000;
-    var D64 = 0;
-    var C64 = 90;
-    var D65 = 48092;
-    var E70 = 31.37;
-    var C69 = 2.3;
-
-
-
-    var tasa = 0.023;
-    var periodos = 12;
-    var resultado = Math.pow(1 + tasa, periodos) - 1;
-    var rR = Math.round(resultado * 1000000) / 1000000;
-    console.log(rR);
-
-    let PV = 12023000; //valor presente o el principal del préstamo
-    let i = rR; //tasa de interés anual, expresada en decimal
-    let n = 90; //es el número de períodos
-    let VF = PV * Math.pow((1 + i), n);
-    console.log(VF);
-
-    // valor futuro
-    let VF2 = PV * Math.pow(1 + (i/n), n);
-
-    //valor actual
-    let VA = VF2 - (PV);
-    console.log(VA);
-
-    var resp = Math.pow((1 + 0.023), 12) - 1;
-    E70 = resp.toFixed(6);
-    console.log(E70);
-
-    function valorFuturo(pv, i, n) {
-      return pv * Math.pow((1 + i), n);
-    };
-
-    var valorPresente = 12023000;
-    var tasaInteres = 0.023;
-    var periodos = 90;
-
-    var valorFuturo = valorFuturo(valorPresente, tasaInteres, periodos);
-    console.log(valorFuturo);
-
-
-    
-
-
+    var resultado = (12023000 * (1 + 0.25) ** 0.313734 + 0 * (((1 + 0.25) ** 0.313734 - 1) / 0.25 ));
+    console.log(resultado - 12023000);
 
 
 

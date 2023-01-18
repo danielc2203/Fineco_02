@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loan Interest Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Loan Interest Calculator</h1>
+    <form>
+      <label for="principal">Principal:</label>
+      <input type="number" id="principal" name="principal">
+      <br>
+      <label for="rate">Interest Rate:</label>
+      <input type="number" id="rate" name="rate">
+      <br>
+      <label for="time">Time in Years:</label>
+      <input type="number" id="time" name="time">
+      <br><br>
+      <button onclick="calculateInterest()">Calculate Interest</button>
+    </form>
+    <br>
+    <table>
+      <tr>
+        <th>Principal</th>
+        <th>Interest Rate</th>
+        <th>Time in Years</th>
+        <th>Interest</th>
+      </tr>
+      <tr>
+        <td id="principal_value"></td>
+        <td id="rate_value"></td>
+        <td id="time_value"></td>
+        <td id="interest_value"></td>
+      </tr>
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>
+
