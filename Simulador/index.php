@@ -118,17 +118,6 @@
               </div>
             </div>
 
-            <div class="input-group input-group-sm mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">SEGURO (anual)</span>
-                <span class="input-group-text">$</span>
-              </div>
-              <input type="text" class="form-control" id="c8" required>
-              <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-              </div>
-            </div>
-
 
 
             <div class="input-group input-group-sm mb-3">
@@ -136,7 +125,7 @@
                 <span class="input-group-text">TOTAL CREDITO</span>
                 <span class="input-group-text">$</span>
               </div>
-              <input type="text" class="form-control" id="c10" readonly>
+              <input type="text" class="form-control" id="c8" readonly>
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
@@ -146,12 +135,12 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">TASA</span>
               </div>
-              <input type="text" class="form-control col" id="c11" value="2,3" require>
+              <input type="text" class="form-control col" id="c9" value="2,3" require>
               <div class="input-group-prepend">
               <span class="input-group-text">%</span>
               <span class="input-group-text">PLAZO</span>
               </div>
-              <input type="text" class="form-control" id="c12" value="150" required>
+              <input type="text" class="form-control" id="c10" value="150" required>
               <div class="input-group-append">
                 <span class="input-group-text">días</span>
               </div>
@@ -161,12 +150,12 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">CUPO MÁXIMO</span>
               </div>
-              <input type="text" class="form-control col" id="c13" >
+              <input type="text" class="form-control col" id="c11" >
               <div class="input-group-prepend">
               <span class="input-group-text">.00</span>
               <span class="input-group-text">VALOR CUOTA </span>
               </div>
-              <input type="text" class="form-control" id="c14"  >
+              <input type="text" class="form-control" id="c12"  >
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
@@ -186,7 +175,6 @@
     </section>
   </div>
 
-  // Quitar saldo refinanciación?
   // Agregar Valor Cuota;
   // Agregar los campos faltantes
 
@@ -204,6 +192,7 @@
   var interes_inicial = document.getElementById("c6");
   var input7 = document.getElementById("b7");
   var gmf = document.getElementById("c7");
+  var totalCredito = document.getElementById("c8");
 
   // Agregar eventos de escucha para cuando los valores cambien
   input1.addEventListener("change", updateResult);
@@ -242,28 +231,40 @@
     // Asignar el resultado al campo de gmf
     gmf.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_gmf);
 
+ 
+    let interesDias = (value6/360); // Operación para sacar el porcentaje de 90 días sobre 360.
 
-    let valorB = 2.3; // valor dinamico
-    let interes_compuesto = ((1 + valorB/100) ** 12 - 1)*100;
-    console.log(interes_compuesto.toFixed(6));
-    let interes_compuesto_porcentaje = interes_compuesto.toFixed(2) + "%";
-    console.log(interes_compuesto_porcentaje); // Esto me da 31.37%
+    let loans1 = sum3; // Cifra total del prestamo + los impuestos
+    console.log("loans1 = " + loans1);
 
+
+    //numero de periodos necesarios para alcanzar un valor con una tasa de interés del 2,3%.
+    let rate = 0.023;
+    let periods = 12;
+    let resultado_interes = Math.round((Math.pow((1 + rate),periods) - 1)*1000000)/1000000;
+    //console.log(resultado_interes); // El resultado es 0.313734
+
+
+    // Funcion Buscada:
     function futureValue(rate, numPeriods, payment, presentValue) {
-        return -(presentValue * (1 + rate) ** numPeriods + payment * (((1 + rate) ** numPeriods - 1) / rate));
+        if (rate <= 0 || numPeriods <= 0 || presentValue <= 0) {
+            return "Por favor ingrese valores válidos para la tasa de interés, número de períodos y valor presente";
+        }
+        var futureValue = presentValue * (1 + rate) ** numPeriods + payment * (((1 + rate) ** numPeriods - 1) / rate);
+        return futureValue;
     }
 
-    var result = futureValue(0.25, 0.313734, 0, -12023000) - 12023000;
-    result = result.toFixed();
-    console.log(result);
+    var result = futureValue(resultado_interes, interesDias, 0, loans1);
+    iniciales = result - loans1;
+    console.log("Valores iniciales = "+ iniciales.toFixed()); // Resultado 848813
 
-    var resultado = (12023000 * (1 + 0.25) ** 0.313734 + 0 * (((1 + 0.25) ** 0.313734 - 1) / 0.25 ));
-    console.log(resultado - 12023000);
+    // Asignar el resultado al campo de INTERESES INICIALES (en dias)
+    interes_inicial.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(iniciales.toFixed());
 
-
-
-
-
+    var valor_Total = result_gmf + iniciales + loans1;
+    console.log("Valor Total = " + valor_Total.toFixed());
+    // Asignar el resultado al campo de INTERESES INICIALES (en dias)
+    totalCredito.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(valor_Total.toFixed());
 
 
 
