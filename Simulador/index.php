@@ -135,7 +135,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">TASA</span>
               </div>
-              <input type="text" class="form-control col" id="c9" value="2,3" require>
+              <input type="text" class="form-control col" id="c9" value="2.3" require>
               <div class="input-group-prepend">
               <span class="input-group-text">%</span>
               <span class="input-group-text">PLAZO</span>
@@ -193,6 +193,10 @@
   var input7 = document.getElementById("b7");
   var gmf = document.getElementById("c7");
   var totalCredito = document.getElementById("c8");
+  var tasa = document.getElementById("c9");
+  var plazo = document.getElementById("c10");
+  var cupom = document.getElementById("c11");
+  var cuota = document.getElementById("c12");
 
   // Agregar eventos de escucha para cuando los valores cambien
   input1.addEventListener("change", updateResult);
@@ -208,6 +212,11 @@
     var value5 = parseFloat(input5.value);
     var value6 = parseFloat(input6.value);
     var value7 = parseFloat(input7.value);
+    var value8 = parseFloat(totalCredito.value);
+    var value9 = parseFloat(tasa.value);
+    var value10 = parseFloat(plazo.value);
+    var value11 = parseFloat(cupom.value);
+    var value12 = parseFloat(cuota.value);
     
     var sum1 = value1 + value2;
     var result_aval = sum1 * (value3/100);
@@ -237,6 +246,12 @@
     let loans1 = sum3; // Cifra total del prestamo + los impuestos
     console.log("loans1 = " + loans1);
 
+    // Valor de Tasa
+    let percent = value9;
+    let decimal = percent / 100;
+    console.log("Decimal es ="+ decimal); // 0.023
+
+
 
     //numero de periodos necesarios para alcanzar un valor con una tasa de interés del 2,3%.
     let rate = 0.023;
@@ -262,29 +277,29 @@
     interes_inicial.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(iniciales.toFixed());
 
     var valor_Total = result_gmf + iniciales + loans1;
-    console.log("Valor Total = " + valor_Total.toFixed());
+    let valor_Totals = valor_Total.toFixed(); // Pasamos el valor a numero entero
+    console.log("Valor Total = " + valor_Totals); // Resultado 12919905
     // Asignar el resultado al campo de INTERESES INICIALES (en dias)
     totalCredito.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(valor_Total.toFixed());
 
     // intereses mediante la funcion PMT 
-    function PMT(ratedd, nperdd, pvdd, fvdd, typedd) {
-        if (ratedd === 0) {
-            return -(pvdd + fvdd) / nperdd;
+    function PMT(tasaf, plazof, total_N, fvdd, v_cuota) {
+        if (tasaf === 0) {
+            return -(total_N + fvdd) / plazof;
         } else {
-            var pvifdd = Math.pow(1 + ratedd, nperdd);
-            return (-(pvdd * pvifdd + fvdd) / ((pvifdd - 1) / ratedd));
+            var pvifdd = Math.pow(1 + tasaf, plazof);
+            return (-(total_N * pvifdd + fvdd) / ((pvifdd - 1) / tasaf));
         }
     }
 
-    let ratedd = 0.023;
-    let nperdd = 150;
-    let pvdd = -12919905;
+    let tasaf = decimal; //0.023;
+    let plazof = value10; // Plazo 150
+    let total_N = -valor_Totals; // Valot total en negativo
     let fvdd = 0;
-    let typedd = 0;
-    let paymentdd = PMT(ratedd, nperdd, pvdd, fvdd, typedd);
-    console.log("Interes PMT es:" + paymentdd); // 307302
-
-
+    let v_cuota = 0;
+    let paymentdd = PMT(tasaf, plazof, total_N, fvdd, v_cuota);
+    console.log("Cuota PMT es:" + paymentdd.toFixed()); // 307302
+    cuota.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(paymentdd.toFixed());
 
 
 
