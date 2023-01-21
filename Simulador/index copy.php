@@ -61,7 +61,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">SERVICIO DE AVAL</span>
               </div>
-              <input type="text" class="form-control col-1" id="b3" value="4.00">
+              <input type="text" class="form-control col-1" id="b3" value="4,00">
               <div class="input-group-prepend">
               <span class="input-group-text">%</span>
               </div>
@@ -72,7 +72,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">ESTUDIO Y ADMINISTRACIÓN DEL CRÉDITO</span>
               </div>
-              <input type="text" class="form-control col-1" id="b4" value="13.00">
+              <input type="text" class="form-control col-1" id="b4" value="13,00">
               <div class="input-group-prepend">
               <span class="input-group-text">%</span>
               </div>
@@ -83,7 +83,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">IMPUESTOS</span>
               </div>
-              <input type="text" class="form-control col-1" id="b5" value="19.00">
+              <input type="text" class="form-control col-1" id="b5" value="19,00">
               <div class="input-group-prepend">
               <span class="input-group-text">%</span>
               </div>
@@ -201,7 +201,7 @@
   // Agregar eventos de escucha para cuando los valores cambien
   input1.addEventListener("change", updateResult);
   input2.addEventListener("change", updateResult);
-  input3.addEventListener("change", updateResult);
+  //input3.addEventListener("change", updateResult);
 
   function updateResult() {
     // Obtener los valores de los campos de entrada y sumarlos
@@ -305,47 +305,47 @@
 
 
     // Initial loan information
-    let loanAmount = 12919905;
-    let annualInterestRate = 2.3;
-    let loanTermMonths = 150;
-    let initialInterest = 307302;
+let loanAmount = 12919905;
+let annualInterestRate = 2.3;
+let loanTermMonths = 150;
+let initialInterest = 307302;
 
-    // Calculate the monthly interest rate
-    let monthlyInterestRate = annualInterestRate / 12;
+// Calculate the monthly interest rate
+let monthlyInterestRate = annualInterestRate / 12;
 
-    // Determine the number of payments
-    let numberOfPayments = loanTermMonths;
+// Determine the number of payments
+let numberOfPayments = loanTermMonths;
 
-    // Calculate the monthly payment
-    let monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+// Calculate the monthly payment
+let monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
 
-    // Create the amortization table
-    let amortization = [];
+// Create the amortization table
+let amortization = [];
 
-    // Add the first row
+// Add the first row
+amortization.push({
+    period: 0,
+    month: "sept-20",
+    capital: 0,
+    seguro: 0,
+    interest: initialInterest,
+    cuota: monthlyPayment,
+    saldo: loanAmount
+});
+
+// Add the remaining rows
+for (let i = 1; i <= numberOfPayments; i++) {
+    let prevRow = amortization[i - 1];
     amortization.push({
-        period: 0,
-        month: "sept-20",
-        capital: 0,
+        period: prevRow.period + 1,
+        month: "oct-20",
+        capital: prevRow.cuota - prevRow.interest,
         seguro: 0,
-        interest: initialInterest,
+        interest: prevRow.saldo * monthlyInterestRate,
         cuota: monthlyPayment,
-        saldo: loanAmount
+        saldo: prevRow.saldo - (prevRow.cuota - prevRow.interest)
     });
-
-    // Add the remaining rows
-    for (let i = 1; i <= numberOfPayments; i++) {
-        let prevRow = amortization[i - 1];
-        amortization.push({
-            period: prevRow.period + 1,
-            month: "oct-20",
-            capital: prevRow.cuota - prevRow.interest,
-            seguro: 0,
-            interest: prevRow.saldo * monthlyInterestRate,
-            cuota: monthlyPayment,
-            saldo: prevRow.saldo - (prevRow.cuota - prevRow.interest)
-        });
-    }
+}
 
 console.log(amortization);
 
