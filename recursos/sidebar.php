@@ -64,12 +64,32 @@
                   <p>Bancos</p>
                 </a>
               </li>
+              
+              <!-- Level three dropdown-->
               <li class="nav-item">
-                <a href="<?php echo $url;?>/F_Creditos/index.php" class="nav-link">
-                <i class="nav-icon far fa-credit-card"></i>
-                  <p>Creditos</p>
+                <a href="" class="nav-link">
+                  <i class="nav-icon far fa-credit-card"></i>
+                  <p>
+                    Creditos
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?php echo $url;?>/F_Creditos/index.php" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Creditos</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?php echo $url;?>/Simulador" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Simulador</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
+
               <li class="nav-item">
                 <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
                 <i class="nav-icon fas fa-dice-d20"></i>
