@@ -266,9 +266,78 @@
     // Asignar el resultado al campo de INTERESES INICIALES (en dias)
     totalCredito.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(valor_Total.toFixed());
 
+    // intereses mediante la funcion PMT 
+    function PMT(ratedd, nperdd, pvdd, fvdd, typedd) {
+        if (ratedd === 0) {
+            return -(pvdd + fvdd) / nperdd;
+        } else {
+            var pvifdd = Math.pow(1 + ratedd, nperdd);
+            return (-(pvdd * pvifdd + fvdd) / ((pvifdd - 1) / ratedd));
+        }
+    }
+
+    let ratedd = 0.023;
+    let nperdd = 150;
+    let pvdd = -12919905;
+    let fvdd = 0;
+    let typedd = 0;
+    let paymentdd = PMT(ratedd, nperdd, pvdd, fvdd, typedd);
+    console.log("Interes PMT es:" + paymentdd); // 307302
+
+
+
+
+
+
+    // Initial loan information
+let loanAmount = 12919905;
+let annualInterestRate = 2.3;
+let loanTermMonths = 150;
+let initialInterest = 307302;
+
+// Calculate the monthly interest rate
+let monthlyInterestRate = annualInterestRate / 12;
+
+// Determine the number of payments
+let numberOfPayments = loanTermMonths;
+
+// Calculate the monthly payment
+let monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+
+// Create the amortization table
+let amortization = [];
+
+// Add the first row
+amortization.push({
+    period: 0,
+    month: "sept-20",
+    capital: 0,
+    seguro: 0,
+    interest: initialInterest,
+    cuota: monthlyPayment,
+    saldo: loanAmount
+});
+
+// Add the remaining rows
+for (let i = 1; i <= numberOfPayments; i++) {
+    let prevRow = amortization[i - 1];
+    amortization.push({
+        period: prevRow.period + 1,
+        month: "oct-20",
+        capital: prevRow.cuota - prevRow.interest,
+        seguro: 0,
+        interest: prevRow.saldo * monthlyInterestRate,
+        cuota: monthlyPayment,
+        saldo: prevRow.saldo - (prevRow.cuota - prevRow.interest)
+    });
+}
+
+console.log(amortization);
 
 
   }
+
+
 
 </script>
 
