@@ -132,10 +132,10 @@ function calcularPensionados(){
     var deducidos;
     var maximo;
     var cupo;
-    if (C1 < 1000001){
+    if (C1 < 1160001){
       var porcentaje = 4;
       var dato = Math.floor(C1 * porcentaje)/100;
-    }else if ( C1 < 2000001 ){
+    }else if ( C1 < 2320001 ){
       var porcentaje = 10;
       //var calculo = Math.floor(C1*10)/100;
       var dato =Math.floor(C1 * porcentaje)/100;

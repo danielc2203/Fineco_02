@@ -32,8 +32,9 @@
         <div class="card-body">
       
         <form class="needs-validation" novalidate>
-          
-            <div class="input-group input-group-sm mb-3">
+
+        <div class="form-row">
+            <div class="input-group input-group-sm mb-3 col-md-6">
               <div class="input-group-prepend">
                 <span class="input-group-text">TOTAL COMPRAS DE CARTERA</span>
                 <span class="input-group-text">$</span>
@@ -44,7 +45,8 @@
               </div>
             </div>
 
-            <div class="input-group input-group-sm mb-3">
+
+            <div class="input-group input-group-sm mb-3 col-md-6">
               <div class="input-group-prepend">
                 <span class="input-group-text">DESEMBOLSO AL CLIENTE</span>
                 <span class="input-group-text">$</span>
@@ -56,6 +58,9 @@
                 <span class="input-group-text">.00</span>
               </div>
             </div>
+        </div>
+        <!-- Final del Div del grupo 001 -->
+
 
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
@@ -98,7 +103,18 @@
               <div class="input-group-prepend">
               <span class="input-group-text">$</span>
               </div>
-              <input type="text" class="form-control" id="c6" required>
+              <input type="text" class="form-control" id="c6" readonly>
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">SEGURO (anual)</span>
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="seguro" value="0" required>
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
@@ -133,16 +149,16 @@
 
             <div class="input-group input-group-sm mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text">TASA</span>
+                <span class="input-group-text">TASA M.V.</span>
               </div>
               <input type="text" class="form-control col" id="c9" value="2.3" require>
               <div class="input-group-prepend">
               <span class="input-group-text">%</span>
               <span class="input-group-text">PLAZO</span>
               </div>
-              <input type="text" class="form-control" id="c10" value="150" required>
+              <input type="text" class="form-control" id="c10" value="144" required>
               <div class="input-group-append">
-                <span class="input-group-text">días</span>
+                <span class="input-group-text">meses</span>
               </div>
             </div>
 
@@ -175,10 +191,8 @@
     </section>
   </div>
 
-  // Agregar Valor Cuota;
-  // Agregar los campos faltantes
-
 <script>
+
   // Obtener los campos de entrada
   var input1 = document.getElementById("c1");
   var input2 = document.getElementById("c2");
@@ -189,6 +203,7 @@
   var input5 = document.getElementById("b5");
   var impuesto = document.getElementById("c5");
   var input6 = document.getElementById("b6");
+  var seguro = document.getElementById("seguro");
   var interes_inicial = document.getElementById("c6");
   var input7 = document.getElementById("b7");
   var gmf = document.getElementById("c7");
@@ -197,11 +212,19 @@
   var plazo = document.getElementById("c10");
   var cupom = document.getElementById("c11");
   var cuota = document.getElementById("c12");
+  
 
   // Agregar eventos de escucha para cuando los valores cambien
   input1.addEventListener("change", updateResult);
   input2.addEventListener("change", updateResult);
   input3.addEventListener("change", updateResult);
+  input4.addEventListener("change", updateResult);
+  input5.addEventListener("change", updateResult);
+  input6.addEventListener("change", updateResult);
+  input7.addEventListener("change", updateResult);
+  tasa.addEventListener("change", updateResult);
+  plazo.addEventListener("change", updateResult);
+  seguro.addEventListener("change", updateResult);
 
   function updateResult() {
     // Obtener los valores de los campos de entrada y sumarlos
@@ -212,15 +235,19 @@
     var value5 = parseFloat(input5.value);
     var value6 = parseFloat(input6.value);
     var value7 = parseFloat(input7.value);
+    var segurom = parseFloat(seguro.value);
     var value8 = parseFloat(totalCredito.value);
     var value9 = parseFloat(tasa.value);
     var value10 = parseFloat(plazo.value);
     var value11 = parseFloat(cupom.value);
     var value12 = parseFloat(cuota.value);
-    
+
     var sum1 = value1 + value2;
     var result_aval = sum1 * (value3/100);
     var result_estudio = sum1 * (value4/100);
+
+    console.log(" ");
+    console.log('//--- Este es el Inicio del JS ---//');
 
     // Asignar el resultado al campo de resultado con formato moneda
     aval.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_aval);
@@ -254,7 +281,7 @@
 
 
     //numero de periodos necesarios para alcanzar un valor con una tasa de interés del 2,3%.
-    let rate = 0.023;
+    let rate = decimal;
     let periods = 12;
     let resultado_interes = Math.round((Math.pow((1 + rate),periods) - 1)*1000000)/1000000;
     //console.log(resultado_interes); // El resultado es 0.313734
@@ -268,6 +295,9 @@
         var futureValue = presentValue * (1 + rate) ** numPeriods + payment * (((1 + rate) ** numPeriods - 1) / rate);
         return futureValue;
     }
+
+    var segurom = seguro.value / 12; // Valor del seguro totol sobre 12 meses
+    console.log("Valor del seguro mensual = " + segurom.toFixed());
 
     var result = futureValue(resultado_interes, interesDias, 0, loans1);
     iniciales = result - loans1;
@@ -288,7 +318,7 @@
             return -(total_N + fvdd) / plazof;
         } else {
             var pvifdd = Math.pow(1 + tasaf, plazof);
-            return (-(total_N * pvifdd + fvdd) / ((pvifdd - 1) / tasaf));
+            return (-(total_N * pvifdd + fvdd) / ((pvifdd - 1) / tasaf) + segurom);
         }
     }
 
@@ -300,58 +330,11 @@
     let paymentdd = PMT(tasaf, plazof, total_N, fvdd, v_cuota);
     console.log("Cuota PMT es:" + paymentdd.toFixed()); // 307302
     cuota.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(paymentdd.toFixed());
+    
 
-
-
-
-    // Initial loan information
-    let loanAmount = 12919905;
-    let annualInterestRate = 2.3;
-    let loanTermMonths = 150;
-    let initialInterest = 307302;
-
-    // Calculate the monthly interest rate
-    let monthlyInterestRate = annualInterestRate / 12;
-
-    // Determine the number of payments
-    let numberOfPayments = loanTermMonths;
-
-    // Calculate the monthly payment
-    let monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
-
-    // Create the amortization table
-    let amortization = [];
-
-    // Add the first row
-    amortization.push({
-        period: 0,
-        month: "sept-20",
-        capital: 0,
-        seguro: 0,
-        interest: initialInterest,
-        cuota: monthlyPayment,
-        saldo: loanAmount
-    });
-
-    // Add the remaining rows
-    for (let i = 1; i <= numberOfPayments; i++) {
-        let prevRow = amortization[i - 1];
-        amortization.push({
-            period: prevRow.period + 1,
-            month: "oct-20",
-            capital: prevRow.cuota - prevRow.interest,
-            seguro: 0,
-            interest: prevRow.saldo * monthlyInterestRate,
-            cuota: monthlyPayment,
-            saldo: prevRow.saldo - (prevRow.cuota - prevRow.interest)
-        });
-    }
-
-console.log(amortization);
-
-
+    console.log("_m_(._.)_m_") 
+    // Final....
   }
-
 
 
 </script>
