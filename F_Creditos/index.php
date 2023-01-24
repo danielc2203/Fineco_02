@@ -142,6 +142,185 @@
   </div>
 </div>
 
+<!-- Modal Simulador -->
+<div class="modal fade" id="modalSimulador" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <div class="modal-body">
+        
+      <form class="needs-validation" novalidate>
+
+        <div class="form-row">
+            <div class="input-group input-group-sm mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Total compras de cartera</span>
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="c1" required>
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+
+            <div class="input-group input-group-sm mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Desembolso al cliente</span>
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="c2" ">
+              <!-- <input type="text" class="form-control" id="c2"   onchange="formatCOP(this.value, 'c2-display')" required> -->
+              <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Servicio Aval</span>
+            </div>
+            <input type="text" class="form-control col-2" id="b3" value="4.00">
+            <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
+            </div>
+            <input type="text" class="form-control" id="c3" readonly>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Estudio y Administraciòn de credito</span>
+            </div>
+            <input type="text" class="form-control col-2" id="b4" value="13.00">
+            <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
+            </div>
+            <input type="text" class="form-control"  id="c4" readonly>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Impuestos</span>
+            </div>
+            <input type="text" class="form-control col-2" id="b5" value="19.00">
+            <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
+            </div>
+            <input type="text" class="form-control" id="c5" readonly>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Intereses Iniciales (en dias)</span>
+            </div>
+            <input type="text" class="form-control col-2" id="b6" value="90">
+            <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="c6" readonly>
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Seguro (anual)</span>
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="seguro" value="0" required>
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">GMF</span>
+            </div>
+            <input type="text" class="form-control col-2" id="b7" value="0.004">
+            <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="c7" readonly>
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Total Credito</span>
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="c8" readonly>
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Tasa M.V.</span>
+            </div>
+            <input type="text" class="form-control col" id="c9" value="2.3" require>
+            <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
+            <span class="input-group-text">PLAZO</span>
+            </div>
+            <input type="text" class="form-control" id="c10" value="144" required>
+            <div class="input-group-append">
+              <span class="input-group-text">meses</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Cupo Màximo</span>
+            </div>
+            <input type="text" class="form-control col" id="c11" >
+            <div class="input-group-prepend">
+            <span class="input-group-text">.00</span>
+            <span class="input-group-text">Valor Cuota</span>
+            </div>
+            <input type="text" class="form-control" id="c12"  >
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+        </div>
+          
+          <button class="btn btn-primary btn-sm" type="submit">Calcular Amortización</button>
+      </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <!-- Modal Creditos -->
 <div class="modal fade" id="modalCREDITOS" tabindex="-1" role="dialog" aria-labelledby="modalCREDITOS" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -189,5 +368,6 @@
 <script src="./tabla_creditos.js"></script>
 <script src="./creditos.js"></script>
 <script src="./calculadora.js"></script>
+<script src="./simulador.js"></script>
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->

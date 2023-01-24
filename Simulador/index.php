@@ -31,7 +31,7 @@
         </div>
         <div class="card-body">
       
-        <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate>
 
         <div class="form-row">
             <div class="input-group input-group-sm mb-3 col-md-6">
@@ -182,17 +182,13 @@
         </div>
           
           <button class="btn btn-primary btn-sm" type="submit">Calcular Amortización</button>
-        </form>
+      </form>
 
         </div>
         <div class="card-footer text-muted">
         Simuladro de credito Fineco
         </div>
       </div>
-
-      <div id="root"></div>
-
-
 
 
       </div><!-- /.container-fluid -->

@@ -62,6 +62,8 @@ $(document).ready(function() {
                         return '<span style="color:' + color + '">' + number + '</span>';
                     }
                     return number;
+                    var capacidadf = number;
+                
                 },
             },
             //{"data": "capacidad"},
@@ -71,16 +73,17 @@ $(document).ready(function() {
                     if (type === 'display') {
                         let link = 'btn-light';
  
-                        if (data[0] === 'A') {
+                        if (data[0] === 'C') {
                             link = 'btn-success';
                         } else if (data[0] === 'N') {
                             link = 'btn-dark';
                         }
 
-                        return '<a class="btn '+link+' VerCredito" role="button">'+data+'</a>';
+                        return '<a class="btn '+link+' Simulador" role="button">'+data+'</a>';
                     }
  
                     return data;
+            
                 },
             },
 
@@ -137,6 +140,26 @@ $(document).ready(function() {
                 timer: 1900
               })
           });										     			
+    });
+
+    // Funcion de Simulador:
+    $(document).on("click", ".Simulador", function simulador(){
+        var filaSeleccionada = tablaUsuarios.row($(this).parents('tr')); //captura los datos de la fila
+        var capacidadSeleccionada = filaSeleccionada.data().capacidad; // guardamos en variable la capacidad
+
+        $('#modalSimulador').on('hidden.bs.modal', function () {
+            $(this).find('input[id=c1],input[id=c2],input[id=c12]').val('');
+        });
+
+        
+        $(".modal-header").css( "background-color", "#2e2cb1");
+        $(".modal-header").css( "color", "white" );
+        $(".modal-title").text("Simulador de Credito");
+        $('#modalSimulador').modal('show');
+        $('#c11').val(capacidadSeleccionada);
+
+        
+
     });
             
     //para limpiar los campos antes de dar de Alta a un registro
