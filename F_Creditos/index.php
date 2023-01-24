@@ -293,7 +293,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Cupo Màximo</span>
             </div>
-            <input type="text" class="form-control col" id="c11" >
+            <input type="text" class="form-control col" id="c11" readonly>
             <div class="input-group-prepend">
             <span class="input-group-text">.00</span>
             <span class="input-group-text">Valor Cuota</span>

@@ -54,6 +54,7 @@ function updateResult() {
   console.log(" ");
   console.log("_m_(..)_m_") 
 
+
   // Asignar el resultado al campo de resultado con formato moneda
   aval.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_aval);
   //aval.value = result_aval;
@@ -136,19 +137,19 @@ function updateResult() {
   let paymentdd = PMT(tasaf, plazof, total_N, fvdd, v_cuota);
   //console.log("Cuota PMT es:" + paymentdd.toFixed()); // 307302
   cuota.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(paymentdd.toFixed());
+    
+    var val_11 = document.getElementById("c11");
+    var val_11 = parseInt(val_11.value);// Captura el valor del cupo maximo
+    var val_12 = paymentdd.toFixed(); // Captura el valor de cuota
   
-
-  var val_12 = value11.toFixed(); // Captura el valor del cupo maximo
-  var val_11 = paymentdd.toFixed(); // Captura el valor de cuota
-
-  if(val_12 > val_11) { // Si el valor de la cupo es mayor a la cuota pinta verde
-       $('#c12').addClass('text-success');
-       $('#c12').removeClass('text-danger');
-  }else { // Si el valor de la cuota es mayor al cupo pinta rojo
-       $('#c12').addClass('text-danger');
-       $('#c12').removeClass('text-success');
- 
-  };
+    if(val_12 > val_11) { // Si el valor de la cupo es mayor a la cuota pinta verde
+        $("#c12").css( "background-color", "red");
+        $("#c12").css( "color", "white" );
+         
+    }else { // Si el valor de la cuota es mayor al cupo pinta rojo
+        $("#c12").css( "background-color", "green");
+        $("#c12").css( "color", "white" );
+    };
 
 
   console.log("_m_('')_m_");

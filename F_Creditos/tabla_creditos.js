@@ -19,8 +19,8 @@ $(document).ready(function() {
                 buttons: ['pageLength', "copy", "excel", "pdf", "print"],                
             },
             lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5 Filas','10 Filas', '25 Filas', '50 Filas', 'Ver Todos' ]
+                [ 6, 12, 24, 48, -1 ],
+                [ '6 Filas','12 Filas', '24 Filas', '48 Filas', 'Ver Todos' ]
             ],
 
 
@@ -147,17 +147,18 @@ $(document).ready(function() {
         var filaSeleccionada = tablaUsuarios.row($(this).parents('tr')); //captura los datos de la fila
         var capacidadSeleccionada = filaSeleccionada.data().capacidad; // guardamos en variable la capacidad
 
+
         $('#modalSimulador').on('hidden.bs.modal', function () {
             $(this).find('input[id=c1],input[id=c2],input[id=c12]').val('');
+            // Limpiamos los valores de los campos C1, C2 y C12 del modal
         });
 
-        
         $(".modal-header").css( "background-color", "#2e2cb1");
         $(".modal-header").css( "color", "white" );
         $(".modal-title").text("Simulador de Credito");
         $('#modalSimulador').modal('show');
-        $('#c11').val(capacidadSeleccionada);
-
+        $('#c11').val(capacidadSeleccionada); // pasamos el valor de capacidad al campo C11
+        
         
 
     });
