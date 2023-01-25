@@ -301,5 +301,5 @@
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 <script src="./scripts.js"></script>
-<script src="../dist/js/pages/dashboard.js"></script>
+<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->

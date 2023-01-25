@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['usuario'])){
-    header('Location:../F_inicio/index.php');
+    header('Location:../index.php');
     exit;
 }else{
     //print_r($_SESSION['usuario']);
@@ -20,7 +20,24 @@ if(!isset($_SESSION['usuario'])){
     
 }
 
+// Tiempo de inactividad en segundos
+$inactivity_time = 1800;
 
+// Comprobar si no existe una sesión activa
+if (!isset($_SESSION['start_time'])) {
+    $_SESSION['start_time'] = time();
+}
+
+// Comprobar si ha pasado el tiempo de inactividad
+if (time() - $_SESSION['start_time'] > $inactivity_time) {
+    // Eliminar la sesión
+    session_unset();
+    session_destroy();
+    // Redirigir al login
+    //header("Location: login.php");
+    header("Location: ../index.php");
+    exit();
+}
 
 
 ?>
