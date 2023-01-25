@@ -1,73 +1,63 @@
-var id, opcion, tabla, rol;
-    opcion = 4;
-	
-	function manejarAccion(accion) {
-		switch (accion) {
-		  case 'usuarios':
-			tabla = "grupo_usuarios";
-			break;
-		  case 'convenios':
-			tabla = "convenios";
-			break;
-		  default:
-			alert("Acción no válida");
-			return;
-		}
-		consultaf();
-	  }
+var id, opcion, tabla;
+
+// Función para manejar la acción seleccionada
+function manejarAccion(accion) {
+    switch (accion) {
+        case 'usuarios':
+            tabla = "grupo_usuarios";
+            break;
+        case 'convenios':
+            tabla = "convenios";
+            break;
+        default:
+            alert("Acción no válida");
+            return;
+    }
+    // Llamada a la función para realizar la consulta
+    consultar();
+}
+
 	  
-
-function consultaf(){
-	
-	//alert("Esta es la funcion Daniel");
-	$.ajax({
-		//tabla: "convenios",
-		url: "crud.php",
-		method: "POST",
-		datatype:"json",    
-		data:  {opcion:opcion, tabla:tabla},    
-		success: function (response) {//once the request successfully process to the server side it will return result here
-			
-			// Parse the json result
-			response = JSON.parse(response);
-			var html = "";	
-			// Check if there is available records
-			if(response.length > 0) {
-				// Loop the parsed JSON
-				$.each(response, function(key,value) {
-					// Our employee list template
-					
-					html += '<ul class="todo-list" data-widget="todo-list" >'
-					html += '<li style="margin-bottom: 3px;" class="'+ value.id +'">'
-
-					html += "<span class='text'>" + value.id + " - " + "</span>";
-					html += "<span>" + value.nombre +"</span>";
-											
+// Función para realizar la consulta a la base de datos
+function consultar() {
+    $.ajax({
+        url: "crud.php",
+        method: "POST",
+        datatype: "json",
+        data: { opcion: 4, tabla: tabla },
+        success: function(response) {
+            // parsear la respuesta en formato json
+            response = JSON.parse(response);
+            var html = "";
+            // Verificar si hay registros disponibles
+            if (response.length > 0) {
+                // Recorrer los resultados
+                response.forEach(function(valores) {
+                    html += '<ul class="todo-list" data-widget="todo-list" >'
+					html += '<li style="margin-bottom: 3px;" class="' + valores.id + '">'
+					html += "<span class='text'>" + valores.id + " - " + "</span>";
+					html += "<span>" + valores.nombre + "</span>";
 					html += '</div>'
-
 					html += '<div class="tools">' // Botones
-					html += '<a class="btn btn-outline-primary btnEditar " id='+ value.id +'><i class="fas fa-edit"></i>'
-					
-					html += "<a class='btn btn-outline-danger btn-borrar-tarea' id='"+value.id+"' type='button'><i class='fas fa-trash'></i></a>"
+					html += '<a class="btn btn-outline-primary btnEditar " id=' + valores.id + '><i class="fas fa-edit"></i>'
+					html += "<a class='btn btn-outline-danger btn-borrar-tarea' id='" + valores.id + "' type='button'><i class='fas fa-trash'></i></a>"
 					html += '</div>'
-
 					html += '</li>'
 					html += '</ul>'
-
-					var nombre = value.nombre;
-	
 				});
 			} else {
 				html += '<div class="alert alert-warning">';
 				html += 'No tienes tareas pendientes!';
 			}
-
-			// Insert the HTML Template and display all employee records
+			// Insertar el HTML Template y mostrar todos los registros
 			$("#finecod").html(html);
-		}
-		
-	  });
-}
+			}
+		});
+	}
+
+
+
+
 
 //Enviar   
 

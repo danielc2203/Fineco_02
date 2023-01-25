@@ -49,7 +49,7 @@
               <div class="inner">
                 <h3>Grupo de Usuarios</h3>
                 <?php
-                  $consulta = "SELECT * FROM grupo_usuarios";
+                  $consulta = "SELECT * FROM grupo_usuarios LIMIT 3";
                   $resultado = $conexion->prepare($consulta);
                   $resultado->execute();
                   $grupo=$resultado->fetchAll();
@@ -63,7 +63,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer" onclick="manejarAccion('usuarios')" >Editar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer" onclick="manejarAccion('usuarios')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -73,7 +73,7 @@
               <div class="inner">
               <h3>Listado de Convenios</h3>
                 <?php
-                  $consulta = "SELECT * FROM convenios";
+                  $consulta = "SELECT * FROM convenios LIMIT 3";
                   $resultado = $conexion->prepare($consulta);
                   $resultado->execute();
                   $grupo=$resultado->fetchAll();
@@ -87,7 +87,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer" onclick="manejarAccion('convenios')" >Editar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer" onclick="manejarAccion('convenios')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
