@@ -177,18 +177,26 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal config-->
-<div class="modal fade" id="modalConfig" tabindex="-1" >
+<div class="modal fade" id="modalEditar" tabindex="-1" >
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalConfig"></h5>
-        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="contenido_config">
       <!-- información del modal -->
+      <div class="form-group">
+        <label for="">id</label>
+        <input type="text" name="id" id="id" class="form-control" placeholder="" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Help text</small>
+
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Help text</small>
+      </div>
       </div>
     </div>
   </div>

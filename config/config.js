@@ -35,11 +35,10 @@ function consultar() {
                 response.forEach(function(valores) {
                     html += '<ul class="todo-list" data-widget="todo-list" >'
 					html += '<li style="margin-bottom: 3px;" class="' + valores.id + '">'
-					html += "<span class='text'>" + valores.id + " - " + "</span>";
-					html += "<span>" + valores.nombre + "</span>";
+					html += "<span class='text'>" + valores.nombre + "</span>";
 					html += '</div>'
 					html += '<div class="tools">' // Botones
-					html += '<a class="btn btn-outline-primary btnEditar " id=' + valores.id + '><i class="fas fa-edit"></i>'
+					html += '<a class="btn btn-outline-primary btnEditardd" id=' + valores.id + '><i class="fas fa-edit"></i>'
 					html += "<a class='btn btn-outline-danger btn-borrar-tarea' id='" + valores.id + "' type='button'><i class='fas fa-trash'></i></a>"
 					html += '</div>'
 					html += '</li>'
@@ -56,6 +55,16 @@ function consultar() {
 	}
 
 
+
+$(document).on('click', '.btnEditardd', function(){
+	var id = $(this).attr('id');
+	var nombre = $(this).closest('li').find('.text').text();
+	$('#id').val(id);
+	$('#nombre').val(nombre);
+	$('#modalEditar').modal('show');
+	console.log(nombre);
+
+});
 
 
 
@@ -91,6 +100,9 @@ $('#formModal').submit(function(e){
 		  })
 	  });										     			
 });
+
+
+
 
 
 // editar IA
