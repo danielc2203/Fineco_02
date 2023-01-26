@@ -20,7 +20,7 @@ if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO $tabla (nombre, ruta_imagen) VALUES('$nombre', '$archivo') ";
+        $consulta = "INSERT INTO $tabla (nombre) VALUES('$nombre') ";
         //$consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado, rol_id) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
@@ -41,9 +41,10 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
-        $consulta = "DELETE FROM $tabla WHERE id='$id' ";		
+        $consulta = "DELETE FROM $tabla WHERE id='$id'";		
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute();                         
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 4:    
         $consulta = "SELECT * FROM $tabla";

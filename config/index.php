@@ -161,7 +161,7 @@
             </div>
             <div class="card-footer clearfix">
             <div class="footEdit">
-            <button type="button" class="btn btn-success" id="guardar">Nuevo</button>
+            <button type="button" class="btn btn-success btnNuevoRegistro" id="btnNuevoRegistro">Nuevo</button>
             </div>
               
             </div>
