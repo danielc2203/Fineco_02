@@ -63,6 +63,8 @@ $(document).on('click', '.btnEditar', function(){
            
 	//$('#modalConfig').modal('show');
 
+	html += '<form>'
+
 	html += '<div class="form-group">'
 	html += '<label for="id" class="col-form-label">ID</label>'
 	html += '<div class="col-sm">'
@@ -79,9 +81,10 @@ $(document).on('click', '.btnEditar', function(){
 
 
 	html += '<div class="modal-footer">'
-	html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+	html += '<button type="submit" class="btn btn-success" id="guardar">Guardar</button>'
 	html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 	html += '</div>'
+	html += '</form>'
 
 
 	$("#contenido_config").html(html);
@@ -101,11 +104,12 @@ $(document).on('click', '.btnEditar', function(){
 
 //Enviar   
 
-$('#formModal').submit(function(e){                         
+$('#modalEditar').submit(function(e){                         
 	e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
 
 	id = $.trim(document.getElementById('id').value);
 	nombre = $.trim(document.getElementById('nombre').value);
+	console.log(id, nombre, tabla);
 	
 		$.ajax({
 		  url: "crud.php",
@@ -113,15 +117,16 @@ $('#formModal').submit(function(e){
 		  datatype:"json",    
 		  data:  {id:id, 
 				nombre:nombre,
-				opcion:opcion},    
+				opcion:6,
+				tabla:tabla},    
 		  success: function(data) {
 			
 		   }
 		
 		});			        
-	$('#modalCRUD').modal('hide');
+	$('#modalEditar').modal('hide');
 	$(function() {
-		toastr.success('Se ha creado el registro correctamente')
+		//toastr.success('Se ha creado el registro correctamente')
 		Swal.fire({
 			position: 'top-end',
 			icon: 'success',
@@ -129,6 +134,6 @@ $('#formModal').submit(function(e){
 			showConfirmButton: false,
 			timer: 1900
 		  })
-	  });										     			
+	  });					     			
 });
 

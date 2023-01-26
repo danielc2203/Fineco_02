@@ -57,6 +57,16 @@ switch($opcion){
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+    case 6:        
+        $consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+        
+        $consulta = "SELECT * FROM $tabla WHERE id='$id' ";    
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
