@@ -52,6 +52,7 @@ function consultar() {
 			$("#finecod").html(html);
 			}
 		});
+		
 	}
 
 
@@ -132,8 +133,9 @@ $('#modalEditar').submit(function(e){
 			icon: 'success',
 			title: 'Los cambios han sido efectuados exitosamente...',
 			showConfirmButton: false,
-			timer: 1900
+			timer: 1900,
 		  })
-	  });					     			
+	  });	
+	  consultar();	
 });
 

@@ -160,6 +160,9 @@
               <!-- Aca se pinta el contenido del JS Finecod de la funcion Daniel -->
             </div>
             <div class="card-footer clearfix">
+            <div class="footEdit">
+            <button type="button" class="btn btn-success" id="guardar">Nuevo</button>
+            </div>
               
             </div>
           </div>
