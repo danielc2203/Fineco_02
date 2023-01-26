@@ -36,7 +36,7 @@
                 <p>Total Clientes</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fas fa-tasks"></i>
               </div>
               <a href="<?php echo $url;?>/F_Clientes" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -61,7 +61,7 @@
                 ?>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fas fa-tasks"></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('usuarios')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -85,7 +85,8 @@
                 ?>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <!-- <i class="ion ion-person-add"></i> -->
+                <i class="fas fa-tasks"></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('convenios')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -110,7 +111,7 @@
                 ?>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fas fa-tasks"></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('ocupacion')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -122,11 +123,11 @@
             <!-- small box  azul -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>65</h3>
+                <h3>Otro Listado</h3>
                 <p>Total colocación</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fas fa-tasks"></i>
               </div>
               <a href="#" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -138,11 +139,11 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>65</h3>
+                <h3>Otro Listado</h3>
                 <p>Índice de solvencia</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fas fa-tasks"></i>
               </div>
               <a href="#" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
             </div>
