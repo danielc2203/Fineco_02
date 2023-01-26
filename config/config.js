@@ -9,6 +9,9 @@ function manejarAccion(accion) {
         case 'convenios':
             tabla = "convenios";
             break;
+		case 'ocupacion':
+			tabla = "ocupacion";
+			break;
         default:
             alert("Acción no válida");
             return;
@@ -186,7 +189,6 @@ $(document).delegate(".btnBorrar", "click", function() {
 				 }
 			  });
 			  consultar();
-
 			
 		} else if (result.isDenied) {
 			Swal.fire('Cambios No Efectuados', '', 'info')

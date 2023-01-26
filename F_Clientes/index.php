@@ -191,14 +191,18 @@
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Ocupación</label>
-                    <select class="form-control form-control-sm" id="ocupacion">
-                      <option selected>Seleccionar...</option>
-                      <option value="Fineco">Pensionado</option>
-                      <option value="Armada">Docente</option>
-                      <option value="Policia">Policia</option>
-                      <option value="Fiscalia">Fuerzas Armadas</option>
-                      <option value="Empleado">Empleado</option>
-                    </select>
+                    <select class="form-control form-control-sm" id="empresa" name="empresa">
+                        <option value="">Ocupaciòn:</option>
+                        <?php
+                        $consulta = "SELECT * FROM ocupacion";
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();
+                        $grupo=$resultado->fetchAll();
+                        foreach ($grupo as $valores):
+                        echo '<option value="'.$valores["id"].'">'.$valores["nombre"].'</option>';
+                        endforeach;
+                        ?>
+                      </select>
                     </div> 
                     </div>    
                 </div>
@@ -206,15 +210,18 @@
                     <div class="col-6">
                     <div class="form-group mb-0">
                     <label for="" class="col-form-label-sm">Convenio:</label>
-                    <select class="form-control form-control-sm" id="empresa">
-                      <option selected>Seleccionar...</option>
-                      <option value="Fineco">Fineco</option>
-                      <option value="Armada">Armada</option>
-                      <option value="Fuerza Aerea">Fuerza Aerea</option>
-                      <option value="Policia">Policia</option>
-                      <option value="Fiscalia">Fiscalia</option>
-                      <option value="Empleado">Empleado</option>
-                    </select>
+                    <select class="form-control form-control-sm" id="empresa" name="empresa">
+                        <option value="">Convenios:</option>
+                        <?php
+                        $consulta = "SELECT * FROM convenios";
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();
+                        $grupo=$resultado->fetchAll();
+                        foreach ($grupo as $valores):
+                        echo '<option value="'.$valores["id"].'">'.$valores["nombre"].'</option>';
+                        endforeach;
+                        ?>
+                      </select>
                     </div>
                     </div>
                     <div class="col-6">

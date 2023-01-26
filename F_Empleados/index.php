@@ -150,7 +150,7 @@
                         $grupo=$resultado->fetchAll();
 
                         foreach ($grupo as $valores):
-                        echo '<option value="'.$valores["id"].'">'.$valores["nombre_grupo"].'</option>';
+                        echo '<option value="'.$valores["id"].'">'.$valores["nombre"].'</option>';
                         endforeach;
                         ?>
                       </select>

@@ -29,7 +29,7 @@
         <div class="row">
           <div class="col-lg-4 col-6">
             <!-- small box Celeste -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-secondary">
               <div class="inner">
                 <h3><?php echo $totalClientes; ?></h3>
 
@@ -45,7 +45,7 @@
           <!-- ./col -->
           <div class="col-lg-4 col-6">
             <!-- small box Verde -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-secondary">
               <div class="inner">
                 <h3>Grupo de Usuarios</h3>
                 <?php
@@ -69,7 +69,7 @@
           <!-- ./col -->
           <div class="col-lg-4 col-6">
             <!-- small box Amarillo -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-secondary">
               <div class="inner">
               <h3>Listado de Convenios</h3>
                 <?php
@@ -93,16 +93,26 @@
 
           <!-- ./col -->
           <div class="col-lg-4 col-6">
-            <!-- small box  Rojo -->
-            <div class="small-box bg-danger">
+            <!-- small box Verde -->
+            <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>65</h3>
-                <p>Prepagos</p>
+                <h3>Ocupaciòn</h3>
+                <?php
+                  $consulta = "SELECT * FROM ocupacion LIMIT 3";
+                  $resultado = $conexion->prepare($consulta);
+                  $resultado->execute();
+                  $grupo=$resultado->fetchAll();
+                  echo "<ul>";
+                    foreach ($grupo as $valores):
+                      echo '<li>'.$valores["nombre"].'</li>';
+                    endforeach;
+                  echo "</ul>"
+                ?>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer" onclick="manejarAccion('ocupacion')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -110,7 +120,7 @@
           <!-- ./col -->
           <div class="col-lg-4 col-6">
             <!-- small box  azul -->
-            <div class="small-box bg-primary">
+            <div class="small-box bg-secondary">
               <div class="inner">
                 <h3>65</h3>
                 <p>Total colocación</p>

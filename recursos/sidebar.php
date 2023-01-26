@@ -120,6 +120,12 @@
                   <p>Contabilidad</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo $url;?>/config" class="nav-link">
+                <i class="nav-icon fas fa-database"></i>
+                  <p>Configuraciòn</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-header">FINECO APP 2022</li>
