@@ -59,10 +59,41 @@ function consultar() {
 $(document).on('click', '.btnEditardd', function(){
 	var id = $(this).attr('id');
 	var nombre = $(this).closest('li').find('.text').text();
+	var html = "";
+           
+	//$('#modalConfig').modal('show');
+
+	html += '<div class="form-group">'
+	html += '<label for="id" class="col-form-label">ID</label>'
+	html += '<div class="col-sm">'
+	html += '<input type="text" class="form-control id" id="id" value="'+id+'" readonly>'
+	html += '</div>'
+	html += '</div>'
+
+	html += '<div class="form-group">'
+	html += '<label for="id" class="col-form-label">Nombre</label>'
+	html += '<div class="col-sm">'
+	html += '<input type="text" class="form-control nombre" id="nombre" value="'+nombre+'" >'
+	html += '</div>'
+	html += '</div>'
+
+
+	html += '<div class="modal-footer">'
+	html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
+	html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+	html += '</div>'
+
+
+	$("#contenido_config").html(html);
+	$(".modal-header").css("background-color", "#0267EB");
+    $(".modal-header").css( "color", "white" );
+    $(".modal-title").text("Calculadora de Creditos - Docentes");
 	$('#id').val(id);
 	$('#nombre').val(nombre);
 	$('#modalEditar').modal('show');
-	console.log(nombre);
+
+
+	//console.log(nombre);
 
 });
 
