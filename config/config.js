@@ -20,7 +20,6 @@ function manejarAccion(accion) {
     consultar();
 }
 
-	  
 // Función para realizar la consulta a la base de datos
 function consultar() {
     $.ajax({
@@ -60,7 +59,7 @@ function consultar() {
 
 // Boton Editar Muestra Modal con la fila correspondiente.
 $(document).on('click', '.btnEditar', function(){
-	opcion = 6;
+	opcion = 2;
 	var id = $(this).attr('id');
 	var nombre = $(this).closest('li').find('.text').text();
 	var html = "";
@@ -95,7 +94,6 @@ $(document).on('click', '.btnEditar', function(){
 });
 
 // Funcion para crear un nuevo registro de la selecciòn.
-
 $(document).on('click', '.btnNuevoRegistro', function(){
 	var html = "";
 	opcion = 1;
@@ -142,9 +140,8 @@ $('#modalEditar').submit(function(e){
 				opcion:opcion,
 				tabla:tabla},    
 		  success: function(data) {
-			
+			consultar();
 		   }
-		
 		});			        
 	$('#modalEditar').modal('hide');
 	$(function() {
@@ -160,8 +157,7 @@ $('#modalEditar').submit(function(e){
 	  consultar();	
 });
 
-// Funcion para borrar los datos seleccionados:
-//Borrar con Swal2
+// Funcion para borrar los datos seleccionados con Swal2:
 $(document).delegate(".btnBorrar", "click", function() {
 
 	var id = $(this).attr('id'); // Pasamos el id del modal a la funcion borrar desde el boton
@@ -186,6 +182,7 @@ $(document).delegate(".btnBorrar", "click", function() {
 				data: {tabla:tabla, opcion:opcion, id:id}, 
 				success: function(response) {
 					Swal.fire('El registro '+ nombre +' ha sido Eliminado de la base de datos '+ tabla + ' success');
+					consultar();
 				 }
 			  });
 			  consultar();
@@ -198,7 +195,6 @@ $(document).delegate(".btnBorrar", "click", function() {
 				//toastr.info('Se ha cancelado la acción de eliminar')
 			  });
 		}
-		consultar();
 		});
 	});
 

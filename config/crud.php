@@ -16,8 +16,6 @@ if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
     $imagen = "img/avatar.jpg";
 }
 
-
-
 switch($opcion){
     case 1:
         $consulta = "INSERT INTO $tabla (nombre) VALUES('$nombre') ";
@@ -31,11 +29,11 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE $tabla SET nombre='$nombre', ruta_imagen='$archivo' WHERE id='$id' ";		
+        $consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT * FROM $tabla WHERE id='$id' ";    
+        $consulta = "SELECT * FROM $tabla WHERE id='$id' "; 
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -56,16 +54,6 @@ switch($opcion){
         $consulta = "SELECT * FROM $tabla WHERE id='$id'";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;
-    case 6:        
-        $consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
-        
-        $consulta = "SELECT * FROM $tabla WHERE id='$id' ";    
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
 }

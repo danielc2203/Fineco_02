@@ -27,21 +27,6 @@
 
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-4 col-6">
-            <!-- small box Celeste -->
-            <div class="small-box bg-secondary">
-              <div class="inner">
-                <h3><?php echo $totalClientes; ?></h3>
-
-                <p>Total Clientes</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-tasks"></i>
-              </div>
-              <a href="<?php echo $url;?>/F_Clientes" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
           <!-- ./col -->
           <div class="col-lg-4 col-6">
             <!-- small box Verde -->
