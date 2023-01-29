@@ -130,8 +130,6 @@ $( document ).ready(function() {
     html += '<button type="button" class="btn btn-warning limpiar" onclick= "rellenarDatosPolicia()">Rellenar</button>'
     html += '<button type="button" class="btn btn-primary" id="calc" onclick= "calcularPolicia()">Calcular</button>'
     html += '<button type="button" class="btn btn-success" id="guardar">Guardar</button>'
-    html += '<button type="button" class="btn btn-secondary" data-dismiss="modal">+</button>'
-    html += '<button type="button" class="btn btn-dark" data-dismiss="modal">-</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
   
     

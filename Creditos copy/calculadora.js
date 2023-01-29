@@ -1,8 +1,5 @@
-let valorG;
-let date = new Date().toLocaleDateString();
+    function calcularPolicia(){
 
-//Calculadora Policia
-function calcularPolicia(){
       var C1 = $("#C1").val();
       var C1 = Number(C1);
       var C2 = $("#C2").val(); // 
@@ -39,22 +36,24 @@ function calcularPolicia(){
       var C18 = Number(C18);
       //var pension = $("#pension").val() / 100; //
 
-      if (C1 > 0 && C2 > 0 && C3 > 0 && C4 > 0 && C5 > 0 && C6 > -1 ) {
-
-        var devengados = (C1 + C3 + C5 + C7 + C9 + C11 + C13 + C15 );
+      if (C1 > 0 && C2 > 0 && C3 > 0 && C4 > 0 && C5 > 0 && C6 > 0 ) {
+        var devengados; //
+        var deducidos;
+        var maximo;
+        var cupo;
+        devengados = (C1 + C3 + C5 + C7 + C9 + C11 + C13 + C15 );
         //devengados = Math.floor(devengados);
-        var deducidos = (C2 + C4 + C6 + C8 + C10 + C12 + C14 + C16 + C18 );
+        deducidos = (C2 + C4 + C6 + C8 + C10 + C12 + C14 + C16 + C18 );
         //deducidos = Math.floor(deducidos);
-        var maximo = (devengados - C2 - C3 - C4 - C5 ) / 2;
+        maximo = (devengados - C3 - C5 - C2 - C4 ) / 2;
         //payment = (pension / 12 * asignacion) / (1 - Math.pow((1 + pension / 12),(-BonAsFam)));
-        var cupo = (maximo - C6 - C8 - C10 - C12 - C14 - C16 - C18);
+        cupo = (maximo - C6 - C8 - C10 - C12 - C14 - C16 - C18);
       //	payment = Math.floor(payment);
         $("#devengados").text(devengados.toFixed(2));
         $("#tdeducidos").text(deducidos.toFixed(2));
         //$("#maximo").text((deducidos * deducidos).toFixed(2));
         $("#maximo").text(maximo.toFixed(2));
         $("#cupo").text(cupo.toFixed(2));
-        valorG = (cupo.toFixed(0));
       } else {
         //Swal.fire('Introduzca números mayores que cero', '', 'error');
         Swal.fire({
@@ -66,7 +65,7 @@ function calcularPolicia(){
 
     };
 
-// Datos de ejemplo de Polica
+// Funcion para rellenar los datos de ejemplo
 function rellenarDatosPolicia(){
     //Swal.fire('Ingresando valores de ejemplo.', response, 'success');
     Swal.fire('Se han ingresando valores de ejemplo en el formulario', '', 'info');
@@ -87,10 +86,11 @@ function rellenarDatosPolicia(){
     $("#C14").val("1004795.00");
     $("#C15").val("68658.00");
     $("#C18").val("17311.00");
+       
 };
 
-// Calculo de Credito Pensionados
 function calcularPensionados(){
+
   var C1 = $("#C1").val();
   var C1 = Number(C1);
   var C2 = $("#C2").val(); // 
@@ -126,15 +126,15 @@ function calcularPensionados(){
   var C18 = $('#C18').val();
   var C18 = Number(C18);
 
+
   if (C1 > 0 ) {
-    var aportesley; //
-    var deducidos;
-    var maximo;
-    var cupo;
-    if (C1 < 1000001){
+    //var deducidos;
+    //var maximo;
+    //var cupo;
+    if (C1 < 1160001){
       var porcentaje = 4;
       var dato = Math.floor(C1 * porcentaje)/100;
-    }else if ( C1 < 2000001 ){
+    }else if ( C1 < 2320001 ){
       var porcentaje = 10;
       //var calculo = Math.floor(C1*10)/100;
       var dato =Math.floor(C1 * porcentaje)/100;
@@ -143,11 +143,11 @@ function calcularPensionados(){
       var dato = Math.floor(C1 * porcentaje)/100;
     }
     
+    
     $("#C2").val(dato);
     var capacidad = ((C1-dato) / 2)-C3;
     $("#capacidad").text(capacidad.toFixed(2));
     $("#aportes").text(dato.toFixed(2));
-    valorG = capacidad;
   } else {
     //Swal.fire('Introduzca números mayores que cero', '', 'error');
     Swal.fire({
@@ -159,8 +159,8 @@ function calcularPensionados(){
 
 };
 
-// Calculadora de Docentes
 function calcularDocentes(){
+
   var C1 = $("#C1").val();
   var C1 = Number(C1);
   var C2 = $("#C2").val(); // 
@@ -203,7 +203,6 @@ function calcularDocentes(){
     $("#capacidad").text(capacidad.toFixed(2));
     $("#C4").val(capacidad);
     $("#aportes").text(dato.toFixed(2));
-    valorG = capacidad;
   } else {
     //Swal.fire('Introduzca números mayores que cero', '', 'error');
     Swal.fire({
@@ -216,16 +215,16 @@ function calcularDocentes(){
 };
 
 
-// Limpiar todos los campos
+// Borrar todos los campos
 function clearInput(){
   Swal.fire({
-    title: 'Deseas limpiar el formulario?',
+    title: 'Estas Seguro?',
     text: "Esta acción no se puede revertir!",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, limpiar campos!'
+    confirmButtonText: 'Si, Borrar campos!'
   }).then((result) => {
     if (result.isConfirmed) {
       $("#C1,#C2,#C3,#C4,#C5,#C6,#C7,#C8,#C9,#C10,#C11,#C12,#C13,#C14,#C15,#C16,#C17,#C18,#capacidad,#aportes,#devengados,#tdeducidos,#maximo,#cupo").val("");
@@ -242,107 +241,3 @@ function clearInput(){
   })
     
 };
-
-// Modal de Guardar Datos en tabla -  Nuevo Credito
-function guardarDatos(){
-  var C1 = $("#C1").val();
-  var CAPACIDAD  = $('#capacidad').val();
-
-  if (valorG) {
-    Swal.fire({
-      title: 'Deseas crear',
-      text: "Un nuevo registro de credito?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Crear nuevo credito!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        var html = "";
-
-        html += '<div class="form-group row mb-0">'
-        html += '<form id="formNuevoCredito" class="needs-validation">  '
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CEDULA:</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="number" id="cedula" value="" class="form-control form-control-sm" placeholder="CC" required>'
-        html += '</div>'
-
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD:</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="capacidad"  value="'+valorG+'" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
-        html += '</div>'
-        html += '</div>'
-
-        html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO EN DÌAS</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="number"  id="plazo" value="" class="form-control form-control-sm" placeholder="365" >'
-        html += '</div>'
-
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD:</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="fecha" value='+date+' class="form-control form-control-sm" placeholder="$" readonly>'
-        html += '</div>'
-        html += '</div>'
-
-        html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">MONTO DEL CREDITO:</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="number" id="monto" value="" class="form-control form-control-sm" placeholder="$" >'
-        html += '</div>'
-
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO DEL CREDITO:</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="estado" value="Pendiente" class="form-control form-control-sm" placeholder="$" readonly>'
-        html += '</div>'
-        html += '</div>'
-
-        html += '<button type="submit" class="btn btn-primary formNuevoCredito" id="formNuevoCredito">Guardar</button>'
-        html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
-        html += '</form>'
-
-        html += '<div id="answer"><table class="table table-striped"><tbody>'
-        html += '</tbody></table></div>'
-    
-        $("#fCalculadora").html(html);
-        $(".modal-header").css("background-color", "#ff5722");
-        $(".modal-header").css( "color", "white" );
-        $(".modal-title").css("font-weight: bold", "font-size: 18px");
-        $(".modal-title").text("Agregar Nuevo Credito");
-
-      }
-    })
-  }else{
-    Swal.fire('Se requiere de calcular capacidad de libre inversiòn')
-  }
-
- };
-
- function modalnuevo(){
-  var html = "";
-
-  $(".modal-header").css("background-color", "#0267EB");
-  $(".modal-header").css( "color", "white" );
-  $(".modal-title").text("Agregar Nuevo Credito");
-};
-
-// Funcion para validar los campos requeridos
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-      }, false);
-      });
-  }, false);
-  })();
-
