@@ -11,17 +11,17 @@ $( document ).ready(function() {
     html += '<div class="row">';
 
     html += '<div class="col-6" id="left-col">';
-    html += '<a id="add-left" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
+    html += '<a id="add-Ingresos" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
 
   var inputs = [   
     { label: 'Asignación Básica', id: 'C1' },
-    { label: 'Bonificación Asistencia Familiar', id: 'C3' },
-    { label: 'Bonificación Seguro de Vida', id: 'C5' },
-    { label: 'Distinción', id: 'C7' },
-    { label: 'Prima Nivel Ejecutivo', id: 'C9' },
-    { label: 'Prima Orden Público', id: 'C11' },
-    { label: 'Prima Retorno a la Experiencia', id: 'C13' },
-    { label: 'Subsidio Alimentación', id: 'C15' }  ];
+    { label: 'Bonificación Familiar', id: 'C2' },
+    { label: 'Bonificación Seguro de Vida', id: 'C3' },
+    { label: 'Distinción', id: 'C4' },
+    { label: 'Prima Nivel Ejecutivo', id: 'C5' },
+    { label: 'Prima Orden Público', id: 'C6' },
+    { label: 'Prima de Experiencia', id: 'C7' },
+    { label: 'Subsidio Alimentación', id: 'C8' }  ];
 
   inputs.forEach(function(input) {
     html += '<div class="form-group row mb-0">';
@@ -35,11 +35,11 @@ $( document ).ready(function() {
 
     html += '</div>';
     html += '<div class="col-6" id="right-col">';
-    html += '<a id="add-right" class="btn btn-outline-danger"><i class="far fa-plus-square"></i></a>';
+    html += '<a id="add-Gastos" class="btn btn-outline-danger"><i class="far fa-plus-square"></i></a>';
 
     inputs = [
-        { label: 'Pensión - Casur', id: 'C2' },
-        { label: 'EPS', id: 'C4' }  ];
+        { label: 'Pensión - Casur', id: 'G1' },
+        { label: 'EPS', id: 'G2' }  ];
 
     inputs.forEach(function(input) {
         html += '<div class="form-group row mb-0">';
@@ -48,10 +48,7 @@ $( document ).ready(function() {
         html += '<input type="number" maxIntegerDigits="3" id="' + input.id + '" value="" class="form-control form-control-sm" placeholder="$" >';
     html += '</div>';
     html += '</div>';
-  });
-
-
-    
+  });   
 
     html += '</div>';// Fin de Columna Derecha
     html += '</div>';// Fin de Container
@@ -63,10 +60,9 @@ $( document ).ready(function() {
     html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
     html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
-
-    
-    html += '<p id="izquierda">Suma columna Izquierda: 0</p>'
-    html += '<p id="derecha">Sum Col Derecha: 0</p>'
+    html += '<tr><td>Suma Ingresos</td><td id="sumaIngresos">0</td></tr>'
+    html += '<tr><td>Suma Gastos</td><td id="sumaGastos">0</td></tr>'
+  
 
     html += '</tbody></table></div>'
 
@@ -85,47 +81,102 @@ $( document ).ready(function() {
     $(".modal-title").text("Calculadora de Créditos - POLICIA");
     $('#modalCREDITOS').modal('show');
 
-    const leftCol = document.getElementById('left-col');
-    const rightCol = document.getElementById('right-col');  
-    const addLeftBtn = document.getElementById('add-left');
-    const addRightBtn = document.getElementById('add-right');
-    const resultDiff = document.getElementById('izquierda');
-
-    let leftSum = 0;
-
-    addLeftBtn.addEventListener('click', function() {
-    const labelName = prompt("Escribe el nombre del nuevo campo:");
-    if (!labelName) return;
+        
+    //btn nuevo campo al for de la columna izquierda:
+    let nextIdC = 9;
     
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.max = 999;
-    input.className = 'form-control form-control-sm';
-    input.placeholder = '$';
-    input.addEventListener('input', function() {
-        leftSum -= parseInt(this.previousValue || 0);
-        leftSum += parseInt(this.value || 0);
-        resultDiff.textContent = `izquierda: ${leftSum }`;
-        this.previousValue = this.value;
-    });
-    
-    leftCol.appendChild(input);
-    });
+    document.getElementById("add-Ingresos").addEventListener("click", function() {
+      const input = document.createElement("input");
+      input.id = "C" + nextIdC;
+      input.type = 'number';
+      input.max = 999;
+      input.className = 'form-control form-control-sm';
+      input.placeholder = '$';
 
-    addRightBtn.addEventListener('click', function() {
-    const labelName = prompt("Escribe el nombre del nuevo campo:");
-    if (!labelName) return;
-    
-    rightCol.insertAdjacentHTML('beforeend', 
-        `<div class="form-group row mb-0">
-        <label class="col-6 col-form-label">${labelName}</label>
-        <div class="col-6">
-            <input type="number" maxIntegerDigits="3" id="${labelName}" class="form-control form-control-sm" placeholder="$">
-        </div>
-        </div>`
-    );
+      const label = document.createElement("label");
+      label.className = "col-6 col-form-label-sm";
+      label.innerHTML = "Ingreso " +input.id ;
+
+      const divInput = document.createElement("div");
+      divInput.className = "col-6";
+      divInput.appendChild(input);
+
+      const divFormGroup = document.createElement("div");
+      divFormGroup.className = "form-group row mb-0";
+      divFormGroup.appendChild(label);
+      divFormGroup.appendChild(divInput);
+
+      document.getElementById("left-col").appendChild(divFormGroup);
+      nextIdC++;
+
     });
 
+    
+    //Agregando campos al lado derecho y sumandolos:
+    let nextIdG = 3;
+
+    document.getElementById("add-Gastos").addEventListener("click", function() {
+      // Create a new input element
+      let newInput = document.createElement("input");
+      newInput.id = "G" + nextIdG;
+      newInput.type = 'number';
+      newInput.max = 999;
+      newInput.className = 'form-control form-control-sm';
+      newInput.placeholder = '$';
+
+      const label = document.createElement("label");
+      label.className = "col-6 col-form-label-sm";
+      label.innerHTML = "Gasto " +newInput.id ;
+
+      const divInput = document.createElement("div");
+      divInput.className = "col-6";
+      divInput.appendChild(newInput);
+
+      const divFormGroup = document.createElement("div");
+      divFormGroup.className = "form-group row mb-0";
+      divFormGroup.appendChild(label);
+      divFormGroup.appendChild(divInput);
+
+      //Agregamos los elementos creados a la columna
+      document.getElementById("right-col").appendChild(divFormGroup);
+      nextIdG++;
+
+    });
+
+
+    // Suma de los valores
+
+    function sumarIngresos() {
+      var ingresos = document.querySelectorAll("[id^='C']");
+      var suma = 0;
+      for (var i = 0; i < ingresos.length; i++) {
+        suma += parseFloat(ingresos[i].value) || 0;
+      }
+      document.getElementById("sumaIngresos").textContent = suma;
+      //sumaIngresos.textContent = suma;
+    }
+    
+    function sumarGastos() {
+      var gastos = document.querySelectorAll("[id^='G']");
+      var suma = 0;
+      for (var i = 0; i < gastos.length; i++) {
+        suma += parseFloat(gastos[i].value) || 0;
+      }
+      document.getElementById("sumaGastos").textContent = suma;
+      //sumaGastos.textContent = suma;
+    }
+    
+    document.addEventListener("input", function (event) {
+      if (event.target.id.startsWith("C")) {
+        sumarIngresos();
+      } else if (event.target.id.startsWith("G")) {
+        sumarGastos();
+      }
+    });
+    
+
+
+    
  });
 
 
