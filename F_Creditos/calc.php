@@ -17,7 +17,7 @@
 </div>
 
 <script>
-    const calculator = document.getElementById('calculator');
+const calculator = document.getElementById('calculator');
 const leftCol = document.getElementById('left-col');
 const rightCol = document.getElementById('right-col');
 const addLeftBtn = document.getElementById('add-left');
