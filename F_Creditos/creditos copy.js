@@ -1,65 +1,7 @@
 $( document ).ready(function() {
 
-    //Abre el modal y muestra el formulario para policia Nuevo
-    $("#policia").click(function(){
-        opcion = 1; //opcion 1 para envio de credito al crud           
-        id=null;
-
-    var html = "";
-
-    html += '<div class="container">'
-
-    html += '<div class="row">'
-
-    html += '<div class="col-6 " id="left-col">'
-    html += '<p></p>'
-    html += '<a id="add-left" class="btn btn-outline-primary"><i class="far fa-plus-square"></i>'
-    html += '</div>'
-
-
-    html += '<div class="col-6" id="right-col">'
-    html += '<p></p>'
-    //html += '<a id="add-right">Add to B</a>'
-    html += '<a id="add-right" class="btn btn-outline-primary"><i class="far fa-plus-square"></i>'
-    html += '</div>'
-
-
-    html += '</div>'
-    html += '</div>'
-
-
-    $("#fCalculadora").html(html);
-
-    //datos en formulario
-     $(".modal-header").css( "background-color", "#0f7403");
-     $(".modal-header").css( "color", "white" );
-     $(".modal-title").text("Calculadora de Creditos - POLICIA");
-     $('#modalCREDITOS').modal('show');
-
-     //evento click para agregar input a la columna izquierda
-     $("#add-left").click(function() {
-        var labelName = prompt("Escribe el nombre del nuevo campo:");
-        if (!labelName) return;
-        $("#left-col").append(
-            '<div class="form-group row"><label class="col-6 col-form-label">' + labelName + '</label><div class="col-6"><input type="number" maxIntegerDigits="3" id="C1"  class="form-control" placeholder="$" /></div></div>'
-            );
-      });
-
-    //evento click para agregar input a la columna izquierda
-    $("#add-right").click(async function() {
-
-        var labelName = prompt("Escribe el nombre del nuevo campo:");
-
-        if (!labelName) return;
-        $("#right-col").append(
-            '<div class="form-group row"><label class="col-6 col-form-label">' + labelName + '</label><div class="col-6"><input type="number" maxIntegerDigits="3" id="C1"  class="form-control" placeholder="$" /></div></div>'
-            );
-      });
- });
-
-
     //Abre el modal y muestra el formulario para policia
- $("#policias").click(function(){
+ $("#policia").click(function(){
      opcion = 1; //opcion 1 para envio de credito al crud           
      id=null;
 
