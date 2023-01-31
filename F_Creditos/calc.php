@@ -34,7 +34,7 @@ addLeftBtn.addEventListener('click', function() {
   input.addEventListener('input', function() {
     leftSum -= parseInt(this.previousValue || 0);
     leftSum += parseInt(this.value || 0);
-    resultDiff.textContent = `Difference: ${leftSum - rightSum}`;
+    resultDiff.textContent = `Difference: ${leftSum }`;
     this.previousValue = this.value;
   });
   leftCol.appendChild(input);

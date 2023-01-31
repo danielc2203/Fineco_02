@@ -39,7 +39,7 @@ function calcularPolicia(){
       var C18 = Number(C18);
       //var pension = $("#pension").val() / 100; //
 
-      if (C1 > 0 && C2 > 0 && C3 > 0 && C4 > 0 && C5 > 0 && C6 > -1 ) {
+      if (C1 > 0 && C2 > 0 && C3 > 0 && C4 > 0 && C5 > 0 ) {
 
         var devengados = (C1 + C3 + C5 + C7 + C9 + C11 + C13 + C15 );
         //devengados = Math.floor(devengados);

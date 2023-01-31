@@ -7,66 +7,109 @@ $( document ).ready(function() {
 
     var html = "";
 
-    var html = '<div class="container">';
-    html += '<div class="row">';
+    html += '<div class="container">'
 
-    html += '<div class="col-6" id="left-col">';
-    html += '<a id="add-left" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
+    html += '<div class="row">'
 
-  var inputs = [   
-    { label: 'Asignación Básica', id: 'C1' },
-    { label: 'Bonificación Asistencia Familiar', id: 'C3' },
-    { label: 'Bonificación Seguro de Vida', id: 'C5' },
-    { label: 'Distinción', id: 'C7' },
-    { label: 'Prima Nivel Ejecutivo', id: 'C9' },
-    { label: 'Prima Orden Público', id: 'C11' },
-    { label: 'Prima Retorno a la Experiencia', id: 'C13' },
-    { label: 'Subsidio Alimentación', id: 'C15' }  ];
+    // Solo campos de Izquier NoPar
+    html += '<div class="col-6 " id="left-col">'
 
-  inputs.forEach(function(input) {
-    html += '<div class="form-group row mb-0">';
-    html += '<label class="col-6 col-form-label-sm">' + input.label + '</label>';
-    html += '<div class="col-6">';
-    html += '<input type="number" maxIntegerDigits="3" id="' + input.id + '" value="" class="form-control form-control-sm" placeholder="$" >';
-    html += '</div>';
-    html += '</div>';
-  });
+    //Btn Agregar campo izquierda impar
+    html += '<a id="add-left" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label class="col-6 col-form-label-sm">Asignaciòn Bàsica</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C1" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">Bonificación Asistencia Familiar</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C3" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">BONIFICACIÓN SEGURO DE VIDA</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C5" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">DISTINCIÓN</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C7" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">PRIMA NIVEL EJECUTIVO</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C9" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">PRIMA ORDEN PÚBLICO</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C11" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">PRIMA RETORNO A LA EXPERIENCIA</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C13" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">SUBSIDIO ALIMENTACIÓN</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C15" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
     
 
-    html += '</div>';
-    html += '<div class="col-6" id="right-col">';
-    html += '<a id="add-right" class="btn btn-outline-danger"><i class="far fa-plus-square"></i></a>';
-
-    inputs = [
-        { label: 'Pensión - Casur', id: 'C2' },
-        { label: 'EPS', id: 'C4' }  ];
-
-    inputs.forEach(function(input) {
-        html += '<div class="form-group row mb-0">';
-        html += '<label class="col-6 col-form-label-sm">' + input.label + '</label>';
-        html += '<div class="col-6">';
-        html += '<input type="number" maxIntegerDigits="3" id="' + input.id + '" value="" class="form-control form-control-sm" placeholder="$" >';
-    html += '</div>';
-    html += '</div>';
-  });
+    html += '</div>' // Fin de Columna Izquierda
 
 
-    
+    // Solo campos de Derecha Pares    
+    html += '<div class="col-6 " id="right-col">'
 
-    html += '</div>';// Fin de Columna Derecha
-    html += '</div>';// Fin de Container
+    //Boton de Derecha Par
+    html += '<a id="add-right" class="btn btn-outline-danger"><i class="far fa-plus-square"></i></a>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">Pensión - Casur</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C2" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '<div class="form-group row mb-0">'
+    html += '<label for="dd1" class="col-6 col-form-label-sm">EPS</label>'
+    html += '<div class="col-6">'
+    html += '<input type="number" maxIntegerDigits="3" id="C4" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+    html += '</div>'
+    html += '</div>'
+
+    html += '</div>'// Fin de Columna Derecha
+    html += '</div>'// Finde Container
 
 
-    html += '<div id="answer"><table class="table table-striped"><tbody>';
+    html += '<div id="answer"><table class="table table-striped"><tbody>'
 
     html += '<tr><td>TOTAL DEVENGADOS</td><td id="devengados">0</td></tr>'
     html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
     html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
-
-    
-    html += '<p id="izquierda">Suma columna Izquierda: 0</p>'
-    html += '<p id="derecha">Sum Col Derecha: 0</p>'
+    html += '<p id="sum">Sum: 0</p>'
+    html += '<p id="diff">Difference: 0</p>'
 
     html += '</tbody></table></div>'
 
@@ -79,53 +122,49 @@ $( document ).ready(function() {
 
     $("#fCalculadora").html(html);
 
-    $(".modal-header").css({
-    "background-color": "#0f7403",
-    "color": "white" });
-    $(".modal-title").text("Calculadora de Créditos - POLICIA");
-    $('#modalCREDITOS').modal('show');
+    //datos en formulario
+     $(".modal-header").css( "background-color", "#0f7403");
+     $(".modal-header").css( "color", "white" );
+     $(".modal-title").text("Calculadora de Creditos - POLICIA");
+     $('#modalCREDITOS').modal('show');
 
     const leftCol = document.getElementById('left-col');
     const rightCol = document.getElementById('right-col');  
     const addLeftBtn = document.getElementById('add-left');
     const addRightBtn = document.getElementById('add-right');
-    const resultDiff = document.getElementById('izquierda');
+    const resultSum = document.getElementById('sum');
+    const resultDiff = document.getElementById('diff');
 
     let leftSum = 0;
+    let rightSum = 0;   
+     //evento click para agregar input a la columna izquierda
 
     addLeftBtn.addEventListener('click', function() {
-    const labelName = prompt("Escribe el nombre del nuevo campo:");
-    if (!labelName) return;
-    
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.max = 999;
-    input.className = 'form-control form-control-sm';
-    input.placeholder = '$';
-    input.addEventListener('input', function() {
-        leftSum -= parseInt(this.previousValue || 0);
-        leftSum += parseInt(this.value || 0);
-        resultDiff.textContent = `izquierda: ${leftSum }`;
-        this.previousValue = this.value;
-    });
-    
-    leftCol.appendChild(input);
-    });
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.addEventListener('input', function() {
+            leftSum -= parseInt(this.previousValue || 0);
+            leftSum += parseInt(this.value || 0);
+            resultDiff.textContent = `Difference: ${leftSum }`;
+            this.previousValue = this.value;
+          });
 
+        var labelName = prompt("Escribe el nombre del nuevo campo:");
+        if (!labelName) return;
+        leftCol.appendChild(input);
+        
+      });
+
+    //evento click para agregar input a la columna izquierda
     addRightBtn.addEventListener('click', function() {
-    const labelName = prompt("Escribe el nombre del nuevo campo:");
-    if (!labelName) return;
-    
-    rightCol.insertAdjacentHTML('beforeend', 
-        `<div class="form-group row mb-0">
-        <label class="col-6 col-form-label">${labelName}</label>
-        <div class="col-6">
-            <input type="number" maxIntegerDigits="3" id="${labelName}" class="form-control form-control-sm" placeholder="$">
-        </div>
-        </div>`
-    );
-    });
 
+        var labelName = prompt("Escribe el nombre del nuevo campo:");
+
+        if (!labelName) return;
+        $("#right-col").append(
+            '<div class="form-group row mb-0"><label class="col-6 col-form-label">' + labelName + '</label><div class="col-6"><input type="number" maxIntegerDigits="3" id="' + labelName + '"  class="form-control form-control-sm" placeholder="$" /></div></div>'
+            );
+      });
  });
 
 
