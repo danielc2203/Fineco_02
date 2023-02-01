@@ -6,10 +6,8 @@ $( document ).ready(function() {
         id=null;
 
     var html = "";
-
     var html = '<div class="container">';
     html += '<div class="row">';
-
     html += '<div class="col-6" id="left-col">';
     html += '<a id="add-Ingresos" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
 
@@ -32,7 +30,6 @@ $( document ).ready(function() {
     html += '</div>';
   });
     
-
     html += '</div>';
     html += '<div class="col-6" id="right-col">';
     html += '<a id="add-Gastos" class="btn btn-outline-danger"><i class="far fa-plus-square"></i></a>';
@@ -53,7 +50,6 @@ $( document ).ready(function() {
     html += '</div>';// Fin de Columna Derecha
     html += '</div>';// Fin de Container
 
-
     html += '<div id="answer"><table class="table table-striped"><tbody>';
 
     html += '<tr><td>TOTAL DEVENGADOS</td><td id="devengados">0</td></tr>'
@@ -61,7 +57,6 @@ $( document ).ready(function() {
     html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
   
-
     html += '</tbody></table></div>'
 
     html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
@@ -70,7 +65,6 @@ $( document ).ready(function() {
     html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
-
     $("#fCalculadora").html(html);
 
     $(".modal-header").css({
@@ -78,7 +72,6 @@ $( document ).ready(function() {
     "color": "white" });
     $(".modal-title").text("Calculadora de Créditos - POLICIA");
     $('#modalCREDITOS').modal('show');
-
         
     //btn nuevo campo al for de la columna izquierda:
     let nextIdC = 9;
@@ -106,10 +99,8 @@ $( document ).ready(function() {
 
       document.getElementById("left-col").appendChild(divFormGroup);
       nextIdC++;
-
     });
 
-    
     //Agregando campos al lado derecho y sumandolos:
     let nextIdG = 3;
 
@@ -141,7 +132,6 @@ $( document ).ready(function() {
 
     });
 
-
     // Suma de los valores
   function sumar(prefix) {
     var elementos = document.querySelectorAll("[id^='" + prefix + "']");
@@ -151,7 +141,6 @@ $( document ).ready(function() {
     }
     document.getElementById(prefix === "C" ? "devengados" : "tdeducidos").textContent = suma.toFixed(0);
     
-
   }
 
   // Escucha cambios en los imput C y G para la suma automatica
@@ -183,15 +172,9 @@ $( document ).ready(function() {
     document.getElementById("cupo").innerText = cupo.toFixed(0);
     document.getElementById("maximo").innerText = maximo.toFixed(0);
 
-    
-    
-
-
-    valorG = (cupo.toFixed(0));
+    valorG = (cupo.toFixed(0));// Guarda el valor de cupo en valorG para guardar los datos
   }
   
-
-    
  });
 
 
@@ -308,9 +291,3 @@ $( document ).ready(function() {
 });
 
 });
-
-
-
-
-
-

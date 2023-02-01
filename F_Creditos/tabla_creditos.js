@@ -8,7 +8,7 @@ $(document).ready(function() {
     
     tablaUsuarios = $('#creditosp').DataTable({
         
-        language: {
+        language: { // Idioma en español
             url: '../dist/json/es-CO_DataTables.json',
             decimal: ',',
             thousands: '.',
@@ -42,14 +42,23 @@ $(document).ready(function() {
                     //var buttonID = +full.id;
                     return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
                 }},
-            {"data": "monto"},
+            //{"data": "monto"}, //Monto en formato original
+            {// Datos de monto en formato moneda
+                data: 'monto',
+                render: function (data, type) {
+                    var number = $.fn.dataTable.render
+                        .number('.', '.', 0, '$ ')
+                        .display(data);
+                    return number;               
+                },
+            },
             {"data": "plazo"},
             // Capacidad con funcion menor a 250mil rojo, menor a 500mil naranja, mayor verde
             {
                 data: 'capacidad',
                 render: function (data, type) {
                     var number = $.fn.dataTable.render
-                        .number('.', '.', 0, '$')
+                        .number('.', '.', 0, '$ ')
                         .display(data);
  
                     if (type === 'display') {
@@ -66,7 +75,7 @@ $(document).ready(function() {
                 
                 },
             },
-            //{"data": "capacidad"},
+            //{"data": "Estado"},
             {
                 data: 'estado',
                 render: function (data, type) {
@@ -78,7 +87,7 @@ $(document).ready(function() {
                         } else if (data[0] === 'N') {
                             link = 'btn-dark';
                         }
-
+                        // Llamamos la función de simulador
                         return '<a class="btn '+link+' Simulador" role="button">'+data+'</a>';
                     }
  
@@ -142,7 +151,7 @@ $(document).ready(function() {
           });										     			
     });
 
-    // Funcion de Simulador:
+    // Funcion de Simulador: llama al modal Simulador de Credito
     $(document).on("click", ".Simulador", function simulador(){
         var filaSeleccionada = tablaUsuarios.row($(this).parents('tr')); //captura los datos de la fila
         var capacidadSeleccionada = filaSeleccionada.data().capacidad; // guardamos en variable la capacidad
@@ -321,7 +330,7 @@ $(document).ready(function() {
             html += '</div>'
 
             // html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
-            html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "daniel()" ><i class="fas fa-save"></i></button>'
+            html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "actualizarCredito()" ><i class="fas fa-save"></i></button>'
             html += '<button type="button" class="btn btn-outline-danger float-right" data-dismiss="modal"><i class="far fa-times-circle"></i></button>'
             
             html += '</form>'
@@ -445,7 +454,7 @@ $(document).ready(function() {
 });
 
 //submit para actualizarCredito
-function daniel(){
+function actualizarCredito(){
 
 
     opcion = 2;

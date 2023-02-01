@@ -142,7 +142,7 @@
   </div>
 </div>
 
-<!-- Modal Simulador -->
+<!-- Modal Simulador de Credito -->
 <div class="modal fade" id="modalSimulador" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
@@ -305,7 +305,7 @@
           </div>
         </div>
           
-          <button class="btn btn-primary btn-sm" type="submit">Calcular Amortización</button>
+          
       </form>
 
       </div>
