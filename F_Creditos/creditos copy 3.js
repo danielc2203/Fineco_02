@@ -143,53 +143,61 @@ $( document ).ready(function() {
 
 
     // Suma de los valores
-  function sumar(prefix) {
-    var elementos = document.querySelectorAll("[id^='" + prefix + "']");
-    var suma = 0;
-    for (var i = 0; i < elementos.length; i++) {
-      suma += parseFloat(elementos[i].value) || 0;
+
+    function sumarIngresos() {
+      var ingresos = document.querySelectorAll("[id^='C']");
+      var suma = 0;
+      for (var i = 0; i < ingresos.length; i++) {
+        suma += parseFloat(ingresos[i].value) || 0;
+      }
+      //document.getElementById("sumaIngresos").textContent = suma;
+      document.getElementById("devengados").textContent = suma;
+      //sumaIngresos.textContent = suma;
     }
-    document.getElementById(prefix === "C" ? "devengados" : "tdeducidos").textContent = suma.toFixed(0);
     
-
-  }
-
-  // Escucha cambios en los imput C y G para la suma automatica
-  document.addEventListener("input", function (event) {
-    if (event.target.id.startsWith("C")) {
-      sumar("C");
-    } else if (event.target.id.startsWith("G")) {
-      sumar("G");
+    function sumarGastos() {
+      var gastos = document.querySelectorAll("[id^='G']");
+      var suma = 0;
+      for (var i = 0; i < gastos.length; i++) {
+        suma += parseFloat(gastos[i].value) || 0;
+      }
+      //document.getElementById("sumaGastos").textContent = suma;
+      document.getElementById("tdeducidos").textContent = suma;
+      //sumaGastos.textContent = suma;
     }
-
-    calcularDiferencia();
-  });
-
-  function calcularDiferencia() {
-    // Obtener los valores de los ingresos y gastos
-    var ingresos = parseFloat(document.getElementById("devengados").textContent);
-    var gastos = parseFloat(document.getElementById("tdeducidos").textContent);
-    var bonfam = parseFloat(document.getElementById("C2").value) || 0;
-    var segurov = parseFloat(document.getElementById("C3").value) || 0;
-    var G1 = parseFloat(document.getElementById("G1").value) || 0;
-    var G2 = parseFloat(document.getElementById("G2").value) || 0;
-    var eps = G1 + G2;
-    var maximo = (ingresos - eps - bonfam - segurov)/2;
-
-    // Calcular la diferencia entre los ingresos y gastos
-    var cupo = (maximo - gastos + eps);
     
-    // Mostrar la diferencia en el elemento de texto correspondiente
-    document.getElementById("cupo").innerText = cupo.toFixed(0);
-    document.getElementById("maximo").innerText = maximo.toFixed(0);
+    // Escucha cambios en los imput C y G para la suma automatica
+    document.addEventListener("input", function (event) {
+      if (event.target.id.startsWith("C")) {
+        sumarIngresos();
+      } else if (event.target.id.startsWith("G")) {
+        sumarGastos();
+      }
 
+      calcularDiferencia();
+    });
+
+    function calcularDiferencia() {
+      // Obtener los valores de los ingresos y gastos
+      var ingresos = parseFloat(document.getElementById("devengados").textContent);
+      var gastos = parseFloat(document.getElementById("tdeducidos").textContent);
+      var bonfam = parseFloat(document.getElementById("C2").value);
+      var segurov = parseFloat(document.getElementById("C3").value);
+      var G1 = parseFloat(document.getElementById("G1").value);
+      var G2 = parseFloat(document.getElementById("G2").value);
+      var eps = G1 + G2;
+      var maximo = (ingresos - eps - bonfam - segurov)/2;
+
+
+      // Calcular la diferencia entre los ingresos y gastos
+      var cupo = (maximo - gastos + eps);
     
-    
+      // Mostrar la diferencia en el elemento de texto correspondiente
+      document.getElementById("cupo").innerText = cupo;
+      document.getElementById("maximo").innerText = maximo;
 
-
-    valorG = (cupo.toFixed(0));
-  }
-  
+      valorG = (cupo.toFixed(0));
+    }
 
     
  });

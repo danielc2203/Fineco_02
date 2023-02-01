@@ -76,17 +76,17 @@ function rellenarDatosPolicia(){
     $("#C2").val("805465.50");
     $("#G2").val("92674.88");
     $("#C3").val("17311.00");
-    $("#C4").val("11584.36");
-    $("#C5").val("-15292.27");
-    $("#C6").val("15500.00");
-    $("#C7").val("463374.39");
-    $("#C8").val("4700.00");
-    $("#C9").val("347530.79");
-    $("#C10").val("25339.00");
-    $("#C11").val("12158.29");
-    $("#C12").val("1004795.00");
-    $("#C13").val("68658.00");
-    $("#C14").val("17311.00");
+    $("#G3").val("11584.36");
+    $("#C4").val("-15292.27");
+    $("#G4").val("15500.00");
+    $("#C5").val("463374.39");
+    $("#G5").val("4700.00");
+    $("#C6").val("347530.79");
+    $("#G6").val("25339.00");
+    $("#C7").val("12158.29");
+    $("#G7").val("1004795.00");
+    $("#C8").val("68658.00");
+    $("#G8").val("17311.00");
 };
 
 // Calculo de Credito Pensionados
@@ -246,7 +246,7 @@ function clearInput(){
 // Modal de Guardar Datos en tabla -  Nuevo Credito
 function guardarDatos(){
   var C1 = $("#C1").val();
-  var CAPACIDAD  = $('#capacidad').val();
+  var CAPACIDAD  = $('#cupo').val();
 
   if (valorG) {
     Swal.fire({
