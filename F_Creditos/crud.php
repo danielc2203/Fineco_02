@@ -38,11 +38,6 @@ switch($opcion){
                                         WHERE id='$id' ";	
          $resultado = $conexion->prepare($consulta);
          $resultado->execute();
-
-        //  $consulta = "SELECT * FROM creditos WHERE id='$id' ";    
-        //  $resultado = $conexion->prepare($consulta);
-        //  $resultado->execute();
-        //  $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
         $consulta = "DELETE FROM creditos WHERE id='$id' ";
@@ -60,6 +55,19 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 6: // Busqueda de Cedula en BD
+        $consulta = "SELECT * FROM clientes WHERE cedula='$num_documento' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        // Verificar si el usuario existe
+        if (mysqli_num_rows($result) == 0) {
+            // aca debe regresar si el usuario existe o no en la base de datos
+            echo "<script>alert('Usuario no encontrado');</script>";
+        } else {
+            // El usuario existe, hacer algo aquí
+        }
         break;
 }
 

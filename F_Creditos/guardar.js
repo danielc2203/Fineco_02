@@ -1,14 +1,14 @@
 //submit para Actualización
 $('#fCalculadora').submit(function(e){                        
     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-  
+
     $opcion = 1;
-    cedula = $.trim($('#cedula').val());
-    capacidad = $.trim($('#capacidad').val());
-    plazo = $.trim($('#plazo').val());
-    fecha = $.trim($('#fecha').val());
-    monto = $.trim($('#montoCredito').val());
-    estado = $.trim($('#estado').val());
+    cedula = $.trim($('#F_cedula').val());
+    capacidad = $.trim($('#F_capacidad').val());
+    plazo = $.trim($('#F_plazo').val());
+    fecha = $.trim($('#F_fecha').val());
+    monto = $.trim($('#F_montoCredito').val());
+    estado = $.trim($('#F_estado').val());
 
     if (!!cedula && !!monto && !!plazo){
         $.ajax({

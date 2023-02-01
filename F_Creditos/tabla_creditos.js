@@ -203,7 +203,7 @@ $(document).ready(function() {
 
             success: function (response) {//once the request successfully process to the server side it will return result here
             
-                // Parse the json result
+                // Parse the json result Trae los resultados en json
                 response = JSON.parse(response);
     
                 var html = "";
