@@ -147,11 +147,12 @@ $( document ).ready(function() {
   document.addEventListener("input", function (event) {
     if (event.target.id.startsWith("C")) {
       sumar("C");
+      calcularDiferencia();
     } else if (event.target.id.startsWith("G")) {
       sumar("G");
+      calcularDiferencia();
     }
-
-    calcularDiferencia();
+    console.log("sigue llamando");
   });
 
   function calcularDiferencia() {
@@ -318,7 +319,7 @@ function guardarDatos(){
         html += '<input type="number" id="F_cedula" value="" class="form-control form-control-sm" placeholder="CC" required>'
         html += '</div>'
 
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD:</label>'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD MENSUAL:</label>'
         html += '<div class="col-sm-3">'
         html += '<input type="text" id="F_capacidad"  value="'+valorG+'" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
         html += '</div>'
@@ -348,7 +349,7 @@ function guardarDatos(){
         html += '</div>'
         html += '</div>'
 
-        html += '<button type="submit" class="btn btn-primary formNuevoCredito" id="formNuevoCredito">Consultar Cliente</button>'
+        html += '<button type="button" class="btn btn-primary" onclick= "consultarCliente()" >Consultar Cliente</button>'
         html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
         html += '</form>'
 
@@ -376,6 +377,98 @@ function guardarDatos(){
   $(".modal-header").css( "color", "white" );
   $(".modal-title").text("Agregar Nuevo Credito");
 };
+
+
+// Funcion Consultar Cliente
+function consultarCliente() {
+  cedula = $.trim($('#F_cedula').val());
+  capacidad = $.trim($('#F_capacidad').val());
+  plazo = $.trim($('#F_plazo').val());
+  fecha = $.trim($('#F_fecha').val());
+  monto = $.trim($('#F_montoCredito').val());
+  estado = $.trim($('#F_estado').val());
+  opcion = 6; //Consulta CC
+
+  if(cedula != 0){
+    console.log("Cedula 2 = "+cedula);
+
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      datatype:"json",    
+      data: {opcion:opcion, cedula:cedula}, 
+
+      success: function (response) {
+      
+          // Parse the json result Trae los resultados en json
+          response = JSON.parse(response);
+          
+          // Check if there is available records
+          if(response.length) {
+              // Loop the parsed JSON
+              $.each(response, function(key,value) {
+                console.log("ok el documento correcto guardando... ");
+                $.ajax({
+                  url: "crud.php",
+                  type: "POST",
+                  datatype:"json",    
+                  data:  {cedula:cedula,
+                        capacidad:capacidad,
+                        plazo:plazo,
+                        fecha:fecha,
+                        monto:monto,
+                        estado:estado,
+                        opcion:1},    
+                  success: function(data) {
+                      $(function() {
+                          Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'el credito ha sido guardado exitosamente...',
+                              showConfirmButton: false,
+                              timer: 2000,
+                              willClose: () => {
+                                  window.location.reload()
+                                }
+                            })
+                        });
+                  }
+                });
+              });
+          } else {
+
+            Swal.fire({
+              title: 'El documento '+cedula+' no es cliente, desea registrarlo ?',
+              showDenyButton: true,
+              //showCancelButton: true,
+              confirmButtonText: 'Registrar Cliente',
+              denyButtonText: 'No Guardar',
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                Swal.fire('Seras redirigido al formulario de clientes', '', 'success')
+              } else if (result.isDenied) {
+                Swal.fire('Registro no almacenado', '', 'info')
+              }
+            })
+
+          }      
+      }
+    });
+
+  }else{
+    console.log("Cedula 2 Vacia = "+cedula);
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'El campo de cedula es obligatorio ',
+      showConfirmButton: false,
+    })
+  };
+
+}
+
+
 
 // Funcion para validar los campos requeridos
 (function() {
