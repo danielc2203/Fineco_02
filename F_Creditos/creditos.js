@@ -349,7 +349,7 @@ function guardarDatos(){
         html += '</div>'
         html += '</div>'
 
-        html += '<button type="button" class="btn btn-primary" onclick= "consultarCliente()" >Consultar Cliente</button>'
+        html += '<button type="button" class="btn btn-primary" onclick= "consultarCliente()" >Crear Solicitud</button>'
         html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
         html += '</form>'
 
@@ -407,7 +407,7 @@ function consultarCliente() {
           if(response.length) {
               // Loop the parsed JSON
               $.each(response, function(key,value) {
-                console.log("ok el documento correcto guardando... ");
+                //console.log("ok el documento correcto guardando... ");
                 $.ajax({
                   url: "crud.php",
                   type: "POST",
@@ -447,6 +447,7 @@ function consultarCliente() {
               /* Read more about isConfirmed, isDenied below */
               if (result.isConfirmed) {
                 Swal.fire('Seras redirigido al formulario de clientes', '', 'success')
+                window.location.href = "/Fineco_02/F_Clientes";
               } else if (result.isDenied) {
                 Swal.fire('Registro no almacenado', '', 'info')
               }
