@@ -16,6 +16,20 @@ if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
     $imagen = "img/avatar.jpg";
 }
 
+$data = array();
+foreach($_POST as $key => $value) {
+    $data[$key] = $value;
+}
+
+
+$set = array();
+foreach ($data as $key => $value) {
+    if ($key !== 'opcion' && $key !== 'formData' && $key !== 'tabla') {
+        $set[] = "$key='$value'";
+    }
+}
+
+
 switch($opcion){
     case 1:
         $consulta = "INSERT INTO $tabla (nombre) VALUES('$nombre') ";
@@ -28,8 +42,9 @@ switch($opcion){
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
-    case 2:        
-        $consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";		
+    case 2:              
+      //$consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";
+        $consulta = "UPDATE $tabla SET " . implode(',', $set) . " WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         

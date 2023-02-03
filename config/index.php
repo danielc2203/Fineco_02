@@ -2,7 +2,11 @@
 <?php include ('../modulos/panel.php');?>
 <?php include ('../recursos/header.php');?>
 
+<link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
+
 
 <?php include ('../recursos/sidebar.php');?>
 
@@ -32,7 +36,7 @@
             <!-- small box Verde -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>Grupo de Usuarios</h3>
+                <h3>Grupos de Usuarios</h3>
                 <?php
                   $consulta = "SELECT * FROM grupo_usuarios LIMIT 3";
                   $resultado = $conexion->prepare($consulta);
@@ -102,6 +106,8 @@
             </div>
           </div>
           <!-- ./col -->
+
+          
 
           <!-- ./col -->
           <div class="col-lg-4 col-6">
@@ -197,6 +203,24 @@
         <small id="helpId" class="text-muted">Help text</small>
       </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal EditarD -->
+<div class="modal fade" id="modalEditarC" tabindex="-1" role="dialog" aria-labelledby="modalEditarC" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+      <h5 class="modal-title" id="modalEditarC">Modal Credito</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div id="contenido_datos">
+      <!-- Datos -->
+    </div>
     </div>
   </div>
 </div>
@@ -313,10 +337,34 @@
     </div>
 </div>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
-<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
+<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
+<!-- fin de footer -->
+
+
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../plugins/jszip/jszip.min.js"></script>
+<script src="../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- SweetAlert2 -->
+<script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+
 <script src="config.js"></script>
 <!-- fin de footer -->
+
