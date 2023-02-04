@@ -4,18 +4,28 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
 $tabla = (isset($_POST['tabla'])) ? $_POST['tabla'] : '';
-$nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : '';
+//$nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
+//$id = (isset($_POST['formData']['id'])) ? $_POST['formData']['id'] : '';
 
 
-if ($imagen = (isset($_FILES['imagen'])) ? $_FILES['imagen'] : ''){
-    $ruta = "img/";
-    $archivo = $ruta . basename($imagen["name"]);
-    move_uploaded_file($imagen["tmp_name"], $archivo);
-} else {
-    $imagen = "img/avatar.jpg";
+$data = array();
+foreach($_POST as $key => $value) {
+if ($key !== 'formData'
+ && $key !== 'opcion'
+ && $key !== 'tabla'
+ && $key !== 'id_usr'
+ && $key !== 'estado_tarea') { //Estas las toma como columnas
+$data[$key] = $value;
 }
+};
+
+$set = array();
+foreach ($data as $key => $value) {
+$set[] = "$key='$value'";
+};
+
 
 
 switch($opcion){

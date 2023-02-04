@@ -126,36 +126,45 @@ $(document).on('click', '.btn-edit', function() {
 	  $(".modal-title").text("Detalles de " +tabla +id);
 	  $('#modalEditarC').modal('show');
 	  var id = id;
-	  console.log(id);
+	  //console.log(id);
 
   });
 
   // Recopilando los datos del formulario y enviandolos al crud
   $(document).on('click', '#btnUpdateSubmit', function() {
-	var formData = {};
-	var inputs = document.querySelectorAll("input");
-	for (var i = 0; i < inputs.length; i++) {
-	formData[inputs[i].id] = inputs[i].value;
-	//console.log(formData);
+	opcion = 2;
+	var formData = {}; //Se declara una variable "formData" que será un objeto vacío.
+	var inputs = document.querySelectorAll("input"); //Se declara una variable "inputs" que almacenará una lista de todos los elementos "input" utilizando la función "querySelectorAll" 
+	for (var i = 0; i < inputs.length; i++) { //Se usa un ciclo "for" para iterar a través de todos los elementos "input" en la lista.
+	formData[inputs[i].id] = inputs[i].value; //Dentro del ciclo, se agrega una propiedad al objeto "formData" utilizando el "id" del elemento de entrada actual como la clave y el "value" como el valor.
 	}
 
 	//formData['id'] = parseInt(id);
-	formData['id'] = parseInt(formData['id']);
+	var id = parseInt(formData['id']);
 
-	console.log("id de formData"+formData['id']);
+		$.ajax({
+			url: "crudU.php",
+			type: "POST",
+			//(...formData) es un operador de propagación que permite expandir el objeto 
+			data: {opcion: opcion, tabla:tabla, id:id, ...formData}, 
+			success: function (data) {
+				consultar();
+			}
+		  });
 
-	
-	$.ajax({
-		url: "crud.php",
-		type: "POST",
-		data: {opcion: 2, formData: formData, tabla: tabla}, 
-		success: function (response) {
-		  console.log(formData);
-		  console.log(response);
-		}
-	  });
-
-	  console.log(typeof formData['id']);
+	  	$('#modalEditarC').modal('hide');
+		$(function() {
+			//toastr.success('Se ha creado el registro correctamente')
+			Swal.fire({
+				position: 'top-end',
+				icon: 'success',
+				title: 'Los cambios han sido efectuados exitosamente...',
+				showConfirmButton: false,
+				timer: 1900,
+			})
+		});	
+		// Verifico por consola si esta enviando los datos correctos
+		
   
 	});
   
