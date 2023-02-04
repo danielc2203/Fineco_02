@@ -15,8 +15,11 @@ function manejarAccion(accion) {
 		case 'estado_credito':
 			tabla = "estado_credito";
 			break;
+		case 'estados':
+			tabla = "estados";
+			break;
         default:
-            alert("Acción no válida");
+            alert("Campo no registrado en config");
             return;
     }
     // Llamada a la función para realizar la consulta
@@ -53,6 +56,7 @@ function consultar() {
 					table += "<td>" + valores[key] + "</td>";
 				  });
 				  table += '<td><button type="button" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#editModal">Editar</button></td>';
+				  table += '<td><button type="button" class="btn btn-danger btnBorrar" >Borrar</button></td>';
 				  table += "</tr>";
 				});
 				table += "</tbody></table>";
@@ -169,66 +173,60 @@ $(document).on('click', '.btn-edit', function() {
 	});
   
 
-// Boton Editar Muestra Modal con la fila correspondiente.
-$(document).on('click', '.btnEditar', function(){
-	opcion = 2;
-	var id = $(this).attr('id');
-	var nombre = $(this).closest('li').find('.text').text();
-	var html = "";
-
-	html += '<form>'
-	html += '<div class="form-group">'
-	html += '<label for="id" class="col-form-label">ID</label>'
-	html += '<div class="col-sm">'
-	html += '<input type="text" class="form-control id" id="id" value="'+id+'" readonly>'
-	html += '</div>'
-	html += '</div>'
-	html += '<div class="form-group">'
-	html += '<label for="id" class="col-form-label">Nombre</label>'
-	html += '<div class="col-sm">'
-	html += '<input type="text" class="form-control nombre" id="nombre" value="'+nombre+'" >'
-	html += '</div>'
-	html += '</div>'
-	html += '<div class="modal-footer">'
-	html += '<button type="submit" class="btn btn-success" id="guardar">Guardar</button>'
-	html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
-	html += '</div>'
-	html += '</form>'
-
-	$("#contenido_config").html(html);
-	$(".modal-header").css("background-color", "#0267EB");
-    $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Calculadora de Creditos - Docentes");
-	$('#id').val(id);
-	$('#nombre').val(nombre);
-	$('#modalEditar').modal('show');
-
-});
-
 // Funcion para crear un nuevo registro de la selecciòn.
 $(document).on('click', '.btnNuevoRegistro', function(){
 	var html = "";
 	opcion = 1;
 
-	html += '<form>'
-	html += '<input type="hidden" class="form-control id" id="id"  readonly>'
-	html += '<div class="form-group">'
-	html += '<label for="id" class="col-form-label">Nombre</label>'
-	html += '<div class="col-sm">'
-	html += '<input type="text" class="form-control nombre" id="nombre" >'
-	html += '</div>'
-	html += '</div>'
-	html += '<div class="modal-footer">'
-	html += '<button type="submit" class="btn btn-success" id="guardar">Agregar</button>'
-	html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
-	html += '</div>'
-	html += '</form>'
+	$.ajax({
+		url: "crud.php",
+		type: "POST",
+		datatype:"json",    
+		data: {opcion:opcion, id:id, tabla:tabla}, 
 
-	$("#contenido_config").html(html);
-	$(".modal-header").css("background-color", "#0267EB");
-    $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Formulario de " +tabla);
-	$('#modalEditar').modal('show');
+		success: function (response) {
+			response = JSON.parse(response);
+			var html = "";
+
+			html += '<div class="modal-body">'
+			html += '<form id="save-form">'
+		  
+			$.each(response[0], function(key, val) {
+				//Buscamos si el campo es id lo bloqueamos
+				if (key === "id") {
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+					html += '</div>';
+					html += '</div>';
+				} else {
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+					html += '</div>';
+					html += '</div>';
+				}
+
+			});
+
+			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmit">Guardar</button>'
+            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+			html += '</form>'
+			html += '</div>'// Cierro "modal-body"
+		  
+			// Insert the HTML Template and display all employee records
+			$("#contenido_datos").html(html);
+		  }
+		  
+	  });
+
+	  $(".modal-header").css( "background-color", "#543c0cb");
+	  $(".modal-header").css( "color", "white" );
+	  $(".modal-title").text("Detalles de " +tabla +id);
+	  $('#modalEditarC').modal('show');
+	  var id = id;
 
 });
 
@@ -272,9 +270,9 @@ $('#modalEditar').submit(function(e){
 // Funcion para borrar los datos seleccionados con Swal2:
 $(document).delegate(".btnBorrar", "click", function() {
 
-	var id = $(this).attr('id'); // Pasamos el id del modal a la funcion borrar desde el boton
+	fila = $(this);           
+	var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
 	var nombre = $(this).closest('li').find('.text').text();
-	console.log(id, tabla);
 	opcion = 3; //eliminar   
 
 		Swal.fire({
@@ -293,7 +291,7 @@ $(document).delegate(".btnBorrar", "click", function() {
 				datatype:"json",    
 				data: {tabla:tabla, opcion:opcion, id:id}, 
 				success: function(response) {
-					Swal.fire('El registro '+ nombre +' ha sido Eliminado de la base de datos '+ tabla + ' success');
+					Swal.fire('El registro '+ id +' ha sido Eliminado de la base de datos '+ tabla + ' success');
 					consultar();
 				 }
 			  });

@@ -60,7 +60,7 @@
             <!-- small box Amarillo -->
             <div class="small-box bg-secondary">
               <div class="inner">
-              <h3>Listado de Convenios</h3>
+              <h3>Convenios</h3>
                 <?php
                   $consulta = "SELECT * FROM convenios LIMIT 3";
                   $resultado = $conexion->prepare($consulta);
@@ -103,6 +103,32 @@
                 <i class="fas fa-tasks"></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('ocupacion')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+
+          <!-- ./col -->
+          <div class="col-lg-4 col-6">
+            <!-- small box Verde -->
+            <div class="small-box bg-secondary">
+              <div class="inner">
+                <h3>Estados</h3>
+                <?php
+                  $consulta = "SELECT * FROM estados LIMIT 3";
+                  $resultado = $conexion->prepare($consulta);
+                  $resultado->execute();
+                  $grupo=$resultado->fetchAll();
+                  echo "<ul>";
+                    foreach ($grupo as $valores):
+                      echo '<li>'.$valores["estados"].'</li>';
+                    endforeach;
+                  echo "</ul>"
+                ?>
+              </div>
+              <div class="icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <a href="#" class="small-box-footer" onclick="manejarAccion('estados')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
