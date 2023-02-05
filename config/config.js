@@ -76,11 +76,9 @@ function consultar() {
 
 
 $(document).on('click', '.btn-edit', function() {
-	
 	fila = $(this);           
 	var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
 	opcion = 5;
-
 	$.ajax({
 		url: "crud.php",
 		type: "POST",
@@ -231,41 +229,6 @@ $(document).on('click', '.btnNuevoRegistro', function(){
 });
 
 
-
-// Funcion de Enviar los datos del formulario a la base de datos
-$('#modalEditar').submit(function(e){                         
-	e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-
-	id = $.trim(document.getElementById('id').value);
-	nombre = $.trim(document.getElementById('nombre').value);
-
-	console.log(id, nombre, tabla, opcion);
-	
-		$.ajax({
-		  url: "crud.php",
-		  type: "POST",
-		  datatype:"json",    
-		  data:  {id:id, 
-				nombre:nombre,
-				opcion:opcion,
-				tabla:tabla},    
-		  success: function(data) {
-			consultar();
-		   }
-		});			        
-	$('#modalEditar').modal('hide');
-	$(function() {
-		//toastr.success('Se ha creado el registro correctamente')
-		Swal.fire({
-			position: 'top-end',
-			icon: 'success',
-			title: 'Los cambios han sido efectuados exitosamente...',
-			showConfirmButton: false,
-			timer: 1900,
-		  })
-	  });	
-	  consultar();	
-});
 
 // Funcion para borrar los datos seleccionados con Swal2:
 $(document).delegate(".btnBorrar", "click", function() {

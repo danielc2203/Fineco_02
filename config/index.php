@@ -32,7 +32,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
+          <div class="col-12 col-sm-6 col-md-4">
             <!-- small box Verde -->
             <div class="small-box bg-secondary">
               <div class="inner">
@@ -50,13 +50,13 @@
                 ?>
               </div>
               <div class="icon">
-                <i class="fas fa-tasks"></i>
+                <i><?php echo $totalGrupos?></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('usuarios')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
+          <div class="col-12 col-sm-6 col-md-4">
             <!-- small box Amarillo -->
             <div class="small-box bg-secondary">
               <div class="inner">
@@ -75,14 +75,14 @@
               </div>
               <div class="icon">
                 <!-- <i class="ion ion-person-add"></i> -->
-                <i class="fas fa-tasks"></i>
+                <i><?php echo $totalConvenios?></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('convenios')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
+          <div class="col-12 col-sm-6 col-md-4">
             <!-- small box Verde -->
             <div class="small-box bg-secondary">
               <div class="inner">
@@ -100,7 +100,7 @@
                 ?>
               </div>
               <div class="icon">
-                <i class="fas fa-tasks"></i>
+                <i><?php echo $totalOcupacion?></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('ocupacion')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -108,7 +108,7 @@
           <!-- ./col -->
 
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
+          <div class="col-12 col-sm-6 col-md-4">
             <!-- small box Verde -->
             <div class="small-box bg-secondary">
               <div class="inner">
@@ -120,13 +120,13 @@
                   $grupo=$resultado->fetchAll();
                   echo "<ul>";
                     foreach ($grupo as $valores):
-                      echo '<li>'.$valores["estados"].'</li>';
+                      echo '<li>'.$valores["nombre"].'</li>';
                     endforeach;
                   echo "</ul>"
                 ?>
               </div>
               <div class="icon">
-                <i class="fas fa-tasks"></i>
+                <i><?php echo $totalEstados?></i>
               </div>
               <a href="#" class="small-box-footer" onclick="manejarAccion('estados')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -136,7 +136,7 @@
           
 
           <!-- ./col -->
-          <div class="col-lg-4 col-6">
+          <div class="col-12 col-sm-6 col-md-4">
             <!-- small box  azul -->
             <div class="small-box bg-secondary">
               <div class="inner">
@@ -152,7 +152,7 @@
           <!-- ./col -->
 
           <!-- ./col  Gris -->
-          <div class="col-lg-4 col-6">
+          <div class="col-12 col-sm-6 col-md-4">
             <!-- small box -->
             <div class="small-box bg-secondary">
               <div class="inner">
