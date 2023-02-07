@@ -49,9 +49,9 @@
 
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Tabla de Usuarios de FINECO APP</h3>
+                <h3 class="card-title">Tabla de Clientes de FINECO APP</h3>
 
-                <p class='text-right'><a class='btn btn-success' id='btnNuevo'>Agregar Cliente</a></p>
+                <p class='text-right'><a class='btn btn-success btnNuevo' id='btnNuevo'>Agregar Cliente</a></p>
                 
                 </div>
                 <!-- /.card-header -->

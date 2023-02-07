@@ -29,17 +29,26 @@ $set[] = "$key='$value'";
 
 
 switch($opcion){
-    case 1:
-        $consulta = "INSERT INTO $tabla (nombre) VALUES('$nombre') ";
-        //$consulta = "INSERT INTO usuarios (nombres, apellidos, correo, password, estado, rol_id) VALUES('$nombres', '$apellidos', '$correo', MD5('".$password."'), '$estado', '$rol_id') ";			
+    case 0:
+        $columns = implode(", ", array_keys($data));
+        $values = implode("', '", array_values($data));
+        $consulta = "INSERT INTO $tabla ($columns) VALUES('$values') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
-        
+    
         $consulta = "SELECT * FROM $tabla ORDER BY id DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
-        break;    
+        break;
+    case 1: // Consulta para traer información de las columnas de la tabla
+        $tabla = $_POST['tabla'];
+
+        $resultado = $conexion->prepare("SHOW COLUMNS FROM " . $tabla);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        break;
     case 2:              
       //$consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";
         $consulta = "UPDATE $tabla SET " . implode(',', $set) . " WHERE id='$id' ";		
