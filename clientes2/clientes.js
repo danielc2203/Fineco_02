@@ -8,51 +8,78 @@ $(document).ready(function () {
 });
 
 function consultar() { 
-		$.ajax({
-        url: "crudU.php",
-        method: "POST",
-        datatype: "json",
-        data: { opcion: 4, tabla: "clientes" },
-        success: function(response) {
-            // parsear la respuesta en formato json
-            response = JSON.parse(response);
-            var html = "";
-            // Verificar si hay registros disponibles
-            if (response.length > 0) {
-				// Crear una tabla en HTML
-				var table = "<table id='clientes' class='table table-hover'><thead><tr>";
-				// Obtener las llaves (nombres de columna) del primer registro
-				var keys = Object.keys(response[0]);
-				// Agregar las llaves como encabezados de la tabla
-				keys.forEach(function (key) {
-				  table += "<th>" + key + "</th>";
-				});
-				table += "</tr></thead><tbody>";
-				// Recorrer los resultados
-				response.forEach(function (valores) {
-				  table += "<tr>";
-				  // Agregar los valores como celdas de la tabla
-				  keys.forEach(function (key) {
-					table += "<td>" + valores[key] + "</td>";
-				  });
-				  table += '<td><button type="button" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#editModal">Editar</button></td>';
-				  table += '<td><button type="button" class="btn btn-danger btnBorrar" >Borrar</button></td>';
-				  table += "</tr>";
-				});
-				table += "</tbody></table>";
-				// Insertar la tabla en el HTML
-				$("#finecod").html(table);
-				// Inicializar el DataTable
-				$('#clientes').DataTable();
-			  } else {
-				html = '<div class="alert alert-warning">No existen registros!</div>';
-				// Insertar el HTML
-				$("#finecod").html(html);
-			  }
-		}
+	$.ajax({
+	url: "crudU.php",
+	method: "POST",
+	datatype: "json",
+	data: { opcion: 4, tabla: "clientes" },
+	success: function(response) {
+		var columns = [];
+		// parsear la respuesta en formato json
+		response = JSON.parse(response);
+		var html = "";
+		// Verificar si hay registros disponibles
+		if (response.length > 0) {
+		  // Crear una tabla en HTML
+		  var table = "<table id='clientes' class='table table-hover'><thead><tr>";
+		  // Obtener las llaves (nombres de columna) del primer registro
+		  var keys = Object.keys(response[0]);
+		  console.log("Encabezados:", keys);
+		  //var columns = [];
+		  keys.forEach(function (key) {
+			columns.push({ data: key, title: key, width: "20%" });
+		  });
+		  console.log("Columnas: ", columns);
+		  // Agregar las llaves como encabezados de la tabla
+		  keys.forEach(function (key) {
+			table += "<th>" + key + "</th>";
+		  });
+		  table += "</tr></thead><tbody class='text-lowercase'>";
+		  // Recorrer los resultados
+		  response.forEach(function (valores) {
+			table += "<tr>";
+			console.log("Filas:", valores);
+			// Agregar los valores como celdas de la tabla
+			keys.forEach(function (key) {
+			  table += "<td>" + valores[key] + "</td>";
+			});
+				table += '<td><button type="button" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#editModal">Editar</button></td>';
+				table += '<td><button type="button" class="btn btn-danger btnBorrar" >Borrar</button></td>';
+				table += "</tr>";
+			  });
+			  table += "</tbody></table>";
+			  // Insertar la tabla en el HTML
+			  $("#finecod").html(table);
+			  // Inicializar el DataTable
+			  var table = $('#finecod').DataTable();
+			  
+			  $('#finecod').DataTable({
+				columns: columns,
+				"lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ],
+				"searching": true,
+				"initComplete": function () {
+					$('#finecod tbody').on('click', 'tr', function () {
+						var rowData = $('#finecod').DataTable().row(this).data();
+						console.log(rowData);
+					});
+				}
+			});
+			
+			} else {
+			  html = '<div class="alert alert-warning">No existen registros!</div>';
+			  // Insertar el HTML
+			  $("#finecod").html(html);
+			}
+		  },
+		  error: function(xhr, status, error) {
+			console.error("Error en la petición AJAX: " + error);
+		  }
 		
 	});
-	}
+	
+};
+	
+	
 
 $(document).on('click', '.btn-edit', function() {
 	fila = $(this);      

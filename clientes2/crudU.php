@@ -47,7 +47,6 @@ switch($opcion){
         $resultado = $conexion->prepare("SHOW COLUMNS FROM " . $tabla);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-
         break;
     case 2:              
       //$consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";
