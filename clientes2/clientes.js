@@ -21,28 +21,31 @@ function consultar() {
 		// Verificar si hay registros disponibles
 		if (response.length > 0) {
 		  // Crear una tabla en HTML
-		  var table = "<table id='clientes' class='table table-hover'><thead><tr>";
+		  var table = "<table id='clientes' class='display nowrap'><thead><tr>";
 		  // Obtener las llaves (nombres de columna) del primer registro
 		  var keys = Object.keys(response[0]);
-		  console.log("Encabezados:", keys);
+		  //console.log("Encabezados:", keys);
 		  //var columns = [];
 		  keys.forEach(function (key) {
 			columns.push({ data: key, title: key, width: "20%" });
 		  });
-		  console.log("Columnas: ", columns);
+		  //console.log("Columnas: ", columns);
 		  // Agregar las llaves como encabezados de la tabla
 		  keys.forEach(function (key) {
 			table += "<th>" + key + "</th>";
 		  });
+		  table += "<th></th><th></th>";// Agrego dos culumbas extras para evitar error de detatable
 		  table += "</tr></thead><tbody class='text-lowercase'>";
 		  // Recorrer los resultados
 		  response.forEach(function (valores) {
 			table += "<tr>";
-			console.log("Filas:", valores);
+			//console.log("Filas:", valores);
 			// Agregar los valores como celdas de la tabla
 			keys.forEach(function (key) {
 			  table += "<td>" + valores[key] + "</td>";
 			});
+				
+				
 				table += '<td><button type="button" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#editModal">Editar</button></td>';
 				table += '<td><button type="button" class="btn btn-danger btnBorrar" >Borrar</button></td>';
 				table += "</tr>";
@@ -51,19 +54,37 @@ function consultar() {
 			  // Insertar la tabla en el HTML
 			  $("#finecod").html(table);
 			  // Inicializar el DataTable
-			  var table = $('#finecod').DataTable();
-			  
-			  $('#finecod').DataTable({
-				columns: columns,
-				"lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ],
-				"searching": true,
-				"initComplete": function () {
-					$('#finecod tbody').on('click', 'tr', function () {
-						var rowData = $('#finecod').DataTable().row(this).data();
-						console.log(rowData);
-					});
-				}
+			  var table = $('#finecod').DataTable({
+
+				"language": { // Idioma en español
+					"url": '../dist/json/es-CO_DataTables.json',
+				},
+
+
+
+
+
+				"dom": 'lBfrtip',
+				buttons: {
+					buttons: ['pageLength', "copy", "excel", "colvis"],  
+					data: "ingreso_mensual",
+					render: $.fn.dataTable.render.number( ',', '.', 0, '$' ),
+					  
+				},
+				lengthMenu: [
+					[ 6, 12, 24, 48, -1 ],
+					[ '6 Filas','12 Filas', '24 Filas', '48 Filas', 'Ver Todos' ]
+				],
+
+				
+	
+			"dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
+	
+			"responsive": false, "lengthChange": false, "autoWidth": false,
+
 			});
+			  
+	
 			
 			} else {
 			  html = '<div class="alert alert-warning">No existen registros!</div>';
