@@ -208,7 +208,7 @@ $(document).on('click', '.btn-edit', function() {
 		}
 	
 		//formData['id'] = parseInt(id);
-		var id = parseInt(formData['id']);
+		var id = "";
 	
 			$.ajax({
 				url: "crudU.php",
@@ -256,12 +256,23 @@ $(document).on('click', '.btnNuevo', function(){
 			html += '<form id="save-form">'
 		  
 			$.each(response, function(index, val) {
-				html += '<div class="form-group row mb-0">';
-				html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
-				html += '<div class="col-6">';
-				html += '<input type="text" id="' + val.Field + '" value="" class="form-control form-control-sm">';
-				html += '</div>';
-				html += '</div>';
+
+				if (val.Field == "id"){
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + val.Field + '" value="" class="form-control form-control-sm" readonly>';
+					html += '</div>';
+					html += '</div>';
+				} else {
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + val.Field + '" value="" class="form-control form-control-sm">';
+					html += '</div>';
+					html += '</div>';
+
+				};
 			});
 	
 			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitNew">Guardar</button>'
