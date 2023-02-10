@@ -208,13 +208,11 @@ $(document).on('click', '.btn-edit', function() {
 		}
 	
 		//formData['id'] = parseInt(id);
-		var id = "";
-	
 			$.ajax({
 				url: "crudU.php",
 				type: "POST",
 				//(...formData) es un operador de propagación que permite expandir el objeto 
-				data: {opcion: opcion, tabla:tabla, id:id, ...formData}, 
+				data: {opcion: opcion, tabla:tabla, ...formData}, 
 				success: function (data) {
 					consultar();
 				}
@@ -271,7 +269,6 @@ $(document).on('click', '.btnNuevo', function(){
 					html += '<input type="text" id="' + val.Field + '" value="" class="form-control form-control-sm">';
 					html += '</div>';
 					html += '</div>';
-
 				};
 			});
 	

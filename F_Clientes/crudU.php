@@ -43,7 +43,6 @@ switch($opcion){
         break;
     case 1: // Consulta para traer información de las columnas de la tabla
         $tabla = $_POST['tabla'];
-
         $resultado = $conexion->prepare("SHOW COLUMNS FROM " . $tabla);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
