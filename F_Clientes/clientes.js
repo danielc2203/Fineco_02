@@ -1,375 +1,337 @@
 $(document).ready(function() {
-    var id, opcion;
-    opcion = 4;
-    
-    $(document).ready(function () {
-        $('#clientes').DataTable;
-    });
-    
-    tablaUsuarios = $('#clientes').DataTable({
-        
-        language: {
-            url: '../dist/json/es-CO_DataTables.json',
-        },
-            
-        "dom": 'lBfrtip',
-            buttons: {
-                buttons: ['pageLength', "copy", "excel", "pdf", "print"],                
-            },
-            lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5 Filas','10 Filas', '25 Filas', '50 Filas', 'Ver Todos' ]
-            ],
+var id, opcion, evento, tabla;
+var tabla = "clientes"; 
+
+// Función para realizar la consulta a la base de datos y mostrar el Datatable
+$(document).ready(function () {
+	consultar();
+});
+
+function consultar() { 
+	$.ajax({
+	url: "crudU.php",
+	method: "POST",
+	datatype: "json",
+	data: { opcion: 4, tabla: "clientes" },
+	success: function(response) {
+		var columns = [];
+		// parsear la respuesta en formato json
+		response = JSON.parse(response);
+		var html = "";
+		// Verificar si hay registros disponibles
+		if (response.length > 0) {
+		  // Crear una tabla en HTML
+		  var table = "<table id='clientes' class='display nowrap'><thead><tr>";
+		  // Obtener las llaves (nombres de columna) del primer registro
+		  var keys = Object.keys(response[0]);
+		  //console.log("Encabezados:", keys);
+		  //var columns = [];
+		  keys.forEach(function (key) {
+			columns.push({ data: key, title: key, width: "20%" });
+		  });
+		  //console.log("Columnas: ", columns);
+		  // Agregar las llaves como encabezados de la tabla
+		  keys.forEach(function (key) {
+			table += "<th>" + key + "</th>";
+		  });
+		  table += "<th></th><th></th>";// Agrego dos culumbas extras para evitar error de detatable
+		  table += "</tr></thead><tbody class='text-lowercase'>";
+		  // Recorrer los resultados
+		  response.forEach(function (valores) {
+			table += "<tr>";
+			//console.log("Filas:", valores);
+			// Agregar los valores como celdas de la tabla
+			keys.forEach(function (key) {
+			  table += "<td>" + valores[key] + "</td>";
+			});
+				
+				
+				table += '<td><button type="button" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#editModal">Editar</button></td>';
+				table += '<td><button type="button" class="btn btn-danger btnBorrar" >Borrar</button></td>';
+				table += "</tr>";
+			  });
+			  table += "</tbody></table>";
+			  // Insertar la tabla en el HTML
+			  $("#finecod").html(table);
+			  // Inicializar el DataTable
+			  var table = $('#finecod').DataTable({
+
+				"language": { // Idioma en español
+					"url": '../dist/json/es-CO_DataTables.json',
+				},
 
 
-        "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
 
-        "responsive": false, "lengthChange": false, "autoWidth": false,
 
-        "ajax":{            
-            "url": "crud.php", 
-            "method": 'POST', //usamos el metodo POST
-            "data":{opcion:opcion}, //enviamos opcion 4 para que haga un SELECT
-            "dataSrc":""
-        },
-        "columns":[
-            {"data": "id"},
-            {"data": "primer_nombre"},
-            {"data": "segundo_nombre"},
-            {"data": "primer_apellido"},
-            {"data": "segundo_apellido"}, 
-            //{"data": "tipo_documento"},
-            {"data": "num_documento"},
-            {"data": "correo_electronico"},
-            {"data": "telefono"},
-            {"data": "estado"},
-            //{"data": "ocupacion"},
-            {"data": "empresa"},
-            //{"data": "fecha_incorporacion"},
-            
-            
-            // {"defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='material-icons'>Editar</i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>Borrar</i></button></div></div>"}
-            {"defaultContent": "<a class='btn btn-outline-success btn-sm VerCliente'><i class='fas fa-eye'></i></a>"},
-            // {"defaultContent": "<a class='btn btn-outline-warning btn-sm btnEditar'><i class='fas fa-edit'></i></a>"},
-            //{"defaultContent": "<a class='btn btn-outline-danger btn-sm btnBorrar '><i class='fas fa-eraser'></i></a>"}
-    
-        ],
-        
-    })
 
-    
-    var fila; //captura la fila, para editar o eliminar
+				"dom": 'lBfrtip',
+				buttons: {
+					buttons: ['pageLength', "copy", "excel", "colvis"],  
+					data: "ingreso_mensual",
+					render: $.fn.dataTable.render.number( ',', '.', 0, '$' ),
+					  
+				},
+				lengthMenu: [
+					[ 6, 12, 24, 48, -1 ],
+					[ '6 Filas','12 Filas', '24 Filas', '48 Filas', 'Ver Todos' ]
+				],
 
-    //submit para Actualización
-    $('#formModal').submit(function(e){                         
-        e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+				
+	
+			"dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
+	
+			"responsive": false, "lengthChange": false, "autoWidth": false,
 
-        id = $.trim($('#id_cliente').val());
-        primer_nombre = $.trim($('#primer_nombre').val());
-        segundo_nombre = $.trim($('#segundo_nombre').val());    
-        primer_apellido = $.trim($('#primer_apellido').val());    
-        segundo_apellido = $.trim($('#segundo_apellido').val());
-        tipo_documento = $.trim($('#tipo_documento').val());
-        num_documento = $.trim($('#num_documento').val());
-        correo_electronico = $.trim($('#correo_electronico').val());
-        telefono = $.trim($('#telefono').val());
-        estado = $.trim($('#estado').val());
-        ocupacion = $.trim($('#ocupacion').val());
-        empresa = $.trim($('#empresa').val());
-        fecha_incorporacion = $.trim($('#fecha_incorporacion').val());
-        fecha_nacimiento = $.trim($('#fecha_nacimiento').val());
-        direccion_residencia = $.trim($('#direccion_residencia').val());
-        pais = $.trim($('#pais').val());
-        departamento = $.trim($('#departamento').val());
-        ciudad = $.trim($('#ciudad').val());
-        estrato = $.trim($('#estrato').val());
-        sexo = $.trim($('#sexo').val());
-        ingreso_mensual = $.trim($('#ingreso_mensual').val());
-        salud = $.trim($('#salud').val());
-        //foto_cedula = (num_documento+'CC.jpg')
-        //filename = $_FILES['foto_cedula']['name'];
-        //img = $.trim($('#foto_cedula').attr('src'));
-        
-        
-            $.ajax({
-              url: "crud.php",
-              type: "POST",
-              datatype:"json",    
-              data:  {id:id, 
-                    primer_nombre:primer_nombre,
-                    segundo_nombre:segundo_nombre,
-                    primer_apellido:primer_apellido,
-                    segundo_apellido:segundo_apellido,
-                    tipo_documento:tipo_documento,
-                    num_documento:num_documento,
-                    correo_electronico:correo_electronico,
-                    telefono:telefono,
-                    estado:estado,
-                    ocupacion:ocupacion,
-                    empresa:empresa,
-                    fecha_incorporacion:fecha_incorporacion,
-                    fecha_nacimiento:fecha_nacimiento,
-                    direccion_residencia:direccion_residencia,
-                    pais:pais,
-                    departamento:departamento,
-                    ciudad:ciudad,
-                    estrato:estrato,
-                    sexo:sexo,
-                    ingreso_mensual:ingreso_mensual,
-                    salud:salud,
-                    //foto_cedula:foto_cedula,
-                    opcion:opcion},    
-              success: function(data) {
-                tablaUsuarios.ajax.reload(null, false);
-               }
-            
-            });			        
-        $('#modalCRUD').modal('hide');
-        $(function() {
-            toastr.success('Se ha creado el registro correctamente')
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Los cambios han sido efectuados exitosamente...',
-                showConfirmButton: false,
-                timer: 1900
-              })
-          });										     			
-    });
-            
-    //para limpiar los campos antes de dar de Alta a un registro
-    $("#btnNuevo").click(function(){
-        opcion = 1; //alta           
-        id=null;
-        //alert(id);
-        $("#formModal").trigger("reset");
-        $(".modal-header").css( "background-color", "#17a2b8");
-        $(".modal-header").css( "color", "white" );
-        $(".modal-title").text("Nuevo Registro"); 
-        $('#modalCRUD').modal('show');
-    });
+			});
+			  
+	
+			
+			} else {
+			  html = '<div class="alert alert-warning">No existen registros!</div>';
+			  // Insertar el HTML
+			  $("#finecod").html(html);
+			}
+		  },
+		  error: function(xhr, status, error) {
+			console.error("Error en la petición AJAX: " + error);
+		  }
+		
+	});
+	
+};
+	
+	
 
-    
-    //Ver Cliente 
-    $(document).on("click", ".VerCliente", function cliente(){
+$(document).on('click', '.btn-edit', function() {
+	fila = $(this);      
+	tabla = "clientes";     
+	var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
+	opcion = 5;
+	//console.log(id, tabla, opcion);
+	$.ajax({
+		url: "crudU.php",
+		type: "POST",
+		datatype:"json",    
+		data: {opcion:opcion, id:id, tabla:tabla}, 
 
-        fila = $(this);           
-        var id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;
-        //const cliente_id = id;
+		success: function (response) {
+			response = JSON.parse(response);
+			var html = "";
 
-        //alert(id);
-        opcion = 5; //alta
+			html += '<div class="modal-body">'
+			html += '<form id="save-form">'
+		  
+			$.each(response[0], function(key, val) {
+				//Buscamos si el campo es id lo bloqueamos
+				if (key === "id") {
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+					html += '</div>';
+					html += '</div>';
+				} else {
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+					html += '</div>';
+					html += '</div>';
+				}
 
-        $.ajax({
-            url: "crud.php",
-            type: "POST",
-            datatype:"json",    
-            data: {opcion:opcion, id:id}, 
+			});
 
-            success: function (response) {//once the request successfully process to the server side it will return result here
-            
-                // Parse the json result
-                response = JSON.parse(response);
-    
-                var html = "";
-                
-                // Check if there is available records
-                if(response.length) {
-                    // Loop the parsed JSON
-                    $.each(response, function(key,value) {
-    
-                            html += '<div class="card-header text-center" > <h5>'+ value.primer_nombre +' '+ value.segundo_nombre +' '+ value.primer_apellido +' '+ value.segundo_apellido +'</h5> </div>'
-    
-                            html += '<div class="card-body pt-0">'
-                                html += '<div class="row">'
-                                    html += '<div class="col-12">'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm" name="ida" id="ida"><b>Tipo de documento: </b> '+ value.tipo_documento +' </p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Número de documento: </b> '+ value.num_documento +' </p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Correo electronico: </b> '+ value.correo_electronico +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Número de contacto: </b> '+ value.telefono +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Estado: </b> '+ value.estado +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Ocupación: </b> '+ value.ocupacion +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Empresa: </b> '+ value.empresa +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Fecha de registro: </b> '+ value.fecha_incorporacion +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Fecha de nacimiento: </b> '+ value.fecha_nacimiento +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Direccion de residencia: </b> '+ value.direccion_residencia +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>pais: </b> '+ value.pais +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>departamento: </b> '+ value.departamento +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>ciudad: </b> '+ value.ciudad +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>estrato: </b> '+ value.estrato +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>sexo: </b> '+ value.sexo +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>ingreso_mensual: </b> '+ value.ingreso_mensual +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>salud: </b> '+ value.salud +'</p>'
-                                        //html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>foto_cedula: </b> '+ value.foto_cedula +'</p>'
-       
-                                    html += '</div>'
+			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitEdit">Guardar</button>'
+            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+			html += '</form>'
+			html += '</div>'// Cierro "modal-body"
+		  
+			// Insert the HTML Template and display all employee records
+			$("#contenido_datos").html(html);
+		  }
+		  
+	  });
 
-                                html += '</div>'
-                            html += '</div>'
-    
-                            html += '<div class="card-footer">'
-                                html += '<div class="">'
-                                // html += '<a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#bancoModal"><i class="fas fa-eye"></i></a>'
-                                //html += '<a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#formModal"><i class="fas fa-edit"></i></a>'
-                                html += '<a class="btn btn-outline-primary btnEditar " id='+ value.id +'><i class="fas fa-edit"></i>'
-                                html += '<a class="btn btn-outline-danger float-right btnBorrar " id='+ value.id +'><i class="fas fa-trash-alt"></i>'
-                                html += '</div>'
-                            html += '</div>'
-    
-    
-                    });
-                } else {
-                    html += '<div class="alert alert-warning">';
-                    html += 'No records found!';
-                }
-    
-                // Insert the HTML Template and display all employee records
-                $("#contenido_cliente").html(html);
-            }
-            
+	  $(".modal-header").css( "background-color", "#10a37f");
+	  $(".modal-header").css( "color", "white" );
+	  $(".modal-title").text("Detalles de " +tabla +id);
+	  $('#modalEditarC').modal('show');
+	  var id = id;
+	  //console.log(id);
 
-          });
+  });
 
-          
-       // $("#detalles-clientes").trigger("reset");
-        $(".modal-header").css( "background-color", "#17a2b8");
-        $(".modal-header").css( "color", "white" );
-        $(".modal-title").text("Clientes Fineco App");
-        $('#VerClientes').modal('show');
-        
-    });
-    
-    
-    //Editar        
-    $(document).on("click", ".btnEditar", function(){	
-        $('#VerClientes').modal('toggle')	        
-        opcion = 5;//Para llamar los datos de la BD
-        var id = $(this).attr('id');
-        //alert(id);
+  // Recopilando los datos del formulario y enviandolos al crud para hacer update
+  $(document).on('click', '#btnUpdateSubmitEdit', function() {
+	opcion = 2;
+	var formData = {}; //Se declara una variable "formData" que será un objeto vacío.
+	var inputs = document.querySelectorAll("input"); //Se declara una variable "inputs" que almacenará una lista de todos los elementos "input" utilizando la función "querySelectorAll" 
+	for (var i = 0; i < inputs.length; i++) { //Se usa un ciclo "for" para iterar a través de todos los elementos "input" en la lista.
+	formData[inputs[i].id] = inputs[i].value; //Dentro del ciclo, se agrega una propiedad al objeto "formData" utilizando el "id" del elemento de entrada actual como la clave y el "value" como el valor.
+	}
 
-        $.ajax({
-            url: "crud.php",
-            type: "POST",
-            datatype:"json",    
-            data: {opcion:opcion, id:id},
-            
-        success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
-            // Parse the json result
-            response = JSON.parse(response);
-            var html = "";
-            
-            // Check if there is available records
-            if(response.length) {
-                // Loop the parsed JSON
-                $.each(response, function(key,value) {
+	//formData['id'] = parseInt(id);
+	var id = parseInt(formData['id']);
 
-                    $("#primer_nombre").val(value.primer_nombre);
-                    $("#segundo_nombre").val(value.segundo_nombre);
-                    $("#primer_apellido").val(value.primer_apellido);
-                    $("#segundo_apellido").val(value.segundo_apellido);
-                    $("#tipo_documento").val(value.tipo_documento);
-                    $("#num_documento").val(value.num_documento);
-                    $("#correo_electronico").val(value.correo_electronico);
-                    $("#telefono").val(value.telefono);
-                    $("#estado").val(value.estado);
-                    $("#ocupacion").val(value.ocupacion);
-                    $("#empresa").val(value.empresa);
-                    $("#fecha_incorporacion").val(value.fecha_incorporacion);
-                    $("#fecha_nacimiento").val(value.fecha_nacimiento);
-                    $("#direccion_residencia").val(value.direccion_residencia);
-                    $("#pais").val(value.pais);
-                    $("#departamento").val(value.departamento);
-                    $("#ciudad").val(value.ciudad);
-                    $("#estrato").val(value.estrato);
-                    $("#sexo").val(value.sexo);
-                    $("#ingreso_mensual").val(value.ingreso_mensual);
-                    $("#salud").val(value.salud);
-                    //$("#foto_cedula").val(value.foto_cedula);
-                    $("#id_cliente").val(value.id);
+		$.ajax({
+			url: "crudU.php",
+			type: "POST",
+			//(...formData) es un operador de propagación que permite expandir el objeto 
+			data: {opcion: opcion, tabla:tabla, id:id, ...formData}, 
+			success: function (data) {
+				consultar();
+			}
+		  });
 
-                });
-            } else {
-                html += '<div class="alert alert-warning">';
-                html += 'No se encontro este registro en la BD!';
-            }
+	  	$('#modalEditarC').modal('hide');
+		$(function() {
+			//toastr.success('Se ha creado el registro correctamente')
+			Swal.fire({
+				position: 'top-end',
+				icon: 'success',
+				title: 'Los cambios han sido efectuados exitosamente...',
+				showConfirmButton: false,
+				timer: 1900,
+			})
+		});	
+		// Verifico por consola si esta enviando los datos correctos
+		
+  
+	});
 
-            // Insert the HTML Template and display all employee records
-            $("#contenido_cliente").html(html);
-        }
-        
-      });
-        
-        //$("#formModal").trigger("reset");
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white" );
-        $(".modal-title").text("Editar Usuario");		
-        $('#modalCRUD').modal('show');
-        opcion = 2;//para enviar el update
-        //var id = id;
-    
-    });
+	$(document).on('click', '#btnUpdateSubmitNew', function() {
+		opcion = 0;
+		var formData = {}; //Se declara una variable "formData" que será un objeto vacío.
+		var inputs = document.querySelectorAll("input"); //Se declara una variable "inputs" que almacenará una lista de todos los elementos "input" utilizando la función "querySelectorAll" 
+		for (var i = 0; i < inputs.length; i++) { //Se usa un ciclo "for" para iterar a través de todos los elementos "input" en la lista.
+		formData[inputs[i].id] = inputs[i].value; //Dentro del ciclo, se agrega una propiedad al objeto "formData" utilizando el "id" del elemento de entrada actual como la clave y el "value" como el valor.
+		}
+	
+		//formData['id'] = parseInt(id);
+			$.ajax({
+				url: "crudU.php",
+				type: "POST",
+				//(...formData) es un operador de propagación que permite expandir el objeto 
+				data: {opcion: opcion, tabla:tabla, ...formData}, 
+				success: function (data) {
+					consultar();
+				}
+			  });
+	
+			  $('#modalEditarC').modal('hide');
+			$(function() {
+				//toastr.success('Se ha creado el registro correctamente')
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'Los cambios han sido efectuados exitosamente...',
+					showConfirmButton: false,
+					timer: 1900,
+				})
+			});	
+			// Verifico por consola si esta enviando los datos correctos
+			
+	  
+		});
+  
 
-    
+// Funcion para crear un nuevo registro de la selecciòn.
+$(document).on('click', '.btnNuevo', function(){
+	var html = "";
+	opcion = 1;
 
-    //Borrar con Swal2
-	$(document).delegate(".btnBorrar", "click", function() {
+	$.ajax({
+		url: "crudU.php",
+		type: "POST",
+		datatype:"json",    
+		data: {opcion:opcion, tabla:tabla}, 
+	
+		success: function (response) {
+			response = JSON.parse(response);
+			var html = "";
+	
+			html += '<div class="modal-body">'
+			html += '<form id="save-form">'
+		  
+			$.each(response, function(index, val) {
 
-        var id = $(this).attr('id'); // Pasamos el id del modal a la funcion borrar desde el boton
-        //alert(id);
-        opcion = 3; //eliminar   
+				if (val.Field == "id"){
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + val.Field + '" value="" class="form-control form-control-sm" readonly>';
+					html += '</div>';
+					html += '</div>';
+				} else {
+					html += '<div class="form-group row mb-0">';
+					html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+					html += '<div class="col-6">';
+					html += '<input type="text" id="' + val.Field + '" value="" class="form-control form-control-sm">';
+					html += '</div>';
+					html += '</div>';
+				};
+			});
+	
+			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitNew">Guardar</button>'
+			html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+			html += '</form>'
+			html += '</div>'// Cierro "modal-body"
+		  
+			// Insert the HTML Template and display all employee records
+			$("#contenido_datos").html(html);
+		  }
+		  
+	  });
+	
+	  $(".modal-header").css( "background-color", "#543c0cb");
+	  $(".modal-header").css( "color", "white" );
+	  $(".modal-title").text("Detalles de " +tabla +id);
+	  $('#modalEditarC').modal('show');
+	  var id = id;
 
-            Swal.fire({
-                icon: 'warning',
-                title: 'Estas seguro de eliminar este cliente?',
-                showDenyButton: false,
-                showCancelButton: true,
-                confirmButtonText: 'SI'
-            }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                
-                $('#VerClientes').modal('toggle')
+});
 
-                $.ajax({
-                    url: "crud.php",
-                    type: "POST",
-                    datatype:"json",    
-                    data: {opcion:opcion, id:id}, 
-                    success: function(response) {
-                        tablaUsuarios.row(fila.parents('tr')).remove().draw();    
-                        Swal.fire('El clente ha sido Eliminado de la base de datos.', response, 'success');
-                     }
-                  });
 
-                
-            } else if (result.isDenied) {
-                Swal.fire('Cambios No Efectuados', '', 'info')
-            }else{
-                $(function() {
-                    Swal.fire('Cambios No Efectuados', '', 'info')
-                    //toastr.info('Se ha cancelado la acción de eliminar')
-                  });
-            }
-            });
-        });
 
-    // Funcion para validar los campos requeridos
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-            });
-        }, false);
-        })();
+// Funcion para borrar los datos seleccionados con Swal2:
+$(document).delegate(".btnBorrar", "click", function() {
+
+	fila = $(this);           
+	var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
+	var nombre = $(this).closest('tr').find('td:eq(6)').text();;
+	opcion = 3; //eliminar   
+
+		Swal.fire({
+			icon: 'warning',
+			title: 'Estas seguro de eliminar el registro '+id+' de documento Nº: '+nombre+'?',
+			showDenyButton: false,
+			showCancelButton: true,
+			confirmButtonText: 'SI'
+		}).then((result) => {
+		/* Read more about isConfirmed, isDenied below */
+		if (result.isConfirmed) {
+		
+			$.ajax({
+				url: "crudU.php",
+				type: "POST",
+				datatype:"json",    
+				data: {tabla:tabla, opcion:opcion, id:id}, 
+				success: function(response) {
+					Swal.fire('El registro '+ id +' ha sido Eliminado de la tabla '+ tabla + ' success');
+					consultar();
+				 }
+			  });
+			  consultar();
+			
+		} else if (result.isDenied) {
+			Swal.fire('Cambios No Efectuados', '', 'info')
+		}else{
+			$(function() {
+				Swal.fire('Cambios No Efectuados', '', 'info')
+				//toastr.info('Se ha cancelado la acción de eliminar')
+			  });
+		}
+		});
+	});
 
 });
