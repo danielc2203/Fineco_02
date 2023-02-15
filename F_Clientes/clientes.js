@@ -8,6 +8,7 @@ $(document).ready(function () {
 });
 
 function consultar() { 
+	
 	$.ajax({
 	url: "crudU.php",
 	method: "POST",
@@ -45,7 +46,6 @@ function consultar() {
 			  table += "<td>" + valores[key] + "</td>";
 			});
 				
-				
 				table += '<td><button type="button" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#editModal">Editar</button></td>';
 				table += '<td><button type="button" class="btn btn-danger btnBorrar" >Borrar</button></td>';
 				table += "</tr>";
@@ -54,23 +54,21 @@ function consultar() {
 			  // Insertar la tabla en el HTML
 			  $("#finecod").html(table);
 			  // Inicializar el DataTable
+			  
 			  var table = $('#finecod').DataTable({
+				
 
 				"language": { // Idioma en español
 					"url": '../dist/json/es-CO_DataTables.json',
 				},
 
+				 "dom": 'lBfrtip',
+				 buttons: {
+				 	buttons: ['pageLength', "copy", "excel", "colvis"],  
+				 	//data: "ingreso_mensual",
+				 	//render: $.fn.dataTable.render.number( ',', '.', 0, '$' ), 
+				 },
 
-
-
-
-				"dom": 'lBfrtip',
-				buttons: {
-					buttons: ['pageLength', "copy", "excel", "colvis"],  
-					data: "ingreso_mensual",
-					render: $.fn.dataTable.render.number( ',', '.', 0, '$' ),
-					  
-				},
 				lengthMenu: [
 					[ 6, 12, 24, 48, -1 ],
 					[ '6 Filas','12 Filas', '24 Filas', '48 Filas', 'Ver Todos' ]
@@ -83,6 +81,7 @@ function consultar() {
 			"responsive": false, "lengthChange": false, "autoWidth": false,
 
 			});
+			table.destroy();
 			  
 	
 			
