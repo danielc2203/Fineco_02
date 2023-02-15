@@ -88,7 +88,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="<?php echo $url;?>/F_Creditos" class="nav-link">
+                    <a href="<?php echo $url;?>/T_Creditos" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Tabla de Creditos</p>
                     </a>
