@@ -302,7 +302,7 @@ function guardarDatos(){
   if (valorG) {
     Swal.fire({
       title: 'Deseas crear',
-      text: "Un nuevo registro de credito?",
+      text: "Un nuevo registro de credito D?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
