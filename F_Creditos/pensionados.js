@@ -66,6 +66,38 @@ $( document ).ready(function() {
     "color": "white" });
     $(".modal-title").text("Calculadora de Créditos - PENSIONADOS");
     $('#modalCREDITOS').modal('show');
+
+    // Calcular el valor de Aportes segun el salario
+    // Obtener una referencia al campo C1 y G1
+    const campoC1 = document.getElementById('C1');
+    const campoG1 = document.getElementById('G1');
+
+    // Agregar un listener al evento "input" del campo C1
+    campoC1.addEventListener('input', function() {
+    // Obtener el valor de C1
+    const valorC1 = parseFloat(campoC1.value);
+
+    // Calcular el valor de G1 en función del valor de C1
+    let valorG1;
+    if (valorC1 < 1160001) {
+        valorG1 = valorC1 * 0.04;
+    } else if (valorC1 < 2320001) {
+        valorG1 = valorC1 * 0.10;
+    } else {
+        valorG1 = valorC1 * 0.12;
+    }
+
+    // Mostrar el valor de G1 en el campo correspondiente
+   
+    console.log(valorG1)
+
+    const redondeado = Math.ceil(valorG1/100)*100; // Redondea hacia arriba
+    const sinDecimales = Math.round(redondeado / 100) * 100; // Redondea a múltiplos de 100
+    campoG1.value = sinDecimales;
+    console.log(sinDecimales); // Muestra 215100
+    });
+
+
         
     //btn nuevo campo al for de la columna izquierda:
     let nextIdC = 9;
@@ -162,7 +194,7 @@ function sumar(prefix) {
 
     // Calcular la diferencia entre los ingresos y gastos
     var cupo = (maximo - gastos + eps);
-    console.log(cupo);
+    //console.log(cupo);
     
     // Mostrar la diferencia en el elemento de texto correspondiente
     document.getElementById("cupo").innerText = cupo.toFixed(0);
