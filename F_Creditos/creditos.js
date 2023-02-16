@@ -152,7 +152,7 @@ $( document ).ready(function() {
       sumar("G");
       calcularDiferencia();
     }
-    console.log("sigue llamando");
+    console.log("Escuchando Cambios");
   });
 
   function calcularDiferencia() {
@@ -180,63 +180,67 @@ $( document ).ready(function() {
 
 
 
- //Abre modal de pensionados.
- $("#pensionados").click(function(){
-    opcion = 1; //dejaremos la opcion 1 para envio de credito policia           
-    id=null;
+
+
+//  //Abre modal de pensionados.
+//  $("#pensionados").click(function(){
+//     opcion = 1; //dejaremos la opcion 1 para envio de credito policia           
+//     id=null;
     
-    var html = "";
+//     var html = "";
 
-    html += '<div class="card-header text-center" > <h5> Pensionados </h5> </div>'
+//     html += '<div class="card-header text-center" > <h5> Pensionados </h5> </div>'
 
-    html += '<div class="form-group row mb-0">'
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SALARIO BÁSICO</label>'
-    html += '<div class="col-sm-3">'
-    html += '<input type="number" maxIntegerDigits="3" id="C1" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
-    html += '</div>'
+//     html += '<div class="form-group row mb-0">'
+//     html += '<label for="dd1" class="col-sm-3 col-form-label-sm">SALARIO BÁSICO</label>'
+//     html += '<div class="col-sm-3">'
+//     html += '<input type="number" maxIntegerDigits="3" id="C1" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+//     html += '</div>'
 
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">APORTES DE LEY</label>'
-    html += '<div class="col-sm-3">'
-    html += '<input type="text" maxIntegerDigits="3" id="C2" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
-    html += '</div>'
-    html += '</div>'
+//     html += '<label for="dd1" class="col-sm-3 col-form-label-sm">APORTES DE LEY</label>'
+//     html += '<div class="col-sm-3">'
+//     html += '<input type="text" maxIntegerDigits="3" id="C2" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+//     html += '</div>'
+//     html += '</div>'
 
-    html += '<div class="form-group row mb-0">'
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">OTROS DESCUENTOS</label>'
-    html += '<div class="col-sm-3">'
-    html += '<input type="number" maxIntegerDigits="3" id="C3" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
-    html += '</div>'
+//     html += '<div class="form-group row mb-0">'
+//     html += '<label for="dd1" class="col-sm-3 col-form-label-sm">OTROS DESCUENTOS</label>'
+//     html += '<div class="col-sm-3">'
+//     html += '<input type="number" maxIntegerDigits="3" id="C3" value="" step="0.01" class="form-control form-control-sm" placeholder="$" >'
+//     html += '</div>'
 
-    html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
-    html += '<div class="col-sm-3">'
-    html += '<input type="number" maxIntegerDigits="3" id="C4" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
-    html += '</div>'
-    html += '</div>'
+//     html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
+//     html += '<div class="col-sm-3">'
+//     html += '<input type="number" maxIntegerDigits="3" id="C4" value="" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+//     html += '</div>'
+//     html += '</div>'
 
-    html += '<div id="answer"><table class="table table-striped"><tbody>'
+//     html += '<div id="answer"><table class="table table-striped"><tbody>'
 
-    html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
-    html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
+//     html += '<tr><td>APORTES DE LEY</td><td id="aportes">0</td></tr>'
+//     html += '<tr><td>CAPACIDAD LIBRE INVERSIÓN</td><td id="capacidad">0</td></tr>'
 
-    html += '</tbody></table></div>'
+//     html += '</tbody></table></div>'
 
-    html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
-    html += '<button type="button" class="btn btn-primary ml-3" id="calc" onclick= "calcularPensionados()">Calcular</button>'
-    html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
-    html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+//     html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
+//     html += '<button type="button" class="btn btn-primary ml-3" id="calc" onclick= "calcularPensionados()">Calcular</button>'
+//     html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
+//     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
 
 
-    $("#fCalculadora").html(html);
+//     $("#fCalculadora").html(html);
 
-    $(".modal-header").css("background-color", "#311847");
-    $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Calculadora de Creditos - Pensionados");
-    $('#modalCREDITOS').modal('show');
-});
+//     $(".modal-header").css("background-color", "#311847");
+//     $(".modal-header").css( "color", "white" );
+//     $(".modal-title").text("Calculadora de Creditos - Pensionados");
+//     $('#modalCREDITOS').modal('show');
+// });
 
 
  // Calculadora de Docentes
+ 
+ 
  $("#docentes").click(function(){
     opcion = 1; //dejaremos la opcion 1 para envio de credito al modal           
     id=null;
@@ -302,7 +306,7 @@ function guardarDatos(){
   if (valorG) {
     Swal.fire({
       title: 'Deseas crear',
-      text: "Un nuevo registro de credito D?",
+      text: "Un nuevo registro de credito?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -360,7 +364,7 @@ function guardarDatos(){
         $(".modal-header").css("background-color", "#ff5722");
         $(".modal-header").css( "color", "white" );
         $(".modal-title").css("font-weight: bold", "font-size: 18px");
-        $(".modal-title").text("Agregar Nuevo Credito");
+        $(".modal-title").text("Agregar Nueva Solicitud de Credito");
 
       }
     })
@@ -370,16 +374,8 @@ function guardarDatos(){
 
  };
 
- function modalnuevo(){
-  var html = "";
 
-  $(".modal-header").css("background-color", "#0267EB");
-  $(".modal-header").css( "color", "white" );
-  $(".modal-title").text("Agregar Nuevo Credito");
-};
-
-
-// Funcion Consultar Cliente
+// Funcion Consultar Cliente y si es correcto guarda el credito en la tabla Creditos
 function consultarCliente() {
   cedula = $.trim($('#F_cedula').val());
   capacidad = $.trim($('#F_capacidad').val());
@@ -458,7 +454,7 @@ function consultarCliente() {
     });
 
   }else{
-    console.log("Cedula 2 Vacia = "+cedula);
+    console.log("Cedula Vacia = "+cedula);
     Swal.fire({
       position: 'top-end',
       icon: 'error',
@@ -468,24 +464,3 @@ function consultarCliente() {
   };
 
 }
-
-
-
-// Funcion para validar los campos requeridos
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-      }, false);
-      });
-  }, false);
-  });
