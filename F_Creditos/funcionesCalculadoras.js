@@ -98,7 +98,7 @@ function formularioModal (nombreF, ColorF, colorFuente){
 
     $(".modal-header").css({
     "background-color": ColorF,
-    "color": colorFuente });
+    "color": "#fff" });
     $(".modal-title").text("Calculadora de Créditos - "+nombreF);
     $('#modalCREDITOS').modal('show');
 

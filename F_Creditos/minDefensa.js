@@ -1,11 +1,11 @@
 $( document ).ready(function() {
   
-let nombreF = "Casur-Cremil";
-let ColorF = "#da2722";
+let nombreF = "MinDefensa";
+let ColorF = "#144a8a";
 let iconPre = 'fas';
 let iconoF = 'fa-shield-alt';
 let colorFuente = "#ffffff";
-let porcentaje = 0.05;
+let porcentaje = 0.032;
 
 
 // llamammos la funcion para crear el cuadro de calculadora
