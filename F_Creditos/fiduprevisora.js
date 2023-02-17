@@ -1,10 +1,11 @@
 $( document ).ready(function() {
   
-let nombreF = "Casur";
-let ColorF = "#d81b60";
-let iconPre = 'fas';
-let iconoF = 'fa-shield-alt';
+let nombreF = "Fiduprevisora";
+let ColorF = "#a95638";
+let iconPre = 'fab';
+let iconoF = 'fa-facebook-f';
 let colorFuente = "#ffffff";
+
 
 
 // llamammos la funcion para crear el cuadro de calculadora

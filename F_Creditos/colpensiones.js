@@ -1,10 +1,11 @@
 $( document ).ready(function() {
   
-let nombreF = "Casur";
-let ColorF = "#d81b60";
-let iconPre = 'fas';
-let iconoF = 'fa-shield-alt';
+let nombreF = "Colpensiones";
+let ColorF = "#3266cc";
+let iconPre = 'fab';
+let iconoF = 'fa-pinterest-p';
 let colorFuente = "#ffffff";
+
 
 
 // llamammos la funcion para crear el cuadro de calculadora
@@ -16,7 +17,7 @@ $("#" + nombreF).click(function(){
   id=null; // Id nulo para nuevo registro
 
     //Llamamos al Formulario dentro del modal enviandole los datos
-    formularioModal(nombreF, ColorF, iconoF);
+    formularioModal(nombreF, ColorF, colorFuente);
 
     // Funcion que agrega campos nuevos a la derecha o a la izquierda
     nuevosCampos();

@@ -45,37 +45,7 @@
 
         
         <div class="row" id="calculadoras"> <!-- Botones -->
-          <!-- Policia -->
-          <div class="col-sm-4">
-            <!-- small box Celeste -->
-            <div class="small-box bg-success text-center" id="policia">
-              <div class="inner">
-                <h3>Policia</h3>
-                <h4>Calculadora</h4>
-              </div>
-              <div class="icon">
-                <i class="fas fa-sun"></i>
-              </div>
-              <a class="small-box-footer">Calcular <i class="fas fa-calculator"></i></i></a>
-            </div>
-          </div>
-
-          <!-- Pensionados -->
-          <div class="col-sm-4">
-            <!-- small box Celeste -->
-            <div class="small-box bg-primary text-center" id="pensionados">
-              <div class="inner">
-                <h3>Colpensiones</h3>
-                <h4>Calculadora</h4>
-              </div>
-              <div class="icon">
-                <i class="fab fa-jenkins"></i>
-              </div>
-              <a class="small-box-footer">Calcular <i class="fas fa-calculator"></i></i></a>
-            </div>
-          </div>
-
-
+          <!-- Aqui van los cuadros de las calculadoras -->
         </div> <!-- Fin de Botones -->
         
 
@@ -137,12 +107,17 @@
 
 <script src="./guardar.js"></script>
 <!-- <script src="./tabla_creditos.js"></script> -->
-<script src="./creditos.js"></script>
-<script src="./pensionados.js"></script>
-<script src="./calculadora.js"></script>
+<script src="./creditos.js"></script> <!-- Llama a Policia Calc -->
+<!-- <script src="./pensionados.js"></script> -->
+<script src="./calculadora.js"></script> <!-- Datos de ejemplo policia-->
+
+<script src="./policia.js"></script>
+<script src="./colpensiones.js"></script>
 <script src="./casur.js"></script>
-<script src="./formularioModal.js"></script>
-<script src="./cuadroDiv.js"></script>
+<script src="./fiduprevisora.js"></script>
+
+<script src="./funcionesCalculadoras.js"></script>
+
 <!-- <script src="./simulador.js"></script> -->
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
