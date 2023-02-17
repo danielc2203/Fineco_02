@@ -36,7 +36,7 @@ function consultar() {
 			table += "<th>" + key + "</th>";
 		  });
 		  table += "<th></th><th></th>";// Agrego dos culumbas extras para evitar error de detatable
-		  table += "</tr></thead><tbody class='text-lowercase'>";
+		  table += "</tr></thead><tbody class='text-uppercase'>";
 		  // Recorrer los resultados
 		  response.forEach(function (valores) {
 			table += "<tr>";

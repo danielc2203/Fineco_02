@@ -44,7 +44,7 @@
       <div class="container-fluid">
 
         
-        <div class="row"> <!-- Botones -->
+        <div class="row" id="calculadoras"> <!-- Botones -->
           <!-- Policia -->
           <div class="col-sm-4">
             <!-- small box Celeste -->
@@ -65,7 +65,7 @@
             <!-- small box Celeste -->
             <div class="small-box bg-primary text-center" id="pensionados">
               <div class="inner">
-                <h3>Pensionados</h3>
+                <h3>Colpensiones</h3>
                 <h4>Calculadora</h4>
               </div>
               <div class="icon">
@@ -75,20 +75,7 @@
             </div>
           </div>
 
-          <!-- Docentes -->
-          <div class="col-sm-4">
-            <!-- small box Celeste -->
-            <div class="small-box bg-info text-center" id="docentes">
-              <div class="inner">
-                <h3>Docentes</h3>
-                <h4>Calculadora</h4>
-              </div>
-              <div class="icon">
-                <i class="fas fa-graduation-cap"></i>
-              </div>
-              <a class="small-box-footer">Calcular <i class="fas fa-calculator"></i></i></a>
-            </div>
-          </div>
+
         </div> <!-- Fin de Botones -->
         
 
@@ -153,6 +140,7 @@
 <script src="./creditos.js"></script>
 <script src="./pensionados.js"></script>
 <script src="./calculadora.js"></script>
+<script src="./casur.js"></script>
 <!-- <script src="./simulador.js"></script> -->
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
