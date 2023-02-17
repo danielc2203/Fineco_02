@@ -141,6 +141,8 @@
 <script src="./pensionados.js"></script>
 <script src="./calculadora.js"></script>
 <script src="./casur.js"></script>
+<script src="./formularioModal.js"></script>
+<script src="./cuadroDiv.js"></script>
 <!-- <script src="./simulador.js"></script> -->
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->
