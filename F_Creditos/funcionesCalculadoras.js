@@ -1,3 +1,7 @@
+
+let valorG ="";
+let date = new Date().toLocaleDateString();
+
 // Funcion que pinta los cuadros div de cada calculadora en el html
 function cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre){
     // 1. Crear un nuevo elemento div
@@ -87,7 +91,6 @@ function formularioModal (nombreF, ColorF, colorFuente){
   
     html += '</tbody></table></div>'
 
-    html += '<button type="button" class="btn btn-outline-danger ml-3" onclick= "clearInput()"><i class="fas fa-broom"></i></button>'
     html += '<button type="button" class="btn btn-success ml-3" id="guardar" onclick= "guardarDatos()">Guardar</button>'
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
@@ -163,4 +166,232 @@ function nuevosCampos(){
       nextIdG++;
 
     });
+}
+
+
+// -----------------D
+
+// Modal de Guardar Datos en tabla - Modal Agregar Nuevo Credito
+function guardarDatos(){
+
+  if (valorG) {
+    Swal.fire({
+      title: 'Deseas crear',
+      text: "Un nuevo registro de credito?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Crear nuevo credito!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        var html = "";
+
+        html += '<div class="form-group row mb-0">'
+        html += '<form id="formNuevoCredito" class="needs-validation">  '
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CEDULA:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="number" id="F_cedula" value="" class="form-control form-control-sm" placeholder="CC" required>'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD MENSUAL:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_capacidad"  value="'+valorG+'" step="0.01" class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
+        html += '<div class="form-group row mb-0">'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">N° DE PLAZO EN MESES</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="number"  id="F_plazo" value="" class="form-control form-control-sm" placeholder="365" required>'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_fecha" value='+date+' class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
+        html += '<div class="form-group row mb-0">'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">MONTO DEL CREDITO:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="number" id="F_montoCredito" value="" class="form-control form-control-sm" placeholder="$" required>'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO DEL CREDITO:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_estado" value="Pendiente" class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
+        html += '<button type="button" class="btn btn-primary" onclick= "consultarCliente()" >Crear Solicitud</button>'
+        html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+        html += '</form>'
+
+        html += '<div id="answer"><table class="table table-striped"><tbody>'
+        html += '</tbody></table></div>'
+    
+        $("#fCalculadora").html(html);
+        $(".modal-header").css("background-color", "#ff5722");
+        $(".modal-header").css( "color", "white" );
+        $(".modal-title").css("font-weight: bold", "font-size: 18px");
+        $(".modal-title").text("Agregar Nueva Solicitud de Credito");
+
+      }
+    })
+  }else{
+    Swal.fire('Se requiere calcular la capacidad de libre inversiòn')
+  }
+
+ };
+
+ // Restablece el valorG a una cadena vacia
+ $('#modalCREDITOS').on('hidden.bs.modal', function () {
+  valorG = '';
+})
+
+
+
+// Boton guardar submit para Actualización de
+$('#fCalculadora').submit(function(e){                        
+  e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+
+  $opcion = 1;
+  cedula = $.trim($('#F_cedula').val());
+  capacidad = $.trim($('#F_capacidad').val());
+  plazo = $.trim($('#F_plazo').val());
+  fecha = $.trim($('#F_fecha').val());
+  monto = $.trim($('#F_montoCredito').val());
+  estado = $.trim($('#F_estado').val());
+
+  if (!!cedula && !!monto && !!plazo){
+      $.ajax({
+          url: "crud.php",
+          type: "POST",
+          datatype:"json",    
+          data:  {cedula:cedula,
+                capacidad:capacidad,
+                plazo:plazo,
+                fecha:fecha,
+                monto:monto,
+                estado:estado,
+                opcion:opcion},    
+          success: function(data) {
+              $(function() {
+                  Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'el credito ha sido guardado exitosamente...',
+                      showConfirmButton: false,
+                      timer: 2000,
+                      willClose: () => {
+                          window.location.reload()
+                        }
+                    })
+                });
+          }
+        });
+  }else{
+      Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Los campos son obligatorios',
+          showConfirmButton: false,
+          
+        })
+  };
+  
+
+});
+
+
+
+// Funcion Consultar Cliente y si es correcto guarda el credito en la tabla Creditos
+function consultarCliente() {
+  cedula = $.trim($('#F_cedula').val());
+  capacidad = $.trim($('#F_capacidad').val());
+  plazo = $.trim($('#F_plazo').val());
+  fecha = $.trim($('#F_fecha').val());
+  monto = $.trim($('#F_montoCredito').val());
+  estado = $.trim($('#F_estado').val());
+  opcion = 6; //Consulta CC
+
+  if(cedula != 0){
+    console.log("Cedula 2 = "+cedula);
+
+    $.ajax({
+      url: "crud.php",
+      type: "POST",
+      datatype:"json",    
+      data: {opcion:opcion, cedula:cedula}, 
+
+      success: function (response) {
+      
+          // Parse the json result Trae los resultados en json
+          response = JSON.parse(response);
+          
+          // Check if there is available records
+          if(response.length) {
+              // Loop the parsed JSON
+              $.each(response, function(key,value) {
+                //console.log("ok el documento correcto guardando... ");
+                $.ajax({
+                  url: "crud.php",
+                  type: "POST",
+                  datatype:"json",    
+                  data:  {cedula:cedula,
+                        capacidad:capacidad,
+                        plazo:plazo,
+                        fecha:fecha,
+                        monto:monto,
+                        estado:estado,
+                        opcion:1},    
+                  success: function(data) {
+                      $(function() {
+                          Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'el credito ha sido guardado exitosamente...',
+                              showConfirmButton: false,
+                              timer: 2000,
+                              willClose: () => {
+                                  window.location.reload()
+                                }
+                            })
+                        });
+                  }
+                });
+              });
+          } else {
+
+            Swal.fire({
+              title: 'El documento '+cedula+' no es cliente, desea registrarlo ?',
+              showDenyButton: true,
+              //showCancelButton: true,
+              confirmButtonText: 'Registrar Cliente',
+              denyButtonText: 'No Guardar',
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                Swal.fire('Seras redirigido al formulario de clientes', '', 'success')
+                window.location.href = "/Fineco_02/F_Clientes";
+              } else if (result.isDenied) {
+                Swal.fire('Registro no almacenado', '', 'info')
+              }
+            })
+
+          }      
+      }
+    });
+
+  }else{
+    console.log("Cedula Vacia = "+cedula);
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'El campo de cedula es obligatorio ',
+      showConfirmButton: false,
+    })
+  };
+
 }
