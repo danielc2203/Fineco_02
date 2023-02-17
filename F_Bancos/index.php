@@ -18,34 +18,7 @@ include_once ('../global/conexiond.php');
 <!-- FIN DE HEADER -->
 
 <!-- Main Sidebar Container -->
-<?php include ('../recursos/sidebar.php');
-//echo $id_usr;
-$rol = $rol;
-
-function tienePermiso($conexion, $id_usr, $permiso) {
-  // Consulta a la base de datos para obtener el rol del usuario
-  //$resultado = mysqli_query($conexion, "SELECT rol_id FROM usuarios WHERE id = $id_usr");
-  $resultado = $conexion->prepare("SELECT rol_id FROM usuarios WHERE id = $id_usr");
-  $resultado->execute();
-  $fila = $resultado->fetch(PDO::FETCH_ASSOC);
-  $rol = $fila['rol_id'];
-  
-  // Consulta a la base de datos para obtener los permisos del rol
-  $resultado = $conexion->prepare("SELECT permisos FROM roles WHERE rol_id = '$rol'");
-  $resultado->execute();
-  $fila = $resultado->fetch(PDO::FETCH_ASSOC);
-  if(is_array($fila)){
-    $permisos = explode(',', $fila['permisos']);
-    // Verifica si el rol del usuario tiene el permiso requerido
-  return in_array($permiso, $permisos);
-  }
-  
-  }
-  
-  // Ejemplo de uso de la función
-  if (tienePermiso($conexion, $id_usr, 'bancos')) {
-  // El usuario tiene permiso para crear un artículo
-      ?>
+<?php include ('../recursos/sidebar.php');?>
       <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -89,27 +62,8 @@ function tienePermiso($conexion, $id_usr, $permiso) {
     </section>
     
 </div>
-      <?php
-  } else {
-    // Este usuario no tiene permisos para ver esta pàgina
-      ?>
+
       
-      <div class="content-wrapper">
-        <section class="content" id="error">
-
-        <div class="alert alert-warning" role="alert">
-          <h4 class="alert-heading">Permiso denegado!</h4>
-          <p>Usted no tiene permisos para ver el contenido de esta secciòn.</p>
-          <hr>
-          <p class="mb-0">Si cree que esto es un error, por favor solicite ayuda a un administrador.</p>
-        </div>
-        <button type="button" class="btn btn-outline-danger" onclick="errord()">Màs Informaciòn</button>
-      </section>
-      </div>
-      <?php
-  }
-
- ?>
 
 <!-- Fin de Sidebar -->
 
