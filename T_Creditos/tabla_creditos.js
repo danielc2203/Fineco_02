@@ -42,8 +42,15 @@ $(document).ready(function() {
                     //var buttonID = +full.id;
                     return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
                 }},
-            {"data": "pagaduria"}, //Monto en formato original
-            //{"data": "monto"}, //Monto en formato original
+
+            //Nombre de la pagadira o calculadora
+            {data: 'pagaduria',
+                render: function(data){
+                    return '<span style="text-transform:capitalize;">' + data + '</span>';
+                    return data; 
+                }
+            }, 
+            
             {// Datos de monto en formato moneda
                 data: 'monto',
                 render: function (data, type) {
@@ -91,9 +98,7 @@ $(document).ready(function() {
                         // Llamamos la función de simulador
                         return '<a class="btn '+link+' Simulador" role="button">'+data+'</a>';
                     }
- 
-                    return data;
-            
+                    return data;        
                 },
             },
 
@@ -312,9 +317,9 @@ $(document).ready(function() {
             html += '<input type="text" id="plazo" value="" class="form-control form-control-sm" >'
             html += '</div>'
 
-            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Amortizaciòn</label>'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Pagaduria</label>'
             html += '<div class="col-sm-3">'
-            html += '<input type="text" id="amortizacion" value="" class="form-control form-control-sm" readonly>'
+            html += '<input type="text" id="Pagaduria" value="" class="form-control form-control-sm" readonly>'
             html += '</div>'
             html += '</div>'
 
@@ -363,6 +368,7 @@ $(document).ready(function() {
                     //$("#solicitud_credito").val(value.solicitud_credito);
                     $("#monto").val(value.monto);
                     $("#plazo").val(value.plazo);
+                    $("#Pagaduria").val(value.pagaduria);
                     //$("#amortizacion").val(value.amortizacion);
                     $("#tipo_credito").val(value.tipo_credito);
                     // $("#deudas_actuales").val(value.deudas_actuales);
@@ -395,7 +401,7 @@ $(document).ready(function() {
         //$("#formModal").trigger("reset");
         $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
         $(".modal-header").css("color", "white" );
-        $(".modal-title").text("Editar Detalles del Credito");		
+        $(".modal-title").text("Editar Detalles de Solicitud de Credito");		
         $('#modalCRUD').modal('show');
         var opcion = 2;//para enviar el update
         
@@ -412,7 +418,7 @@ $(document).ready(function() {
 
             Swal.fire({
                 icon: 'warning',
-                title: 'Estas seguro de eliminar este credito?',
+                title: 'Estas seguro de eliminar esta solicitud de credito?',
                 showDenyButton: false,
                 showCancelButton: true,
                 confirmButtonText: 'SI'
@@ -429,7 +435,7 @@ $(document).ready(function() {
                     data: {opcion:opcion, id:id}, 
                     success: function(response) {
                         tablaUsuarios.row(fila.parents('tr')).remove().draw();    
-                        Swal.fire('El credito ha sido Eliminado de la base de datos.', response, 'success');
+                        Swal.fire('La solicitud de credito ha sido Eliminado de la base de datos.', response, 'success');
                      }
                   });
 
@@ -468,7 +474,7 @@ $(document).ready(function() {
 
 
 
-//submit para actualizarCredito Recibe los datos cuando se da guardar en editar detalles del credito
+//submit para actualizar la solicitud de Credito, Recibe los datos cuando se da guardar en editar detalles del credito
 function actualizarCredito(){
 
 
@@ -503,7 +509,7 @@ function actualizarCredito(){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'los detalles del credito han sido actualizados con exito...',
+                title: 'los detalles de solicitud de credito han sido actualizados con exito...',
                 showConfirmButton: false,
                 timer: 2000,
                  willClose: () => {
