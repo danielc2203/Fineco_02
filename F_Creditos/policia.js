@@ -2,8 +2,8 @@ $( document ).ready(function() {
   
   let nombreF = "Policia";
   let ColorF = "#007936";
-  let iconPre = 'fab';
-  let iconoF = 'fa-pinterest-p';
+  let iconPre = 'fas';
+  let iconoF = 'fa-sun';
   let colorFuente = "#ffffff";
   
   // llamammos la funcion para crear el cuadro de calculadora
@@ -136,6 +136,13 @@ cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre);
   }
   
  });
+
+  // Restablece el valorG a una cadena vacia
+  $('#modalCREDITOS').on('hidden.bs.modal', function () {
+    valorG = '';
+    nombre = '';
+    $(document).off("input");
+  })
 
 
 });

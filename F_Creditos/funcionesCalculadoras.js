@@ -1,5 +1,6 @@
 
 let valorG ="";
+let nombre = "";
 let date = new Date().toLocaleDateString();
 
 // Funcion que pinta los cuadros div de cada calculadora en el html
@@ -36,6 +37,7 @@ function cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre){
     // 9. Agregar el nuevo elemento div al final de la sección con id "calculadoras"
     const calculadorasDiv = document.getElementById('calculadoras');
     calculadorasDiv.appendChild(cuadroDiv);
+    
 
 }
 
@@ -101,6 +103,7 @@ function formularioModal (nombreF, ColorF, colorFuente){
     "color": "#fff" });
     $(".modal-title").text("Calculadora de Créditos - "+nombreF);
     $('#modalCREDITOS').modal('show');
+    console.log(nombreF);
 
 }
 
@@ -177,7 +180,7 @@ function guardarDatos(){
   if (valorG) {
     Swal.fire({
       title: 'Deseas crear',
-      text: "Un nuevo registro de credito?",
+      text: "Un nuevo registro de credito para ",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -236,6 +239,7 @@ function guardarDatos(){
         $(".modal-header").css( "color", "white" );
         $(".modal-title").css("font-weight: bold", "font-size: 18px");
         $(".modal-title").text("Agregar Nueva Solicitud de Credito");
+        
 
       }
     })
@@ -248,6 +252,8 @@ function guardarDatos(){
  // Restablece el valorG a una cadena vacia
  $('#modalCREDITOS').on('hidden.bs.modal', function () {
   valorG = '';
+  nombre = '';
+  $(document).off("input");
 })
 
 

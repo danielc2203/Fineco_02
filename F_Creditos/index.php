@@ -109,6 +109,7 @@
 <script src="./colpensiones.js"></script>
 <script src="./casur.js"></script>
 <script src="./fiduprevisora.js"></script>
+<script src="./minDefensaPensionados.js"></script>
 <script src="./minDefensa.js"></script>
 <script src="./docentes.js"></script>
 
