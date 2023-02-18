@@ -69,6 +69,7 @@ cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre);
     html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
     html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
+    html += '<tr><td>PAGADURIA</td><td id="pagaduria">'+nombreF+'</td></tr>'
   
     html += '</tbody></table></div>'
 

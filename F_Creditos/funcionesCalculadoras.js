@@ -1,6 +1,6 @@
-
+let nombreF="";
 let valorG ="";
-let nombre = "";
+let nombreP = "";
 let date = new Date().toLocaleDateString();
 
 // Funcion que pinta los cuadros div de cada calculadora en el html
@@ -90,6 +90,7 @@ function formularioModal (nombreF, ColorF, colorFuente){
     html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
     //html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
+    html += '<tr><td>PAGADURIA</td><td id="pagaduria">'+nombreF+'</td></tr>'
   
     html += '</tbody></table></div>'
 
@@ -103,10 +104,10 @@ function formularioModal (nombreF, ColorF, colorFuente){
     "color": "#fff" });
     $(".modal-title").text("Calculadora de Créditos - "+nombreF);
     $('#modalCREDITOS').modal('show');
-    console.log(nombreF);
+
+
 
 }
-
 
 // Funcion para agregar nuevos campos a la izquierda o derecha
 function nuevosCampos(){
@@ -176,6 +177,9 @@ function nuevosCampos(){
 
 // Modal de Guardar Datos en tabla - Modal Agregar Nuevo Credito
 function guardarDatos(){
+  
+  // Guardo en nombreP el texto del id pagaduria
+  let nombreP = document.getElementById("pagaduria").textContent;
 
   if (valorG) {
     Swal.fire({
@@ -227,6 +231,18 @@ function guardarDatos(){
         html += '</div>'
         html += '</div>'
 
+        html += '<div class="form-group row mb-0">'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PAGADURIA:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_pagaduria" value='+nombreP+' class="form-control form-control-sm" placeholder="$" readonly >'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO DEL CREDITO:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_estado" value="Pendiente" class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '</div>'
+        html += '</div>'
+
         html += '<button type="button" class="btn btn-primary" onclick= "consultarCliente()" >Crear Solicitud</button>'
         html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
         html += '</form>'
@@ -247,12 +263,13 @@ function guardarDatos(){
     Swal.fire('Se requiere calcular la capacidad de libre inversiòn')
   }
 
+  
  };
 
  // Restablece el valorG a una cadena vacia
  $('#modalCREDITOS').on('hidden.bs.modal', function () {
   valorG = '';
-  nombre = '';
+  nombreF = '';
   $(document).off("input");
 })
 
@@ -264,6 +281,7 @@ $('#fCalculadora').submit(function(e){
 
   $opcion = 1;
   cedula = $.trim($('#F_cedula').val());
+  pagaduria = $.trim($('#F_pagaduria').val());
   capacidad = $.trim($('#F_capacidad').val());
   plazo = $.trim($('#F_plazo').val());
   fecha = $.trim($('#F_fecha').val());
@@ -276,6 +294,7 @@ $('#fCalculadora').submit(function(e){
           type: "POST",
           datatype:"json",    
           data:  {cedula:cedula,
+                pagaduria:pagaduria,
                 capacidad:capacidad,
                 plazo:plazo,
                 fecha:fecha,
@@ -315,6 +334,7 @@ $('#fCalculadora').submit(function(e){
 // Funcion Consultar Cliente y si es correcto guarda el credito en la tabla Creditos
 function consultarCliente() {
   cedula = $.trim($('#F_cedula').val());
+  pagaduria = $.trim($('#F_pagaduria').val());
   capacidad = $.trim($('#F_capacidad').val());
   plazo = $.trim($('#F_plazo').val());
   fecha = $.trim($('#F_fecha').val());
@@ -323,7 +343,7 @@ function consultarCliente() {
   opcion = 6; //Consulta CC
 
   if(cedula != 0){
-    console.log("Cedula 2 = "+cedula);
+    //console.log("Cedula 2 = "+cedula);
 
     $.ajax({
       url: "crud.php",
@@ -346,6 +366,7 @@ function consultarCliente() {
                   type: "POST",
                   datatype:"json",    
                   data:  {cedula:cedula,
+                        pagaduria:pagaduria,
                         capacidad:capacidad,
                         plazo:plazo,
                         fecha:fecha,

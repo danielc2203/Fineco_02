@@ -42,6 +42,7 @@ $(document).ready(function() {
                     //var buttonID = +full.id;
                     return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
                 }},
+            {"data": "pagaduria"}, //Monto en formato original
             //{"data": "monto"}, //Monto en formato original
             {// Datos de monto en formato moneda
                 data: 'monto',
@@ -272,7 +273,7 @@ $(document).ready(function() {
     });
     
     
-    // Editar Detalles del Credito
+    // Modal de Ediciòn de los Detalles del Credito
     $(document).on("click", ".btnEditar", function(){	
         $('#VerClientes').modal('toggle')	        
         opcion = 5;//Para llamar los datos de la BD
@@ -309,6 +310,18 @@ $(document).ready(function() {
             html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO</label>'
             html += '<div class="col-sm-3">'
             html += '<input type="text" id="plazo" value="" class="form-control form-control-sm" >'
+            html += '</div>'
+
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Amortizaciòn</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="text" id="amortizacion" value="" class="form-control form-control-sm" readonly>'
+            html += '</div>'
+            html += '</div>'
+
+            html += '<div class="form-group row mb-0">'
+            html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Tipo de Credito</label>'
+            html += '<div class="col-sm-3">'
+            html += '<input type="text" id="tipo_credito" value="" class="form-control form-control-sm" >'
             html += '</div>'
 
             html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
@@ -351,7 +364,7 @@ $(document).ready(function() {
                     $("#monto").val(value.monto);
                     $("#plazo").val(value.plazo);
                     //$("#amortizacion").val(value.amortizacion);
-                    //$("#tipo_credito").val(value.tipo_credito);
+                    $("#tipo_credito").val(value.tipo_credito);
                     // $("#deudas_actuales").val(value.deudas_actuales);
                     // $("#egresos").val(value.egresos);
                     // $("#datacreditos").val(value.datacreditos);
@@ -453,13 +466,16 @@ $(document).ready(function() {
 
 });
 
-//submit para actualizarCredito
+
+
+//submit para actualizarCredito Recibe los datos cuando se da guardar en editar detalles del credito
 function actualizarCredito(){
 
 
     opcion = 2;
     id = $.trim($('#id').val());
     id_documento = $.trim($('#id_documento').val());
+    tipo_credito = $.trim($('#tipo_credito').val());
     monto = $.trim($('#monto').val());
     plazo = $.trim($('#plazo').val());
     capacidad = $.trim($('#capacidad').val());
@@ -473,6 +489,7 @@ function actualizarCredito(){
           data:  {id_documento:id_documento,
                 monto:monto,
                 plazo:plazo,
+                tipo_credito:tipo_credito,
                 capacidad:capacidad,
                 estado:estado,
                 id:id,

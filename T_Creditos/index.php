@@ -58,9 +58,10 @@
               <tr> 
               <th>id</th>
               <th>Nº Documento</th>
-              <th>Monto</th>                             
-              <th>Plazo</th>
-              <th>Capacidad</th>
+              <th>Pagaduria</th>
+              <th>Monto Solicitado</th>                             
+              <th>Plazo Meses</th>
+              <th>Capacidad Mensual</th>
               <th>Estado</th>
               <th>Fecha de Solicitud</th>
               </tr>

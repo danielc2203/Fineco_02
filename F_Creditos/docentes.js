@@ -1,3 +1,4 @@
+
 $( document ).ready(function() {
   
 let nombreF = "Docentes";
@@ -94,7 +95,8 @@ $("#" + nombreF).click(function(){
     document.getElementById("cupo").innerText = maximo.toFixed(0);
     //document.getElementById("maximo").innerText = maximo.toFixed(0);
 
-    valorG = (maximo.toFixed(0));// Guarda el valor de cupo en valorG para guardar los datos
+    valorG = (maximo.toFixed(0));// Guarda el valor de cupo en valorG = Libre inversiòn
+
   }
   
  });

@@ -11,6 +11,7 @@ $id_documento = (isset($_POST['cedula'])) ? $_POST['cedula'] : '';
 $capacidad = (isset($_POST['capacidad'])) ? $_POST['capacidad'] : '';
 $monto = (isset($_POST['monto'])) ? $_POST['monto'] : '';
 $plazo = (isset($_POST['plazo'])) ? $_POST['plazo'] : '';
+$tipo_credito = (isset($_POST['tipo_credito'])) ? $_POST['tipo_credito'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $fecha_solicitud = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
 
@@ -33,6 +34,7 @@ switch($opcion){
     case 2:
          $consulta = "UPDATE creditos SET monto='$monto',
                                         plazo='$plazo',
+                                        tipo_credito='$tipo_credito',
                                         capacidad='$capacidad',
                                         estado='$estado'
                                         WHERE id='$id' ";	
