@@ -331,84 +331,70 @@ function consultarCliente() {
   asesor = $.trim($('#F_asesor').val());
   opcion = 6; //Consulta CC
 
-  if(cedula != 0){
-    //console.log("Cedula 2 = "+cedula);
-
+  if(cedula != 0) {
     $.ajax({
       url: "crud.php",
       type: "POST",
-      datatype:"json",    
-      data: {opcion:opcion, cedula:cedula}, 
-
+      datatype: "json",    
+      data: {opcion:opcion, cedula:cedula},
       success: function (response) {
-      
-          // Parse the json result Trae los resultados en json
-          response = JSON.parse(response);
-          
-          // Check if there is available records
-          if(response.length) {
-              // Loop the parsed JSON
-              $.each(response, function(key,value) {
-                //console.log("ok el documento correcto guardando... ");
-                $.ajax({
-                  url: "crud.php",
-                  type: "POST",
-                  datatype:"json",    
-                  data:  {cedula:cedula,
-                        pagaduria:pagaduria,
-                        capacidad:capacidad,
-                        plazo:plazo,
-                        fecha:fecha,
-                        monto:monto,
-                        estado:estado,
-                        asesor:asesor,
-                        opcion:1},    
-                  success: function(data) {
-                      $(function() {
-                          Swal.fire({
-                              position: 'top-end',
-                              icon: 'success',
-                              title: 'el credito ha sido guardado exitosamente...',
-                              showConfirmButton: false,
-                              timer: 2000,
-                              willClose: () => {
-                                  window.location.reload()
-                                }
-                            })
-                        });
-                  }
-                });
-              });
-          } else {
-
+        response = JSON.parse(response);
+        if(response.length) {
+          if(!plazo || !monto) {
             Swal.fire({
-              title: 'El documento '+cedula+' no es cliente, desea registrarlo ?',
-              showDenyButton: true,
-              //showCancelButton: true,
-              confirmButtonText: 'Registrar Cliente',
-              denyButtonText: 'No Guardar',
-            }).then((result) => {
-              /* Read more about isConfirmed, isDenied below */
-              if (result.isConfirmed) {
-                Swal.fire('Seras redirigido al formulario de clientes', '', 'success')
-                window.location.href = "/Fineco_02/F_Clientes";
-              } else if (result.isDenied) {
-                Swal.fire('Registro no almacenado', '', 'info')
-              }
-            })
-
-          }      
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Los campos de plazo y monto son obligatorios',
+            });
+          } else {
+            $.each(response, function(key,value) {
+              $.ajax({
+                url: "crud.php",
+                type: "POST",
+                datatype: "json",    
+                data: {cedula:cedula, pagaduria:pagaduria, capacidad:capacidad, plazo:plazo, fecha:fecha, monto:monto, estado:estado, asesor:asesor, opcion:1},    
+                success: function(data) {
+                  $(function() {
+                    Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'El crédito ha sido guardado exitosamente',
+                      showConfirmButton: false,
+                      timer: 2000,
+                      willClose: () => {
+                        window.location.reload();
+                      }
+                    });
+                  });
+                }
+              });
+            });
+          }
+        } else {
+          Swal.fire({
+            title: 'El documento '+cedula+' no es cliente, desea registrarlo ?',
+            showDenyButton: true,
+            confirmButtonText: 'Registrar Cliente',
+            denyButtonText: 'No Guardar',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Seras redirigido al formulario de clientes', '', 'success');
+              window.location.href = "/Fineco_02/F_Clientes";
+            } else if (result.isDenied) {
+              Swal.fire('Registro no almacenado', '', 'info');
+            }
+          });
+        }      
       }
     });
-
-  }else{
-    console.log("Cedula Vacia = "+cedula);
+  } else {
     Swal.fire({
       position: 'top-end',
       icon: 'error',
-      title: 'El campo de cedula es obligatorio ',
+      title: 'El campo de cedula es obligatorio',
       showConfirmButton: false,
-    })
-  };
-
+    });
+  }
 }
+
+
