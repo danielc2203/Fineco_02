@@ -2,13 +2,8 @@ let nombreF="";
 let valorG ="";
 let nombreP = "";
 let date = new Date().toLocaleDateString();
-
-// Recupera el valor de la etiqueta HTML donde se imprimió la variable PHP
+// Recupera el nombre del usuario actual
 var usuariof = document.getElementById("usuariof").textContent;
-alert(usuariof);
-
-// Utiliza la variable en tu código JavaScript
-//document.getElementById("asesor").value = usuariof;
 
 // Funcion que pinta los cuadros div de cada calculadora en el html
 function cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre){
