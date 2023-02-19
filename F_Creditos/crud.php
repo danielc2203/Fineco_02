@@ -13,6 +13,7 @@ $capacidad = (isset($_POST['capacidad'])) ? $_POST['capacidad'] : '';
 $monto = (isset($_POST['monto'])) ? $_POST['monto'] : '';
 $plazo = (isset($_POST['plazo'])) ? $_POST['plazo'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
+$asesor = (isset($_POST['asesor'])) ? $_POST['asesor'] : '';
 $fecha_solicitud = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
 
 
@@ -22,8 +23,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO creditos (id_documento, pagaduria, monto, plazo, capacidad, fecha_solicitud, estado)
-                     VALUES('$id_documento', '$pagaduria', '$monto', '$plazo', '$capacidad', '$fecha_solicitud', '$estado') ";
+        $consulta = "INSERT INTO creditos (id_documento, pagaduria, monto, plazo, capacidad, asesor, fecha_solicitud, estado)
+                     VALUES('$id_documento', '$pagaduria', '$monto', '$plazo', '$capacidad', '$asesor', '$fecha_solicitud', '$estado') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         

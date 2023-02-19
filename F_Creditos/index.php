@@ -10,14 +10,15 @@
 <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
 
-<!-- FIN DE HEADER -->
-
 <!-- Main Sidebar Container -->
 <?php include ('../recursos/sidebar.php');
 //echo $id_usr;
+//echo $usuariof
  ?>
-<!-- Fin de Sidebar -->
+ <span id="usuariof" style="display: none;"><?php echo $usuariof; ?></span>
 
+
+<!-- Fin de Sidebar -->
 
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -38,30 +39,17 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Modulo de Creditos -->
     <section class="content">
-      <div class="container-fluid">
-
-        
+      <div class="container-fluid"> 
         <div class="row" id="calculadoras"> <!-- Botones -->
           <!-- Aqui van los cuadros de las calculadoras -->
         </div> <!-- Fin de Botones -->
-        
-
-
-
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
 <!-- /.content-wrapper -->
-
-
-
-
-
-
 <!-- Modal Creditos -->
 <div class="modal fade" id="modalCREDITOS" tabindex="-1" role="dialog" aria-labelledby="modalCREDITOS" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -82,8 +70,6 @@
   </div>
 </div>
 
-
-
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
 
@@ -101,7 +87,6 @@
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
 
@@ -112,9 +97,4 @@
 <script src="./minDefensaPensionados.js"></script>
 <script src="./minDefensa.js"></script>
 <script src="./docentes.js"></script>
-
 <script src="./funcionesCalculadoras.js"></script>
-
-<!-- <script src="./simulador.js"></script> -->
-<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
-<!-- fin de footer -->

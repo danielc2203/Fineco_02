@@ -43,11 +43,6 @@
     <section class="content">
       <div class="container-fluid">
 
-        
-        
-        
-
-
         <!-- Main row -->
         <div class="row">
           <!-- Listado de Creditos pendientes-->

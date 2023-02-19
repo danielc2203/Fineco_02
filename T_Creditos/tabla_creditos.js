@@ -235,7 +235,7 @@ $(document).ready(function() {
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>calificacion_interna: </b> '+ value.calificacion_interna +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>cuota_mensual: </b> '+ value.cuota_mensual +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>seguro: </b> '+ value.seguro +'</p>'
-                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>asesoria: </b> '+ value.asesoria +'</p>'
+                                        html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>Asesor de Fineco: </b> '+ value.asesor +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>comentarios: </b> '+ value.comentarios +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>fecha_solicitud: </b> '+ value.fecha_solicitud +'</p>'
                                         html += '<p style="margin-bottom: 5px;" class="text-muted text-sm"><b>estado: </b> '+ value.estado +'</p>'

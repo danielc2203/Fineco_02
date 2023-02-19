@@ -3,6 +3,13 @@ let valorG ="";
 let nombreP = "";
 let date = new Date().toLocaleDateString();
 
+// Recupera el valor de la etiqueta HTML donde se imprimió la variable PHP
+var usuariof = document.getElementById("usuariof").textContent;
+alert(usuariof);
+
+// Utiliza la variable en tu código JavaScript
+//document.getElementById("asesor").value = usuariof;
+
 // Funcion que pinta los cuadros div de cada calculadora en el html
 function cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre){
     // 1. Crear un nuevo elemento div
@@ -37,19 +44,14 @@ function cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre){
     // 9. Agregar el nuevo elemento div al final de la sección con id "calculadoras"
     const calculadorasDiv = document.getElementById('calculadoras');
     calculadorasDiv.appendChild(cuadroDiv);
-    
-
 }
 
 // Funcion que llama un modal y pone los datos del formulario de cada calculadora
-function formularioModal (nombreF, ColorF, colorFuente){
+function formularioModal (nombreF, ColorF, colorFuente, F_asesor){
 
-    
-  var html = "";
-  var html = '<div class="container">';
-  html += '<div class="row">';
-  html += '<div class="col-6" id="left-col">';
-  html += '<a id="add-Ingresos" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
+  
+  var html = '<div class="container"><div class="row"><div class="col-6" id="left-col"><a id="add-Ingresos" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
+
 
   var inputs = [   
     { label: 'Asignación Básica', id: 'C1' }
@@ -88,7 +90,6 @@ function formularioModal (nombreF, ColorF, colorFuente){
 
     html += '<tr><td>TOTAL DEVENGADOS</td><td id="devengados">0</td></tr>'
     html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
-    //html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
     html += '<tr><td>PAGADURIA</td><td id="pagaduria">'+nombreF+'</td></tr>'
   
@@ -98,82 +99,70 @@ function formularioModal (nombreF, ColorF, colorFuente){
     html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
 
     $("#fCalculadora").html(html);
-
     $(".modal-header").css({
     "background-color": ColorF,
     "color": "#fff" });
     $(".modal-title").text("Calculadora de Créditos - "+nombreF);
     $('#modalCREDITOS').modal('show');
 
-
-
 }
 
 // Funcion para agregar nuevos campos a la izquierda o derecha
 function nuevosCampos(){
-      
-    //btn nuevo campo al for de la columna izquierda:
-    let nextIdC = 9;
-    
-    document.getElementById("add-Ingresos").addEventListener("click", function() {
-      const input = document.createElement("input");
-      input.id = "C" + nextIdC;
-      input.type = 'number';
-      input.max = 999999999;
-      input.className = 'form-control form-control-sm';
-      input.placeholder = '$';
+  
+  const leftCol = document.getElementById("left-col");
+  const rightCol = document.getElementById("right-col");
 
-      const label = document.createElement("label");
-      label.className = "col-6 col-form-label-sm";
-      label.innerHTML = "Ingreso " +input.id ;
+  let nextIdC = 9;
+  let nextIdG = 3;
 
-      const divInput = document.createElement("div");
-      divInput.className = "col-6";
-      divInput.appendChild(input);
+  const inputFormat = {
+    type: 'number',
+    max: 999999999,
+    className: 'form-control form-control-sm',
+    placeholder: '$'
+  };
 
-      const divFormGroup = document.createElement("div");
-      divFormGroup.className = "form-group row mb-0";
-      divFormGroup.appendChild(label);
-      divFormGroup.appendChild(divInput);
+  function createInput(id, label) {
+    const input = document.createElement("input");
+    input.id = id;
+    Object.assign(input, inputFormat);
 
-      document.getElementById("left-col").appendChild(divFormGroup);
-      nextIdC++;
-    });
+    const inputDiv = document.createElement("div");
+    inputDiv.className = "col-6";
+    inputDiv.appendChild(input);
 
-    //Agregando campos al lado derecho y sumandolos:
-    let nextIdG = 3;
+    const labelDiv = document.createElement("label");
+    labelDiv.className = "col-6 col-form-label-sm";
+    labelDiv.textContent = label;
 
-    document.getElementById("add-Gastos").addEventListener("click", function() {
-      // Create a new input element
-      let newInput = document.createElement("input");
-      newInput.id = "G" + nextIdG;
-      newInput.type = 'number';
-      newInput.max = 999999999;
-      newInput.className = 'form-control form-control-sm';
-      newInput.placeholder = '$';
+    const formGroupDiv = document.createElement("div");
+    formGroupDiv.className = "form-group row mb-0";
+    formGroupDiv.appendChild(labelDiv);
+    formGroupDiv.appendChild(inputDiv);
 
-      const label = document.createElement("label");
-      label.className = "col-6 col-form-label-sm";
-      label.innerHTML = "Gasto " +newInput.id ;
+    return formGroupDiv;
+  }
 
-      const divInput = document.createElement("div");
-      divInput.className = "col-6";
-      divInput.appendChild(newInput);
+  function addNewIncomeField() {
+    const inputId = "C" + nextIdC++;
+    const label = "Ingreso " + inputId;
+    const inputEl = createInput(inputId, label);
+    leftCol.appendChild(inputEl);
+  }
 
-      const divFormGroup = document.createElement("div");
-      divFormGroup.className = "form-group row mb-0";
-      divFormGroup.appendChild(label);
-      divFormGroup.appendChild(divInput);
+  function addNewExpenseField() {
+    const inputId = "G" + nextIdG++;
+    const label = "Gasto " + inputId;
+    const inputEl = createInput(inputId, label);
+    rightCol.appendChild(inputEl);
+  }
 
-      //Agregamos los elementos creados a la columna
-      document.getElementById("right-col").appendChild(divFormGroup);
-      nextIdG++;
+  document.getElementById("add-Ingresos").addEventListener("click", addNewIncomeField);
+  document.getElementById("add-Gastos").addEventListener("click", addNewExpenseField);
 
-    });
 }
 
-
-// -----------------D
 
 // Modal de Guardar Datos en tabla - Modal Agregar Nuevo Credito
 function guardarDatos(){
@@ -237,11 +226,13 @@ function guardarDatos(){
         html += '<input type="text" id="F_pagaduria" value='+nombreP+' class="form-control form-control-sm" placeholder="$" readonly >'
         html += '</div>'
 
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO DEL CREDITO:</label>'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ASESOR DE FINECO:</label>'
         html += '<div class="col-sm-3">'
-        html += '<input type="text" id="F_estado" value="Pendiente" class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '<input type="text" id="F_asesor" value="'+usuariof+'" class="form-control form-control-sm" placeholder="$" readonly>';
         html += '</div>'
         html += '</div>'
+
+        // ' + <?php echo json_encode($nombre_usr); ?> + '
 
         html += '<button type="button" class="btn btn-primary" onclick= "consultarCliente()" >Crear Solicitud</button>'
         html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
@@ -287,6 +278,7 @@ $('#fCalculadora').submit(function(e){
   fecha = $.trim($('#F_fecha').val());
   monto = $.trim($('#F_montoCredito').val());
   estado = $.trim($('#F_estado').val());
+  asesor = $.trim($('#F_asesor').val());
 
   if (!!cedula && !!monto && !!plazo){
       $.ajax({
@@ -300,6 +292,7 @@ $('#fCalculadora').submit(function(e){
                 fecha:fecha,
                 monto:monto,
                 estado:estado,
+                asesor:asesor,
                 opcion:opcion},    
           success: function(data) {
               $(function() {
@@ -340,6 +333,7 @@ function consultarCliente() {
   fecha = $.trim($('#F_fecha').val());
   monto = $.trim($('#F_montoCredito').val());
   estado = $.trim($('#F_estado').val());
+  asesor = $.trim($('#F_asesor').val());
   opcion = 6; //Consulta CC
 
   if(cedula != 0){
@@ -372,6 +366,7 @@ function consultarCliente() {
                         fecha:fecha,
                         monto:monto,
                         estado:estado,
+                        asesor:asesor,
                         opcion:1},    
                   success: function(data) {
                       $(function() {
