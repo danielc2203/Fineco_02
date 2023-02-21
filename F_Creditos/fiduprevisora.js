@@ -45,9 +45,11 @@ $("#" + nombreF).click(function(){
 
     // Mostrar el valor de G1 en el campo correspondiente
    
-    const redondeado = Math.ceil(valorG1/100)*100; // Redondea hacia arriba
-    const sinDecimales = Math.round(redondeado / 100) * 100; // Redondea a múltiplos de 100
-    campoG1.value = sinDecimales; // Agrega automaticamente el valode de aportes ley
+    //const redondeado = Math.ceil(valorG1/100)*100; // Redondea hacia arriba
+    //const sinDecimales = Math.round(redondeado / 100) * 100; // Redondea a múltiplos de 100
+    //campoG1.value = redondeado; // Agrega automaticamente el valode de aportes ley
+    campoG1.value = valorG1.toFixed(0); // Agrega automaticamente el valode de aportes ley
+
     });
 
 
