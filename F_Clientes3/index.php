@@ -68,11 +68,11 @@
   </div>
 
 <!-- Modal clientes-->
-<div class="modal fade" id="modalClientes" tabindex="-1" aria-labelledby="modalClientes" aria-hidden="true">
+<div class="modal fade" id="modalEditarC" tabindex="-1" aria-labelledby="modalEditarC" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalClientes"></h5>
+        <h5 class="modal-title" id="ModalClientes"></h5>
         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -87,6 +87,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 <!-- footer -->
 <?php include ('../recursos/footer.php') ?>
