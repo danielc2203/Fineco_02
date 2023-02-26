@@ -12,7 +12,15 @@ function consultar() {
             
             // Definir las columnas, incluyendo la columna "Estado" con la opción "render" personalizada
             let columns = [
-                { data: 'id', title: 'ID', width: '10%' },
+                //{ data: 'id', title: 'ID', width: '10%' },
+                {
+                    data: 'id',
+                    title: 'ID',
+                    width: '10%',
+                    render: function(data, type, row, meta) {
+                      return '<button class="btn-view btn btn-outline-secondary">' + data + '</button>';
+                    }
+                  },
                 { data: 'primer_nombre', title: 'Primer Nombre', width: '15%' },
                 { data: 'segundo_nombre', title: 'Segundo Nombre', width: '15%' },
                 { data: 'primer_apellido', title: 'Primer Apellido', width: '15%' },
@@ -95,6 +103,61 @@ function consultar() {
     });
 }
   
+});
+
+$(document).on('click', '.btn-view', function() {
+	fila = $(this);      
+	tabla = "clientes";     
+	var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
+	opcion = 5;
+	$.ajax({
+		url: "crud.php",
+		type: "POST",
+		datatype:"json",    
+		data: {opcion:opcion, id:id, tabla:tabla}, 
+		success: function (response) {
+            response = JSON.parse(response);
+            var cliente = response[0];
+            var html = "";
+          
+            html += '<div class="modal-body">'
+            html += '<div class="card">'
+            html += '<div class="card-body">'
+            html += '<h5 class="card-title"></h5>'
+          
+            // Mostrar cada uno de los datos del cliente
+            $.each(cliente, function(key, val) {
+                html += '<div class="row">';
+                html += '<div class="col-md-6"><strong>' + key + ': </strong></div>';
+                html += '<div class="col-md-6">' + val + '</div>';
+                html += '</div>';
+            });
+            
+          
+            html += '</div>'
+            html += '</div>'
+            html += '</div>'
+            html += '<div class="footer m-5">'
+            html += '<button type="button" class="btn btn-danger" id="sendtopdf"><i class="fas fa-file-pdf"></i></button>'
+            html += '<button type="button" class="btn btn-primary float-right" id="print_modal"><i class="fas fa-print"></i></button>'
+            html += '</div>'
+            
+            $("#contenido_datos").html(html);
+          }
+          
+          
+		  
+	  });
+
+	  $(".modal-header").css( "background-color", "#563e7c");
+	  $(".modal-header").css( "color", "white" );
+	  $(".modal-title").text("Detalles de " +tabla+ " " +id);
+      
+	  $('#modalClientes').modal('show');
+      $('#modalClientes').toggleClass("modal-dialog modal-xl");
+	  var id = id;
+	  //console.log(id);
+
 });
 
 $(document).on('click', '.btn-edit', function() {
@@ -190,10 +253,14 @@ $(document).on('click', '.btn-edit', function() {
 
               });
 
-			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitEdit">Guardar</button>'
-            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+			
 			html += '</form>'
 			html += '</div>'// Cierro "modal-body"
+
+            html += '<div class="footer mb-5">'
+            html += '<button type="button" class="btn btn-primary float-sm-left" id="btnUpdateSubmitEdit">Guardar</button>'
+            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+            html += '</div>'// Cierro "modal-footer"
 		  
 			// Insert the HTML Template and display all employee records
 			$("#contenido_datos").html(html);
