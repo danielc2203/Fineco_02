@@ -154,7 +154,7 @@ $(document).on('click', '.btn-view', function() {
 	  $(".modal-title").text("Detalles de " +tabla+ " " +id);
       
 	  $('#modalClientes').modal('show');
-      $('#modalClientes').toggleClass("modal-dialog modal-xl");
+      //$('#modalClientes').toggleClass("modal-dialog modal-xl");
 	  var id = id;
 	  //console.log(id);
 
