@@ -50,6 +50,9 @@ function consultar() {
 
             // Inicializar el DataTable
             $('#finecod').DataTable({
+                "columnDefs": [
+                    { "type": "num", "targets": 0 } // 0 es el índice de la columna de ID
+                ],
                 language: {
                   url: '../dist/json/es-CO_DataTables.json',
                   //console.log('Archivo de idioma cargado correctamente');
@@ -114,40 +117,78 @@ $(document).on('click', '.btn-edit', function() {
 			html += '<form id="save-form">'
 		  
 			$.each(response[0], function(key, val) {
-				//Buscamos si el campo es id lo bloqueamos
-				if (key === "id") {
-					html += '<div class="form-group row mb-0">';
-					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-					html += '<div class="col-6">';
-					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
-					html += '</div>';
-					html += '</div>';
-				}else if (key === "estado") {
-                    html += '<div class="form-group row mb-0">';
-                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                    html += '<div class="col-6">';
+                //Buscamos si el campo es id lo bloqueamos
+                if (key === "id") {
+                  html += '<div class="form-group row mb-0">';
+                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                  html += '<div class="col-6">';
+                  html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+                  html += '</div>';
+                  html += '</div>';
+                } else if(key.toLowerCase().includes('fecha')) {
+                  html += '<div class="form-group row mb-0">';
+                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                  html += '<div class="col-6">';
+                  html += '<input type="date" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                  html += '</div>';
+                  html += '</div>';
+                } else if (key === "estado") {
+                  html += '<div class="form-group row mb-0">';
+                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                  html += '<div class="col-6">';
+                  html += '<select id="' + key + '" class="form-control form-control-sm">';
+                  html += '<option value="Activo">Activo</option>';
+                  html += '<option value="Retirado">Retirado</option>';
+                  html += '</select>';
+                  html += '</div>';
+                  html += '</div>';
+                } else {
+                  html += '<div class="form-group row mb-0">';
+                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                  html += '<div class="col-6">';
+
+                  if (key === "pagaduria") {
+                    // Código HTML para el input "pagaduria"
                     html += '<select id="' + key + '" class="form-control form-control-sm">';
-                    html += '<option value="Activo">Activo</option>';
-                    html += '<option value="Retirado">Retirado</option>';
+                
+                    // Hacer la solicitud AJAX para obtener los convenios
+                    $.ajax({
+                        url: "listas.php",
+                        type: "POST",
+                        datatype:"json",
+                        data: {opcion: 1, tabla: 'convenios'},
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            var options = '';
+                            var selected = '';
+                            var encontrado = false;
+                            // Recorrer el array de convenios y buscar el valor almacenado en la base de datos
+                            $.each(response, function(i, val2) {
+                                options += '<option value="' + val2.nombre + '"';
+                                if (val2.nombre == val) {
+                                    options += 'selected';
+                                    encontrado = true;
+                                }
+                                options += '>' + val2.nombre + '</option>';
+                            });
+                            // Si no se encontró el valor almacenado en la base de datos, crear una opción para este valor
+                            if (!encontrado) {
+                                options += '<option value="' + val + '" selected>' + val + '</option>';
+                            }
+                            // Agregar las opciones al select
+                            $('#' + key).append(options);
+                        }
+                    });
                     html += '</select>';
-                    html += '</div>';
-                    html += '</div>';
-                }else if(key.toLowerCase().includes('fecha')) {
-                    html += '<div class="form-group row mb-0">';
-                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                    html += '<div class="col-6">';
-                    html += '<input type="date" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
-                    html += '</div>';
-                    html += '</div>';
-                }else {
-					html += '<div class="form-group row mb-0">';
-					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-					html += '<div class="col-6">';
-					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
-					html += '</div>';
-					html += '</div>';
-				}
-			});
+                } else {
+                    html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                }
+                html += '</div>';
+                html += '</div>';
+                
+                }
+
+              });
 
 			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitEdit">Guardar</button>'
             html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
@@ -180,6 +221,7 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
 
     //Agregamos la eleccion de estado a su campo
     formData['estado'] = $('#estado').val();
+    formData['pagaduria'] = $('#pagaduria').val();
     var id = parseInt(formData['id']);
 
         $.ajax({
@@ -263,6 +305,33 @@ $(document).on('click', '.btnNuevo', function(){
                     html += '</select>';
                     html += '</div>';
                     html += '</div>';
+                }else if (val.Field == "pagaduria") {
+                    // Código HTML para el input "convenio"
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + val.Field + '" class="form-control form-control-sm">';
+                    // Hacer la solicitud AJAX para obtener los convenios
+                    $.ajax({
+                        url: "listas.php",
+                        type: "POST",
+                        datatype:"json",
+                        data: {opcion: 1, tabla: 'convenios'},
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            var options = '';
+                            // Recorrer el array de convenios y construir la cadena HTML para las opciones
+                            $.each(response, function(i, val) {
+                                options += '<option value="' + val.nombre + '">' + val.nombre + '</option>';
+                            });
+                            // Agregar las opciones al select
+                            $('#pagaduria').append(options);
+                        }
+                    });
+                    //html += '<option value="Uno">Uno</option>';
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
                 }else {
                     html += '<div class="form-group row mb-0">';
                     html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
@@ -271,6 +340,7 @@ $(document).on('click', '.btnNuevo', function(){
                     html += '</div>';
                     html += '</div>';
                 };
+
             });
 	
 			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitNew">Guardar</button>'
@@ -302,6 +372,8 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
 
     //formData['id'] = parseInt(id);
     var id = parseInt(formData['id']);
+    formData['estado'] = $('#estado').val();
+    formData['pagaduria'] = $('#pagaduria').val();
 
     // Validar si los campos están vacíos excepto el id
     var camposVacios = false;

@@ -52,7 +52,6 @@ switch($opcion){
         $consulta = "UPDATE $tabla SET " . implode(',', $set) . " WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
-        
         $consulta = "SELECT * FROM $tabla WHERE id='$id' "; 
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
@@ -82,17 +81,14 @@ switch($opcion){
         $values = array_values($_POST);
         array_shift($campos);
         array_shift($values);
-
         // eliminar la columna 'id'
         $key = array_search('id', $campos);
         unset($campos[$key]);
         unset($values[$key]);
-
         $consulta = "INSERT INTO clientes (" . implode(',', $campos) . ") VALUES ('" . implode("','", $values) . "')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-
-        break;        
+        break;  
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX
