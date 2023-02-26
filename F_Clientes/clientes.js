@@ -23,7 +23,7 @@ function consultar() {
                     title: 'Estado',
                     width: '20%',
                     render: function(data, type, row, meta) {
-                      return '<button class="btn-edit btn btn-sm btn-' + (data === 'activo' ? 'success' : 'danger') + '">' + data + '</button>';
+                      return '<button class="btn-edit btn btn-sm btn-' + (data === 'Activo' ? 'success' : 'danger') + '">' + data + '</button>';
                     }
                   }
             ];
@@ -122,7 +122,24 @@ $(document).on('click', '.btn-edit', function() {
 					html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
 					html += '</div>';
 					html += '</div>';
-				} else {
+				}else if (key === "estado") {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + key + '" class="form-control form-control-sm">';
+                    html += '<option value="Activo">Activo</option>';
+                    html += '<option value="Retirado">Retirado</option>';
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
+                }else if(key.toLowerCase().includes('fecha')) {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<input type="date" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                    html += '</div>';
+                    html += '</div>';
+                }else {
 					html += '<div class="form-group row mb-0">';
 					html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
 					html += '<div class="col-6">';
@@ -130,7 +147,6 @@ $(document).on('click', '.btn-edit', function() {
 					html += '</div>';
 					html += '</div>';
 				}
-
 			});
 
 			html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitEdit">Guardar</button>'
@@ -162,7 +178,8 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
     formData[inputs[i].id] = inputs[i].value; //Dentro del ciclo, se agrega una propiedad al objeto "formData" utilizando el "id" del elemento de entrada actual como la clave y el "value" como el valor.
     }
 
-    //formData['id'] = parseInt(id);
+    //Agregamos la eleccion de estado a su campo
+    formData['estado'] = $('#estado').val();
     var id = parseInt(formData['id']);
 
         $.ajax({
@@ -236,6 +253,16 @@ $(document).on('click', '.btnNuevo', function(){
                     html += '<input type="date" id="' + val.Field + '" value="" class="form-control form-control-sm">';
                     html += '</div>';
                     html += '</div>';
+                }else if (val.Field == "estado") {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + val.Field + '" class="form-control form-control-sm">';
+                    html += '<option value="Activo">Activo</option>';
+                    html += '<option value="Retirado">Retirado</option>';
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
                 }else {
                     html += '<div class="form-group row mb-0">';
                     html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
@@ -276,6 +303,22 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
     //formData['id'] = parseInt(id);
     var id = parseInt(formData['id']);
 
+    // Validar si los campos están vacíos excepto el id
+    var camposVacios = false;
+    for (var key in formData) {
+        if (formData.hasOwnProperty(key) && key !== "id" && formData[key] === "") {
+            camposVacios = true;
+            break;
+        }
+    }    
+    if (camposVacios) {
+        Swal.fire({
+            title: 'Campos Obligatorios!',
+            text: 'Por favor complete todos los campos ya que son obligatorios',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+    } else {
         $.ajax({
             url: "crud.php",
             type: "POST",
@@ -284,8 +327,8 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
             success: function (data) {
             }
             });
-
-        $('#modalClientes').modal('hide');
+            
+            $('#modalClientes').modal('hide');
         $(function() {
             //toastr.success('Se ha creado el registro correctamente')
             Swal.fire({
@@ -299,9 +342,8 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
                 location.reload();
             });
         });
-            
-        // Verifico por consola si esta enviando los datos correctos
-        
+    }
+     
 });
 
 function calculateAge(dateString) {
