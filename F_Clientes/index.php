@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
 
+
 <!-- FIN DE HEADER -->
 
 <!-- Main Sidebar Container -->
@@ -106,6 +107,9 @@
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.13.2/type-detection/numeric-comma.js"></script>
 <script type="text/javascript" src="dataTables.numericCommaTypeDetect.js"></script>
+
+<!-- PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>

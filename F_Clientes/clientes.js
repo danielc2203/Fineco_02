@@ -119,12 +119,10 @@ $(document).on('click', '.btn-view', function() {
             response = JSON.parse(response);
             var cliente = response[0];
             var html = "";
-          
-            html += '<div class="modal-body">'
-            html += '<div class="card">'
-            html += '<div class="card-body">'
-            html += '<h5 class="card-title"></h5>'
-          
+            html += '<div class="modal-body" id="modal-content">';
+            html += '<div class="card">';
+            html += '<div class="card-body">';
+            html += '<h5 class="card-title"></h5>';
             // Mostrar cada uno de los datos del cliente
             $.each(cliente, function(key, val) {
                 html += '<div class="row">';
@@ -132,21 +130,18 @@ $(document).on('click', '.btn-view', function() {
                 html += '<div class="col-md-6">' + val + '</div>';
                 html += '</div>';
             });
-            
-          
-            html += '</div>'
-            html += '</div>'
-            html += '</div>'
-            html += '<div class="footer m-5">'
-            html += '<button type="button" class="btn btn-danger" id="sendtopdf"><i class="fas fa-file-pdf"></i></button>'
-            html += '<button type="button" class="btn btn-primary float-right" id="print_modal"><i class="fas fa-print"></i></button>'
-            html += '</div>'
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="footer mb-3">';
+            // html += '<button type="button" class="btn btn-danger" id="sendtopdf"><i class="fas fa-file-pdf"></i></button>';
+            html += '<button type="button" class="btn btn-danger float-right" id="print_modal"><i class="fas fa-file-pdf fa-2x"></i></button>';
+            html += '</div>';
+
             
             $("#contenido_datos").html(html);
           }
           
-          
-		  
 	  });
 
 	  $(".modal-header").css( "background-color", "#563e7c");
@@ -495,3 +490,12 @@ function calculateAge(dateString) {
     }
     document.getElementById('edad').value = age;
   }
+
+
+
+// Funcion para imprimir el modal en PDF
+$(document).on('click', '#print_modal', function() {
+    var element = document.getElementById('modal-content');
+    html2pdf().from(element).save();
+});
+
