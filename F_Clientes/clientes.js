@@ -18,7 +18,7 @@ function consultar() {
                     title: 'ID',
                     width: '10%',
                     render: function(data, type, row, meta) {
-                      return '<button class="btn-view btn btn-outline-secondary">' + data + '</button>';
+                      return '<button id="'+data+'" class="btn-view btn btn-outline-secondary">' + data + '</button>';
                     }
                   },
                 { data: 'primer_nombre', title: 'Primer Nombre', width: '15%' },
@@ -31,9 +31,10 @@ function consultar() {
                     title: 'Estado',
                     width: '20%',
                     render: function(data, type, row, meta) {
-                      return '<button class="btn-edit btn btn-sm btn-' + (data === 'Activo' ? 'success' : 'danger') + '">' + data + '</button>';
+                        return '<button data-id="' + row.id + '" class="btn-edit btn btn-sm btn-' + (data === 'Activo' ? 'success' : 'danger') + '">' + data + '</button>';
                     }
-                  }
+                },
+                
             ];
 
             let html = "<table id='clientes' class='display nowrap'><thead><tr>";
@@ -158,7 +159,8 @@ $(document).on('click', '.btn-view', function() {
 $(document).on('click', '.btn-edit', function() {
 	fila = $(this);      
 	tabla = "clientes";     
-	var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
+    var id = $(this).attr('data-id'); // traemos el id del btn-editar para usar el resposive de datatable
+    console.log(id);
 	opcion = 5;
 	//console.log(id, tabla, opcion);
 	$.ajax({
@@ -272,7 +274,6 @@ $(document).on('click', '.btn-edit', function() {
 
 });
 
-
 $(document).on('click', '#btnUpdateSubmitEdit', function() {
     opcion = 2;
     var formData = {}; //Se declara una variable "formData" que será un objeto vacío.
@@ -313,7 +314,6 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
         // Verifico por consola si esta enviando los datos correctos
         
 });
-
 
 $(document).on('click', '.btnNuevo', function(){
 	var html = "";
@@ -480,6 +480,7 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
      
 });
 
+//Funcion para calcular la edad segun la Fecha de nacimiento
 function calculateAge(dateString) {
     var today = new Date();
     var birthDate = new Date(dateString);
@@ -489,13 +490,10 @@ function calculateAge(dateString) {
       age--;
     }
     document.getElementById('edad').value = age;
-  }
-
-
+};
 
 // Funcion para imprimir el modal en PDF
 $(document).on('click', '#print_modal', function() {
     var element = document.getElementById('modal-content');
     html2pdf().from(element).save();
 });
-
