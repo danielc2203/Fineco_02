@@ -160,7 +160,6 @@ $(document).on('click', '.btn-edit', function() {
 	fila = $(this);      
 	tabla = "clientes";     
     var id = $(this).attr('data-id'); // traemos el id del btn-editar para usar el resposive de datatable
-    console.log(id);
 	opcion = 5;
 	//console.log(id, tabla, opcion);
 	$.ajax({
