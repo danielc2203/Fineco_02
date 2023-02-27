@@ -158,12 +158,14 @@ function nuevosCampos(){
 
 }
 
-
 // Modal de Guardar Datos en tabla - Modal Agregar Nuevo Credito
 function guardarDatos(){
   
   // Guardo en nombreP el texto del id pagaduria
   let nombreP = document.getElementById("pagaduria").textContent;
+  let ingresos = document.getElementById("devengados").textContent;
+  let gastos = document.getElementById("tdeducidos").textContent;
+  console.log(ingresos);
 
   if (valorG) {
     Swal.fire({
@@ -194,7 +196,7 @@ function guardarDatos(){
         html += '<div class="form-group row mb-0">'
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">N° DE PLAZO EN MESES</label>'
         html += '<div class="col-sm-3">'
-        html += '<input type="number"  id="F_plazo" value="" class="form-control form-control-sm" placeholder="365" required>'
+        html += '<input type="number"  id="F_plazo" value="" class="form-control form-control-sm" placeholder="12" required>'
         html += '</div>'
 
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD:</label>'
@@ -224,6 +226,18 @@ function guardarDatos(){
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ASESOR DE FINECO:</label>'
         html += '<div class="col-sm-3">'
         html += '<input type="text" id="F_asesor" value="'+usuariof+'" class="form-control form-control-sm" placeholder="$" readonly>';
+        html += '</div>'
+        html += '</div>'
+
+        html += '<div class="form-group row mb-0">'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">INGRESOS:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_ingresos" value='+ingresos+' class="form-control form-control-sm" placeholder="$" readonly >'
+        html += '</div>'
+
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">GASTOS:</label>'
+        html += '<div class="col-sm-3">'
+        html += '<input type="text" id="F_gastos" value="'+gastos+'" class="form-control form-control-sm" placeholder="$" readonly>';
         html += '</div>'
         html += '</div>'
 
@@ -259,70 +273,13 @@ function guardarDatos(){
   $(document).off("input");
 })
 
-
-
 // Boton guardar submit para Actualización de
-$('#fCalculadora').submit(function(e){                        
-  e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-
-  $opcion = 1;
-  cedula = $.trim($('#F_cedula').val());
-  pagaduria = $.trim($('#F_pagaduria').val());
-  capacidad = $.trim($('#F_capacidad').val());
-  plazo = $.trim($('#F_plazo').val());
-  fecha = $.trim($('#F_fecha').val());
-  monto = $.trim($('#F_montoCredito').val());
-  estado = $.trim($('#F_estado').val());
-  asesor = $.trim($('#F_asesor').val());
-
-  if (!!cedula && !!monto && !!plazo){
-      $.ajax({
-          url: "crud.php",
-          type: "POST",
-          datatype:"json",    
-          data:  {cedula:cedula,
-                pagaduria:pagaduria,
-                capacidad:capacidad,
-                plazo:plazo,
-                fecha:fecha,
-                monto:monto,
-                estado:estado,
-                asesor:asesor,
-                opcion:opcion},    
-          success: function(data) {
-              $(function() {
-                  Swal.fire({
-                      position: 'top-end',
-                      icon: 'success',
-                      title: 'el credito ha sido guardado exitosamente...',
-                      showConfirmButton: false,
-                      timer: 2000,
-                      willClose: () => {
-                          window.location.reload()
-                        }
-                    })
-                });
-          }
-        });
-  }else{
-      Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Los campos son obligatorios',
-          showConfirmButton: false,
-          
-        })
-  };
-  
-
-});
-
-
-
 // Funcion Consultar Cliente y si es correcto guarda el credito en la tabla Creditos
 function consultarCliente() {
   cedula = $.trim($('#F_cedula').val());
   pagaduria = $.trim($('#F_pagaduria').val());
+  ingresos = $.trim($('#F_ingresos').val());
+  gastos = $.trim($('#F_gastos').val());
   capacidad = $.trim($('#F_capacidad').val());
   plazo = $.trim($('#F_plazo').val());
   fecha = $.trim($('#F_fecha').val());
@@ -346,13 +303,13 @@ function consultarCliente() {
               title: 'Oops...',
               text: 'Los campos de plazo y monto son obligatorios',
             });
-          } else {
+          } else { // Se envian a la BD
             $.each(response, function(key,value) {
               $.ajax({
                 url: "crud.php",
                 type: "POST",
                 datatype: "json",    
-                data: {cedula:cedula, pagaduria:pagaduria, capacidad:capacidad, plazo:plazo, fecha:fecha, monto:monto, estado:estado, asesor:asesor, opcion:1},    
+                data: {cedula:cedula, pagaduria:pagaduria, ingresos:ingresos, gastos:gastos, capacidad:capacidad, plazo:plazo, fecha:fecha, monto:monto, estado:estado, asesor:asesor, opcion:1},    
                 success: function(data) {
                   $(function() {
                     Swal.fire({

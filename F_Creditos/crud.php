@@ -9,6 +9,8 @@ $opcion = 4;
 //Variable= si el POST NO ESTA VACIO - ENTONCES $_POST POST = VARIABLE; 
 $id_documento = (isset($_POST['cedula'])) ? $_POST['cedula'] : '';
 $pagaduria = (isset($_POST['pagaduria'])) ? $_POST['pagaduria'] : '';
+$ingresos = (isset($_POST['ingresos'])) ? $_POST['ingresos'] : '';
+$gastos = (isset($_POST['gastos'])) ? $_POST['gastos'] : '';
 $capacidad = (isset($_POST['capacidad'])) ? $_POST['capacidad'] : '';
 $monto = (isset($_POST['monto'])) ? $_POST['monto'] : '';
 $plazo = (isset($_POST['plazo'])) ? $_POST['plazo'] : '';
@@ -23,8 +25,8 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO creditos (id_documento, pagaduria, monto, plazo, capacidad, asesor, fecha_solicitud, estado)
-                     VALUES('$id_documento', '$pagaduria', '$monto', '$plazo', '$capacidad', '$asesor', '$fecha_solicitud', '$estado') ";
+        $consulta = "INSERT INTO creditos (id_documento, pagaduria, ingresos, gastos, monto, plazo, capacidad, asesor, fecha_solicitud, estado)
+                     VALUES('$id_documento', '$pagaduria', '$ingresos', '$gastos', '$monto', '$plazo', '$capacidad', '$asesor', '$fecha_solicitud', '$estado') ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
         
