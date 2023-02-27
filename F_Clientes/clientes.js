@@ -440,7 +440,7 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
     // Validar si los campos están vacíos excepto el id
     var camposVacios = false;
     for (var key in formData) {
-        if (formData.hasOwnProperty(key) && key !== "id" && formData[key] === "") {
+        if (formData.hasOwnProperty(key) && key !== "id" && key !== "segundo_nombre" && key !== "segundo_apellido" && key !== "segundo_apellido" && formData[key] === "") {
             camposVacios = true;
             break;
         }
