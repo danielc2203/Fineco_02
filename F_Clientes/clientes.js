@@ -21,11 +21,12 @@ function consultar() {
                       return '<button id="'+data+'" class="btn-view btn btn-outline-secondary">' + data + '</button>';
                     }
                   },
-                { data: 'primer_nombre', title: 'Primer Nombre', width: '15%' },
+                { data: 'primer_nombre', title: 'Primer Nombre', width: '10%' },
                 { data: 'segundo_nombre', title: 'Segundo Nombre', width: '15%' },
                 { data: 'primer_apellido', title: 'Primer Apellido', width: '15%' },
                 { data: 'segundo_apellido', title: 'Segundo Apellido', width: '15%' },
-                { data: 'num_documento', title: 'Número de Documento', width: '20%' },
+                { data: 'pagaduria', title: 'Pagaduria', width: '10%' },
+                { data: 'num_documento', title: 'Número de Documento', width: '15%' },
                 {
                     data: 'estado',
                     title: 'Estado',

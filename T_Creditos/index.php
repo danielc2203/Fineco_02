@@ -315,10 +315,10 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
 
-<script src="./guardar.js"></script>
+<!-- <script src="./guardar.js"></script> -->
 <script src="./tabla_creditos.js"></script>
 <script src="./creditos.js"></script>
-<script src="./calculadora.js"></script>
+<!-- <script src="./calculadora.js"></script> -->
 <script src="./simulador.js"></script>
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- fin de footer -->

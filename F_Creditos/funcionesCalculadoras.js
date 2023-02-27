@@ -43,10 +43,8 @@ function cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre){
 
 // Funcion que llama un modal y pone los datos del formulario de cada calculadora
 function formularioModal (nombreF, ColorF, colorFuente, F_asesor){
-
   
   var html = '<div class="container"><div class="row"><div class="col-6" id="left-col"><a id="add-Ingresos" class="btn btn-outline-success"><i class="far fa-plus-square"></i></a>';
-
 
   var inputs = [   
     { label: 'Asignación Básica', id: 'C1' }
@@ -287,6 +285,7 @@ function consultarCliente() {
   estado = $.trim($('#F_estado').val());
   asesor = $.trim($('#F_asesor').val());
   opcion = 6; //Consulta CC
+  console.log(opcion);
 
   if(cedula != 0) {
     $.ajax({
@@ -304,7 +303,7 @@ function consultarCliente() {
               text: 'Los campos de plazo y monto son obligatorios',
             });
           } else { // Se envian a la BD
-            $.each(response, function(key,value) {
+            //$.each(response, function(key,value) {
               $.ajax({
                 url: "crud.php",
                 type: "POST",
@@ -318,14 +317,18 @@ function consultarCliente() {
                       title: 'El crédito ha sido guardado exitosamente',
                       showConfirmButton: false,
                       timer: 2000,
-                      willClose: () => {
-                        window.location.reload();
-                      }
+                      // willClose: () => {
+                         //window.location.reload();
+                      // }
+
                     });
+                    $('#modalCREDITOS').modal('hide');
                   });
                 }
               });
-            });
+
+
+           // });
           }
         } else {
           Swal.fire({
