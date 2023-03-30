@@ -180,7 +180,7 @@
             <div class="card-header">
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1" id="tituloUno"></i>
-                  Modulo de Ediciòn.
+                  Modulo de Ediciòn
                 </h3>
             </div>
 
@@ -222,11 +222,11 @@
       <div class="form-group">
         <label for="">id</label>
         <input type="text" name="id" id="id" class="form-control" placeholder="" aria-describedby="helpId">
-        <small id="helpId" class="text-muted">Help text</small>
+        <small id="helpId" class="text-muted">Texto de Ayuda</small>
 
         <label for="">Nombre</label>
         <input type="text" name="nombre" id="nombre" class="form-control" placeholder="" aria-describedby="helpId">
-        <small id="helpId" class="text-muted">Help text</small>
+        <small id="helpId" class="text-muted">Texto de Ayuda</small>
       </div>
       </div>
     </div>
