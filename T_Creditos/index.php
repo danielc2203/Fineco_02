@@ -69,6 +69,9 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    <section>
+      <div id="tabla-amortizacion"></div>
+    </section>
     <!-- /.content -->
   </div>
 <!-- /.content-wrapper -->
@@ -262,6 +265,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button id="btn-amortizacion">Ver tabla de amortización</button>
         <button type="button" class="btn btn-primary">Guardar</button>
       </div>
     </div>

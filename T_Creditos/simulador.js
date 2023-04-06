@@ -51,9 +51,6 @@ function updateResult() {
   var result_aval = sum1 * (value3/100);
   var result_estudio = sum1 * (value4/100);
 
-  console.log(" ");
-  console.log("_m_(..)_m_") 
-
 
   // Asignar el resultado al campo de resultado con formato moneda
   aval.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_aval);
@@ -83,8 +80,6 @@ function updateResult() {
   let percent = value9;
   let decimal = percent / 100;
   //console.log("Decimal es ="+ decimal); // 0.023
-
-
 
   //numero de periodos necesarios para alcanzar un valor con una tasa de interés del 2,3%.
   let rate = decimal;
@@ -151,8 +146,53 @@ function updateResult() {
         $("#c12").css( "color", "white" );
     };
 
-
-  console.log("_m_('')_m_");
-  console.log("jdanielcastro.com");
+  console.log("danielc2203@gmail.com");
   // Final....
 }
+
+
+// Datos del préstamo
+const valorPrestamoT = 12919905;
+const tasaInteresT = 0.023;
+let cuotaT = 309677;
+const plazoT = 144;
+const seguroT = 10000 / 12;
+
+// Función para calcular la tabla de amortización
+function calcularTablaAmortizacion() {
+  // Inicializar variables
+  let saldoPendienteT = valorPrestamoT;
+  let periodoT = 0;
+  let fechaT = new Date(2020, 8, 1); // Septiembre 2020
+  let tablaT = [];
+  let interesesAnterioresT = 0;
+  
+  // Calcular amortización para cada período
+  for (let i = 1; i <= plazoT && saldoPendienteT > 0; i++) {
+    periodoT++;
+    let interesesT = saldoPendienteT * tasaInteresT / 12;
+    let cuotaSinSeguroT = cuotaT - seguroT;
+    let capitalT = cuotaSinSeguroT - interesesT;
+    if (saldoPendienteT < capitalT) {
+      capitalT = saldoPendienteT;
+      cuotaSinSeguroT = capitalT + interesesT;
+      cuotaT = cuotaSinSeguroT + seguroT;
+    }
+    let saldoT = saldoPendienteT - capitalT;
+    saldoPendienteT = saldoT;
+    interesesAnterioresT += interesesT;
+    
+    // Agregar entrada a la tabla de amortización
+    let mesT = fechaT.toLocaleString('default', { month: 'short' }) + '-' + fechaT.getFullYear().toString().substr(-2);
+    tablaT.push([periodoT, mesT, capitalT.toFixed(3), seguroT, interesesT.toFixed(3), cuotaT.toFixed(3), saldoT.toFixed(3), (interesesAnterioresT + capitalT).toFixed(3)]);
+  
+    // Actualizar fecha para el siguiente período
+    fechaT.setMonth(fechaT.getMonth() + 1);
+  }
+  
+  return tablaT;
+}
+
+// Ejecutar la función y mostrar la tabla de amortización en la consola
+let tablaAmortizacionT = calcularTablaAmortizacion();
+console.table(tablaAmortizacionT);
