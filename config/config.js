@@ -18,6 +18,9 @@ function manejarAccion(accion) {
 		case 'estados':
 			tabla = "estados";
 			break;
+		case 'bancos':
+			tabla = "bancos";
+			break;
         default:
             alert("Campo no registrado en config");
             return;
@@ -72,7 +75,7 @@ function consultar() {
 		}
 		
 	});
-};
+}
 
 
 $(document).on('click', '.btn-edit', function() {
@@ -222,7 +225,7 @@ $(document).on('click', '.btnNuevoRegistro', function(){
 
 	  $(".modal-header").css( "background-color", "#543c0cb");
 	  $(".modal-header").css( "color", "white" );
-	  $(".modal-title").text("Detalles de " +tabla +id);
+	  $(".modal-title").text("Detalles de " +tabla );
 	  $('#modalEditarC').modal('show');
 	  var id = id;
 

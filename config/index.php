@@ -137,16 +137,26 @@
 
           <!-- ./col -->
           <div class="col-12 col-sm-6 col-md-4">
-            <!-- small box  azul -->
+            <!-- small box Verde -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>Otro Listado</h3>
-                <p>Total colocación</p>
+                <h3>Bancos</h3>
+                <?php
+                  $consulta = "SELECT * FROM bancos LIMIT 3";
+                  $resultado = $conexion->prepare($consulta);
+                  $resultado->execute();
+                  $grupo=$resultado->fetchAll();
+                  echo "<ul>";
+                    foreach ($grupo as $valores):
+                      echo '<li>'.$valores["nombre"].'</li>';
+                    endforeach;
+                  echo "</ul>"
+                ?>
               </div>
               <div class="icon">
-                <i class="fas fa-tasks"></i>
+                <i><?php echo $totalEstados?></i>
               </div>
-              <a href="#" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer" onclick="manejarAccion('bancos')" >Ver Más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
