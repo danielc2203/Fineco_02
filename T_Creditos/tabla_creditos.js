@@ -160,11 +160,9 @@ $(document).on("click", ".Simulador", function simulador(){
 
     $(".modal-header").css( "background-color", "#2e2cb1");
     $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Simulador de Credito");
+    $(".modal-title").text("Simulador de Crédito");
     $('#modalSimulador').modal('show');
     $('#c11').val(capacidadSeleccionada); // pasamos el valor de capacidad al campo C11
-    
-    
 
 });
             
@@ -181,8 +179,7 @@ $("#btnNuevo").click(function(){
 });
     
 //Ver Credito 
-$(document).on("click", ".VerCredito", function cliente(){
-    fila = $(this);           
+$(document).on("click", ".VerCredito", function(){        
     var id = parseInt($(this).closest('tr').find('td:eq(0)').text());
     //var id_documento = ""
     var opcion = 5; //alta
@@ -196,81 +193,58 @@ $(document).on("click", ".VerCredito", function cliente(){
             var html = "";
             var id_documento = response[0].id_documento; // Obtener el valor de id_documento
             if(response.length) {
-                // Loop the parsed JSON
-                $.each(response, function(key, value) {
-                    html += `
-                      <div class="card">
-                        <div class="card-header text-center">
-                          <h5>Credito Nº: ${value.id}</h5>
-                        </div>
-                        <div class="card-body pt-0">
-                          <div class="table-responsive">
-                            <table class="table table-striped">
-                              <tbody>
-                                <tr>
-                                  <td><b>Número de documento:</b></td>
-                                  <td>${value.id_documento}</td>
-                                  <td><b>monto:</b></td>
-                                  <td>${value.monto}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>plazo:</b></td>
-                                  <td>${value.plazo}</td>
-                                  <td><b>amortizacion:</b></td>
-                                  <td>${value.amortizacion}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>tipo de credito:</b></td>
-                                  <td>${value.tipo_credito}</td>
-                                  <td><b>deudas actuales:</b></td>
-                                  <td>${value.deudas_actuales}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>egresos:</b></td>
-                                  <td>${value.egresos}</td>
-                                  <td><b>capacidad:</b></td>
-                                  <td>${value.capacidad}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>calificacion_interna:</b></td>
-                                  <td>${value.calificacion_interna}</td>
-                                  <td><b>cuota_mensual:</b></td>
-                                  <td>${value.cuota_mensual}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>seguro:</b></td>
-                                  <td>${value.seguro}</td>
-                                  <td><b>Asesor de Fineco:</b></td>
-                                  <td>${value.asesor}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>comentarios:</b></td>
-                                  <td colspan="3">${value.comentarios}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>fecha_solicitud:</b></td>
-                                  <td>${value.fecha_solicitud}</td>
-                                  <td><b>estado:</b></td>
-                                  <td>${value.estado}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <div class="card-footer">
-                          <div class="d-flex justify-content-between">
-                            <a class="btn btn-outline-primary btnEditar" id="${value.id}">
-                              <i class="fas fa-edit"></i>
-                            </a>
-                            <a class="btn btn-outline-danger btnBorrar" id="${value.id}">
-                              <i class="fas fa-trash-alt"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    `;
-                  });
-            
+            // Loop the parsed JSON
+            $.each(response, function(key,value) {
+
+                html += '<div class="card" id="modal-content">'
+                  html += '<div class="card-header text-center">'
+                    html += '<h5 class="mb-0">Credito Nº ' + value.id + '</h5>'
+                  html += '</div>'
+                  html += '<div class="card-body">'
+                    html += '<div class="row">'
+
+                      html += '<div class="col-6">'
+                        html += '<p class="text-muted mb-1"><b>Número de documento:</b> ' + value.id_documento + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Monto:</b> ' + value.monto + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Plazo:</b> ' + value.plazo + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Amortización:</b> ' + value.amortizacion + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Tipo de crédito:</b> ' + value.tipo_credito + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Deudas actuales:</b> ' + value.deudas_actuales + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Egresos:</b> ' + value.egresos + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Capacidad:</b> ' + value.capacidad + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Ingresos:</b> ' + value.ingresos + '</p>'
+                        html += '<p class="text-muted mb-1"><b>tasa:</b> ' + value.tasa + '</p>'
+                        html += '<p class="text-muted mb-1"><b>intereses anticipados:</b> ' + value.intereses_anticipados + '</p>'
+                      html += '</div>'
+
+                      html +=' <div class="col-6">'
+                        html += '<p class="text-muted mb-1"><b>Calificación interna:</b> ' + value.calificacion_interna + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Cuota mensual:</b> ' + value.cuota_mensual + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Seguro:</b> ' + value.seguro + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Asesor de Fineco:</b> ' + value.asesor + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Comentarios:</b> ' + value.comentarios + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Fecha de solicitud:</b> ' + value.fecha_solicitud + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Estado:</b> ' + value.estado + '</p>'
+                        html += '<p class="text-muted mb-1"><b>pagaduria:</b> ' + value.pagaduria + '</p>'
+                        html += '<p class="text-muted mb-1"><b>gastos:</b> ' + value.gastos + '</p>'
+                        html += '</div>'
+                    html += '</div>'
+
+                    html += '<hr>'
+                  
+                    html += '</div>'
+                    html += '<div class="card-footer">'
+                        html += '<p class="card-text" > <small class="text-muted"> Creditos Fineco App </small> </p>'
+                    html += '</div>'
+                    html += '</div>'
+
+                html += '<div>'
+                html += '<button type="button" class="btn btn-danger float-right" id="print_modal"><i class="fas fa-file-pdf fa-1x"></i></button>';
+                html += '<a class="btn btn-primary btnEditar" id=' + value.id + '><i class="fas fa-edit"></i></a>'
+                html += '<a class="btn btn-danger float-left btnBorrar" id=' + value.id + '><i class="fas fa-trash-alt"></i></a>'
+                html += '</div>'
+              
+              });            
             $(".modal-title").text("Detalles del Credito para: " + id_documento);
 
             } else {
@@ -281,7 +255,7 @@ $(document).on("click", ".VerCredito", function cliente(){
         }
         });
 
-    $(".modal-header").css( "background-color", "#17a2b8");
+    $(".modal-header").css( "background-color", "#73c6fe");
     $(".modal-header").css( "color", "white" );
    // $(".modal-title").text("Detalles del Credito para: " + id_documento);
     $('#VerCredito').modal('show');
@@ -522,3 +496,10 @@ function actualizarCredito(){
           });
 
 };
+
+
+// Funcion para imprimir el modal en PDF
+$(document).on('click', '#print_modal', function() {
+    var element = document.getElementById('modal-content');
+    html2pdf().from(element).save();
+});

@@ -1,3 +1,4 @@
+
 // Obtener los campos de entrada
 var input1 = document.getElementById("c1");
 var input2 = document.getElementById("c2");
