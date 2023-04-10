@@ -407,89 +407,82 @@ $(document).on('click', '.btnEditar', function() {
 		success: function (response) {
 			response = JSON.parse(response);
 			var html = "";
-            var data = "";
+            var data = response[0];
 
 			html += '<div class="modal-body">'
 			html += '<form id="save-form">'
 		  
 			$.each(response[0], function(key, val) {
-                //Buscamos si el campo es id lo bloqueamos
+                // Verificamos si el campo es "id" para bloquearlo
                 if (key === "id") {
-                  html += '<div class="form-group row mb-0">';
-                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                  html += '<div class="col-6">';
-                  html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
-                  html += '</div>';
-                  html += '</div>';
-                } else if (key === "estado") {
-                    // obtén el valor actual de la columna "estado" de la fila
-                    var estadoActual = data[key];
-                    
-                    html += '<div class="form-group row mb-0">';
-                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                    html += '<div class="col-6">';
-                    html += '<select id="' + key + '" class="form-control form-control-sm">';
-                    
-                    // verifica el valor actual y establece la opción seleccionada correspondiente
-                    if (estadoActual === "Pendiente") {
-                      html += '<option value="Pendiente" selected>Pendiente</option>';
-                      html += '<option value="Con Cupo">Con Cupo</option>';
-                    } else {
-                      html += '<option value="Pendiente">Pendiente</option>';
-                      html += '<option value="Con Cupo" selected>Con Cupo</option>';
-                    }
-                    
-                    html += '</select>';
-                    html += '</div>';
-                    html += '</div>';
-                  }
-                   else {
-                  html += '<div class="form-group row mb-0">';
-                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                  html += '<div class="col-6">';
-
-                  if (key === "pagaduria") {
-                    // Código HTML para el input "pagaduria"
-                    html += '<select id="' + key + '" class="form-control form-control-sm">';
-                
-                    // Hacer la solicitud AJAX para obtener los convenios
-                    $.ajax({
-                        url: "../F_Clientes/listas.php",
-                        type: "POST",
-                        datatype:"json",
-                        data: {opcion: 1, tabla: 'convenios'},
-                        success: function(response) {
-                            response = JSON.parse(response);
-                            var options = '';
-                            var selected = '';
-                            var encontrado = false;
-                            // Recorrer el array de convenios y buscar el valor almacenado en la base de datos
-                            $.each(response, function(i, val2) {
-                                options += '<option value="' + val2.nombre + '"';
-                                if (val2.nombre == val) {
-                                    options += 'selected';
-                                    encontrado = true;
-                                }
-                                options += '>' + val2.nombre + '</option>';
-                            });
-                            // Si no se encontró el valor almacenado en la base de datos, crear una opción para este valor
-                            if (!encontrado) {
-                                options += '<option value="' + val + '" selected>' + val + '</option>';
-                            }
-                            // Agregar las opciones al select
-                            $('#' + key).append(options);
-                        }
-                    });
-                    html += '</select>';
+                html += '<div class="form-group row mb-0">';
+                html += '<label class="col-6 col-form-label-sm">' + key + ':</label>';
+                html += '<div class="col-6">';
+                html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+                html += '</div>';
+                html += '</div>';
+                }
+                // Verificamos si el campo es "estado" para crear un select con opciones
+                else if (key === "estado") {
+                var estadoActual = data[key];
+                html += '<div class="form-group row mb-0">';
+                html += '<label class="col-6 col-form-label-sm">' + key + ':</label>';
+                html += '<div class="col-6">';
+                html += '<select id="' + key + '" class="form-control form-control-sm">';
+                if (estadoActual === "Pendiente") {
+                html += '<option value="Pendiente" selected>Pendiente</option>';
+                html += '<option value="Con Cupo">Con Cupo</option>';
                 } else {
-                    html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                html += '<option value="Pendiente">Pendiente</option>';
+                html += '<option value="Con Cupo" selected>Con Cupo</option>';
                 }
+                html += '</select>';
                 html += '</div>';
                 html += '</div>';
-                
                 }
+                // Para cualquier otro campo, creamos un input
+                else {
+                html += '<div class="form-group row mb-0">';
+                html += '<label class="col-6 col-form-label-sm">' + key + ':</label>';
+                html += '<div class="col-6">';
+                // Si el campo es "pagaduria", creamos un select con opciones cargadas desde una solicitud AJAX
+                if (key === "pagaduria") {
+                html += '<select id="' + key + '" class="form-control form-control-sm">';
+                $.ajax({
+                url: "../F_Clientes/listas.php",
+                type: "POST",
+                datatype:"json",
+                data: {opcion: 1, tabla: 'convenios'},
+                success: function(response) {
+                response = JSON.parse(response);
+                var options = '';
+                var selected = '';
+                var encontrado = false;
+                $.each(response, function(i, val2) {
+                options += '<option value="' + val2.nombre + '"';
+                if (val2.nombre == val) {
+                options += 'selected';
+                encontrado = true;
+                }
+                options += '>' + val2.nombre + '</option>';
+                });
+                if (!encontrado) {
+                options += '<option value="' + val + '" selected>' + val + '</option>';
+                }
+                $('#' + key).append(options);
+                }
+                });
+                html += '</select>';
+                }
+                // Para cualquier otro campo, creamos un input tipo texto
+                else {
+                    html += '<input type="text" id="' + key + '" value="' + (val ? val : '') + '" class="form-control form-control-sm">';
 
-              });
+                }
+                html += '</div>';
+                html += '</div>';
+                }
+                });
 			
 			html += '</form>'
 			html += '</div>'// Cierro "modal-body"
