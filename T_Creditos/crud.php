@@ -18,6 +18,21 @@ $fecha_solicitud = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
+$data = array();
+foreach($_POST as $key => $value) {
+if ($key !== 'formData'
+ && $key !== 'opcion'
+ && $key !== 'tabla'
+ && $key !== 'id_usr'
+ && $key !== 'estado_tarea') { //Estas las toma como columnas
+$data[$key] = $value;
+}};
+
+$set = array();
+foreach ($data as $key => $value) {
+$set[] = "$key='$value'";
+};
+
 
 switch($opcion){
     case 1:
@@ -59,11 +74,21 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 6: // Busqueda de Cedula en BD
-        $consulta = "SELECT * FROM clientes WHERE num_documento ='$id_documento' ";
+        $consulta = "SELECT * FROM creditos WHERE num_documento ='$id_documento' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+    case 7:              
+        //$consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";
+            $consulta = "UPDATE creditos SET " . implode(',', $set) . " WHERE id='$id' ";		
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();        
+            $consulta = "SELECT * FROM creditos WHERE id='$id' "; 
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();
+            $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX

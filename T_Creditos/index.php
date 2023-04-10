@@ -273,24 +273,23 @@
 
 
 
-
-
-<!-- Modal Creditos -->
-<div class="modal fade" id="modalCREDITOS" tabindex="-1" role="dialog" aria-labelledby="modalCREDITOS" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+<!-- Modal clientes-->
+<div class="modal fade" id="modalF" tabindex="-1" aria-labelledby="modalClientes" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
-      
       <div class="modal-header">
-      <h5 class="modal-title" id="modalCREDITOS">Modal Credito</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form action="" method="post" id="fCalculadora" class="needs-validation" novalidate>
-
-      </form>
-    </div>
+        <h5 class="modal-title" id="modalF"></h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="contenido_datos">
+      <!-- información del modal -->
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div> -->
     </div>
   </div>
 </div>

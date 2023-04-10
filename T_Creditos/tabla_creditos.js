@@ -262,133 +262,257 @@ $(document).on("click", ".VerCredito", function(){
     
 });
     
-// Modal de Ediciòn de los Detalles del Credito
-$(document).on("click", ".btnEditar", function(){	
-    $('#VerClientes').modal('toggle')	        
-    opcion = 5;//Para llamar los datos de la BD
-    var id = $(this).attr('id');
+// // Modal de Ediciòn de los Detalles del Credito
+// $(document).on("click", ".btnEditar", function(){	
+//     $('#VerClientes').modal('toggle')	        
+//     opcion = 5;//Para llamar los datos de la BD
+//     var id = $(this).attr('id');
 
-    $.ajax({
-        url: "crud.php",
-        type: "POST",
-        datatype:"json",    
-        data: {opcion:opcion, id:id},
+//     $.ajax({
+//         url: "crud.php",
+//         type: "POST",
+//         datatype:"json",    
+//         data: {opcion:opcion, id:id},
         
-    success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
-        // Parse the json result
-        response = JSON.parse(response);
-        var html = "";
+//     success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
+//         // Parse the json result
+//         response = JSON.parse(response);
+//         var html = "";
         
-        html += '<form action="" method="post" id="actualizarCredito" class="needs-validation" novalidate>'
+//         html += '<form action="" method="post" id="actualizarCredito" class="needs-validation" novalidate>'
 
-        html += '<input type="hidden" id="id" value="" class="form-control form-control-sm" required >'
+//         html += '<input type="hidden" id="id" value="" class="form-control form-control-sm" required >'
 
-        html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Nº de Documento</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="number" id="id_documento" value="" class="form-control form-control-sm" readonly >'
-        html += '</div>'
+//         html += '<div class="form-group row mb-0">'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Nº de Documento</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="number" id="id_documento" value="" class="form-control form-control-sm" readonly >'
+//         html += '</div>'
 
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Monto del Credito</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="monto" value="" class="form-control form-control-sm" required >'
-        html += '</div>'
-        html += '</div>'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Monto del Credito</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="monto" value="" class="form-control form-control-sm" required >'
+//         html += '</div>'
+//         html += '</div>'
 
-        html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="plazo" value="" class="form-control form-control-sm" >'
-        html += '</div>'
+//         html += '<div class="form-group row mb-0">'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="plazo" value="" class="form-control form-control-sm" >'
+//         html += '</div>'
 
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Pagaduria</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="Pagaduria" value="" class="form-control form-control-sm" readonly>'
-        html += '</div>'
-        html += '</div>'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Pagaduria</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="Pagaduria" value="" class="form-control form-control-sm" readonly>'
+//         html += '</div>'
+//         html += '</div>'
 
-        html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Tipo de Credito</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="tipo_credito" value="" class="form-control form-control-sm" >'
-        html += '</div>'
+//         html += '<div class="form-group row mb-0">'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Tipo de Credito</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="tipo_credito" value="" class="form-control form-control-sm" >'
+//         html += '</div>'
 
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="capacidad" value="" class="form-control form-control-sm" readonly>'
-        html += '</div>'
-        html += '</div>'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="capacidad" value="" class="form-control form-control-sm" readonly>'
+//         html += '</div>'
+//         html += '</div>'
 
-        html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="estado" value="" class="form-control form-control-sm" >'
-        html += '</div>'
+//         html += '<div class="form-group row mb-0">'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="estado" value="" class="form-control form-control-sm" >'
+//         html += '</div>'
 
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD</label>'
-        html += '<div class="col-sm-3">'
-        html += '<input type="text" id="fecha_solicitud" value="" class="form-control form-control-sm" readonly>'
-        html += '</div>'
-        html += '</div>'
+//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD</label>'
+//         html += '<div class="col-sm-3">'
+//         html += '<input type="text" id="fecha_solicitud" value="" class="form-control form-control-sm" readonly>'
+//         html += '</div>'
+//         html += '</div>'
 
-        // html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
-        html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "actualizarCredito()" ><i class="fas fa-save"></i></button>'
-        html += '<button type="button" class="btn btn-outline-danger float-right" data-dismiss="modal"><i class="far fa-times-circle"></i></button>'
+//         // html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
+//         html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "actualizarCredito()" ><i class="fas fa-save"></i></button>'
+//         html += '<button type="button" class="btn btn-outline-danger float-right" data-dismiss="modal"><i class="far fa-times-circle"></i></button>'
         
-        html += '</form>'
+//         html += '</form>'
 
-        // Insert the HTML Template and display all employee records
-        $("#contenido_credito").html(html);
+//         // Insert the HTML Template and display all employee records
+//         $("#contenido_credito").html(html);
 
         
         
-        // Check if there is available records
-        if(response.length) {
-            // Loop the parsed JSON
-            $.each(response, function(key,value) {
+//         // Check if there is available records
+//         if(response.length) {
+//             // Loop the parsed JSON
+//             $.each(response, function(key,value) {
 
-                $("#id").val(value.id);
-                $("#id_documento").val(value.id_documento);
-                //$("#solicitud_credito").val(value.solicitud_credito);
-                $("#monto").val(value.monto);
-                $("#plazo").val(value.plazo);
-                $("#Pagaduria").val(value.pagaduria);
-                //$("#amortizacion").val(value.amortizacion);
-                $("#tipo_credito").val(value.tipo_credito);
-                // $("#deudas_actuales").val(value.deudas_actuales);
-                // $("#egresos").val(value.egresos);
-                // $("#datacreditos").val(value.datacreditos);
-                $("#capacidad").val(value.capacidad);
-                // $("#calificacion_interna").val(value.calificacion_interna);
-                // $("#tasa").val(value.tasa);
-                // $("#resultado").val(value.resultado);
-                // $("#cuota_mensual").val(value.cuota_mensual);
-                // $("#intereses_anticipados").val(value.intereses_anticipados);
-                // $("#seguro").val(value.seguro);
-                // $("#asesoria").val(value.asesoria);
-                // $("#iva").val(value.iva);
-                // $("#comentarios").val(value.comentarios);
-                $("#fecha_solicitud").val(value.fecha_solicitud);
-                $("#estado").val(value.estado);
+//                 $("#id").val(value.id);
+//                 $("#id_documento").val(value.id_documento);
+//                 //$("#solicitud_credito").val(value.solicitud_credito);
+//                 $("#monto").val(value.monto);
+//                 $("#plazo").val(value.plazo);
+//                 $("#Pagaduria").val(value.pagaduria);
+//                 //$("#amortizacion").val(value.amortizacion);
+//                 $("#tipo_credito").val(value.tipo_credito);
+//                 // $("#deudas_actuales").val(value.deudas_actuales);
+//                 // $("#egresos").val(value.egresos);
+//                 // $("#datacreditos").val(value.datacreditos);
+//                 $("#capacidad").val(value.capacidad);
+//                 // $("#calificacion_interna").val(value.calificacion_interna);
+//                 // $("#tasa").val(value.tasa);
+//                 // $("#resultado").val(value.resultado);
+//                 // $("#cuota_mensual").val(value.cuota_mensual);
+//                 // $("#intereses_anticipados").val(value.intereses_anticipados);
+//                 // $("#seguro").val(value.seguro);
+//                 // $("#asesoria").val(value.asesoria);
+//                 // $("#iva").val(value.iva);
+//                 // $("#comentarios").val(value.comentarios);
+//                 $("#fecha_solicitud").val(value.fecha_solicitud);
+//                 $("#estado").val(value.estado);
 
-            });
-        } else {
-            html += '<div class="alert alert-warning">';
-            html += 'No se encontro este registro en la BD!';
-        }
+//             });
+//         } else {
+//             html += '<div class="alert alert-warning">';
+//             html += 'No se encontro este registro en la BD!';
+//         }
         
-    }
+//     }
     
     
-    });
+//     });
     
-    //$("#formModal").trigger("reset");
-    $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
-    $(".modal-header").css("color", "white" );
-    $(".modal-title").text("Editar Detalles de Solicitud de Credito");		
-    $('#modalCRUD').modal('show');
-    var opcion = 2;//para enviar el update
+//     //$("#formModal").trigger("reset");
+//     $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
+//     $(".modal-header").css("color", "white" );
+//     $(".modal-title").text("Editar Detalles de Solicitud de Credito");		
+//     $('#modalCRUD').modal('show');
+//     var opcion = 2;//para enviar el update
     
+// });
+
+$(document).on('click', '.btnEditar', function() {
+    $('#VerCredito').modal('toggle')
+	fila = $(this);      
+	tabla = "creditos";     
+    var id = $(this).attr('id'); // traemos el id del btn-editar para usar el resposive de datatable
+	opcion = 5;
+	//console.log(id, tabla, opcion);
+	$.ajax({
+		url: "crud.php",
+		type: "POST",
+		datatype:"json",    
+		data: {opcion:opcion, id:id, tabla:tabla}, 
+
+		success: function (response) {
+			response = JSON.parse(response);
+			var html = "";
+            var data = "";
+
+			html += '<div class="modal-body">'
+			html += '<form id="save-form">'
+		  
+			$.each(response[0], function(key, val) {
+                //Buscamos si el campo es id lo bloqueamos
+                if (key === "id") {
+                  html += '<div class="form-group row mb-0">';
+                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                  html += '<div class="col-6">';
+                  html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+                  html += '</div>';
+                  html += '</div>';
+                } else if (key === "estado") {
+                    // obtén el valor actual de la columna "estado" de la fila
+                    var estadoActual = data[key];
+                    
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + key + '" class="form-control form-control-sm">';
+                    
+                    // verifica el valor actual y establece la opción seleccionada correspondiente
+                    if (estadoActual === "Pendiente") {
+                      html += '<option value="Pendiente" selected>Pendiente</option>';
+                      html += '<option value="Con Cupo">Con Cupo</option>';
+                    } else {
+                      html += '<option value="Pendiente">Pendiente</option>';
+                      html += '<option value="Con Cupo" selected>Con Cupo</option>';
+                    }
+                    
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
+                  }
+                   else {
+                  html += '<div class="form-group row mb-0">';
+                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                  html += '<div class="col-6">';
+
+                  if (key === "pagaduria") {
+                    // Código HTML para el input "pagaduria"
+                    html += '<select id="' + key + '" class="form-control form-control-sm">';
+                
+                    // Hacer la solicitud AJAX para obtener los convenios
+                    $.ajax({
+                        url: "../F_Clientes/listas.php",
+                        type: "POST",
+                        datatype:"json",
+                        data: {opcion: 1, tabla: 'convenios'},
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            var options = '';
+                            var selected = '';
+                            var encontrado = false;
+                            // Recorrer el array de convenios y buscar el valor almacenado en la base de datos
+                            $.each(response, function(i, val2) {
+                                options += '<option value="' + val2.nombre + '"';
+                                if (val2.nombre == val) {
+                                    options += 'selected';
+                                    encontrado = true;
+                                }
+                                options += '>' + val2.nombre + '</option>';
+                            });
+                            // Si no se encontró el valor almacenado en la base de datos, crear una opción para este valor
+                            if (!encontrado) {
+                                options += '<option value="' + val + '" selected>' + val + '</option>';
+                            }
+                            // Agregar las opciones al select
+                            $('#' + key).append(options);
+                        }
+                    });
+                    html += '</select>';
+                } else {
+                    html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                }
+                html += '</div>';
+                html += '</div>';
+                
+                }
+
+              });
+			
+			html += '</form>'
+			html += '</div>'// Cierro "modal-body"
+
+            html += '<div class="footer mb-5">'
+            html += '<button type="button" class="btn btn-primary float-sm-left" id="btnUpdateSubmitEdit">Guardar</button>'
+            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+            html += '</div>'// Cierro "modal-footer"
+		  
+			// Insert the HTML Template and display all employee records
+			$("#contenido_datos").html(html);
+		  }
+		  
+	  });
+        $("#formModal").trigger("reset");
+        $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
+        $(".modal-header").css("color", "white" );
+        $(".modal-title").text("Editar Detalles de Solicitud de Credito");		
+        $('#modalF').modal('show');
+        var opcion = 2;//para enviar el update
+        var id = id;
+        //console.log(id);
+
 });
 
 //Borrar con Swal2
@@ -496,6 +620,49 @@ function actualizarCredito(){
           });
 
 };
+
+
+$(document).on('click', '#btnUpdateSubmitEdit', function() {
+    opcion = 7;
+    var formData = {}; //Se declara una variable "formData" que será un objeto vacío.
+    var saveForm = document.getElementById("save-form"); //Se obtiene el elemento del formulario "save-form" utilizando su id
+    var inputs = saveForm.querySelectorAll("input"); //Se declara una variable "inputs" que almacenará una lista de todos los elementos "input" dentro del formulario "save-form" utilizando la función "querySelectorAll" 
+    for (var i = 0; i < inputs.length; i++) { //Se usa un ciclo "for" para iterar a través de todos los elementos "input" en la lista.
+        formData[inputs[i].id] = inputs[i].value; //Dentro del ciclo, se agrega una propiedad al objeto "formData" utilizando el "id" del elemento de entrada actual como la clave y el "value" como el valor.
+    }
+
+    //Agregamos la eleccion de estado a su campo
+    formData['estado'] = $('#estado').val();
+    formData['pagaduria'] = $('#pagaduria').val();
+    var id = parseInt(formData['id']);
+
+    $.ajax({
+        url: "crud.php",
+        type: "POST",
+        //(...formData) es un operador de propagación que permite expandir el objeto 
+        data: {opcion: opcion, tabla:tabla, id:id, ...formData}, 
+        success: function (data) {
+        }
+    });
+
+    $('#modalClientes').modal('hide');
+    $(function() {
+        //toastr.success('Se ha creado el registro correctamente')
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Los cambios han sido efectuados exitosamente...',
+            showConfirmButton: false,
+            timer: 1900,
+        }).then((result) => {
+            // Se llama la función consultar después de que se haya cerrado la alerta
+            location.reload();
+        });
+    });
+            
+    // Verifico por consola si esta enviando los datos correctos
+});
+
 
 
 // Funcion para imprimir el modal en PDF
