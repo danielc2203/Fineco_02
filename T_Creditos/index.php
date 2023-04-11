@@ -264,6 +264,7 @@
 
       </div>
       <div class="modal-footer">
+        <button type="button" onclick="updateResult()" class="btn btn-success" id="refresh"><i class="fas fa-redo-alt fa-1x"></i></button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" id="guardar_simulador" class="btn btn-primary">Guardar</button>
       </div>
@@ -273,7 +274,7 @@
 
 
 
-<!-- Modal clientes-->
+<!-- Modal Creditos-->
 <div class="modal fade" id="modalF" tabindex="-1" aria-labelledby="modalClientes" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -321,7 +322,7 @@
 
 <!-- <script src="./guardar.js"></script> -->
 <script src="./tabla_creditos.js"></script>
-<script src="./creditos.js"></script>
+<!-- <script src="./creditos.js"></script> -->
 <!-- <script src="./calculadora.js"></script> -->
 <script src="./simulador.js"></script>
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->

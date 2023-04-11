@@ -1,4 +1,3 @@
-
 // Obtener los campos de entrada
 var input1 = document.getElementById("c1");
 var input2 = document.getElementById("c2");
@@ -149,6 +148,9 @@ function updateResult() {
 
   console.log("danielc2203@gmail.com");
   // Final....
+
+ 
+  
 }
 
 

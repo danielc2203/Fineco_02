@@ -151,6 +151,9 @@ $('#formModal').submit(function(e){
 $(document).on("click", ".Simulador", function simulador(){
     var filaSeleccionada = tablaUsuarios.row($(this).parents('tr')); //captura los datos de la fila
     var capacidadSeleccionada = filaSeleccionada.data().capacidad; // guardamos en variable la capacidad
+    var plazof = filaSeleccionada.data().plazo; // Plazo
+    var documentoF = filaSeleccionada.data().id_documento;
+    var montoF = filaSeleccionada.data().monto;
 
 
     $('#modalSimulador').on('hidden.bs.modal', function () {
@@ -160,10 +163,14 @@ $(document).on("click", ".Simulador", function simulador(){
 
     $(".modal-header").css( "background-color", "#2e2cb1");
     $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Simulador de Crédito");
+    $(".modal-title").text("Simulador de Crédito para cliente: " +documentoF);
     $('#modalSimulador').modal('show');
+    $('#c1').val("0"); // pasamos el valor de Total compras de cartera al campo C1
+    $('#c2').val(montoF); // pasamos el valor de Monto solicitado compras de cartera al campo C2
     $('#c11').val(capacidadSeleccionada); // pasamos el valor de capacidad al campo C11
-
+    $('#c10').val(plazof); // pasamos el valor de plazo al campo C10
+    //$('#c12').val(documentoF); // pasamos el valor de plazo al campo C10
+    setTimeout(updateResult, 2000);
 });
             
 //para limpiar los campos antes de dar de Alta a un registro
@@ -258,8 +265,7 @@ $(document).on("click", ".VerCredito", function(){
     $(".modal-header").css( "background-color", "#73c6fe");
     $(".modal-header").css( "color", "white" );
    // $(".modal-title").text("Detalles del Credito para: " + id_documento);
-    $('#VerCredito').modal('show');
-    
+    $('#VerCredito').modal('show');    
 });
     
 // // Modal de Ediciòn de los Detalles del Credito
