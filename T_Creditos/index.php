@@ -57,6 +57,7 @@
               <th>Monto Solicitado</th>                             
               <th>Plazo Meses</th>
               <th>Capacidad Mensual</th>
+              <th>Cuota Mensual</th>
               <th>Estado</th>
               <th>Fecha de Solicitud</th>
               </tr>

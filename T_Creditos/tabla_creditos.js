@@ -78,6 +78,7 @@ $(document).ready(function() {
                     var capacidadf = number;
                 },
             },
+            {"data": "cuota_mensual"},
             //{"data": "Estado"},
             {
                 data: 'estado',
