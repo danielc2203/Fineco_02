@@ -83,7 +83,7 @@ switch($opcion){
         //$consulta = "UPDATE $tabla SET nombre='$nombre' WHERE id='$id' ";
             $consulta = "UPDATE creditos SET " . implode(',', $set) . " WHERE id='$id' ";		
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute();        
+            $resultado->execute();
             $consulta = "SELECT * FROM creditos WHERE id='$id' "; 
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();

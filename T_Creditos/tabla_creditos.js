@@ -89,6 +89,10 @@ $(document).ready(function() {
                             link = 'btn-success';
                         } else if (data[0] === 'N') {
                             link = 'btn-dark';
+                        } else if (data[0] === 'P') {
+                            link = 'btn-secondary';
+                        } else if (data[0] = 'S') {
+                            link = 'btn-danger';
                         }
                         // Llamamos la función de simulador
                         return '<a class="btn '+link+' Simulador" role="button">'+data+'</a>';
@@ -150,6 +154,7 @@ $('#formModal').submit(function(e){
 // Funcion de Simulador: llama al modal Simulador de Credito
 $(document).on("click", ".Simulador", function simulador(){
     var filaSeleccionada = tablaUsuarios.row($(this).parents('tr')); //captura los datos de la fila
+    var id = filaSeleccionada.data().id; // Guardamos el ID
     var capacidadSeleccionada = filaSeleccionada.data().capacidad; // guardamos en variable la capacidad
     var plazof = filaSeleccionada.data().plazo; // Plazo
     var documentoF = filaSeleccionada.data().id_documento;
@@ -165,6 +170,7 @@ $(document).on("click", ".Simulador", function simulador(){
     $(".modal-header").css( "color", "white" );
     $(".modal-title").text("Simulador de Crédito para cliente: " +documentoF);
     $('#modalSimulador').modal('show');
+    $('#id').val(id); // pasamos el valor de Total compras de cartera al campo C1
     $('#c1').val("0"); // pasamos el valor de Total compras de cartera al campo C1
     $('#c2').val(montoF); // pasamos el valor de Monto solicitado compras de cartera al campo C2
     $('#c11').val(capacidadSeleccionada); // pasamos el valor de capacidad al campo C11
@@ -620,7 +626,7 @@ function actualizarCredito(){
 
 };
 
-
+// Envio al post save
 $(document).on('click', '#btnUpdateSubmitEdit', function() {
     opcion = 7;
     var formData = {}; //Se declara una variable "formData" que será un objeto vacío.
@@ -662,6 +668,58 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
     // Verifico por consola si esta enviando los datos correctos
 });
 
+$(document).on('click', '#btnUpdateSimulador', function() {
+    
+    opcion = 7;
+
+    var id = document.getElementById("id").value;
+    var cartera = document.getElementById("c1").value;
+    var totalCredito = document.getElementById("c8").value;
+    var plazo = document.getElementById("c10").value;
+    var input2 = document.getElementById("c2").value;
+    var cuota = document.getElementById("c12").value;
+    var seguro = document.getElementById("seguro").value;
+    var estado = document.getElementById("estadoFF").value;
+
+    var formData = {
+        'id': id,
+        'cartera': cartera,
+        'totalCredito': totalCredito,
+        'plazo': plazo,
+        'monto': input2,
+        'seguro': seguro,
+        'cuota_mensual': cuota,
+        'estado': estado
+    };
+
+    var id = parseInt(formData['id']);
+
+    $.ajax({
+        url: "crud.php",
+        type: "POST",
+        //(...formData) es un operador de propagación que permite expandir el objeto 
+        data: {opcion: opcion, id:id, ...formData}, 
+        success: function (data) {
+        }
+    });
+
+    $('#modalSimulador').modal('hide');
+    $(function() {
+        //toastr.success('Se ha creado el registro correctamente')
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Los cambios han sido efectuados exitosamente...',
+            showConfirmButton: false,
+            timer: 1900,
+        }).then((result) => {
+            // Se llama la función consultar después de que se haya cerrado la alerta
+            location.reload();
+        });
+    });
+            
+    // Verifico por consola si esta enviando los datos correctos
+});
 
 
 // Funcion para imprimir el modal en PDF

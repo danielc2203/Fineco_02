@@ -109,7 +109,7 @@
       </div>
       <div class="modal-body">
         
-      <form class="needs-validation" novalidate>
+      <form id="simuladorF" class="needs-validation" novalidate>
 
         <div class="form-row">
             <div class="input-group input-group-sm mb-3 col-md-6">
@@ -118,6 +118,8 @@
                 <span class="input-group-text">$</span>
               </div>
               <input type="text" class="form-control" id="c1" required>
+              <input type="hidden" class="form-control" id="id" required>
+              <input type="text" class="form-control" id="estadoFF" required>
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
@@ -266,7 +268,7 @@
       <div class="modal-footer">
         <button type="button" onclick="updateResult()" class="btn btn-success" id="refresh"><i class="fas fa-redo-alt fa-1x"></i></button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" id="guardar_simulador" class="btn btn-primary">Guardar</button>
+        <button type="button" id="btnUpdateSimulador" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 // Obtener los campos de entrada
 var input1 = document.getElementById("c1");
+var estadoFF = document.getElementById("estadoFF");
 var input2 = document.getElementById("c2");
 var input3 = document.getElementById("b3");
 var aval = document.getElementById("c3");
@@ -140,10 +141,12 @@ function updateResult() {
     if(val_12 > val_11) { // Si el valor de la cupo es mayor a la cuota pinta verde
         $("#c12").css( "background-color", "red");
         $("#c12").css( "color", "white" );
+        estadoFF.value = "Sin Cupo";
          
     }else { // Si el valor de la cuota es mayor al cupo pinta rojo
         $("#c12").css( "background-color", "green");
         $("#c12").css( "color", "white" );
+        estadoFF.value = "Con Cupo";
     };
 
   console.log("danielc2203@gmail.com");
