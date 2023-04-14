@@ -119,7 +119,7 @@
               </div>
               <input type="text" class="form-control" id="c1" required>
               <input type="hidden" class="form-control" id="id" required>
-              <input type="text" class="form-control" id="estadoFF" required>
+              <input type="hidden" class="form-control" id="estadoFF" required>
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
