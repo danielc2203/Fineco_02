@@ -159,7 +159,9 @@ $(document).on("click", ".Simulador", function simulador(){
     var capacidadSeleccionada = filaSeleccionada.data().capacidad; // guardamos en variable la capacidad
     var plazof = filaSeleccionada.data().plazo; // Plazo
     var documentoF = filaSeleccionada.data().id_documento;
-    var montoF = filaSeleccionada.data().monto;
+    var montoF = filaSeleccionada.data().monto_solicitado;
+    var cartera = filaSeleccionada.data().cartera;
+    var seguro = filaSeleccionada.data().seguro;
 
 
     $('#modalSimulador').on('hidden.bs.modal', function () {
@@ -172,10 +174,12 @@ $(document).on("click", ".Simulador", function simulador(){
     $(".modal-title").text("Simulador de Crédito para cliente: " +documentoF);
     $('#modalSimulador').modal('show');
     $('#id').val(id); // pasamos el valor de Total compras de cartera al campo C1
-    $('#c1').val("0"); // pasamos el valor de Total compras de cartera al campo C1
+    //$('#c1').val("0"); // pasamos el valor de Total compras de cartera al campo C1
     $('#c2').val(montoF); // pasamos el valor de Monto solicitado compras de cartera al campo C2
     $('#c11').val(capacidadSeleccionada); // pasamos el valor de capacidad al campo C11
     $('#c10').val(plazof); // pasamos el valor de plazo al campo C10
+    $('#c1').val(cartera); // pasamos el valor de plazo al campo C10
+    $('#seguro').val(seguro); // pasamos el valor de plazo al campo C10
     //$('#c12').val(documentoF); // pasamos el valor de plazo al campo C10
     setTimeout(updateResult, 2000);
 });
@@ -677,20 +681,33 @@ $(document).on('click', '#btnUpdateSimulador', function() {
     var cartera = document.getElementById("c1").value;
     var totalCredito = document.getElementById("c8").value;
     var plazo = document.getElementById("c10").value;
-    var input2 = document.getElementById("c2").value;
+    var monto_desembolsado = document.getElementById("c2").value;
     var cuota = document.getElementById("c12").value;
     var seguro = document.getElementById("seguro").value;
     var estado = document.getElementById("estadoFF").value;
+    var tasa = document.getElementById("c9").value;
+    var servicio_aval = document.getElementById("c3").value;
+    var estudio_adm = document.getElementById("c4").value;
+    var impuestos = document.getElementById("c5").value;
+    var intereses_iniciales = document.getElementById("c6").value;
+    var gmf = document.getElementById("c7").value;
+
 
     var formData = {
         'id': id,
         'cartera': cartera,
         'totalCredito': totalCredito,
         'plazo': plazo,
-        'monto': input2,
+        'monto_desembolsado': monto_desembolsado,
         'seguro': seguro,
         'cuota_mensual': cuota,
-        'estado': estado
+        'estado': estado,
+        'tasa': tasa,
+        'servicio_aval': servicio_aval,
+        'estudio_adm': estudio_adm,
+        'impuestos': impuestos,
+        'intereses_iniciales': intereses_iniciales,
+        'gmf': gmf
     };
 
     var id = parseInt(formData['id']);
