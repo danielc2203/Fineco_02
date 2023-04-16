@@ -229,10 +229,10 @@ $(document).on("click", ".VerCredito", function(){
                         html += '<p class="text-muted mb-1"><b>Ingresos Mensuales:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.ingresos) + '</p>'
                         html += '<p class="text-muted mb-1"><b>Monto Solicitado:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.monto_solicitado) + '</p>';
                         html += '<p class="text-muted mb-1"><b>Monto Desembolsado:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.monto_desembolsado) + '</p>'
-                        html += '<p class="text-muted mb-1"><b>gastos:</b> ' + value.gastos + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Capacidad:</b> ' + value.capacidad + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Plazo:</b> ' + value.plazo + '</p>'
-                        html += '<p class="text-muted mb-1"><b>tasa:</b> ' + value.tasa + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Descuentos Mensuales:</b> '+ Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.gastos) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Capacidad:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.capacidad) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Plazo en Meses:</b> ' + value.plazo + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Tasa:</b> ' + value.tasa + '</p>'
                     html +=' </div>'
                     
                     html +=' <div class="col-6">'
@@ -683,24 +683,24 @@ $(document).on('click', '#btnUpdateSimulador', function() {
     var id = document.getElementById("id").value;
     var cartera = document.getElementById("c1").value;
     var totalCredito = document.getElementById("c8").value;
-    let F_totalCredito = totalCredito.replace(/[^0-9]/g, ''); // Quito el formato moneda y convierto a numero simple
+    let F_totalCredito = parseInt(totalCredito.replace(/\D/g, '').slice(0,-2)); // Quito el formato moneda y convierto a numero simple
     var plazo = document.getElementById("c10").value;
     var monto_desembolsado = document.getElementById("c2").value;
     var cuota = document.getElementById("c12").value;
-    let F_cuota = cuota.replace(/[^0-9]/g, '');
+    let F_cuota = parseInt(cuota.replace(/\D/g, '').slice(0,-2));
     var seguro = document.getElementById("seguro").value;
     var estado = document.getElementById("estadoFF").value;
     var tasa = document.getElementById("c9").value;
     var servicio_aval = document.getElementById("c3").value;
-    let F_servicio_aval = servicio_aval.replace(/[^0-9]/g, ''); // Quito el formato moneda y convierto a numero simple
+    let F_servicio_aval = parseInt(servicio_aval.replace(/\D/g, '').slice(0,-2)); // Quito el formato moneda y convierto a numero simple
     var estudio_adm = document.getElementById("c4").value;
-    let F_estudio_adm = estudio_adm.replace(/[^0-9]/g, '');
+    let F_estudio_adm = parseInt(estudio_adm.replace(/\D/g, '').slice(0,-2));
     var impuestos = document.getElementById("c5").value;
-    let F_impuestos = impuestos.replace(/[^0-9]/g, '');
+    let F_impuestos = parseInt(impuestos.replace(/\D/g, '').slice(0,-2));
     var intereses_iniciales = document.getElementById("c6").value;
-    let F_intereses_iniciales = intereses_iniciales.replace(/[^0-9]/g, '');
+    let F_intereses_iniciales = parseInt(intereses_iniciales.replace(/\D/g, '').slice(0,-2));
     var gmf = document.getElementById("c7").value;
-    let F_gmf = gmf.replace(/[^0-9]/g, '');
+    let F_gmf = parseInt(gmf.replace(/\D/g, '').slice(0,-2));
 
 
     var formData = {
