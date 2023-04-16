@@ -77,7 +77,7 @@
   </div>
 <!-- /.content-wrapper -->
 
-<!-- Modal -->
+<!-- Modal Ver Credito-->
 <div class="modal fade" id="VerCredito" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -277,7 +277,7 @@
 
 
 
-<!-- Modal Creditos-->
+<!-- ModalF-->
 <div class="modal fade" id="modalF" tabindex="-1" aria-labelledby="modalClientes" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">

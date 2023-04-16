@@ -261,6 +261,7 @@ $(document).on("click", ".VerCredito", function(){
 
                 html += '<div>'
                 html += '<button type="button" class="btn btn-danger float-right" id="print_modal"><i class="fas fa-file-pdf fa-1x"></i></button>';
+                html += '<button type="button" class="btn btn-warning float-right" id="lista_amortizacion"><i class="fas fa-tasks"></i></button>';
                 html += '<a class="btn btn-primary btnEditar" id=' + value.id + '><i class="fas fa-edit"></i></a>'
                 html += '<a class="btn btn-danger float-left btnBorrar" id=' + value.id + '><i class="fas fa-trash-alt"></i></a>'
                 html += '</div>'
@@ -281,136 +282,8 @@ $(document).on("click", ".VerCredito", function(){
    // $(".modal-title").text("Detalles del Credito para: " + id_documento);
     $('#VerCredito').modal('show');    
 });
-    
-// // Modal de Ediciòn de los Detalles del Credito
-// $(document).on("click", ".btnEditar", function(){	
-//     $('#VerClientes').modal('toggle')	        
-//     opcion = 5;//Para llamar los datos de la BD
-//     var id = $(this).attr('id');
 
-//     $.ajax({
-//         url: "crud.php",
-//         type: "POST",
-//         datatype:"json",    
-//         data: {opcion:opcion, id:id},
-        
-//     success: function (response) {//una vez que la solicitud se procese con éxito en el lado del servidor, devolverá el resultado aquí
-//         // Parse the json result
-//         response = JSON.parse(response);
-//         var html = "";
-        
-//         html += '<form action="" method="post" id="actualizarCredito" class="needs-validation" novalidate>'
-
-//         html += '<input type="hidden" id="id" value="" class="form-control form-control-sm" required >'
-
-//         html += '<div class="form-group row mb-0">'
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Nº de Documento</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="number" id="id_documento" value="" class="form-control form-control-sm" readonly >'
-//         html += '</div>'
-
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Monto del Credito</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="monto" value="" class="form-control form-control-sm" required >'
-//         html += '</div>'
-//         html += '</div>'
-
-//         html += '<div class="form-group row mb-0">'
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">PLAZO</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="plazo" value="" class="form-control form-control-sm" >'
-//         html += '</div>'
-
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Pagaduria</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="Pagaduria" value="" class="form-control form-control-sm" readonly>'
-//         html += '</div>'
-//         html += '</div>'
-
-//         html += '<div class="form-group row mb-0">'
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">Tipo de Credito</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="tipo_credito" value="" class="form-control form-control-sm" >'
-//         html += '</div>'
-
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">CAPACIDAD LIBRE INVERSIÓN</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="capacidad" value="" class="form-control form-control-sm" readonly>'
-//         html += '</div>'
-//         html += '</div>'
-
-//         html += '<div class="form-group row mb-0">'
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="estado" value="" class="form-control form-control-sm" >'
-//         html += '</div>'
-
-//         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">FECHA DE SOLICITUD</label>'
-//         html += '<div class="col-sm-3">'
-//         html += '<input type="text" id="fecha_solicitud" value="" class="form-control form-control-sm" readonly>'
-//         html += '</div>'
-//         html += '</div>'
-
-//         // html += '<button type="submit" class="btn btn-outline-success ml-3" ><i class="fas fa-save"></i></button>'
-//         html += '<button type="button" class="btn btn-outline-success ml-3" onclick= "actualizarCredito()" ><i class="fas fa-save"></i></button>'
-//         html += '<button type="button" class="btn btn-outline-danger float-right" data-dismiss="modal"><i class="far fa-times-circle"></i></button>'
-        
-//         html += '</form>'
-
-//         // Insert the HTML Template and display all employee records
-//         $("#contenido_credito").html(html);
-
-        
-        
-//         // Check if there is available records
-//         if(response.length) {
-//             // Loop the parsed JSON
-//             $.each(response, function(key,value) {
-
-//                 $("#id").val(value.id);
-//                 $("#id_documento").val(value.id_documento);
-//                 //$("#solicitud_credito").val(value.solicitud_credito);
-//                 $("#monto").val(value.monto);
-//                 $("#plazo").val(value.plazo);
-//                 $("#Pagaduria").val(value.pagaduria);
-//                 //$("#amortizacion").val(value.amortizacion);
-//                 $("#tipo_credito").val(value.tipo_credito);
-//                 // $("#deudas_actuales").val(value.deudas_actuales);
-//                 // $("#egresos").val(value.egresos);
-//                 // $("#datacreditos").val(value.datacreditos);
-//                 $("#capacidad").val(value.capacidad);
-//                 // $("#calificacion_interna").val(value.calificacion_interna);
-//                 // $("#tasa").val(value.tasa);
-//                 // $("#resultado").val(value.resultado);
-//                 // $("#cuota_mensual").val(value.cuota_mensual);
-//                 // $("#intereses_anticipados").val(value.intereses_anticipados);
-//                 // $("#seguro").val(value.seguro);
-//                 // $("#asesoria").val(value.asesoria);
-//                 // $("#iva").val(value.iva);
-//                 // $("#comentarios").val(value.comentarios);
-//                 $("#fecha_solicitud").val(value.fecha_solicitud);
-//                 $("#estado").val(value.estado);
-
-//             });
-//         } else {
-//             html += '<div class="alert alert-warning">';
-//             html += 'No se encontro este registro en la BD!';
-//         }
-        
-//     }
-    
-    
-//     });
-    
-//     //$("#formModal").trigger("reset");
-//     $(".modal-header").css("background-color", "#ff9800"); // Color Naranja
-//     $(".modal-header").css("color", "white" );
-//     $(".modal-title").text("Editar Detalles de Solicitud de Credito");		
-//     $('#modalCRUD').modal('show');
-//     var opcion = 2;//para enviar el update
-    
-// });
-
+// Funcion para editar detalles de Solicitud de Credito
 $(document).on('click', '.btnEditar', function() {
     $('#VerCredito').modal('toggle')
 	fila = $(this);      
@@ -676,6 +549,7 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
     // Verifico por consola si esta enviando los datos correctos
 });
 
+// Envio al post save desde Simulador
 $(document).on('click', '#btnUpdateSimulador', function() {
     
     opcion = 7;
@@ -754,4 +628,86 @@ $(document).on('click', '#btnUpdateSimulador', function() {
 $(document).on('click', '#print_modal', function() {
     var element = document.getElementById('modal-content');
     html2pdf().from(element).save();
+});
+
+
+// Función para crear la tabla de amortización
+function crearTablaAmortizacion(valor, tasa, cuota, plazo, seguro) {
+    // Crear la tabla y contenedor
+    var tabla = '<div class="table-responsive"><table class="table table-striped table-bordered"><thead><tr><th>PERIODO</th><th>MES</th><th>CAPITAL</th><th>SEGURO</th><th>INTERES</th><th>CUOTA</th><th>SALDO</th></tr></thead><tbody>';
+  
+    // Inicializar las variables
+    var saldo = valor;
+    var mes = 2;
+    var seguroPeriodo = seguro / 12;
+    var fecha = moment('2023-01-31').format('MMM-YY');
+  
+    // Calcular los valores para cada período y agregarlos a la tabla
+    for (var i = 1; i <= plazo; i++) {
+        var capitalPeriodo = (valor / plazo) * (1 + tasa / 100 / 12) ** (i - 1) - ((valor / plazo) * (1 + tasa / 100 / 12) ** (i - 1) * tasa / 100 / 12);
+        var interes = saldo * (tasa / 100) / 12;
+        saldo -= capitalPeriodo;
+        tabla += '<tr><td>' + (i - 1) + '</td><td>' + fecha + '</td><td>' + capitalPeriodo.toFixed(0) + '</td><td>' + seguroPeriodo.toFixed(0) + '</td><td>' + interes.toFixed(0) + '</td><td>' + cuota.toFixed(0) + '</td><td>' + saldo.toFixed(0) + '</td></tr>';
+        mes++;
+        fecha = moment('2023-01-31').add(mes - 1, 'M').format('MMM-YY');
+    }
+  
+    tabla += '</tbody></table></div>';
+    return tabla;
+}
+
+
+// Función para calcular el capital en un período específico
+function PAGOPRIN(tasa, nper, plazo, pv, fv, tipo) {
+    fv = typeof fv !== 'undefined' ? fv : 0;
+    tipo = typeof tipo !== 'undefined' ? tipo : 0;
+
+    if (tasa === 0) {
+        return -(pv + fv) / nper;
+    } else {
+        var pvif = Math.pow(1 + tasa, nper);
+        var pmt = tasa / (pvif - 1) * -(pv * pvif + fv);
+
+        if (tipo === 1) {
+            pmt /= (1 + tasa);
+        }
+
+        var ipmt = pv * tasa;
+        var ppmt = pmt - ipmt;
+        var prin = pmt - ipmt;
+
+        for (var i = 1; i < nper && i < plazo; i++) {
+            pvif /= (1 + tasa);
+            ipmt = pv * tasa;
+            ppmt = pmt - ipmt;
+            prin = pmt - ipmt;
+            pv -= prin;
+        }
+
+        return prin;
+    }
+}
+
+// Funcion para Ver la lista de Amortizacion
+$(document).on('click', '#lista_amortizacion', function() {
+    
+    // Obtener los valores necesarios
+    var valor = 6597734;
+    var tasa = 2.7;
+    var cuota = 201130;
+    var plazo = 144;
+    var seguro = 228763;
+
+    // Crear la tabla
+    var tablaAmortizacion = crearTablaAmortizacion(valor, tasa, cuota, plazo, seguro);    
+
+    // Mostrar la tabla en el modal
+    $('#VerCredito .modal-body').html(tablaAmortizacion);
+
+    $("#formModal").trigger("reset");
+    $(".modal-header").css("background-color", "#b7f8db"); // Color Naranja
+    $(".modal-header").css("color", "black");
+    $(".modal-header").css("color", "black");
+    $(".modal-title").text("Tabla de Amortizacion");
+    $('#VerCredito').modal('show');
 });
