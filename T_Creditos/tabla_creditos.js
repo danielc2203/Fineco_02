@@ -221,30 +221,33 @@ $(document).on("click", ".VerCredito", function(){
                   html += '<div class="card-body">'
                     html += '<div class="row">'
 
-                      html += '<div class="col-6">'
+                    html += '<div class="col-6">'
                         html += '<p class="text-muted mb-1"><b>Número de documento:</b> ' + value.id_documento + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Monto:</b> ' + value.monto + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Plazo:</b> ' + value.plazo + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Amortización:</b> ' + value.amortizacion + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Tipo de crédito:</b> ' + value.tipo_credito + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Deudas actuales:</b> ' + value.deudas_actuales + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Egresos:</b> ' + value.egresos + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Capacidad:</b> ' + value.capacidad + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Ingresos:</b> ' + value.ingresos + '</p>'
-                        html += '<p class="text-muted mb-1"><b>tasa:</b> ' + value.tasa + '</p>'
-                        html += '<p class="text-muted mb-1"><b>intereses anticipados:</b> ' + value.intereses_anticipados + '</p>'
-                      html += '</div>'
-
-                      html +=' <div class="col-6">'
-                        html += '<p class="text-muted mb-1"><b>Calificación interna:</b> ' + value.calificacion_interna + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Cuota mensual:</b> ' + value.cuota_mensual + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Seguro:</b> ' + value.seguro + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Asesor de Fineco:</b> ' + value.asesor + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Comentarios:</b> ' + value.comentarios + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Fecha de solicitud:</b> ' + value.fecha_solicitud + '</p>'
-                        html += '<p class="text-muted mb-1"><b>Estado:</b> ' + value.estado + '</p>'
                         html += '<p class="text-muted mb-1"><b>pagaduria:</b> ' + value.pagaduria + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Asesor de Fineco:</b> ' + value.asesor + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Fecha de solicitud:</b> ' + value.fecha_solicitud + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Ingresos Mensuales:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.ingresos) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Monto Solicitado:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.monto_solicitado) + '</p>';
+                        html += '<p class="text-muted mb-1"><b>Monto Desembolsado:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.monto_desembolsado) + '</p>'
                         html += '<p class="text-muted mb-1"><b>gastos:</b> ' + value.gastos + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Capacidad:</b> ' + value.capacidad + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Plazo:</b> ' + value.plazo + '</p>'
+                        html += '<p class="text-muted mb-1"><b>tasa:</b> ' + value.tasa + '</p>'
+                    html +=' </div>'
+                    
+                    html +=' <div class="col-6">'
+                        html += '<p class="text-muted mb-1"><b>Servicio Aval:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.servicio_aval) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Estudio Adm:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.estudio_adm) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Impuestos:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.impuestos) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Intereses Iniciales:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.intereses_iniciales) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Seguro:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.seguro) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>GMF:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.gmf) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Cartera:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.cartera) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Total Credito:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.totalCredito) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Cuota Mensual:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.cuota_mensual) + '</p>'
+                        html += '<p class="text-muted mb-1"><b>Estado:</b> ' + value.estado + '</p>'
+                        
+                        
                         html += '</div>'
                     html += '</div>'
 
@@ -680,34 +683,41 @@ $(document).on('click', '#btnUpdateSimulador', function() {
     var id = document.getElementById("id").value;
     var cartera = document.getElementById("c1").value;
     var totalCredito = document.getElementById("c8").value;
+    let F_totalCredito = totalCredito.replace(/[^0-9]/g, ''); // Quito el formato moneda y convierto a numero simple
     var plazo = document.getElementById("c10").value;
     var monto_desembolsado = document.getElementById("c2").value;
     var cuota = document.getElementById("c12").value;
+    let F_cuota = cuota.replace(/[^0-9]/g, '');
     var seguro = document.getElementById("seguro").value;
     var estado = document.getElementById("estadoFF").value;
     var tasa = document.getElementById("c9").value;
     var servicio_aval = document.getElementById("c3").value;
+    let F_servicio_aval = servicio_aval.replace(/[^0-9]/g, ''); // Quito el formato moneda y convierto a numero simple
     var estudio_adm = document.getElementById("c4").value;
+    let F_estudio_adm = estudio_adm.replace(/[^0-9]/g, '');
     var impuestos = document.getElementById("c5").value;
+    let F_impuestos = impuestos.replace(/[^0-9]/g, '');
     var intereses_iniciales = document.getElementById("c6").value;
+    let F_intereses_iniciales = intereses_iniciales.replace(/[^0-9]/g, '');
     var gmf = document.getElementById("c7").value;
+    let F_gmf = gmf.replace(/[^0-9]/g, '');
 
 
     var formData = {
         'id': id,
         'cartera': cartera,
-        'totalCredito': totalCredito,
+        'totalCredito': F_totalCredito,
         'plazo': plazo,
         'monto_desembolsado': monto_desembolsado,
         'seguro': seguro,
-        'cuota_mensual': cuota,
+        'cuota_mensual': F_cuota,
         'estado': estado,
         'tasa': tasa,
-        'servicio_aval': servicio_aval,
-        'estudio_adm': estudio_adm,
-        'impuestos': impuestos,
-        'intereses_iniciales': intereses_iniciales,
-        'gmf': gmf
+        'servicio_aval': F_servicio_aval,
+        'estudio_adm': F_estudio_adm,
+        'impuestos': F_impuestos,
+        'intereses_iniciales': F_intereses_iniciales,
+        'gmf': F_gmf
     };
 
     var id = parseInt(formData['id']);
