@@ -157,48 +157,71 @@ function updateResult() {
 }
 
 
+
+
+
 // Datos del préstamo
-const valorPrestamoT = 12919905;
-const tasaInteresT = 0.023;
-let cuotaT = 309677;
+const valorPrestamoT = 6597734;
+const tasaInteresT = 0.027 / 12; // Tasa mensual
+let cuotaT = 201130;
 const plazoT = 144;
-const seguroT = 10000 / 12;
+const seguroT = 228763 / valorPrestamoT;
 
 // Función para calcular la tabla de amortización
 function calcularTablaAmortizacion() {
   // Inicializar variables
   let saldoPendienteT = valorPrestamoT;
   let periodoT = 0;
-  let fechaT = new Date(2020, 8, 1); // Septiembre 2020
+  let fechaT = new Date(2023, 1, 1); // Febrero 2023
   let tablaT = [];
   let interesesAnterioresT = 0;
-  
+
   // Calcular amortización para cada período
   for (let i = 1; i <= plazoT && saldoPendienteT > 0; i++) {
     periodoT++;
-    let interesesT = saldoPendienteT * tasaInteresT / 12;
-    let cuotaSinSeguroT = cuotaT - seguroT;
+    let interesesT = saldoPendienteT * tasaInteresT;
+    let cuotaSinSeguroT = cuotaT - seguroT * valorPrestamoT;
     let capitalT = cuotaSinSeguroT - interesesT;
     if (saldoPendienteT < capitalT) {
       capitalT = saldoPendienteT;
       cuotaSinSeguroT = capitalT + interesesT;
-      cuotaT = cuotaSinSeguroT + seguroT;
     }
     let saldoT = saldoPendienteT - capitalT;
     saldoPendienteT = saldoT;
     interesesAnterioresT += interesesT;
-    
+
     // Agregar entrada a la tabla de amortización
     let mesT = fechaT.toLocaleString('default', { month: 'short' }) + '-' + fechaT.getFullYear().toString().substr(-2);
-    tablaT.push([periodoT, mesT, capitalT.toFixed(3), seguroT, interesesT.toFixed(3), cuotaT.toFixed(3), saldoT.toFixed(3), (interesesAnterioresT + capitalT).toFixed(3)]);
-  
-    // Actualizar fecha para el siguiente período
+    tablaT.push([
+      periodoT,
+      mesT,
+      capitalT.toFixed(3),
+      (seguroT * valorPrestamoT).toFixed(3),
+      interesesT.toFixed(3),
+      (cuotaSinSeguroT + seguroT * valorPrestamoT).toFixed(3),
+      saldoT.toFixed(3),
+      (interesesAnterioresT + interesesT).toFixed(3)
+    ]);
+
+    // Actualizar fecha para el próximo período
     fechaT.setMonth(fechaT.getMonth() + 1);
   }
-  
+
   return tablaT;
 }
 
-// Ejecutar la función y mostrar la tabla de amortización en la consola
-let tablaAmortizacionT = calcularTablaAmortizacion();
-console.table(tablaAmortizacionT);
+// Función para imprimir la tabla de amortización en consola
+function imprimirTablaAmortizacion() {
+  let tabla = calcularTablaAmortizacion();
+
+  // Imprimir encabezado de la tabla
+  console.log('PERIODO\tMES\t\tCAPITAL\tSEGURO\tINTERES\tCUOTA\t\tSALDO\t\tINTERESES ACUMULADOS');
+
+  // Iterar sobre la tabla de amortización y imprimir cada entrada
+  tabla.forEach((entrada) => {
+    console.log(`${entrada[0]}\t${entrada[1]}\t${entrada[2]}\t${entrada[3]}\t${entrada[4]}\t${entrada[5]}\t${entrada[6]}\t${entrada[7]}`);
+  });
+}
+
+// Llamar a la función para imprimir la tabla de amortización en consola
+imprimirTablaAmortizacion();
