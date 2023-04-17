@@ -261,7 +261,7 @@ $(document).on("click", ".VerCredito", function(){
 
                 html += '<div>'
                 html += '<button type="button" class="btn btn-danger float-right" id="print_modal"><i class="fas fa-file-pdf fa-1x"></i></button>';
-                html += '<button type="button" class="btn btn-warning float-right" id="lista_amortizacion"><i class="fas fa-tasks"></i></button>';
+                html += '<button type="button" class="btn btn-warning float-right" idF=' + value.id + ' id="lista_amortizacion"><i class="fas fa-tasks"></i></button>';
                 html += '<a class="btn btn-primary btnEditar" id=' + value.id + '><i class="fas fa-edit"></i></a>'
                 html += '<a class="btn btn-danger float-left btnBorrar" id=' + value.id + '><i class="fas fa-trash-alt"></i></a>'
                 html += '</div>'
@@ -630,76 +630,93 @@ $(document).on('click', '#print_modal', function() {
     html2pdf().from(element).save();
 });
 
+// Funcion para imprimir la tabla de amortizacion en PDF
+$(document).on('click', '#print_modal_amortizacion', function() {
+    var element = document.getElementById('contenido_credito');
+    html2pdf().from(element).save();
+});
 
-// Función para crear la tabla de amortización
-function crearTablaAmortizacion(valor, tasa, cuota, plazo, seguro) {
-    // Crear la tabla y contenedor
-    var tabla = '<div class="table-responsive"><table class="table table-striped table-bordered"><thead><tr><th>PERIODO</th><th>MES</th><th>CAPITAL</th><th>SEGURO</th><th>INTERES</th><th>CUOTA</th><th>SALDO</th></tr></thead><tbody>';
-  
-    // Inicializar las variables
-    var saldo = valor;
-    var mes = 2;
-    var seguroPeriodo = seguro / 12;
-    var fecha = moment('2023-01-31').format('MMM-YY');
-  
-    // Calcular los valores para cada período y agregarlos a la tabla
-    for (var i = 1; i <= plazo; i++) {
-        var capitalPeriodo = (valor / plazo) * (1 + tasa / 100 / 12) ** (i - 1) - ((valor / plazo) * (1 + tasa / 100 / 12) ** (i - 1) * tasa / 100 / 12);
-        var interes = saldo * (tasa / 100) / 12;
-        saldo -= capitalPeriodo;
-        tabla += '<tr><td>' + (i - 1) + '</td><td>' + fecha + '</td><td>' + capitalPeriodo.toFixed(0) + '</td><td>' + seguroPeriodo.toFixed(0) + '</td><td>' + interes.toFixed(0) + '</td><td>' + cuota.toFixed(0) + '</td><td>' + saldo.toFixed(0) + '</td></tr>';
-        mes++;
-        fecha = moment('2023-01-31').add(mes - 1, 'M').format('MMM-YY');
-    }
-  
-    tabla += '</tbody></table></div>';
-    return tabla;
-}
-
-
-// Función para calcular el capital en un período específico
-function PAGOPRIN(tasa, nper, plazo, pv, fv, tipo) {
-    fv = typeof fv !== 'undefined' ? fv : 0;
-    tipo = typeof tipo !== 'undefined' ? tipo : 0;
-
-    if (tasa === 0) {
-        return -(pv + fv) / nper;
-    } else {
-        var pvif = Math.pow(1 + tasa, nper);
-        var pmt = tasa / (pvif - 1) * -(pv * pvif + fv);
-
-        if (tipo === 1) {
-            pmt /= (1 + tasa);
-        }
-
-        var ipmt = pv * tasa;
-        var ppmt = pmt - ipmt;
-        var prin = pmt - ipmt;
-
-        for (var i = 1; i < nper && i < plazo; i++) {
-            pvif /= (1 + tasa);
-            ipmt = pv * tasa;
-            ppmt = pmt - ipmt;
-            prin = pmt - ipmt;
-            pv -= prin;
-        }
-
-        return prin;
-    }
-}
-
-// Funcion para Ver la lista de Amortizacion
+// Funcion para ver la lista de Amortizaciones
 $(document).on('click', '#lista_amortizacion', function() {
-    
-    // Obtener los valores necesarios
-    var valor = 6597734;
-    var tasa = 2.7;
-    var cuota = 201130;
-    var plazo = 144;
-    var seguro = 228763;
+
+    fila = $(this);      
+	tabla = "creditos";     
+    var id = $(this).attr('idF'); // traemos el id del btn-editar para usar el resposive de datatable
+	opcion = 5;
+	console.log(id, tabla, opcion);
+	$.ajax({
+		url: "crud.php",
+		type: "POST",
+		datatype:"json",    
+		data: {opcion:opcion, id:id, tabla:tabla}, 
+
+		success: function (response) {
+			response = JSON.parse(response);
+			var html = "";
+            var data = response[0];
+            var monto = data.monto_desembolsado;
+            var tiempo = data.plazo;
+            var interes = data.tasa;
+            var seguro = data.seguro;
+            var cuota = data.cuota_mensual;
+            //console.log(data);
+
+            $(".modal-header").html(`<button type="button" class="btn btn-danger float-right" id="print_modal_amortizacion"><i class="fas fa-file-pdf fa-1x"></i></button>
+            <h5 class="modal-title">Tabla de Amortizacion</h5>`);
 
     // Crear la tabla
-    var tablaAmortizacion = crearTablaAmortizacion(valor, tasa, cuota, plazo, seguro);    
+    let fechas = [];
+    let fechaActual = Date.now();
+    let mes_actual = moment(fechaActual);
+    mes_actual.add(1, 'month');
+
+    let pagoInteres = 0, pagoCapital = 0;
+
+    const tablaAmortizacion = document.createElement('table');
+    tablaAmortizacion.classList.add('table', 'table-striped', 'table-hover');
+    tablaAmortizacion.innerHTML = `
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Pago Capital</th>
+                <th>Seguro</th>
+                <th>Pago Interes</th>
+                <th>Cuota</th>
+                <th>Saldo Restante</th>
+            </tr>
+        </thead>
+        <tbody id="lista-tabla">
+        </tbody>
+    `;
+
+    const llenarTabla = tablaAmortizacion.querySelector('#lista-tabla');
+
+    let saldo = monto;
+    cuota = monto * (Math.pow(1+interes/100, tiempo)*interes/100)/(Math.pow(1+interes/100, tiempo)-1);
+    //cuota = cuota + seguro;
+
+    for(let i = 1; i <= tiempo; i++) {
+
+        pagoInteres = parseFloat(saldo * (interes/100));
+        pagoCapital = cuota - pagoInteres;
+        saldo -= pagoCapital;
+        seguro = seguro;
+
+        //Formato fechas
+        fechas[i] = mes_actual.format('DD-MM-YYYY');
+        mes_actual.add(1, 'month');
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${fechas[i]}</td>
+            <td>${pagoCapital.toFixed(0)}</td>
+            <td>${parseFloat(seguro/12).toFixed(0)}</td>
+            <td>${pagoInteres.toFixed(0)}</td>
+            <td>${parseFloat(cuota + (seguro/12)).toFixed(0)}</td>
+            <td>${parseFloat(saldo).toFixed(0)}</td>
+        `;
+        llenarTabla.appendChild(row)
+    }
 
     // Mostrar la tabla en el modal
     $('#VerCredito .modal-body').html(tablaAmortizacion);
@@ -708,6 +725,8 @@ $(document).on('click', '#lista_amortizacion', function() {
     $(".modal-header").css("background-color", "#b7f8db"); // Color Naranja
     $(".modal-header").css("color", "black");
     $(".modal-header").css("color", "black");
-    $(".modal-title").text("Tabla de Amortizacion");
+    $(".modal-title").text("Tabla de Amortizacion ");
     $('#VerCredito').modal('show');
+}
+});
 });
