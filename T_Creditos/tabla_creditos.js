@@ -48,7 +48,7 @@ $(document).ready(function() {
                 }
             }, 
             {// Datos de monto en formato moneda
-                data: 'monto',
+                data: 'monto_solicitado',
                 render: function (data, type) {
                     var number = $.fn.dataTable.render
                         .number('.', '.', 0, '$ ')
@@ -83,22 +83,8 @@ $(document).ready(function() {
             {
                 data: 'estado',
                 render: function (data, type) {
-                    if (type === 'display') {
-                        let link = 'btn-light';
- 
-                        if (data[0] === 'C') {
-                            link = 'btn-success';
-                        } else if (data[0] === 'N') {
-                            link = 'btn-dark';
-                        } else if (data[0] === 'P') {
-                            link = 'btn-secondary';
-                        } else if (data[0] = 'S') {
-                            link = 'btn-danger';
-                        }
-                        // Llamamos la función de simulador
-                        return '<a class="btn '+link+' Simulador" role="button">'+data+'</a>';
-                    }
-                    return data;        
+                    
+                    return '<a class="btn btn-secondary Simulador" role="button">'+data+'</a>';       
                 },
             },
             {"data": "fecha_solicitud"}, 
@@ -301,6 +287,27 @@ $(document).on('click', '.btnEditar', function() {
 			response = JSON.parse(response);
 			var html = "";
             var data = response[0];
+            var estados = {
+                '1.0 INGRESADO': '1.0 INGRESADO',
+                '1.1 COMITÉ DE CRÉDITO': '1.1 COMITÉ DE CRÉDITO',
+                '1.2 INGRESADO PDTE SOPORTES Y DOCUMENTOS': '1.2 INGRESADO PDTE SOPORTES Y DOCUMENTOS',
+                '2.0 VALIDACIÓN DOCUMENTAL Y PROFORENSE': '2.0 VALIDACIÓN DOCUMENTAL Y PROFORENSE',
+                '2.1 INGRESADO PDTE SOPORTES': '2.1 INGRESADO PDTE SOPORTES',
+                '3.0 RADICADO SOPORTES COMPLETOS': '3.0 RADICADO SOPORTES COMPLETOS',
+                '3.1 RAD. VALIDACIÓN DE CRÉDITO': '3.1 RAD. VALIDACIÓN DE CRÉDITO',
+                '3.2 REFERENCIACIÓN': '3.2 REFERENCIACIÓN',
+                '4.0 VISADO E INCORPORACIÓN': '4.0 VISADO E INCORPORACIÓN',
+                '4.1 APROBADO PDTE CERTIFICACIONES': '4.1 APROBADO PDTE CERTIFICACIONES',
+                '4.2 APROBADO PDTE VISADO': '4.2 APROBADO PDTE VISADO',
+                '4.3 APROBADO PDTE INCORPORACIÓN': '4.3 APROBADO PDTE INCORPORACIÓN',
+                '4.4 VALIDACIÓN DOCUMENTAL': '4.4 VALIDACIÓN DOCUMENTAL',
+                '5.0 APROBADO DEFINITIVO': '5.0 APROBADO DEFINITIVO',
+                '5.1 TESORERÍA COMPRAS DE CARTERA': '5.1 TESORERÍA COMPRAS DE CARTERA',
+                '5.2 TESORERÍA COMPRAS Y DESEMBOLSO': '5.2 TESORERÍA COMPRAS Y DESEMBOLSO',
+                '5.3 DESEMBOLSADO PDTE GIRO': '5.3 DESEMBOLSADO PDTE GIRO',
+                '6.0 DESEMBOLSO CLIENTE': '6.0 DESEMBOLSO CLIENTE'
+              };
+              
 
 			html += '<div class="modal-body">'
 			html += '<form id="save-form">'
@@ -315,24 +322,48 @@ $(document).on('click', '.btnEditar', function() {
                 html += '</div>';
                 html += '</div>';
                 }
+
+                // Verificamos si el campo es "estado" para crear un select con opciones
+                // else if (key === "estado") {
+                // var estadoActual = data[key];
+                // html += '<div class="form-group row mb-0">';
+                // html += '<label class="col-6 col-form-label-sm">' + key + ':</label>';
+                // html += '<div class="col-6">';
+                // html += '<select id="' + key + '" class="form-control form-control-sm">';
+                // if (estadoActual === "Pendiente") {
+                // html += '<option value="Pendiente" selected>Pendiente</option>';
+                // html += '<option value="Con Cupo">Con Cupo</option>';
+                // } else {
+                // html += '<option value="Pendiente">Pendiente</option>';
+                // html += '<option value="Con Cupo" selected>Con Cupo</option>';
+                // }
+                // html += '</select>';
+                // html += '</div>';
+                // html += '</div>';
+                // }
+
                 // Verificamos si el campo es "estado" para crear un select con opciones
                 else if (key === "estado") {
-                var estadoActual = data[key];
-                html += '<div class="form-group row mb-0">';
-                html += '<label class="col-6 col-form-label-sm">' + key + ':</label>';
-                html += '<div class="col-6">';
-                html += '<select id="' + key + '" class="form-control form-control-sm">';
-                if (estadoActual === "Pendiente") {
-                html += '<option value="Pendiente" selected>Pendiente</option>';
-                html += '<option value="Con Cupo">Con Cupo</option>';
-                } else {
-                html += '<option value="Pendiente">Pendiente</option>';
-                html += '<option value="Con Cupo" selected>Con Cupo</option>';
+                    var estadoActual = data[key];
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ':</label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + key + '" class="form-control form-control-sm">';
+                    for (var estado in estados) {
+                    if (estados.hasOwnProperty(estado)) {
+                        if (estado === estadoActual) {
+                        html += '<option value="' + estado + '" selected>' + estados[estado] + '</option>';
+                        } else {
+                        html += '<option value="' + estado + '">' + estados[estado] + '</option>';
+                        }
+                    }
+                    }
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
                 }
-                html += '</select>';
-                html += '</div>';
-                html += '</div>';
-                }
+  
+
                 // Para cualquier otro campo, creamos un input
                 else {
                 html += '<div class="form-group row mb-0">';
@@ -418,7 +449,7 @@ $(document).delegate(".btnBorrar", "click", function() {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             
-            $('#VerCredito').modal('toggle')
+            
 
             $.ajax({
                 url: "crud.php",
@@ -430,8 +461,7 @@ $(document).delegate(".btnBorrar", "click", function() {
                     Swal.fire('La solicitud de credito ha sido Eliminado de la base de datos.', response, 'success');
                     }
                 });
-
-            
+                
         } else if (result.isDenied) {
             Swal.fire('Cambios No Efectuados', '', 'info')
         }else{
@@ -440,6 +470,8 @@ $(document).delegate(".btnBorrar", "click", function() {
                 //toastr.info('Se ha cancelado la acción de eliminar')
                 });
         }
+        $('#VerCredito').modal('toggle')
+        location.reload();
         });
     });
 
@@ -654,15 +686,18 @@ $(document).on('click', '#lista_amortizacion', function() {
 			response = JSON.parse(response);
 			var html = "";
             var data = response[0];
-            var monto = data.monto_desembolsado;
+            var monto = data.totalCredito;
             var tiempo = data.plazo;
             var interes = data.tasa;
             var seguro = data.seguro;
             var cuota = data.cuota_mensual;
             //console.log(data);
 
-            $(".modal-header").html(`<button type="button" class="btn btn-danger float-right" id="print_modal_amortizacion"><i class="fas fa-file-pdf fa-1x"></i></button>
-            <h5 class="modal-title">Tabla de Amortizacion</h5>`);
+            $(".modal-header").html(`
+                <h5 class="modal-title" style="text-align: center;">Tabla de Amortizacion</h5>
+                <button type="button" class="btn btn-danger float-right" id="print_modal_amortizacion"><i class="fas fa-file-pdf fa-1x"></i></button>
+            `);
+
 
     // Crear la tabla
     let fechas = [];
@@ -674,6 +709,7 @@ $(document).on('click', '#lista_amortizacion', function() {
 
     const tablaAmortizacion = document.createElement('table');
     tablaAmortizacion.classList.add('table', 'table-striped', 'table-hover');
+
     tablaAmortizacion.innerHTML = `
         <thead>
             <tr>
@@ -725,7 +761,7 @@ $(document).on('click', '#lista_amortizacion', function() {
     $(".modal-header").css("background-color", "#b7f8db"); // Color Naranja
     $(".modal-header").css("color", "black");
     $(".modal-header").css("color", "black");
-    $(".modal-title").text("Tabla de Amortizacion ");
+    $(".modal-title").text("Tabla de Amortizacion, Credito # " + data.id + " - CC: " + data.id_documento);
     $('#VerCredito').modal('show');
 }
 });

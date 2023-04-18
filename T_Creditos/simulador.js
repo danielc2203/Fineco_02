@@ -146,7 +146,7 @@ function updateResult() {
     }else { // Si el valor de la cuota es mayor al cupo pinta rojo
         $("#c12").css( "background-color", "green");
         $("#c12").css( "color", "white" );
-        estadoFF.value = "Con Cupo";
+        estadoFF.value = "1.1 COMITÉ DE CRÉDITO";
     };
 
   console.log("danielc2203@gmail.com");

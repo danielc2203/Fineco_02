@@ -87,6 +87,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
       </div>
+      <div id="titulo" ></div>
       <div class="modal-body" id="contenido_credito">
         Body
       </div>

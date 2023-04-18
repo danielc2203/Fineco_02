@@ -204,14 +204,14 @@ function guardarDatos(){
         html += '</div>'
 
         html += '<div class="form-group row mb-0">'
-        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">MONTO DEL CREDITO:</label>'
+        html += '<label for="dd1" class="col-sm-3 col-form-label-sm">MONTO SOLICITADO:</label>'
         html += '<div class="col-sm-3">'
         html += '<input type="number" id="F_montoCredito" value="" class="form-control form-control-sm" placeholder="$" required>'
         html += '</div>'
 
         html += '<label for="dd1" class="col-sm-3 col-form-label-sm">ESTADO DEL CREDITO:</label>'
         html += '<div class="col-sm-3">'
-        html += '<input type="text" id="F_estado" value="Pendiente" class="form-control form-control-sm" placeholder="$" readonly>'
+        html += '<input type="text" id="F_estado" value="1.0 INGRESADO" class="form-control form-control-sm" placeholder="$" readonly>'
         html += '</div>'
         html += '</div>'
 
