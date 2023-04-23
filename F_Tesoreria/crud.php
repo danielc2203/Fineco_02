@@ -63,7 +63,7 @@ switch($opcion){
         break;
     case 4:    
         //$consulta = "SELECT * FROM creditos";
-        $consulta = "SELECT * FROM Creditos WHERE Estado NOT LIKE '%Sin Cupo%'";
+        $consulta = "SELECT * FROM creditos WHERE estado NOT LIKE '%Sin Cupo%'";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
