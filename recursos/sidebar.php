@@ -97,7 +97,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
+                <a href="<?php echo $url;?>/F_Tesoreria/" class="nav-link">
                 <i class="nav-icon fas fa-dice-d20"></i>
                   <p>Tesorería</p>
                 </a>
