@@ -25,7 +25,7 @@ $(document).ready(function() {
             ],
 
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
-        "responsive": true, "autoFill": true, "lengthChange": true, "autoWidth": true, "scroll": true,
+        "responsive": true, "autoFill": false, "lengthChange": false, "autoWidth": false, "scroll": false,
         "ajax":{            
             "url": "crud.php", 
             "method": 'POST', //usamos el metodo POST
@@ -34,64 +34,30 @@ $(document).ready(function() {
         },
         "columns":[
             {"data": "id"},
-            {"data": "id_documento"}, // Eliminar este para mostrar el de abajo como boton.
-            // {sortable: true,
-            //     "render": function ( data, type, full, meta ) {
-            //         //var buttonID = +full.id;
-            //         return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
-            //     }
-            // },
-            //Nombre de la pagadira o calculadora
-            {data: 'pagaduria',
-                render: function(data){
-                    return '<span style="text-transform:capitalize;">' + data + '</span>';
-                    return data; 
-                }
-            }, 
-            {// Datos de monto en formato moneda
-                data: 'monto_solicitado',
-                render: function (data, type) {
-                    var number = $.fn.dataTable.render
-                        .number('.', '.', 0, '$ ')
-                        .display(data);
-                    return number;               
-                },
-            },
+            {"data": "id_documento"},
+            {"data": "pagaduria"},
+            {"data": "asesor"},
+            {"data": "fecha_solicitud"},
+            {"data": "ingresos"},
+            {"data": "monto_solicitado"},
+            {"data": "monto_desembolsado"},
+            {"data": "gastos"},
+            {"data": "capacidad"},
             {"data": "plazo"},
-            // Capacidad con funcion menor a 250mil rojo, menor a 500mil naranja, mayor verde
-            {
-                data: 'capacidad',
-                render: function (data, type) {
-                    var number = $.fn.dataTable.render
-                        .number('.', '.', 0, '$ ')
-                        .display(data);
- 
-                    if (type === 'display') {
-                        let color = 'green';
-                        if (data < 250000) {
-                            color = 'red';
-                        } else if (data < 500000) {
-                            color = 'orange';
-                        }
-                        return '<span style="color:' + color + '">' + number + '</span>';
-                    }
-                    return number;
-                    var capacidadf = number;
-                },
-            },
+            {"data": "tasa"},
+            {"data": "servicio_aval"},
+            {"data": "estudio_adm"},
+            {"data": "impuestos"},
+            {"data": "intereses_iniciales"},
+            {"data": "seguro"},
+            {"data": "gmf"},
+            {"data": "cartera"},
+            {"data": "totalCredito"},
             {"data": "cuota_mensual"},
-            {"data": "estado"},
-            // {
-            //     data: 'estado',
-            //     render: function (data, type) {
-                    
-            //         return '<a class="btn btn-secondary Simulador" role="button">'+data+'</a>';       
-            //     },
-            // },
-            {"data": "fecha_solicitud"}, 
+            {"data": "amortizacion"},
+            {"data": "estado"}
         ],
     })
-    var fila; //captura la fila, para editar o eliminar
 });
 
 //submit para Actualización

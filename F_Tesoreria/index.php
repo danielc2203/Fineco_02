@@ -49,20 +49,35 @@
           <!-- Listado de Creditos pendientes-->
           <div class="col-12">
           
-           <table id="creditosp" class="table table-hover">
-            <thead>
-              <tr> 
+          <table id="creditosp" class="table table-hover table-responsive">
+           <thead>
+            <tr>
               <th>id</th>
-              <th>Nº Documento</th>
-              <th>Pagaduria</th>
-              <th>Monto Solicitado</th>                             
-              <th>Plazo Meses</th>
-              <th>Capacidad Mensual</th>
-              <th>Cuota Mensual</th>
-              <th>Estado</th>
-              <th>Fecha de Solicitud</th>
-              </tr>
-            </thead>
+              <th>id_documento</th>
+              <th>pagaduria</th>
+              <th>asesor</th>
+              <th>fecha_solicitud</th>
+              <th>ingresos</th>
+              <th>monto_solicitado</th>
+              <th>monto_desembolsado</th>
+              <th>gastos</th>
+              <th>capacidad</th>
+              <th>plazo</th>
+              <th>tasa</th>
+              <th>servicio_aval</th>
+              <th>estudio_adm</th>
+              <th>impuestos</th>
+              <th>intereses_iniciales</th>
+              <th>seguro</th>
+              <th>gmf</th>
+              <th>cartera</th>
+              <th>totalCredito</th>
+              <th>cuota_mensual</th>
+              <th>amortizacion</th>
+              <th>estado</th>
+            </tr>
+          </thead>
+
             <tbody class="text-lowercase">
             </tbody>
           </table>
