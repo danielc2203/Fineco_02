@@ -54,7 +54,7 @@
               <th>id</th>
               <th>Nº Documento</th>
               <th>Pagaduria</th>
-              <th>Monto Solicitado</th>                             
+              <th>Monto Solicitado</th>
               <th>Plazo Meses</th>
               <th>Capacidad Mensual</th>
               <th>Cuota Mensual</th>

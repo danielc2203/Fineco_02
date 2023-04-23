@@ -4,7 +4,7 @@ $(document).ready(function() {
     opcion = 4;
     
     $(document).ready(function () {
-        $('#creditosp').DataTable;
+        $('#creditosp').DataTable();
     });
     
     tablaUsuarios = $('#creditosp').DataTable({
@@ -31,11 +31,13 @@ $(document).ready(function() {
             "method": 'POST', //usamos el metodo POST
             "data":{opcion:opcion}, //enviamos opcion 4 para que haga un SELECT
             "dataSrc":""
+
         },
         "columns":[
             {"data": "id"},
-            {sortable: true,
-                "render": function ( data, type, full, meta ) {
+            //{"data": "id_documento"},
+            {sortable: false,
+                "render": function (data, type, full, meta) {
                     //var buttonID = +full.id;
                     return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
                 }
@@ -87,7 +89,7 @@ $(document).ready(function() {
                     return '<a class="btn btn-secondary Simulador" role="button">'+data+'</a>';       
                 },
             },
-            {"data": "fecha_solicitud"}, 
+            {"data": "fecha_solicitud"},
         ],
     })
     var fila; //captura la fila, para editar o eliminar

@@ -63,6 +63,7 @@ switch($opcion){
         break;
     case 4:    
         $consulta = "SELECT * FROM creditos";
+        //$consulta = "SELECT id, id_documento, pagaduria, plazo, capacidad, cuota_mensual, fecha_solicitud, monto_solicitado, estado FROM creditos";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
