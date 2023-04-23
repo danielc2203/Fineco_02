@@ -25,7 +25,7 @@ $(document).ready(function() {
             ],
 
         "dom": '<"container-fluid"<"row"<"col"B><"col"l><"col"f>>>rtip',
-        "responsive": false, "lengthChange": false, "autoWidth": false,
+        "responsive": true, "autoFill": true, "lengthChange": true, "autoWidth": true, "scroll": true,
         "ajax":{            
             "url": "crud.php", 
             "method": 'POST', //usamos el metodo POST
