@@ -10,6 +10,15 @@
 <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.css">
+<style>
+.main-footer { 
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 0.5rem;
+  padding: 1rem;
+}
+</style>
 
 <!-- FIN DE HEADER -->
 
