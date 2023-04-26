@@ -101,16 +101,48 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         break;
-        
-    case 9: // Actualizar la tabla de amortizacion       
-        $consulta = "UPDATE tabla_amortizacion SET " . implode(',', $set) . " WHERE id='$id' ";		
+
+    case 9: // Guardar la tabla de amortizacion
+        $id_prestamo = $_POST['id_prestamo'];
+        $periodo = $_POST['periodo'];
+        $fecha = $_POST['fecha'];
+        $capital = $_POST['capital'];
+        $seguro = $_POST['seguro'];
+        $interes = $_POST['interes'];
+        $cuota = $_POST['cuota'];
+        $saldo = $_POST['saldo'];
+
+        $consulta = "INSERT INTO tabla_amortizacion (id_prestamo, periodo, fecha, capital, seguro, interes, cuota, saldo) 
+                        VALUES ('$id_prestamo', '$periodo', '$fecha', '$capital', '$seguro', '$interes', '$cuota', '$saldo')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $consulta = "SELECT * FROM tabla_amortizacion WHERE id='$id' "; 
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        $data = array('success' => true, 'message' => 'Registro guardado correctamente');
         break;
+
+    case 10:
+        // Verifica si la tabla de amortizacion ya existe
+        $id_prestamo = $_POST['id_prestamo'];
+        $resultado = $conexion->prepare("SELECT COUNT(*) AS num_amortizaciones FROM tabla_amortizacion WHERE id_prestamo = ?");
+        $resultado->execute([$id_prestamo]);
+        $data = $resultado->fetch(PDO::FETCH_ASSOC);
+    
+        if ($data['num_amortizaciones'] > 0) {
+            $data = true;
+        } else {
+            $data = false;
+        }
+        break;
+        
+        
+    // case 9: // Actualizar la tabla de amortizacion       
+    //     $consulta = "UPDATE tabla_amortizacion SET " . implode(',', $set) . " WHERE id='$id' ";		
+    //     $resultado = $conexion->prepare($consulta);
+    //     $resultado->execute();
+    //     $consulta = "SELECT * FROM tabla_amortizacion WHERE id='$id' "; 
+    //     $resultado = $conexion->prepare($consulta);
+    //     $resultado->execute();
+    //     $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+    //     break;
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);//envio el array final el formato json a AJAX

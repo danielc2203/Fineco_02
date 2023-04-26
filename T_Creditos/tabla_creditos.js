@@ -670,9 +670,10 @@ $(document).on('click', '#print_modal_amortizacion', function() {
     html2pdf().from(element).save();
 });
 
+var id_prestamo; // Funcion Global
+
 // Funcion para ver la lista de Amortizaciones
 $(document).on('click', '#lista_amortizacion', function() {
-
     fila = $(this);      
 	tabla = "creditos";     
     var id = $(this).attr('idF'); // traemos el id del btn-editar para usar el resposive de datatable
@@ -693,25 +694,21 @@ $(document).on('click', '#lista_amortizacion', function() {
             var interes = data.tasa;
             var seguro = data.seguro;
             var cuota = data.cuota_mensual;
-            //console.log(data);
-
+            id_prestamo = id;
+            console.log(id_prestamo + "id prestamo D"); // Trae todos los datos del actual credito
             $(".modal-header").html(`
+                <button type="button" class="btn btn-success float-left " id="guardar_amortizacion"><i class="fas fa-save"></i></i></button>
                 <h5 class="modal-title" style="text-align: center;">Tabla de Amortizacion</h5>
                 <button type="button" class="btn btn-danger float-right" id="print_modal_amortizacion"><i class="fas fa-file-pdf fa-1x"></i></button>
             `);
-
-
     // Crear la tabla
     let fechas = [];
     let fechaActual = Date.now();
     let mes_actual = moment(fechaActual);
     mes_actual.add(1, 'month');
-
     let pagoInteres = 0, pagoCapital = 0;
-
     const tablaAmortizacion = document.createElement('table');
     tablaAmortizacion.classList.add('table', 'table-striped', 'table-hover');
-
     tablaAmortizacion.innerHTML = `
         <thead>
             <tr>
@@ -726,13 +723,10 @@ $(document).on('click', '#lista_amortizacion', function() {
         <tbody id="lista-tabla">
         </tbody>
     `;
-
     const llenarTabla = tablaAmortizacion.querySelector('#lista-tabla');
-
     let saldo = monto;
     cuota = monto * (Math.pow(1+interes/100, tiempo)*interes/100)/(Math.pow(1+interes/100, tiempo)-1);
     //cuota = cuota + seguro;
-
     for(let i = 1; i <= tiempo; i++) {
 
         pagoInteres = parseFloat(saldo * (interes/100));
@@ -755,10 +749,8 @@ $(document).on('click', '#lista_amortizacion', function() {
         `;
         llenarTabla.appendChild(row)
     }
-
     // Mostrar la tabla en el modal
     $('#VerCredito .modal-body').html(tablaAmortizacion);
-
     $("#formModal").trigger("reset");
     $(".modal-header").css("background-color", "#b7f8db"); // Color Naranja
     $(".modal-header").css("color", "black");
@@ -768,3 +760,82 @@ $(document).on('click', '#lista_amortizacion', function() {
 }
 });
 });
+
+var tablaAmortizacion = []; // Define la variable en el ámbito global o del documento
+
+
+// Guardar tabla de amortizacion en la base de datos
+$(document).on('click', '#guardar_amortizacion', function() {
+    // Recorrer las filas de la tabla de amortización;
+    console.log(id_prestamo);
+    
+  
+});
+
+
+$(document).on('click', '#guardar_amortizacion', function() {
+    // Verificar si ya existe una tabla de amortización para este préstamo
+    $.ajax({
+      method: 'POST',
+      url: 'crud.php',
+      data: {
+        opcion: 10,
+        id_prestamo: id_prestamo
+      },
+      success: function(data) {
+        if (data == 'true') {
+          // Ya existe una tabla de amortización para este préstamo
+          //alert('Ya existe una tabla de amortización para este préstamo');
+          Swal.fire({
+            title: 'Error al guardar!',
+            text: 'Ya existe una tabla de amortización para este préstamo en la base de datos',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+            })
+        } else {
+            
+          // No existe una tabla de amortización para este préstamo, proceder con la inserción
+            let contador = 1; // Inicializar el contador en 1
+$('#lista-tabla tr').each(function() {
+    // Extraer los valores de cada columna
+    
+    const fecha = $(this).find('td').eq(0).text();
+            const capital = parseFloat($(this).find('td').eq(1).text());
+            const seguro = parseFloat($(this).find('td').eq(2).text());
+            const interes = parseFloat($(this).find('td').eq(3).text());
+            const cuota = parseFloat($(this).find('td').eq(4).text());
+            const saldoRestante = parseFloat($(this).find('td').eq(5).text());
+            const periodo = contador; // Asignar el valor del contador como periodo
+        
+            // Insertar los datos en la base de datos
+            $.ajax({
+            method: 'POST',
+            url: 'crud.php',
+            data: {
+                opcion:9,
+                periodo: periodo,
+                id_prestamo: id_prestamo,
+                fecha: fecha,
+                capital: capital,
+                seguro: seguro,
+                interes: interes,
+                cuota: cuota,
+                saldo: saldoRestante
+            },
+            success: function(data) {
+                console.log('Datos insertados en la base de datos');
+            },
+            error: function(error) {
+                console.log(error);
+            }
+            });
+            contador++; // Incrementar el contador en cada iteración
+        });
+        }
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
+  
