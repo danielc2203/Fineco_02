@@ -176,7 +176,7 @@ $(document).on("click", ".VerCredito", function(){
 
                     html += '<div class="col-6">'
                         html += '<p class="text-muted mb-1"><b>Número de documento:</b> ' + value.id_documento + '</p>'
-                        html += '<p class="text-muted mb-1"><b>pagaduria:</b> ' + value.pagaduria + '</p>'
+                        html += '<p class="text-muted mb-1"><b>pagaduría:</b> ' + value.pagaduria + '</p>'
                         html += '<p class="text-muted mb-1"><b>Asesor de Fineco:</b> ' + value.asesor + '</p>'
                         html += '<p class="text-muted mb-1"><b>Fecha de solicitud:</b> ' + value.fecha_solicitud + '</p>'
                         html += '<p class="text-muted mb-1"><b>Ingresos Mensuales:</b> ' + Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.ingresos) + '</p>'

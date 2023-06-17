@@ -63,7 +63,7 @@
             <tr>
               <th>id</th>
               <th>id_documento</th>
-              <th>pagaduria</th>
+              <th>pagaduría</th>
               <th>asesor</th>
               <th>fecha_solicitud</th>
               <th>ingresos</th>

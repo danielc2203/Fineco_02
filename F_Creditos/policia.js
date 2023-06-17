@@ -10,7 +10,7 @@ $( document ).ready(function() {
 cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre);
 
     //Abre el modal y muestra el formulario para policia Nuevo
-    $("#Policia").click(function(){
+    $("#Policía").click(function(){
         opcion = 1; //opcion 1 para envio de credito al crud           
         id=null;
 
@@ -65,7 +65,7 @@ cuadroDiv(nombreF, ColorF, iconoF, colorFuente, iconPre);
     html += '<tr><td>TOTAL DEDUCIDOS</td><td id="tdeducidos">0</td></tr>'
     html += '<tr><td>VALOR MÁXIMO</td><td id="maximo">0</td></tr>'
     html += '<tr><td>CUPO LIBRE INVERSIÓN</td><td id="cupo">0</td></tr>'
-    html += '<tr><td>PAGADURIA</td><td id="pagaduria">'+nombreF+'</td></tr>'
+    html += '<tr><td>PAGADURÍA</td><td id="pagaduria">'+nombreF+'</td></tr>'
   
     html += '</tbody></table></div>'
 
