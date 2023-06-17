@@ -1,6 +1,6 @@
 $( document ).ready(function() {
   
-  let nombreF = "Policia";
+  let nombreF = "Policía";
   let ColorF = "#007936";
   let iconPre = 'fas';
   let iconoF = 'fa-sun';

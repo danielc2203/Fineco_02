@@ -4,34 +4,19 @@
 	$rol_id = ($_SESSION['usuario']['id']);
 	//echo $rol_id;
 	
-	$servername = "localhost"; //set the servername
-	$username = "Fineco2022"; //set the server username
-	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
-	$dbname = "finecoApp"; // set the table name
+	include_once '../global/conexiond.php';
+	$objeto = new Conexion();
+	$conexion = $objeto->Conectar();
 
-	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
-	if ($mysqli->connect_errno) {
-	  echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-	  exit();
-	}
-
-	// Set the INSERT SQL data
-	//$sql = "SELECT * FROM todo_list ";
 	$sql = "SELECT * FROM todo_list WHERE id_usr='".$rol_id."' ORDER BY id DESC";
-	//echo $rol_id."ok" ;
 
-	// Process the query so that we will save the date of birth
-	$results = $mysqli->query($sql);
+	$results = $conexion->query($sql);
 
-	// Fetch Associative array
-	$row = $results->fetch_all(MYSQLI_ASSOC);
+	$row = $results->fetchAll(PDO::FETCH_ASSOC);
 
-	// Free result set
-	$results->free_result();
-
-	// Close the connection after using it
-	$mysqli->close();
+	$conexion = null; // Cierra la conexión estableciendo la variable a null
 
 	echo json_encode($row);
+
 ?>

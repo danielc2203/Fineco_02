@@ -54,8 +54,7 @@
             <!-- small box Celeste -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?php echo $totalClientes; ?></h3>
-
+                <a href="<?php echo $url;?>/F_Clientes"><h3><?php echo $totalClientes; ?></h3></a>
                 <p>Total Clientes</p>
               </div>
               <div class="icon">
@@ -70,14 +69,13 @@
             <!-- small box Verde -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Costo Por Millón</p>
+                <a href="<?php echo $url;?>/F_Creditos"><h3>Creditos</h3></a>
+                <p>Calculadoras</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo $url;?>/F_Creditos" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

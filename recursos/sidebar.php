@@ -3,8 +3,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo $url;?>/F_inicio/index.php" class="brand-link">
-      <img src="<?php echo $url;?>/dist/img/fineco_1.png" alt="Fineco APP" class="brand-image elevation-1" style="opacity: .8">
-      <span class="brand-text font-weight-light">Fineco APP - v1.0.1</span>
+      <img src="<?php echo $url;?>/dist/img/fineco_1.jpg" alt="Fineco APP" class="brand-image elevation-1" style="opacity: .8">
+      <span class="brand-text font-weight-light">Fineco APP - v2.2.0</span>
     </a>
 
     <!-- Sidebar -->
@@ -58,19 +58,19 @@
                   <p>Clientes</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo $url;?>/F_Bancos/" class="nav-link">
                 <i class="nav-icon fab fa-cc-diners-club	"></i>
                   <p>Bancos</p>
                 </a>
-              </li>
+              </li> -->
               
               <!-- Level three dropdown-->
               <li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="nav-icon far fa-credit-card"></i>
                   <p>
-                    Creditos
+                  Créditos 
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -78,7 +78,7 @@
                   <li class="nav-item">
                     <a href="<?php echo $url;?>/F_Creditos/index.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Creditos</p>
+                      <p>Créditos</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -90,7 +90,7 @@
                   <li class="nav-item">
                     <a href="<?php echo $url;?>/T_Creditos" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Tabla de Creditos</p>
+                      <p>Tabla de Créditos</p>
                     </a>
                   </li>
                 </ul>
@@ -114,16 +114,16 @@
                   <p>Empleados</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo $url;?>/F_inicio/index.php" class="nav-link">
                 <i class="nav-icon fas fa-comment-dollar"></i>
                   <p>Contabilidad</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="<?php echo $url;?>/config" class="nav-link">
                 <i class="nav-icon fas fa-database"></i>
-                  <p>Configuraciòn</p>
+                  <p>Configuración</p>
                 </a>
               </li>
             </ul>

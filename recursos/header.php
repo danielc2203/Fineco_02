@@ -33,7 +33,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?php echo $url;?>/dist/img/Fineco_2.png" alt="Fineco APP" height="" width="180">
+    <img class="animation__shake" src="<?php echo $url;?>/dist/img/Fineco_logo.jpeg" alt="Fineco APP" height="" width="180">
   </div>
 
   <!-- Navbar -->

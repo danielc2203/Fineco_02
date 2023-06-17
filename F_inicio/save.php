@@ -6,33 +6,36 @@
 	$fecha_asigando = $request['fecha_asigando'];
 	$estado_tarea = $request['estado_tarea'];
 	$id_usr = $request['id_usr'];
-
-	$servername = "localhost"; //set the servername
-	$username = "Fineco2022"; //set the server username
-	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
-	$dbname = "finecoApp"; // set the table nameame
-
-	$mysqli = new mysqli($servername, $username, $password, $dbname);
-
-	if ($mysqli->connect_errno) {
-	  echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-	  exit();
-	}
-
+	
+	include_once '../global/conexiond.php';
+	$objeto = new Conexion();
+	$conexion = $objeto->Conectar();
+	
 	// Set the INSERT SQL data
 	$sql = "INSERT INTO todo_list (titulo, descripcion, fecha, id_usr, fecha_asigando, estado_tarea)
-	VALUES ('".$titulo."', '".$descripcion."', '".$fecha."', '".$id_usr."', '".$fecha_asigando."', '".$estado_tarea."')";
-
-	// Process the query so that we will save the date of birth
-	if ($mysqli->query($sql)) {
+	VALUES (:titulo, :descripcion, :fecha, :id_usr, :fecha_asigando, :estado_tarea)";
+	
+	// Prepare the statement
+	$stmt = $conexion->prepare($sql);
+	
+	// Bind the parameters
+	$stmt->bindParam(':titulo', $titulo);
+	$stmt->bindParam(':descripcion', $descripcion);
+	$stmt->bindParam(':fecha', $fecha);
+	$stmt->bindParam(':id_usr', $id_usr);
+	$stmt->bindParam(':fecha_asigando', $fecha_asigando);
+	$stmt->bindParam(':estado_tarea', $estado_tarea);
+	
+	// Execute the statement
+	if ($stmt->execute()) {
 	  echo "Employee has been created.";
-	  
 	} else {
-	  return "Error: " . $sql . "<br>" . $mysqli->error;
+	  echo "Error: " . $stmt->errorInfo()[2];
 	}
-
+	
 	// Close the connection after using it
-	$mysqli->close();
+	$conexion = null;
 	echo json_encode($row);
 	header('Location:index.php');
+	
 ?>

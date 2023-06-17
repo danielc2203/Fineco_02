@@ -1,33 +1,24 @@
 <?php
-	$request = $_REQUEST; //a PHP Super Global variable which used to collect data after submitting it from the form
-	$employeeId = $request['employee_id'];//define the employee ID
-
-	$servername = "localhost"; //set the servername
-	$username = "Fineco2022"; //set the server username
-	$password = "Admin2admin"; // set the server password (you must put password here if your using live server)
-	$dbname = "finecoApp"; // set the table nameame
-
-	$mysqli = new mysqli($servername, $username, $password, $dbname);
-
-	if ($mysqli->connect_errno) {
-	  echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-	  exit();
-	}
-
-	// Set the INSERT SQL data
-	$sql = "SELECT * FROM todo_list WHERE id='".$employeeId."'";
-
-	// Process the query so that we will save the date of birth
-	$results = $mysqli->query($sql);
-
+	$request = $_REQUEST; // PHP Super Global variable which is used to collect data after submitting it from the form
+	$employeeId = $request['employee_id']; // Define the employee ID
+	
+	include_once '../global/conexiond.php';
+	$objeto = new Conexion();
+	$conexion = $objeto->Conectar();
+	
+	// Set the SELECT SQL data
+	$sql = "SELECT * FROM todo_list WHERE id=:employeeId";
+	$query = $conexion->prepare($sql);
+	$query->bindParam(':employeeId', $employeeId);
+	$query->execute();
+	
 	// Fetch Associative array
-	$row = $results->fetch_assoc();
-
-	// Free result set
-	$results->free_result();
-
+	$row = $query->fetch(PDO::FETCH_ASSOC);
+	
 	// Close the connection after using it
-	$mysqli->close();
-
+	$conexion = null;
+	
 	echo json_encode($row);
+	
+	
 ?>

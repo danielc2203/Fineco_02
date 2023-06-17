@@ -148,7 +148,7 @@ $(document).on('click', '.btn-view', function() {
 
 	  $(".modal-header").css( "background-color", "#563e7c");
 	  $(".modal-header").css( "color", "white" );
-	  $(".modal-title").text("Detalles de " +tabla+ " " +id);
+	  $(".modal-title").text("Vista de " +tabla+ " " +id);
       
 	  $('#modalClientes').modal('show');
       //$('#modalClientes').toggleClass("modal-dialog modal-xl");
@@ -157,122 +157,266 @@ $(document).on('click', '.btn-view', function() {
 
 });
 
-$(document).on('click', '.btn-edit', function() {
-	fila = $(this);      
-	tabla = "clientes";     
-    var id = $(this).attr('data-id'); // traemos el id del btn-editar para usar el resposive de datatable
-	opcion = 5;
-	//console.log(id, tabla, opcion);
-	$.ajax({
-		url: "crud.php",
-		type: "POST",
-		datatype:"json",    
-		data: {opcion:opcion, id:id, tabla:tabla}, 
+// $(document).on('click', '.btn-edit', function() {
+// 	fila = $(this);      
+// 	tabla = "clientes";     
+//     var id = $(this).attr('data-id'); // traemos el id del btn-editar para usar el resposive de datatable
+// 	opcion = 5;
+// 	//console.log(id, tabla, opcion);
+// 	$.ajax({
+// 		url: "crud.php",
+// 		type: "POST",
+// 		datatype:"json",    
+// 		data: {opcion:opcion, id:id, tabla:tabla}, 
 
-		success: function (response) {
-			response = JSON.parse(response);
-			var html = "";
+// 		success: function (response) {
+// 			response = JSON.parse(response);
+// 			var html = "";
 
-			html += '<div class="modal-body">'
-			html += '<form id="save-form">'
+// 			html += '<div class="modal-body">'
+// 			html += '<form id="save-form">'
 		  
-			$.each(response[0], function(key, val) {
-                //Buscamos si el campo es id lo bloqueamos
-                if (key === "id") {
-                  html += '<div class="form-group row mb-0">';
-                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                  html += '<div class="col-6">';
-                  html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
-                  html += '</div>';
-                  html += '</div>';
-                } else if(key.toLowerCase().includes('fecha')) {
-                  html += '<div class="form-group row mb-0">';
-                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                  html += '<div class="col-6">';
-                  html += '<input type="date" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
-                  html += '</div>';
-                  html += '</div>';
-                } else if (key === "estado") {
-                  html += '<div class="form-group row mb-0">';
-                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                  html += '<div class="col-6">';
-                  html += '<select id="' + key + '" class="form-control form-control-sm">';
-                  html += '<option value="Activo">Activo</option>';
-                  html += '<option value="Retirado">Retirado</option>';
-                  html += '</select>';
-                  html += '</div>';
-                  html += '</div>';
-                } else {
-                  html += '<div class="form-group row mb-0">';
-                  html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
-                  html += '<div class="col-6">';
+// 			$.each(response[0], function(key, val) {
+//                 //Buscamos si el campo es id lo bloqueamos
+//                 if (key === "id") {
+//                   html += '<div class="form-group row mb-0">';
+//                   html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+//                   html += '<div class="col-6">';
+//                   html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+//                   html += '</div>';
+//                   html += '</div>';
+//                 } else if(key.toLowerCase().includes('fecha')) {
+//                   html += '<div class="form-group row mb-0">';
+//                   html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+//                   html += '<div class="col-6">';
+//                   html += '<input type="date" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+//                   html += '</div>';
+//                   html += '</div>';
+//                 } else if (key === "estado") {
+//                   html += '<div class="form-group row mb-0">';
+//                   html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+//                   html += '<div class="col-6">';
+//                   html += '<select id="' + key + '" class="form-control form-control-sm">';
+//                   html += '<option value="Activo">Activo</option>';
+//                   html += '<option value="Retirado">Retirado</option>';
+//                   html += '</select>';
+//                   html += '</div>';
+//                   html += '</div>';
+//                 } else {
+//                   html += '<div class="form-group row mb-0">';
+//                   html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+//                   html += '<div class="col-6">';
 
-                  if (key === "pagaduria") {
-                    // Código HTML para el input "pagaduria"
-                    html += '<select id="' + key + '" class="form-control form-control-sm">';
+//                   if (key === "pagaduria") {
+//                     // Código HTML para el input "pagaduria"
+//                     html += '<select id="' + key + '" class="form-control form-control-sm">';
                 
-                    // Hacer la solicitud AJAX para obtener los convenios
-                    $.ajax({
-                        url: "listas.php",
-                        type: "POST",
-                        datatype:"json",
-                        data: {opcion: 1, tabla: 'convenios'},
-                        success: function(response) {
-                            response = JSON.parse(response);
-                            var options = '';
-                            var selected = '';
-                            var encontrado = false;
-                            // Recorrer el array de convenios y buscar el valor almacenado en la base de datos
-                            $.each(response, function(i, val2) {
-                                options += '<option value="' + val2.nombre + '"';
-                                if (val2.nombre == val) {
-                                    options += 'selected';
-                                    encontrado = true;
-                                }
-                                options += '>' + val2.nombre + '</option>';
-                            });
-                            // Si no se encontró el valor almacenado en la base de datos, crear una opción para este valor
-                            if (!encontrado) {
-                                options += '<option value="' + val + '" selected>' + val + '</option>';
-                            }
-                            // Agregar las opciones al select
-                            $('#' + key).append(options);
-                        }
-                    });
-                    html += '</select>';
-                } else {
-                    html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
-                }
-                html += '</div>';
-                html += '</div>';
+//                     // Hacer la solicitud AJAX para obtener los convenios
+//                     $.ajax({
+//                         url: "listas.php",
+//                         type: "POST",
+//                         datatype:"json",
+//                         data: {opcion: 1, tabla: 'convenios'},
+//                         success: function(response) {
+//                             response = JSON.parse(response);
+//                             var options = '';
+//                             var selected = '';
+//                             var encontrado = false;
+//                             // Recorrer el array de convenios y buscar el valor almacenado en la base de datos
+//                             $.each(response, function(i, val2) {
+//                                 options += '<option value="' + val2.nombre + '"';
+//                                 if (val2.nombre == val) {
+//                                     options += 'selected';
+//                                     encontrado = true;
+//                                 }
+//                                 options += '>' + val2.nombre + '</option>';
+//                             });
+//                             // Si no se encontró el valor almacenado en la base de datos, crear una opción para este valor
+//                             if (!encontrado) {
+//                                 options += '<option value="' + val + '" selected>' + val + '</option>';
+//                             }
+//                             // Agregar las opciones al select
+//                             $('#' + key).append(options);
+//                         }
+//                     });
+//                     html += '</select>';
+//                 } else {
+//                     html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+//                 }
+//                 html += '</div>';
+//                 html += '</div>';
                 
-                }
+//                 }
 
-              });
+//               });
 
 			
-			html += '</form>'
-			html += '</div>'// Cierro "modal-body"
+// 			html += '</form>'
+// 			html += '</div>'// Cierro "modal-body"
+
+//             html += '<div class="footer mb-5">'
+//             html += '<button type="button" class="btn btn-primary float-sm-left" id="btnUpdateSubmitEdit">Guardar</button>'
+//             html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
+//             html += '</div>'// Cierro "modal-footer"
+		  
+// 			// Insert the HTML Template and display all employee records
+// 			$("#contenido_datos").html(html);
+// 		  }
+		  
+// 	  });
+
+// 	  $(".modal-header").css( "background-color", "#10a37f");
+// 	  $(".modal-header").css( "color", "white" );
+// 	  $(".modal-title").text("Ediciòn de " +tabla +" id= "+id);
+// 	  $('#modalClientes').modal('show');
+// 	  var id = id;
+// 	  //console.log(id);
+
+// });
+
+function calcularEdad(fechaNacimiento) {
+    var hoy = new Date();
+    var fechaNac = new Date(fechaNacimiento);
+    var edad = hoy.getFullYear() - fechaNac.getFullYear();
+    var mes = hoy.getMonth() - fechaNac.getMonth();
+
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
+
+$(document).on('click', '.btn-edit', function() {
+    fila = $(this);      
+    tabla = "clientes";     
+    var id = $(this).attr('data-id'); // traemos el id del btn-editar para usar el responsive de datatable
+    opcion = 5;
+    //console.log(id, tabla, opcion);
+    $.ajax({
+        url: "crud.php",
+        type: "POST",
+        datatype:"json",    
+        data: {opcion:opcion, id:id, tabla:tabla}, 
+
+        success: function (response) {
+            response = JSON.parse(response);
+            var html = "";
+
+            html += '<div class="modal-body">'
+            html += '<form id="save-form">'
+
+            $.each(response[0], function(key, val) {
+                //Buscamos si el campo es id lo bloqueamos
+                if (key === "id") {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm" readonly>';
+                    html += '</div>';
+                    html += '</div>';
+                } else if(key.toLowerCase().includes('fecha')) {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<input type="date" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                    html += '</div>';
+                    html += '</div>';
+                } else if (key === "estado") {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + key + '" class="form-control form-control-sm">';
+                    html += '<option value="Activo">Activo</option>';
+                    html += '<option value="Retirado">Retirado</option>';
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
+                } else {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+
+                    if (key === "pagaduria") {
+                        // Código HTML para el input "pagaduria"
+                        html += '<select id="' + key + '" class="form-control form-control-sm">';
+                    
+                        // Hacer la solicitud AJAX para obtener los convenios
+                        $.ajax({
+                            url: "listas.php",
+                            type: "POST",
+                            datatype:"json",
+                            data: {opcion: 1, tabla: 'convenios'},
+                            success: function(response) {
+                                response = JSON.parse(response);
+                                var options = '';
+                                var selected = '';
+                                var encontrado = false;
+                                // Recorrer el array de convenios y buscar el valor almacenado en la base de datos
+                                $.each(response, function(i, val2) {
+                                    options += '<option value="' + val2.nombre + '"';
+                                    if (val2.nombre == val) {
+                                        options += 'selected';
+                                        encontrado = true;
+                                    }
+                                    options += '>' + val2.nombre + '</option>';
+                                });
+                                // Si no se encontró el valor almacenado en la base de datos, crear una opción para este valor
+                                if (!encontrado) {
+                                    options += '<option value="' + val + '" selected>' + val + '</option>';
+                                }
+                                // Agregar las opciones al select
+                                $('#' + key).append(options);
+                            }
+                        });
+                        html += '</select>';
+                    } else {
+                        html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                    }
+                    html += '</div>';
+                    html += '</div>';
+                    
+                }
+            });
+
+            html += '</form>'
+            html += '</div>'// Cierro "modal-body"
 
             html += '<div class="footer mb-5">'
             html += '<button type="button" class="btn btn-primary float-sm-left" id="btnUpdateSubmitEdit">Guardar</button>'
             html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
             html += '</div>'// Cierro "modal-footer"
-		  
-			// Insert the HTML Template and display all employee records
-			$("#contenido_datos").html(html);
-		  }
-		  
-	  });
 
-	  $(".modal-header").css( "background-color", "#10a37f");
-	  $(".modal-header").css( "color", "white" );
-	  $(".modal-title").text("Detalles de " +tabla +id);
-	  $('#modalClientes').modal('show');
-	  var id = id;
-	  //console.log(id);
+            // Insertar el HTML en el elemento con id "contenido_datos" y mostrar todos los registros de empleados
+            $("#contenido_datos").html(html);
+
+            // Calcular y mostrar la edad actual en el campo existente "edad"
+            var fechaNacimiento = response[0].fecha_nacimiento;
+            var edadActual = calcularEdad(fechaNacimiento);
+            $("#edad").val(edadActual);
+
+            // Escuchar los cambios en el campo fecha_nacimiento
+            $("#fecha_nacimiento").on("change", function() {
+                var nuevaFecha = $(this).val();
+                var nuevaEdad = calcularEdad(nuevaFecha);
+                $("#edad").val(nuevaEdad);
+            });
+        }
+
+    });
+
+    $(".modal-header").css( "background-color", "#10a37f");
+    $(".modal-header").css( "color", "white" );
+    $(".modal-title").text("Edición de " + tabla + " id= " + id);
+    $('#modalClientes').modal('show');
+    var id = id;
+    //console.log(id);
 
 });
+
+
+
+
 
 $(document).on('click', '#btnUpdateSubmitEdit', function() {
     opcion = 2;
@@ -307,7 +451,7 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
                 timer: 1900,
             }).then((result) => {
                 // Se llama la función consultar después de que se haya cerrado la alerta
-                location.reload();
+                //location.reload();
             });
         });
             
@@ -418,7 +562,7 @@ $(document).on('click', '.btnNuevo', function(){
 	
 	  $(".modal-header").css( "background-color", "#543c0cb");
 	  $(".modal-header").css( "color", "white" );
-	  $(".modal-title").text("Detalles de " +tabla +id);
+	  $(".modal-title").text("Nuevo Cliente " +tabla +id);
 	  $('#modalClientes').modal('show');
 	  var id = id;
 
