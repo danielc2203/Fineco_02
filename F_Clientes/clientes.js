@@ -382,10 +382,13 @@ $(document).on('click', '.btn-edit', function() {
             html += '</form>'
             html += '</div>'// Cierro "modal-body"
 
-            html += '<div class="footer mb-5">'
-            html += '<button type="button" class="btn btn-primary float-sm-left" id="btnUpdateSubmitEdit">Guardar</button>'
-            html += '<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cerrar</button>'
-            html += '</div>'// Cierro "modal-footer"
+            html += '<div class="footer mb-5 d-flex justify-content-between">'
+            html += '<button type="button" class="btn btn-primary" id="btnUpdateSubmitEdit">Guardar</button>'
+            // html += '<button type="button" class="btn btn-outline-danger" btnBorrar" id=' + id + '><i class="fas fa-solid fa-trash"></i></button>'
+            html += '<a class="btn btn-danger float-left btnBorrar" id=' + id + '><i class="fas fa-trash-alt"></i></a>'
+            html += '<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>'
+            html += '</div>'
+
 
             // Insertar el HTML en el elemento con id "contenido_datos" y mostrar todos los registros de empleados
             $("#contenido_datos").html(html);
@@ -623,6 +626,44 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
     }
      
 });
+
+//Borrar con Swal2
+$(document).delegate(".btnBorrar", "click", function() {
+    var id = $(this).attr('id'); // Pasamos el id del modal a la funcion borrar desde el boton
+    //alert(id);
+    opcion = 3; //eliminar  
+    tabla = "clientes" 
+        Swal.fire({
+            icon: 'warning',
+            title: 'Estas seguro de eliminar este cliente de Fineco ?',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'SI'
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "crud.php",
+                type: "POST",
+                datatype:"json",    
+                data: {opcion:opcion, id:id, tabla:tabla}, 
+                success: function(response) {
+                    Swal.fire('El cliente ha sido Eliminado de la base de datos.', response, 'success');
+                    }
+                });              
+        } else if (result.isDenied) {
+            Swal.fire('Cambios No Efectuados', '', 'info')
+        }else{
+            $(function() {
+                Swal.fire('Cambios No Efectuados', '', 'info')
+                //toastr.info('Se ha cancelado la acción de eliminar')
+                });
+        }
+        $('#VerCredito').modal('toggle')
+        location.reload();
+        });
+    });
+
 
 //Funcion para calcular la edad segun la Fecha de nacimiento
 function calculateAge(dateString) {
