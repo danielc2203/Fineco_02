@@ -327,6 +327,7 @@ $(document).on('click', '.btn-edit', function() {
                     html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
                     html += '<div class="col-6">';
                     html += '<select id="' + key + '" class="form-control form-control-sm">';
+                    html += '<option value="'+val+'">'+val +'</option>';
                     html += '<option value="Activo">Activo</option>';
                     html += '<option value="Retirado">Retirado</option>';
                     html += '</select>';
@@ -338,7 +339,7 @@ $(document).on('click', '.btn-edit', function() {
                     html += '<div class="col-6">';
                     html += '<select id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
                     // html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
-                    html += '<option value="CC">' + val + '</option>';
+                    html += '<option value="'+val+'">'+val +'</option>';
                     html += '<option value="CC">CC</option>';
                     html += '<option value="CE">CE</option>';
                     html += '<option value="NIT">NIT</option>';
