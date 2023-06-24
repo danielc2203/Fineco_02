@@ -72,7 +72,7 @@
 
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">Estudio y Administraciòn de credito</span>
+              <span class="input-group-text">Estudio y Administración de crédito</span>
             </div>
             <input type="text" class="form-control col-2" id="b4" value="13.00">
             <div class="input-group-prepend">
@@ -96,7 +96,7 @@
 
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">Intereses Iniciales (en dias)</span>
+              <span class="input-group-text">Intereses Iniciales (en días)</span>
             </div>
             <input type="text" class="form-control col-2" id="b6" value="90">
             <div class="input-group-prepend">
@@ -167,7 +167,7 @@
         <div class="form-row">
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">Cupo Màximo</span>
+              <span class="input-group-text">Cupo Máximo</span>
             </div>
             <input type="text" class="form-control col" id="c11" >
             <div class="input-group-prepend">
@@ -181,12 +181,12 @@
           </div>
         </div>
           
-          <button class="btn btn-primary btn-sm" type="submit">Calcular Amortización</button>
+          <!-- <button class="btn btn-primary btn-sm" type="submit">Calcular Amortización</button> -->
       </form>
 
         </div>
         <div class="card-footer text-muted">
-        Simuladro de credito Fineco
+        Simulador de crédito Fineco
         </div>
       </div>
 
