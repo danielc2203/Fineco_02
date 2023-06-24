@@ -332,6 +332,21 @@ $(document).on('click', '.btn-edit', function() {
                     html += '</select>';
                     html += '</div>';
                     html += '</div>';
+                } else if (key === "tipo_documento") {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                    // html += '<input type="text" id="' + key + '" value="' + val + '" class="form-control form-control-sm">';
+                    html += '<option value="CC">' + val + '</option>';
+                    html += '<option value="CC">CC</option>';
+                    html += '<option value="CE">CE</option>';
+                    html += '<option value="NIT">NIT</option>';
+                    html += '<option value="NIUP">NIUP</option>';
+                    html += '<option value="TI">TI</option>';
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
                 } else {
                     html += '<div class="form-group row mb-0">';
                     html += '<label class="col-6 col-form-label-sm">' + key + ' : </label>';
@@ -432,6 +447,7 @@ $(document).on('click', '#btnUpdateSubmitEdit', function() {
     //Agregamos la eleccion de estado a su campo
     formData['estado'] = $('#estado').val();
     formData['pagaduria'] = $('#pagaduria').val();
+    formData['tipo_documento'] = $('#tipo_documento').val();
     var id = parseInt(formData['id']);
 
         $.ajax({
@@ -514,6 +530,19 @@ $(document).on('click', '.btnNuevo', function(){
                     html += '</select>';
                     html += '</div>';
                     html += '</div>';
+                }else if (val.Field == "tipo_documento") {
+                    html += '<div class="form-group row mb-0">';
+                    html += '<label class="col-6 col-form-label-sm">' + val.Field + ' : </label>';
+                    html += '<div class="col-6">';
+                    html += '<select id="' + val.Field + '" class="form-control form-control-sm">';
+                    html += '<option value="CC">CC</option>';
+                    html += '<option value="CE">CE</option>';
+                    html += '<option value="NIT">NIT</option>';
+                    html += '<option value="NIUP">NIUP</option>';
+                    html += '<option value="TI">TI</option>';
+                    html += '</select>';
+                    html += '</div>';
+                    html += '</div>';
                 }else if (val.Field == "pagaduria") {
                     // Código HTML para el input "convenio"
                     html += '<div class="form-group row mb-0">';
@@ -583,6 +612,7 @@ $(document).on('click', '#btnUpdateSubmitNew', function() {
     var id = parseInt(formData['id']);
     formData['estado'] = $('#estado').val();
     formData['pagaduria'] = $('#pagaduria').val();
+    formData['tipo_documento'] = $('#tipo_documento').val();
 
     // Validar si los campos están vacíos excepto el id
     var camposVacios = false;
