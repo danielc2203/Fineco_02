@@ -1,6 +1,6 @@
-# Fineco_02
+# Fineco 02
 
-Proyecto para Fineco APP V1.0.2
+Proyecto para Fineco APP V2.1.0
 
 ## Descripción
 
@@ -8,8 +8,7 @@ Esta es una aplicación de ejemplo para Fineco.
 
 ## Características
 
-- Registro y gestión de usuarios
- de créditos
+- Registro y gestión de usuarios de créditos
 - Funciones de cálculo y simulación de créditos
 - Gestión de empleados y clientes
 - Funciones de tesorería
@@ -44,4 +43,4 @@ Este proyecto está disponible bajo la [Licencia MIT](LICENSE).
 
 ## Autor
 
-- Castro R** - *[GitHub](https://github.com/danielc2203)* 
+- J Daniel Castro R ** - *[GitHub](https://github.com/danielc2203)* 
