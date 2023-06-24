@@ -2,6 +2,7 @@
 $(document).ready(function() {
     var id, opcion;
     opcion = 4;
+    var capacidadf = "";
     
     $(document).ready(function () {
         $('#creditosp').DataTable();
@@ -35,12 +36,11 @@ $(document).ready(function() {
         },
         "columns":[
             {"data": "id"},
-            //{"data": "id_documento"},
-            {sortable: false,
-                "render": function (data, type, full, meta) {
-                    //var buttonID = +full.id;
-                    return '<a class="btn btn-info VerCredito" role="button">'+full.id_documento+'</a>';
-                }
+            {data: 'id_documento',
+                render: function (data) {
+                    
+                    return '<a class="btn btn-info VerCredito" role="button">'+data+'</a>';       
+                },
             },
             //Nombre de la pagadira o calculadora
             {data: 'pagaduria',
@@ -77,18 +77,36 @@ $(document).ready(function() {
                         return '<span style="color:' + color + '">' + number + '</span>';
                     }
                     return number;
-                    var capacidadf = number;
                 },
             },
-            {"data": "cuota_mensual"},
+            { data: 'cuota_mensual',
+                render: function (data, type, full, meta) {
+                    var number = $.fn.dataTable.render
+                        .number('.', '.', 0, '$ ')
+                        .display(data);
+            
+                    if (type === 'display') {
+                        let color = 'black';
+                        if (parseFloat(data) > parseFloat(full.capacidad)) {
+                            color = 'red';
+                        } else if (parseFloat(data) <= parseFloat(full.capacidad)) {
+                            color = 'green';
+                        }
+                        return '<span style="color:' + color + '">' + number + '</span>';
+                    }
+                    return number;               
+                },
+            },
+            
+            // {"data": "cuota_mensual"},
             //{"data": "Estado"},
-            {
-                data: 'estado',
-                render: function (data, type) {
-                    
-                    return '<a class="btn btn-secondary Simulador" role="button">'+data+'</a>';       
+            {data: 'estado',
+                render: function (data) {
+                    var btnClass = (data === 'Sin Cupo') ? 'btn-danger' : 'btn-success';
+                    return '<a class="btn ' + btnClass + ' Simulador" role="button">' + data + '</a>';
                 },
             },
+            
             {"data": "fecha_solicitud"},
         ],
     })

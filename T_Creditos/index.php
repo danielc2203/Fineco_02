@@ -52,7 +52,7 @@
             <thead>
               <tr> 
               <th>id</th>
-              <th>Nº Documento</th>
+              <th>id_documento</th>
               <th>Pagaduria</th>
               <th>Monto Solicitado</th>
               <th>Plazo Meses</th>

@@ -8,8 +8,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fineco APP V 1.0 | JDCR</title>
-  <!-- <link rel="icon" type="image/x-icon" href="/dist/img/fineco_1.jpg">  -->
-  <link rel="icon" type="image/png" href="https://www.fineco.com.co/wp-content/uploads/2023/04/IMG-20230427-WA0072-e1682646480734.jpg">
+  <link rel="icon" type="image/x-icon" href="<?php echo $url;?>/dist/img/head_1.jpg"> 
+  <!-- <link rel="icon" type="image/png" href="https://www.fineco.com.co/wp-content/uploads/2023/04/IMG-20230427-WA0072-e1682646480734.jpg"> -->
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
