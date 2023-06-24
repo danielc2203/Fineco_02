@@ -1,52 +1,47 @@
-# Proyecto Fineco APP V1.0.2
+# Fineco_02
 
-Proyecto para la aplicación Fineco V1.0.2.
+Proyecto para Fineco APP V1.0.2
 
 ## Descripción
 
-La información detallada sobre la aplicación se proporciona aquí.
+Esta es una aplicación de ejemplo para Fineco.
 
 ## Características
 
-- Enumere las características de la aplicación aquí, por ejemplo, registro de usuarios, función de búsqueda, etc.
-
-## Requisitos previos
-
-- Enumere cualquier software necesario para ejecutar la aplicación.
+- Registro y gestión de usuarios
+ de créditos
+- Funciones de cálculo y simulación de créditos
+- Gestión de empleados y clientes
+- Funciones de tesorería
 
 ## Instalación
 
-1. Clone este repositorio en su servidor.
+1. Clone este repositorio en su servidor o en un servidor remoto.
    ```
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/danielc2203/Fineco_02.git
    ```
-2. Instale las dependencias del proyecto.
+2. Asegúrese de tener instalado npm y Node.js en su máquina.
+3. Instale las dependencias del proyecto.
    ```
-   comando 
+   npm install
    ```
-3. Configure la aplicación según sus necesidades (por ejemplo, configuración de base de datos).
-4. Ejecute la aplicación.
+4. Configure su base de datos en el archivo de configuración correspondiente.
+5. Ejecute la aplicación.
    ```
-   comando
+   npm run serve
    ```
 
-## Uso
+## Contribuyendo
 
-Proporcione instrucciones sobre cómo utilizar la aplicación o cómo interactuar con ella.
-
-## Autor
-
-- Daniel Castro R - *[GitHub](https://github.com/danielc2203)*
+1. Fork este repositorio.
+2. Cree una nueva rama en su fork.
+3. Realice sus cambios y pruebas.
+4. Haga una pull request a la rama master del repositorio original.
 
 ## Licencia
 
-Este proyecto está bajo laencia XYZ. Para más detalles, ver el archivo LICENSE.
+Este proyecto está disponible bajo la [Licencia MIT](LICENSE).
 
-## Contribución
+## Autor
 
-Si desea contribuir a este proyecto, siga estos pasos:
-
-1. Haga un fork de este repositorio.
-2. Clone el repositorio dentro de su máquina local.
-3. Realice cambios y pruebas en su rama local.
-4. Haga una solicitud de extracción a la rama principal de este repositorio. 
+- Castro R** - *[GitHub](https://github.com/danielc2203)* 
