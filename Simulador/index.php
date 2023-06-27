@@ -83,15 +83,16 @@
         </div>
 
         <div class="form-row">
+          
           <div class="input-group input-group-sm mb-3 col-md-6">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Impuestos</span>
-            </div>
-            <input type="text" class="form-control col-2" id="b5" value="19.00">
-            <div class="input-group-prepend">
+          <div class="input-group-prepend">
+              <span class="input-group-text">Corretaje</span>
+          </div>
+            <input type="text" class="form-control col-2" id="c13" value="7.00">
+          <div class="input-group-prepend">
             <span class="input-group-text">%</span>
-            </div>
-            <input type="text" class="form-control" id="c5" readonly>
+          </div>
+            <input type="text" class="form-control" id="c14" readonly>
           </div>
 
           <div class="input-group input-group-sm mb-3 col-md-6">
@@ -110,15 +111,17 @@
         </div>
 
         <div class="form-row">
+
+        
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">Seguro (anual)</span>
-              <span class="input-group-text">$</span>
+              <span class="input-group-text">Impuestos</span>
             </div>
-            <input type="text" class="form-control" id="seguro" value="0" required>
-            <div class="input-group-append">
-              <span class="input-group-text">.00</span>
+            <input type="text" class="form-control col-2" id="b5" value="19.00">
+            <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
             </div>
+            <input type="text" class="form-control" id="c5" readonly>
           </div>
 
           <div class="input-group input-group-sm mb-3 col-md-6">
@@ -134,6 +137,7 @@
               <span class="input-group-text">.00</span>
             </div>
           </div>
+
         </div>
 
         <div class="form-row">
@@ -181,16 +185,16 @@
           </div>
 
           <div class="input-group input-group-sm mb-3 col-md-6">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Corretaje</span>
-            </div>
-            <input type="text" class="form-control col-2" id="c13" value="7.00">
-            <div class="input-group-prepend">
-            <span class="input-group-text">%</span>
-            </div>
-            <input type="text" class="form-control" id="c14" readonly>
+          <div class="input-group-prepend">
+              <span class="input-group-text">Seguro (anual)</span>
           </div>
-        </div>
+            <input type="text" class="form-control col-2" id="seguroP" value="0.70">
+          <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
+          </div>
+            <input type="text" class="form-control" id="seguro" readonly>
+          </div>
+          
 
 
         <div class="form-row mt-5">
@@ -198,7 +202,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Tasa de Usura EA</span>
             </div>
-            <input type="text" class="form-control" id="seguro" value="44.64" required>
+            <input type="text" class="form-control" id="usuaraEA" value="44.64" required>
             <div class="input-group-append">
               <span class="input-group-text">%</span>
             </div>
@@ -206,15 +210,44 @@
 
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">GMF</span>
+              <span class="input-group-text">Tasa de Usura MV</span>
             </div>
-            <input type="text" class="form-control col-2" id="b7" value="0.004">
-            <div class="input-group-prepend">
-            <span class="input-group-text">$</span>
-            </div>
-            <input type="text" class="form-control" id="c7" readonly>
+            <input type="text" class="form-control" id="usuaraMV" readonly>
             <div class="input-group-append">
-              <span class="input-group-text">.00</span>
+            <span class="input-group-text">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Monto Sin Fees</span>
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="MontoFees" readonly>
+            <div class="input-group-append">
+            <span class="input-group-text">%</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Tasa Sin Fees</span>
+            </div>
+            <input type="text" class="form-control" id="TasaFees" readonly>
+            <div class="input-group-append">
+            <span class="input-group-text">%</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Diferencia</span>
+            </div>
+            <input type="text" class="form-control" id="DiferenciaUsura" readonly>
+            <div class="input-group-append">
+            <span class="input-group-text">%</span>
             </div>
           </div>
         </div>

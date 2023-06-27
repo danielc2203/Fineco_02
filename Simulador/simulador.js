@@ -19,6 +19,9 @@ var cupom = document.getElementById("c11");
 var cuota = document.getElementById("c12");
 var corretaje = document.getElementById("c13");
 var corretajeTotal = document.getElementById("c14");
+var usuaraEA = document.getElementById("usuaraEA");
+var usuaraMV = document.getElementById("usuaraMV");
+
 
 
 // Agregar eventos de escucha para cuando los valores cambien
@@ -34,6 +37,8 @@ plazo.addEventListener("change", updateResult);
 seguro.addEventListener("change", updateResult);
 corretaje.addEventListener("change", updateResult);
 corretajeTotal.addEventListener("change", updateResult);
+usuaraEA.addEventListener("change", updateResult);
+
 
 
 function updateResult() {
@@ -53,6 +58,8 @@ function updateResult() {
   var value12 = parseFloat(cuota.value);
   var value13 = parseFloat(corretaje.value);
   var value14 = parseFloat(corretajeTotal.value);
+  var usuaraEAF = parseFloat(usuaraEA.value);
+
 
   var sum1 = value1 + value2;
   var result_aval = sum1 * (value3/100);
@@ -68,16 +75,26 @@ function updateResult() {
   estudio.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_estudio);
   //estudio.value = result_estudio;
 
-  var sum2 = result_aval + result_estudio;
+  //   Corretaje
+  let corretajeF = sum1 * value13 /100;
+  corretajeTotal2 = corretajeF.toFixed();
+  corretajeTotal.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(corretajeTotal2);
+
+  var sum2 = result_aval + result_estudio + corretajeF ;
   var result_impuesto = sum2 * (value5/100);
   // Asignar el resultado al campo de impuestos
   impuesto.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_impuesto);
   //impuesto.value = result_impuesto;
+  
 
+  var sum3d = parseFloat(sum1) + parseFloat(result_aval) + parseFloat(result_estudio) + parseFloat(corretajeTotal2) + parseFloat(result_impuesto);
+  console.log("sum3d= "+sum3d);
+  var sum3e = sum3d * value7;
+  console.log("sum3e= "+sum3e);
   var sum3 = result_impuesto + result_estudio + result_aval + value2;
   var result_gmf = sum3 * value7;
   // Asignar el resultado al campo de gmf
-  gmf.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(result_gmf);
+  gmf.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(sum3e);
 
 
   let interesDias = (value6/360); // Operación para sacar el porcentaje de 90 días sobre 360.
@@ -121,16 +138,12 @@ function updateResult() {
   var valor_Total = result_gmf + iniciales + loans1;
   let valor_Totals = valor_Total.toFixed(); // Pasamos el valor a numero entero
 
-
-    //   Corretaje
-  let corretajeF = sum1 / value13;
-  corretajeTotal2 = corretajeF.toFixed();
-  corretajeTotal.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(corretajeTotal2);
-
-  
+ 
   // Asignar el resultado al campo de INTERESES INICIALES (en dias)
   totalCredito.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(valor_Total.toFixed());
 
+  
+  
   // intereses mediante la funcion PMT 
   function PMT(tasaf, plazof, total_N, fvdd, v_cuota) {
       if (tasaf === 0) {
@@ -149,6 +162,23 @@ function updateResult() {
   let paymentdd = PMT(tasaf, plazof, total_N, fvdd, v_cuota);
   //console.log("Cuota PMT es:" + paymentdd.toFixed()); // 307302
   cuota.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(paymentdd.toFixed());
+
+    //Tasa de Usura MV
+    usuaraEAF /= 100; // Convertir el valor a %
+    var resultado = Math.pow(1 + usuaraEAF, 1 / 12) - 1;
+    resultado *= 100; // Convertir el resultado a porcentaje
+    usuaraMV.value = (resultado.toFixed(2) + "%"); // pasamos el resultado al campo
+
+    // Monto Sin Fees
+    console.log("Total Credito " + valor_Totals);
+    console.log("Total corretajeTotal2 " + corretajeTotal2);
+    var sumad = parseFloat(result_estudio)  + parseFloat(corretajeTotal2)  + parseFloat(iniciales) + parseFloat(result_gmf);
+    var grantotal = valor_Totals - sumad;
+    console.log("totalGrande " +  grantotal.toFixed());
+
+    var sum4 = value1 + value2 + result_aval + iniciales + corretajeTotal2 + result_impuesto;
+    
+
   
 
   console.log("_m_('')_m_");
