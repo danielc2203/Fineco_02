@@ -221,7 +221,7 @@
         <div class="form-row">
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">Total Credito</span>
+              <span class="input-group-text">Total Crédito</span>
               <span class="input-group-text">$</span>
             </div>
             <input type="text" class="form-control" id="c8" readonly>
@@ -261,7 +261,10 @@
               <span class="input-group-text">.00</span>
             </div>
           </div>
+
         </div>
+
+        
           
           
       </form>

@@ -139,7 +139,7 @@
         <div class="form-row">
           <div class="input-group input-group-sm mb-3 col-md-6">
             <div class="input-group-prepend">
-              <span class="input-group-text">Total Credito</span>
+              <span class="input-group-text">Total Crédito</span>
               <span class="input-group-text">$</span>
             </div>
             <input type="text" class="form-control" id="c8" readonly>
@@ -175,6 +175,44 @@
             <span class="input-group-text">Valor Cuota</span>
             </div>
             <input type="text" class="form-control" id="c12"  >
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Corretaje</span>
+            </div>
+            <input type="text" class="form-control col-2" id="c13" value="7.00">
+            <div class="input-group-prepend">
+            <span class="input-group-text">%</span>
+            </div>
+            <input type="text" class="form-control" id="c14" readonly>
+          </div>
+        </div>
+
+
+        <div class="form-row mt-5">
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Tasa de Usura EA</span>
+            </div>
+            <input type="text" class="form-control" id="seguro" value="44.64" required>
+            <div class="input-group-append">
+              <span class="input-group-text">%</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">GMF</span>
+            </div>
+            <input type="text" class="form-control col-2" id="b7" value="0.004">
+            <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="c7" readonly>
             <div class="input-group-append">
               <span class="input-group-text">.00</span>
             </div>

@@ -17,6 +17,8 @@ var tasa = document.getElementById("c9");
 var plazo = document.getElementById("c10");
 var cupom = document.getElementById("c11");
 var cuota = document.getElementById("c12");
+var corretaje = document.getElementById("c13");
+var corretajeTotal = document.getElementById("c14");
 
 
 // Agregar eventos de escucha para cuando los valores cambien
@@ -30,6 +32,9 @@ input7.addEventListener("change", updateResult);
 tasa.addEventListener("change", updateResult);
 plazo.addEventListener("change", updateResult);
 seguro.addEventListener("change", updateResult);
+corretaje.addEventListener("change", updateResult);
+corretajeTotal.addEventListener("change", updateResult);
+
 
 function updateResult() {
   // Obtener los valores de los campos de entrada y sumarlos
@@ -46,6 +51,8 @@ function updateResult() {
   var value10 = parseFloat(plazo.value);
   var value11 = parseFloat(cupom.value);
   var value12 = parseFloat(cuota.value);
+  var value13 = parseFloat(corretaje.value);
+  var value14 = parseFloat(corretajeTotal.value);
 
   var sum1 = value1 + value2;
   var result_aval = sum1 * (value3/100);
@@ -113,7 +120,13 @@ function updateResult() {
 
   var valor_Total = result_gmf + iniciales + loans1;
   let valor_Totals = valor_Total.toFixed(); // Pasamos el valor a numero entero
-  //console.log("Valor Total = " + valor_Totals); // Resultado 12919905
+
+
+    //   Corretaje
+  let corretajeF = sum1 / value13;
+  corretajeTotal2 = corretajeF.toFixed();
+  corretajeTotal.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(corretajeTotal2);
+
   
   // Asignar el resultado al campo de INTERESES INICIALES (en dias)
   totalCredito.value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(valor_Total.toFixed());

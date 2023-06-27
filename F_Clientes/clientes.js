@@ -25,7 +25,7 @@ function consultar() {
                 { data: 'segundo_nombre', title: 'Segundo Nombre', width: '15%' },
                 { data: 'primer_apellido', title: 'Primer Apellido', width: '15%' },
                 { data: 'segundo_apellido', title: 'Segundo Apellido', width: '15%' },
-                { data: 'pagaduria', title: 'Pagaduria', width: '10%' },
+                { data: 'pagaduria', title: 'Pagaduría', width: '10%' },
                 { data: 'num_documento', title: 'Número de Documento', width: '15%' },
                 {
                     data: 'estado',
