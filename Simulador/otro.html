@@ -1,0 +1,36 @@
+<p>Este es un calculo</p>
+
+<script>
+// function calcularTasaEfectiva(tasa) {
+//   var tasaDecimal = tasa / 100; // Convertir la tasa a su valor decimal
+//   var tasaEfectiva = Math.pow(1 + tasaDecimal, 12) - 1;
+//   return tasaEfectiva.toFixed(6) * 100; // Redondear a 6 decimales y convertir a porcentaje
+// }
+
+// // Ejemplo de uso
+// var tasa = 2.15; // Tasa de interés en porcentaje (2.15%)
+
+// var tasaEfectiva = calcularTasaEfectiva(tasa);
+// console.log(tasaEfectiva); // Imprime el resultado (29.079999999999998)
+
+
+function futureValue(rate, numPeriods, payment, presentValue) {
+  if (rate <= 0 || numPeriods <= 0 || presentValue <= 0) {
+    return "Por favor ingrese valores válidos para la tasa de interés, número de períodos y valor presente";
+  }
+  var futureValue = presentValue * Math.pow(1 + rate, numPeriods) + payment * ((Math.pow(1 + rate, numPeriods) - 1) / rate);
+  return futureValue;
+}
+
+var tasaEfectiva = 29.08; // Tasa efectiva en decimal (29.08%)
+var intereses = 30; // Intereses en días
+var desembolso = 10000000; // Desembolso al cliente
+var serviciosAval = 0; // Servicios de aval
+var estudioAdmin = 800000; // Estudio y administración del crédito
+var corretaje = 700000; // Corretaje
+var impuestos = 285000; // Impuestos
+
+var interesesCalculados = futureValue(tasaEfectiva, intereses/360, 0, desembolso) - (serviciosAval + estudioAdmin + corretaje + impuestos);
+console.log(interesesCalculados); // Imprime el resultado (253377)
+
+</script>

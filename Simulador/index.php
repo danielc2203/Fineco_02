@@ -7,6 +7,8 @@
 <?php include ('../recursos/sidebar.php');?>
 
 
+
+
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -225,7 +227,7 @@
               <span class="input-group-text">Monto Sin Fees</span>
               <span class="input-group-text">$</span>
             </div>
-            <input type="text" class="form-control" id="MontoFees" readonly>
+            <input type="text" class="form-control" id="MontoSinFees" readonly>
             <div class="input-group-append">
             <span class="input-group-text">%</span>
             </div>
@@ -293,6 +295,9 @@
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script> -->
 <script src="../plugins/sweetalert2/sweetalert2.all.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.2/math.js" integrity="sha512-ap888g/h47w/Rp6mra1vA5NJtdPZJRxOuF/x7jkrL2NdRB8XrKwXIt/PMvre+oMPUdYt+6NNDjwbdwl/PkYXrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
  
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>

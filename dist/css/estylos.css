@@ -1,0 +1,12 @@
+.main-content {
+    min-height: calc(100vh - (altura del header + altura del footer));
+  }
+  footer.main-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 20px;
+  }
+  
